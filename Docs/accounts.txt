@@ -1,0 +1,18 @@
+microsoftwladle97ab/fertaqhoussam@hotmail.com
+
+https://portal.azure.com
+houssamfertaq@gmail.com
+H0u$$@m2017
+ 
+techrezdbserver.database.windows.net
+techrezdbserver
+techrezuser
+H0ussam2018
+North europe
+https://portal.azure.com/#@houssamfertaqgmail.onmicrosoft.com/resource/subscriptions/a1a5156f-b7de-4b22-8a6d-0405de7a3068/resourceGroups/techrezgroup/providers/Microsoft.Sql/servers/techrezdbserver/databases/AdventureWorks/connectionStrings
+https://portal.azure.com/?l=en.en-us#@houssamfertaqgmail.onmicrosoft.com/resource/subscriptions/a1a5156f-b7de-4b22-8a6d-0405de7a3068/resourceGroups/techrezgroup/providers/Microsoft.Sql/servers/techrezdbserver/firewall
+
+authentication :
+email 		: houssamfertaq@gmail.com
+password 	: H0u$@m218
+username 	: fhoussam

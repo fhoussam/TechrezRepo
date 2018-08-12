@@ -1,0 +1,241 @@
+NEVER ! return a FUCKING MODEL !! it's gonna give you an error to track, but a huge fucking useless headache, it simply should not belong to the dbcontext
+
+you need to decorate your controller with [Route("api/[controller]")] in order to expose it. '[controller]' is a dynamic way to specefy the controller name.
+accept header 
+	- determines what response format to request
+	- if no corresponding formatter is available on the server, the server will eventually respond with ok. 
+	- */* is the 'ignored' value for accept header. 
+	- it's ignored by the default when using a browser (unlike from a backend for example), we can add this setting to enable it
+		services.AddMvc(options =>
+		{
+			options.RespectBrowserAcceptHeader = true; // false by default
+		});
+producing xml exclusively
+	1 - add xml formatter services.AddMvc().AddXmlSerializerFormatters()
+	2 - allow browser to have xml (pointed details before, RespectBrowserAcceptHeader) -> optional
+	3 - decorate action with : [Produces("application/xml")] 
+	
+when using this configuration
+	[HttpGet]
+	[Route("{id?}")]
+	[Produces("application/xml", "application/json")] //produces both xml and json
+	public IActionResult Get(int id)
+	-> xml format has the higher priority
+	
+DefaultInlineConstraintResolver : is responsable for resolving toute contrants, like regular expressions and types
+when using regular expressions in routes, use [] instead of [[]], because these [] are used by the route engine, same rule applies for {}
+
+when trying to send xml to an action dont forget 3 things, the object cannot be send to the action if not : 
+	Accept header
+	using the CLASS NAME as the root element (i leanred this the hard way)
+	and [FromBody] parameter decorator
+	
+installing swagger
+	- nugget : Swashbuckle.AspNetCore and/or Swashbuckle.AspNetCore.Swagger ??
+	- use namespace : using Swashbuckle.AspNetCore.Swagger;
+	- ad to DI : services.AddSwaggerGen(options => options.SwaggerDoc("v1",new Info() { Title = "techrezapi", Description = "Techrez Core API" } ));
+	- configure service, after mvc : app.UseSwagger(); app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json","Core API"));
+	- request : api path/swagger, example : https://localhost:44356/swagger
+
+integration testing package : 
+	https://www.meziantou.net/2017/08/21/testing-an-asp-net-core-application-using-testserver
+	main package : Microsoft.AspNetCore.TestHost
+	made me go NUTS ! vs 2017 AND core SDK needed an update so the package can work with project. NOT COMPILE, i repeat, WORK.
+	Microsoft.AspNetCore.All -> also made go nuts, it'll tell you that mvc package cannot be found, and continues to declare ther packages missing (while throwing FileNotFound exceptions). so be careful to only inlcude the 'All' package. (thank god one day ive leanre this will trying to learn the differences between core 1 and two)
+
+	questions : 
+	what is the difference between putting default mvc route in lunchsettings and putting it in UseMvc() map method
+	how to specifiy media priority using consumes and produces decorators
+
+Adding a generic attribut in mvc options : options.Filters.Add(typeof(ValidateModelState));, there also an override which allows to specify the order of each attribut, the order of attribut is VERT important
+	
+Logging : 
+	Nugget : Microsoft.Extensions.Logging.Abstractions
+	Add console logging provider to host builer (program.cs)
+		.ConfigureLogging((hostingContext, logging) =>
+		{
+			logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+			logging.AddConsole();
+			logging.AddDebug();
+		});
+	Add logging section to appsettings.json (if it's not there of course)
+	  "Logging": {
+		"LogLevel": {
+		  "Default": "Warning"
+		}
+	  },
+	Add instance to the controller, (i dont which part does this, but the class does not need to be added to DI) -> private readonly ILogger _logger;
+	Init the instance this way :
+        public ProductsController(IDalService dal, ILogger<ProductsController> logger)
+        {
+            _dal = dal;
+            _logger = logger;
+        }
+	Or this way :
+		public ProductsController(IDalService dal, ILoggerFactory logger)
+		{
+			_dal = dal;
+			_logger = logger.CreateLogger("Api.Controllers.ProductsController");
+		}
+	Create event types class (for organization purpose only)
+		public class LoggingEvents
+		{
+			public const int GenerateItems = 1000;
+			public const int ListItems = 1001;
+			public const int GetItem = 1002;
+			public const int InsertItem = 1003;
+			public const int UpdateItem = 1004;
+			public const int DeleteItem = 1005;
+
+			public const int GetItemNotFound = 4000;
+			public const int UpdateItemNotFound = 4001;
+		}
+	Enjoy logging this way : 
+		_logger.LogInformation(LoggingEvents.GetItem, "Getting item {ID}", id);
+		_logger.LogWarning(LoggingEvents.GetItemNotFound, "GetById({ID}) NOT FOUND", id);
+	Log will be available on the output window like this : 
+		Api> info: Api.Controllers.ProductsController[1002]
+		Api>       Getting item 4
+	Notes : 
+		there are 6 levels for logging messages : LogWarning, LogInformation, LogError, ..., these type of events are ordered by criticality
+		depeding on the severity of the logging level, logging methods tend to offer overrides that take a parameter of type Eexception (e.g : LogWarning)
+		
+	Logging in asp net core works this way : ILoggerFactory that creates ILogger instances that are used to call the logging implementation, and the ILoggerProvider that detemines what output should your logs be on, console ? debug ? azure ? file system ? asp core allows the flexibility of configuring the minimum alert index for each ILoggerProvider. for example, we can set the console to only display logs when the criticality hits the index 3 which is also know as the 'warning' level of criticality, and we can also configure the commun way for logging strategy. this configuration can be done via config json file or code, this way :
+	
+	before that : we should note that the file system provider is not supported by default by asp core, maybe because the of the fact that core should remain OS independent which contadicts with supporting the communication with the file system.
+	but we can create our own by using the same implementation strategy as the azure service provider. this provider has async support and therefore, that's what we should go for. -> https://andrewlock.net/creating-a-rolling-file-logging-provider-for-asp-net-core-2-0/
+	
+	using config :
+		{
+		  "Logging": {
+			"Debug": {
+			  "LogLevel": {
+				"Default": "Information"
+			  }
+			},
+			"Console": {
+			  "IncludeScopes": false,
+			  "LogLevel": {
+				"Microsoft.AspNetCore.Mvc.Razor.Internal": "Warning",
+				"Microsoft.AspNetCore.Mvc.Razor.Razor": "Debug",
+				"Microsoft.AspNetCore.Mvc.Razor": "Error",
+				"Default": "Information"
+			  }
+			},
+			"LogLevel": {
+			  "Default": "Debug"
+			}
+		  }
+		}
+	using code :
+		WebHost.CreateDefaultBuilder(args)
+			.UseStartup<Startup>()
+			.ConfigureLogging(logging =>
+				logging.AddFilter("System", LogLevel.Debug)
+					   .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Trace))
+			.Build();
+			
+Setting up log4net
+	add config file
+		<?xml version="1.0" encoding="utf-8" ?>
+		<log4net>
+		  <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+			<lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+			<file value="C:\Users\BlackShuriken\Desktop\log\" />
+			<datePattern value="yyyy-MM-dd.'txt'"/>
+			<staticLogFileName value="false"/>
+			<appendToFile value="true"/>
+			<rollingStyle value="Date"/>
+			<maxSizeRollBackups value="100"/>
+			<maximumFileSize value="15MB"/>
+			<layout type="log4net.Layout.PatternLayout">
+			  <conversionPattern value="%date [%thread] %-5level App  %newline %message %newline %newline"/>
+			</layout>
+		  </appender>
+			<root>
+			  <level value="ALL"/>
+			  <appender-ref ref="RollingLogFileAppender"/>
+			</root>
+		</log4net>
+	from program.cs, load config before hosting the app
+		XmlDocument log4netConfig = new XmlDocument();
+		log4netConfig.Load(File.OpenRead("log4net.config"));
+		var repo = log4net.LogManager.CreateRepository(Assembly.GetEntryAssembly(),
+				typeof(log4net.Repository.Hierarchy.Hierarchy));
+		log4net.Config.XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
+	Add log4net instance into the controller	
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ProductsController));
+		
+01 - application programming interface
+01 - restful services, can supports IOTs as well but can be used for non restful services
+01 - rest constraints : client/server - stateless - cachable - uniform (all data are nothing but resources and has a URI)
+01 - WCF is protocol independent, its chosen over MVC API to introduce such flexibiliy
+02 - web api controller inherits from ApiController class
+02 - as a default generated code, each action corresponds to an HTTP verb
+00 - api routes are different from standard mvc routes
+00 - ContentType can be set to application/json or application/xml, web api will use that to format the response
+00 - accept header can accept a list of items, seperarted by ',', the web api will chose the first one available
+00 - each item of accept header can have a value of quality factor : application/xml;q=0.8,application/xml;q=0.4, web api will chose the highest available
+00 - XMLMediaTypeFormatter and JSONMediaTypeFormatter both inherit from MediaTypeFormatter
+00 - when configuring web api routes, in the Register method, we can remove Xml formatter to make the app exclusively support Json format. same can be with json
+00 - removing a formatter can be done by calling : config.Formatters.Remove(config.Formatters.JsonFormatter);
+00 - when Accept header calls a non existent formatter, web api will chose any available one to format and send a response back
+00 - accept header default value is application/json
+06 - making a request from browser always makes the Accept header take html/xml as value and for such value asp web api will always return an XML message
+06 - to make the browser return json there are 2 ways : 
+	1 - add a supported media type for json (Note : for this method the response header will have text/html instead of application/json)
+		-> config.formatters.jsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Header.MediaHeaderTypeValue("text/html"));
+	2 - in this approach, we get application/json in the accept header's response 
+		-> creating a custom CustomJsonFormatter that inherits from JsonMediaFormatter
+		-> add a new media type header in the constructor : this.SupportedMediaTypes.Add(new MediaHeaderTypeValue("text/html"));
+		-> override SetDefaultContentHeaders : here we call the base method and then set the content type afterwards : headers.ContentType = new MediaHeaderTypeValue("application/json");
+06 : there's also a tutorial for creating a custom media formatter (for CSV response fro example) : http://www.tugberkugurlu.com/archive/creating-custom-csvmediatypeformatter-in-asp-net-web-api-for-comma-separated-values-csv-format
+07 : a void action will ALWAYS return 204 http code, which stands for No Content
+07 : for Rest standard, a POST(add operation) should return a 201 http code which stands for Item created. In this case, we return HttpResponseMessage type instead of Void. as a value it will be Request.CreateResponse(HttpStatusCode.Created, employe);
+07 : we can also include the created object URI in the response : message.Headers.Location = new Uri(Request.RequestUri + emplye.id); where Request.RequestUri is the current URI
+07 : we can also wrap the operation in try block and handle the exception by returning Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex); same can be done with 404 http code for example with a message indicating that the Entity with id {id} is not found
+10 : if an action name starts with Get[somelthing], web api will call that action if a get call is issued, if no action starts with Get, the Get request mapping would fail, decorating an action with HttpGet solves the mapping problem.
+12 : as a default behaviour, web api will always look for complexe types in the body and in the uri for simple types, to change that we use [FromURI] and [FromBody], it's called parameter binding in web api
+14 : 2 ways to enable cross domain requests
+	1 - using JsonP nuget manager
+		-> create new intance of JsonpMediaTypeFormatter : var jsonFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+		-> set formatter as first media formatter : config.Formatters.Insert(that instance);
+		-> in ajax request, set dataType parameter as 'jsonp'
+	2 - using Microsoft.AspNet.WebAPI.Cors
+		[for all actions]
+		-> Create instance of EnableCorsAttribut cors = new EnableCorsAttribut("{hosts list}","{list of headers}","{verbs list}"), list items are seperated by ',' but '*' means "All"
+		-> Enable cors using config : config.EnableCors(cors);
+		[for a specefic controller or action]
+		-> config.EnableCors(); in config file
+		-> decorate action or controller with an instance of EnableCorsAttribut 
+		-> to disable cors for a certain action or controller, we can use DisableCors attribut
+16 : getting rid of SSL certificat error message [the certicat visual studio has issued is not trusted] (taking local testing as example)
+	1 - mmc.exe -> console root window
+	2 - add/remove snap in
+	3 - select "Certificate" and add
+	4 - select computer account option
+	5 - select local computer
+	6 - expand to Personal -> Certificates -> list of certificates 
+	7 - export certificate : cerrificate right click -> all tasks -> export -> select folder/file name
+	8 - import from menu : Trusted Root Certification Authorities -> certificate -> All tasks -> import
+	9 - message in chrome stays but its only a bug
+17 : forward http to https
+	1 - create RequireHttpsAttribut, a class that inherits from AuthorizationFilterAttribut
+	2 - override OnAuthorization method
+		if(actionContext.Request.RequestUri.Scheme != Uri.UriSchemeHttps)
+		{
+			actionContext.Response = actionContext.Request.CreateResponse(System.Net.HttpStatusCode.Found);
+			actionContext.Response.Content = new StringContent("<p>Https instead of Http</p>");
+			UriBuilder uriBuilder = new UriBuilder(actionContext.Request.RequestUri);
+			uriBuilder.Scheme = Uri.UriSchemeHttps;
+			uriBuilder.Port = [set port];
+			actionContext.Response.Headers.Location = uriBuilder.Uri;
+		}
+			else call the base method
+	3 - add filter in config.Filters list
+	what will happen here is that the first request will return a 302 found http code, and then a redirection to https uri before returning 200
+	the created attribut is flexible enough to be used on a specefic action or a controller
+webapi.txt
+	
+	
+	

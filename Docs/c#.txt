@@ -1,0 +1,6 @@
+https://stackoverflow.com/questions/32119507/multiple-awaits-vs-task-waitall-equivalent
+	multiple Awaits vs WaitAll
+	
+catch block is not mandatory when finally block is there
+optional fields in a function signature are to be specified at the end of the params list
+we dont include 'async' keyword into interface definitions

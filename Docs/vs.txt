@@ -1,0 +1,6 @@
+https://stackoverflow.com/questions/35563802/running-npm-command-within-visual-studio-code
+	You can default cmd.exe as your shell by following these steps.
+	ctrl+Shift+p
+	Type > Select Default Shell + Enter
+	Select > Command Prompt ...cmd.exe
+	Restart VS Code.

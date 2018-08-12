@@ -1,0 +1,3 @@
+adding a package using dotnet cli : dotnet add packaage <package name>
+	not "install package"
+	also, dont forget to cs to your csproj file

@@ -1,0 +1,2 @@
+search in file content in windows : content:table_abc type:.sql
+host file path : C:\Windows\System32\drivers\etc\hosts

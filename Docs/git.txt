@@ -1,0 +1,37 @@
+quick srart :
+cd git
+git config --global user.email houssamfertaq@gmail.com
+git config --global user.name "fhoussam"
+git config --global user.password [password]
+
+when cloning a git repo, a folder is created with the repo name and .git folder is WITHIN, inside
+
+delete repo : enter repo -> go to settings -> delete
+
+get latest changes > git pull
+
+commit : 
+	git add .
+	git commit -m '[message]'
+	git push -u origin master 
+
+start using git :
+create a local folder
+open console, cd to local folder > cd git
+set global git variables > 
+	git config --global user.email houssamfertaq@gmail.com
+	git config --global user.name "fhoussam"
+	git config --global user.password [password]
+	show global variable value > git config [variable name], all > git config --list
+	
+other commands, explanations & an resolved issues :
+initialize a new repo, on the local folder and enables file tracking > git init. this creates the '.git' file, which is required for commit and pull operations
+clone a folder : git clone https://github.com/fhoussam/Techrez.git
+git add . -> add changes to stage
+origin parameter must be set inorder to perform a push operation : git remote add origin https://github.com/fhoussam/TechRez.git > to execute only in the beginning
+when commiting without a comment, you'll be prompted to add one, after writing the comment, tap <escape>, then ':wq', then <enter>
+proxy issues :
+	git config --global http[s].proxy 192.168.31.1:8080
+	git config --global http.sslVerify false 
+		problem resolution of -> SSL certificate problem: Unable to get local issuer certificate 
+		ref : https://confluence.atlassian.com/bitbucketserverkb/ssl-certificate-problem-unable-to-get-local-issuer-certificate-816521128.html

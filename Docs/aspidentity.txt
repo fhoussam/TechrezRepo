@@ -1,0 +1,52 @@
+scaffold asp identity into an MVC project without authorization 
+ref :https://docs.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-2.1&tabs=visual-studio
+1 - dotnet new mvc
+2 - add -> new scaffolded item -> identity
+3 - chose layout page (right from shared folder)
+4 - from the same interface, add new dbcontext
+5 - from the same interface, add user class
+6 - chose template you wanna override
+7 - create migration and update database, or simply update the generated connection string in applicationsettings.json with the connection string of an existing a database having asp idenitty tables
+8 - in the layout page, add login/register partial view, put this code right under 'contact<li><ul>' : <partial name="_LoginPartial" />
+9 - optional : put Authorize attribut on contact action on home controller for a little test
+10 - and the most important, add authentication middleware into the pipline : app.UseAuthentication();
+notes :
+	1 : in the identity area, IdentityHostingStartup.cs is responsible for ading identity in the DI system
+	2 : a working example of this is zipped in techsubject folder : TechRez\Tech_subjects\AspIdentity\AspFreshIdentity
+
+an insert that might help :
+insert into AspNetUsers (id, UserName, NormalizedUserName, Email, NormalizedEmail, EmailConfirmed, PasswordHash, SecurityStamp, ConcurrencyStamp, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnabled, AccessFailedCount)
+values('49132bcb-09fa-40e1-b976-a6f51bc6d321', 'houssamfertaq@gmail.com','HOUSSAMFERTAQ@GMAIL.COM','houssamfertaq@gmail.com','vHOUSSAMFERTAQ@GMAIL.COM',0,'AQAAAAEAACcQAAAAED+Yf+3Us3O5G3/bmn0JY/duLVCnSD5tUWpEI8b6pMH7VCMfjNcM02lN7vn3q1CB7A==','FPP3HQB7KYQ7YBRZS7EQLH5RUYAVIRNQ', '2b1fb8cc-d58a-4094-84c2-32b558e73b89', 0, 0, 1,0)
+
+the hashed password value is 'H0u$@m'
+
+stores :
+	user manager
+	role manager
+	signin manager
+	
+services :
+	email service
+	sms service
+	
+tables
+	users
+	userroles
+	logins : for external providers
+	claims
+	asproles
+	
+asp net identity uses identityDbContext class that can be customized as the following :
+	used as mother class
+	the identityDbContext class is generic and it takes the class name of the app user as input type
+	the app user is the sub class of asp IdentityUser, this class can have custome fields
+	
+asp net identity generates two db contexts, data lives in two seperated databases, a configuration database and an operation database
+
+asp identity provides a default db cntext called "applicationdbcontext" which inherists from identitydbcontext that lives in a compiled library
+this allows you to customize your own business db context
+
+How can i override asp identity views ? when creating a new asp core mvc app with identity, Areas\Identity\Pages\_ViewStart.cshtml is created, and it's the only file on the tree. Inorder to scaffold the register cshtml file, which is a complied class in the current identity library, we click right on a folder -> Add -> Scaffolded item -> identity -> chose template, the view to override and the identity db context class. the result of this whole is a number of duplicated files and we would have the same behavour no matter what folder you right click on. also, this command can be executed from command line or nugget package console but only after installing the right CLI tools (referencing then csproj file as CLI tools, code generation tools). One last observation, chosing to click on the views/shared folder helps actually, and it only duplicates the _ValidationScriptsPartial partial view file, as the name of file says, it's meant to validate user input, which means deleting it from the identity folder would be a good idea.
+
+53, you're fighting with your db -> how the hell we could move this to production, gimme the script dam it ->
+https://www.youtube.com/watch?v=ipAwOGzpxpQ&t=2145s

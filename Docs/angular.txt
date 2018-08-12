@@ -1,0 +1,132 @@
+angular universal
+
+Template
+Class
+Decorator
+
+Class syntax
+	[export] class <ClassName> 
+	{
+		<propName> : <proptype> [ = <value>];
+	}
+the export keyword is used to let the class be imported by files
+
+import {<component name>} from @"<somewhere>" -> same as using in c#. also, when specifying "from" first, you get component name intellisens
+
+create new component using terminal
+	$ ng g component component/user
+	https://www.youtube.com/watch?v=KhzGSHNhnbI&t=1525s / 23:45
+	
+app module is the module that bootsraps the app, usualy respects the naming convention appmodule
+
+type script :
+	types : numbers, any, <type>[], boolean
+	constructor(){}
+	ngOnInit(){}
+	ngInit interface ??
+
+displaying an array :
+<li *ngFor="let hobby of hobbies">{{hobbie}}<li> -> where hobbies is a prop defined in the component lass and having string[] as a type
+we can also show the cuurent index like this : <li *ngFor="let hobby of hobbies; let i = index">{{i}} : {{hobbie}}<li> 
+
+toggle a div
+<div *ngIf=isEdit><div> where isEdit is boolean prop on the component
+
+Events :
+<button (click)="onClick()">Click me</button> : again, onClick is a method defind in the component class, like this onClick(){ /*some logic*/ } !! no 'function' keyword is there !!. in that method you can also have access to component props
+
+Forms :
+<form (submit)="addHobby(hobby.value)">
+	<div>
+		<label for="hobby">Hobby:</label>
+		<input type="text" #hobby>
+	</div>
+</form>
+
+//unshift adds the element in the begging of an array, not like push :)
+addHobby(hobby) { this.hobbies.unshift(hobby); }
+
+
+<li *ngFor="let hobby of hobbies" >{{hobbie}}<button click("deleteHobby(hobby)")>X</button></li>
+deleteHobby(hobby)
+{
+	for(let i=0; i<this.hobbies.length; i++)
+	{
+		if(this.hobbies[i] == hobby)
+		{
+			this.hobbies.splice(i, 1);
+		}
+	}
+}
+
+2way databinding
+import { FormsModule } from '@angular/forms' then add it to NgModule Imports section
+<form>
+	<label for="email">email</label>
+	<input type="text" [(ngModel)]="email">
+
+http module
+generate a service : $ ng g service service/data where service/data is the destination folder
+unlike the component generator, this command does not update the NgModule, so 2 changes to be considered
+	1 - importing the service -> import { DataService } from './services/data.service'
+	2 - add the service to the Providers section -> Proviers : [DataService]
+import the data service in the component that's gonna call it -> import {DataService} from '../../services/data.service'
+whenever we wanna use a service we inject it though dependency injection using the component constructor like this constructor(privte dataservice:DataService)	
+just like we did with the FormsModule, we add the HttpModule
+in the DataService we import AND inject the http module like this, and then call our data api : 
+	import {http} from @angular/http
+	constructor(private http:Http)
+	this.http.get(url);
+this.http.get(url) returns ?observable?, se we need to convert it to json in 2 steps :
+	import 'rxjs/add/operator/map'
+	this.http.get(url).map(res => res.json()) 
+to test API calls, we use mocked data in the jsonplaceholer website : https//jsonplaceholer/typicode.com/posts
+
+routing
+	import { RouterModule } from '@angular/router';
+	define routes : 
+		const appRoutes: Routes = [
+			{path:'', component:userComponent}
+			{path:'about', component:aboutComponent}
+		];
+	-> where '' is the home page
+	in the imports section, we add RouterModule.forRout(appRoutes)
+	add the html to the app component
+	<ul>
+		<li> </li>
+		<li></li>		
+	</ul>
+	
+to generate  new coomponent we can alos use '$ng g c employees'
+
+to shortn path on vscode, use 'prompt $$' command
+
+install angular CLI
+	https://github.com/angular/angular-cli/issues/503
+	run npm install -g @angular/cli
+	CLI commands
+		start app : ng serve --open
+		new component : ng g c components/user
+		
+no need to include a bootstraped component
+
+ruun npm from vscode
+https://stackoverflow.com/questions/35563802/running-npm-command-within-visual-studio-code
+
+never name a project with the same file's name you create for your project! or simply let ng create the root project folder for you. run npm install before running ng serve
+
+ngFor only accepts arrays, so when working with genric lists, we have to call ToArray method, so things can run smoothly
+
+
+
+window.onload = ()=>{
+  //ProductComponent.loadData();
+}
+
+this.Data.ElementAt
+
+what is the difference between http and httpModule ?
+when do we use import '' instead of import from ?
+one form element per component ?
+no self clsing elements ?
+why is the return data observable instead of a simple json data ?

@@ -1,0 +1,46 @@
+Migration & code first
+ref : https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db
+generic steps :
+	- add dbcontext to DI
+	- run add migration command, this command search for dbcontext in DI and generates migration code
+	- Update-Database : this is not an optional command. this command is used to apply the new migration to the database. This command creates the database before applying migrations. if not run, it will throw a sql exception : SqlException: Cannot open database "EFGetStarted.AspNetCore.NewDb" requested by the login. The login failed. Login failed for user 'DESKTOP-7P88VAN\BlackShuriken'. (last one is server name)
+	- create a spoiled controller inorder to test
+
+	
+reslved issues :
+	1 - error when trying to execute command "dotnet ef" : No executable found matching command "dotnet-ef -> update cs proj to use "Microsoft.EntityFrameworkCore.Tools.DotNet", then cd to csproj folder
+	2 - when trying to create a migration using this command "dotnet ef migrations add InitialIdentityServerMigration -c [dbcontextname]" we get the following error : The current CSharpHelper cannot scaffold literals of type 'Microsoft.EntityFrameworkCore.Metadata.Internal.DirectConstructorBinding -> core and ef core versions have to match up : https://github.com/aspnet/EntityFrameworkCore/issues/11177
+	3 - when trying to execute update-database, it fails because of the presence of multiple dbcontexts in this case use "Update-Database -context dbcontextname"
+	4 - both of these commands are required to be run in sequential order so the prjet can run succesfuly
+		dotnet ef migrations add InitialIdentityServerMigration -c PersistedGrantDbContext -> creates migration for PersistedGrantDbContext (cs files)
+		update-database -context PersistedGrantDbContext -> create the phyical database
+	5 - i had to unload a project that should normally not be a target for ef migration commands, this way these command was able to target the right project
+	6 - print script before applying physical changes on database -> dotnet ef migrations script https://stackoverflow.com/questions/39644544/can-i-generate-script-of-a-migration-with-ef-code-first-and-net-core
+	! important, scrit command base itself on migration files, so before running script command, make sure you have migration files
+	7 - Keyword not supported: initial catalog -> it turned out they use SqlLite instead of SqlServer, therefore such parameter is not recognized
+	8 - one to many :
+		public ICollection<Product> Products { get; set; }
+		public Category Category { get; set; }
+	9 - when a migration runs, not all compoennt model annotations are translated to SQL. [Required] annotation is translated to Not Null, but not [StringLength(maximumLength: 30, MinimumLength = 10)] for example
+	10 - call migration from runtime : myDbContext.Database.Migrate();
+	11 - seed data : https://rehansaeed.com/migrating-to-entity-framework-core-seed-data/
+	12 - ef migrations, the generic flow :
+		1 - create db context and related entities
+		2 - if you have any data to seed, overide OnModelCreating method and check the existence of the data the you wanna seed
+		3 - create migration : this will generated the code for creating database, tables and data
+		4 - updata database
+		notes : 
+		if 2 and 3 get switched, we're gonna endup with 2 migrations, one for data and the other for schema. and this is a recommended setup
+		whenever the model or seeded data gets updated, migration files are needed to be recreated
+	13 - eager loding using include : first you need to include Microsoft.EntityFrameworkCore; namespace.
+	14 - UseSqlServer method is only recognized when these two nugget packags are present :
+		Microsoft.EntityFrameworkCore
+		Microsoft.EntityFrameworkCore.SqlServer
+	15 - "Add an implementation of 'IDesignTimeDbContextFactory" -> happens you try to migrate within a project that has no entry point, like a class library, implmenting IDesignTimeDbContextFactory create an entry point for ef migrations, in such implementation we load the config file and specify the connection string to retreive that file, details here : https://codingblast.com/entityframework-core-idesigntimedbcontextfactory/
+		
+other :
+	package manager console shortcut -> Alt T N O
+	
+questions :
+	how to update migration files without deleting them ?
+	how to decouple db context from web project

@@ -1,0 +1,94 @@
+play with api scopes
+play with roles and policies
+disable ssl
+
+well known endpoints are not accessible when identity server is not well configured or simply not started yet. therefore, when trying to access a protected resource from a client app, it will gives back an endpoint error
+
+when using hybrid flow, the client configuration is not only to be updated in the auth server side, but also on the client app side. those params are : ClientSecret, offline access, scopes and the response type which should be set to 'code id_token' which literally means 'use hybrid flow'. see http://docs.identityserver.io/en/release/quickstarts/5_hybrid_and_api_access.html#modifying-the-client-configuration -> Modifying the MVC client
+
+AllowedGrantTypes : enum type, allows you to specify how a client app must be authenticated agaist auth server. AKA "the flow", the are multiple possible value
+
+profile and openid are IDENTITY SCOPES (not api resource scpes). these are REQUIRED scopes inorder to give access to any client, else this throws an invalid_scope error
+
+certificate, identity server, check 
+https://www.youtube.com/watch?v=5OUQZAvxZuA&t=2311s
+at 26 th minute
+the first part of code looks for your signed certificate that this dev have chosen to store in azure, because a certificate (pfx file can also be stored locally (where the site is hosted)).
+the second part, is t pass the certificate to identity server by using the method SetSigninredentials(cert)
+
+like asp identity, identityserver needs two stores to be setup, a configuration db context that points to a configuration database and a operational db context that points to an operational database
+the method used here is called AddConfigurationStore, this only takes 3 arguments that totally makes sens :
+	what db engine to use, for exmple 'UseSqlServer'
+	connection string
+	the assembly from where we load the classes that will migrate as tables in the destination db
+
+finally we use AddAspidentity<User> where user is the same entity that we could use with asp identity
+	
+very important note at 30th minute
+never go full javascript app withut any backed, it automatically means struggle. recommended way is to use MVC
+https://www.youtube.com/watch?v=5OUQZAvxZuA&t=2311s
+
+testing refresh token at 33th minute
+https://www.youtube.com/watch?v=5OUQZAvxZuA&t=2311s
+
+35, a little tip for exposing node modules	
+
+scopes need to be added in the ioidoptions when setting the openid middleware on the client level, these are on of the benefits of using asp mvc as client	
+
+installing i4 templates : dotnet new -i identityserver4.templates
+
+Random questions :
+how does jwt.io verifies the token signature based on the algorithm ? or how someone can validate a jwt on client side ? based on some internet research, we can use the public key to verify the token. in other words, we decryt the signature using the public key and compae thr decrypted string with the payload and the header of the received token. so one question remains, how jwt.io got access to the public key ??
+in identityserver universe, what exactly this "well know" endpoint is for ? 
+
+
+for a full working example :
+
+instll identity server 4 templates : dotnet new -i identityserver4.templates
+before creating the solution, dont forget to target the 2.1 core runtime
+create server app using : dotnet new is4aspid
+create client app using : dotnet new MVC
+enlable ssl en both projects
+on server app
+	copy the client app root link, and add configure the client in the clients store as follows :
+		new Client {
+			ClientId = "openIdConnectClient",
+			ClientName = "Example Implicit Client Application",
+			AllowedGrantTypes = GrantTypes.Hybrid,
+			RequireConsent = false,
+			AllowedScopes = new List<string>
+			{
+				IdentityServerConstants.StandardScopes.OpenId,
+				IdentityServerConstants.StandardScopes.Profile,
+				IdentityServerConstants.StandardScopes.Email,
+				"role",
+				"customAPI.write"
+			},
+			ClientSecrets = new List<Secret>(){ new Secret("houssamfertaq".Sha256(),null) }, /* !! mot de passe hashé, sinon erreur !! */
+			RedirectUris = new List<string> {"https://localhost:44352/signin-oidc"},
+		PostLogoutRedirectUris = new List<string> { "https://localhost:44352" }
+		}
+	update default connection string on appsettings.json file
+	use sql server instead of the default sql lite service provider : options.UseSqlite -> options.UseSqlServer in the ConfigureServices method 
+	disable consent (on client level) using RequireConsent = false
+on the client app
+	install 2 nugget packages : 
+		Microsoft.AspNetCore.Authentication.Cookies
+		Microsoft.AspNetCore.Authentication.OpenIdConnect
+	ad openid connect authentication as following :
+		services.AddAuthentication(options =>
+		{
+			options.DefaultScheme = "cookie";
+			options.DefaultChallengeScheme = "oidc";
+		})
+		.AddCookie("cookie")
+		.AddOpenIdConnect("oidc", options =>
+		{
+			options.Authority = "https://localhost:44361/";
+			options.ClientId = "openIdConnectClient";
+			options.SignInScheme = "cookie";
+			options.ClientSecret = "houssamfertaq"; /* mot de passe en claire */
+			options.ResponseType = "code id_token";   !! for hybrid flow !!
+		});
+		
+ref : https://www.scottbrady91.com/Identity-Server/Getting-Started-with-IdentityServer-4
