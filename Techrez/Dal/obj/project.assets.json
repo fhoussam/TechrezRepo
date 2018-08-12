@@ -13577,11 +13577,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BlackShuriken\\source\\repos\\Techrez\\Dal\\Dal.csproj",
+      "projectUniqueName": "C:\\Users\\BlackShuriken\\source\\repos\\TechrezRepo\\Techrez\\Dal\\Dal.csproj",
       "projectName": "Dal",
-      "projectPath": "C:\\Users\\BlackShuriken\\source\\repos\\Techrez\\Dal\\Dal.csproj",
+      "projectPath": "C:\\Users\\BlackShuriken\\source\\repos\\TechrezRepo\\Techrez\\Dal\\Dal.csproj",
       "packagesPath": "C:\\Users\\BlackShuriken\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BlackShuriken\\source\\repos\\Techrez\\Dal\\obj\\",
+      "outputPath": "C:\\Users\\BlackShuriken\\source\\repos\\TechrezRepo\\Techrez\\Dal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

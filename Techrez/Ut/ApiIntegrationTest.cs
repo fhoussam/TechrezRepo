@@ -21,7 +21,7 @@ namespace Ut
             using (var client = server.CreateClient())
             {
                 string result = await client.GetStringAsync("/api/values");
-                Assert.AreEqual("[\"value1\",\"value2\"]", result);
+                Assert.AreEqual("[\"value1\",\"value2\"]", result); ;
             }
         }
     }

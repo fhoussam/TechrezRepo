@@ -14935,11 +14935,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BlackShuriken\\source\\repos\\Techrez\\Ut\\Ut.csproj",
+      "projectUniqueName": "C:\\Users\\BlackShuriken\\source\\repos\\TechrezRepo\\Techrez\\Ut\\Ut.csproj",
       "projectName": "Ut",
-      "projectPath": "C:\\Users\\BlackShuriken\\source\\repos\\Techrez\\Ut\\Ut.csproj",
+      "projectPath": "C:\\Users\\BlackShuriken\\source\\repos\\TechrezRepo\\Techrez\\Ut\\Ut.csproj",
       "packagesPath": "C:\\Users\\BlackShuriken\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BlackShuriken\\source\\repos\\Techrez\\Ut\\obj\\",
+      "outputPath": "C:\\Users\\BlackShuriken\\source\\repos\\TechrezRepo\\Techrez\\Ut\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -14957,8 +14957,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\BlackShuriken\\source\\repos\\Techrez\\Api\\Api.csproj": {
-              "projectPath": "C:\\Users\\BlackShuriken\\source\\repos\\Techrez\\Api\\Api.csproj"
+            "C:\\Users\\BlackShuriken\\source\\repos\\TechrezRepo\\Techrez\\Api\\Api.csproj": {
+              "projectPath": "C:\\Users\\BlackShuriken\\source\\repos\\TechrezRepo\\Techrez\\Api\\Api.csproj"
             }
           }
         }
