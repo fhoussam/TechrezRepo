@@ -28,6 +28,7 @@ namespace Api
             services.AddDbContext<TechrezDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             //services.AddMemoryCache(); -< to be used later
             services.AddSwaggerGen(options => options.SwaggerDoc("v1", new Info() { Title = "techrezapi", Description = "Techrez Core API" }));
+            services.AddCors();
             services.AddMvc(options => {
                 //accept header is ignored by default by the browser, that's he way to give him some respect
                 options.RespectBrowserAcceptHeader = true;
@@ -53,6 +54,7 @@ namespace Api
 
             app.UseHttpsRedirection();
             app.UseCustomeExcptionHandler();
+            app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "Core API"));

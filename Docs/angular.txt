@@ -1,3 +1,26 @@
+when getting data from server, the returned data is deseriaized using a ts class, so, if this class proporties have capital letters, dont try to get to match the case, because at browser level, everything is lower case. for example, product class had Description prop, on the html template i've tried accessing it while respecting the case,. pro tip, alwys console.log your object to view their real props are named at browser level.
+
+	this one did not work
+	<div *ngFor="let product of products">
+	  {{ product.Description }}
+	</div>
+	
+	this one worked.
+	<div *ngFor="let product of products">
+	  {{ product.description }}
+	</div>
+	
+http client :
+	after getting data from api, convert it from observable to raw : .subscribe(data => { this.products = data; });
+	
+when returning data list, the variable that catche data must be declred this way : public products = [];, 'public' so the html part can see it.
+
+
+
+
+
+
+
 angular universal
 
 Template

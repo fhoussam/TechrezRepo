@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductlistComponent } from './components/productlist/productlist.component';
 import { ProductaddComponent } from './components/productadd/productadd.component';
+import { ProductserviceService } from './services/productservice.service'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { ProductaddComponent } from './components/productadd/productadd.componen
       { path: 'productadd', component: ProductaddComponent },
     ])
   ],
-  providers: [],
+  providers: [ProductserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
