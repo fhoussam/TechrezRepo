@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Dal\Dal.csproj", "{8179FAD7-434F-46D6-B415-91E960CD65E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal", "Dal\Dal.csproj", "{8179FAD7-434F-46D6-B415-91E960CD65E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{E3403518-6B81-4DEC-A6BC-6F3DA4DEA2D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{E3403518-6B81-4DEC-A6BC-6F3DA4DEA2D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ut", "Ut\Ut.csproj", "{EBF1A070-19E0-472F-AC3D-C0388EA37BBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ut", "Ut\Ut.csproj", "{EBF1A070-19E0-472F-AC3D-C0388EA37BBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularClient", "AngularClient\AngularClient.csproj", "{055B9AA5-FD84-43AE-BD4F-71D862851AEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{EBF1A070-19E0-472F-AC3D-C0388EA37BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBF1A070-19E0-472F-AC3D-C0388EA37BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBF1A070-19E0-472F-AC3D-C0388EA37BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{055B9AA5-FD84-43AE-BD4F-71D862851AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055B9AA5-FD84-43AE-BD4F-71D862851AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055B9AA5-FD84-43AE-BD4F-71D862851AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055B9AA5-FD84-43AE-BD4F-71D862851AEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
