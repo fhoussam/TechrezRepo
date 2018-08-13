@@ -9,6 +9,7 @@
       <th>Stock</th>
       <th>Price</th>
       <th>Category</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,7 @@
       <td>{{ product.stock }}</td>
       <td>{{ product.price }}</td>
       <td>{{ product.categoryDescription }}</td>
+      <td><button class="btn btn-danger" (click)="deleteProdut(product.id)" >Delete</button></td>
     </tr>
   </tbody>
 </table>

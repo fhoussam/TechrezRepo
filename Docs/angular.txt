@@ -15,7 +15,13 @@ http client :
 	
 when returning data list, the variable that catche data must be declred this way : public products = [];, 'public' so the html part can see it.
 
-
+it's also recomended to use interfaces to deseriaize the returned data :
+	export interface IProduct
+	{
+	  Id: number;
+	  Description: string;
+	  ...
+	}
 
 
 
