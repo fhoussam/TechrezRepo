@@ -45,5 +45,14 @@ namespace Dal
             DbContext.Products.Remove(todelete);
             await DbContext.SaveChangesAsync();
         }
+
+        public void InitData()
+        {
+            DbContext.Products.RemoveRange(DbContext.Products);
+            DbContext.Categories.RemoveRange(DbContext.Categories);
+            DbContext.SaveChanges();
+            DbContext.Database.ExecuteSqlCommand(new RawSqlString("delete from __EFMigrationsHistory where MigrationId like '%data%'"));
+            DbContext.Database.Migrate();
+        }
     }
 }

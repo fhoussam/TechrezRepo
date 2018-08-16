@@ -1,31 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductserviceService } from '../../services/productservice.service'
+import { IProduct } from '../../Models/Product';
 
 @Component({
   selector: 'app-productlist',
   templateUrl: './productlist.component.html',
-  styleUrls: ['./productlist.component.css']
+  styleUrls: ['./productlist.component.css'],
 })
 export class ProductlistComponent implements OnInit {
 
   public products: any[] = [];
-  public aa: any[] = [];
+  public selectedProduct: IProduct;
+  public sortField : string = 'description';
+  public isDesc: boolean = false;
+
   constructor(private productserviceService: ProductserviceService) { }
   ngOnInit() {
     this.refreshList();
+    this.selectedProduct = this.products[0];
+  }
+
+  getTrBackgroundColor(product: IProduct):string {
+    if (product === this.selectedProduct)
+      return 'azure';
+    else if (product.stock < 10)
+      return 'burlywood';
+    else
+      return 'white';
   }
 
   refreshList() {
     this.productserviceService.getProducts().subscribe(data => { this.products = data; });
   }
 
+  selectProduct(product : IProduct):void {
+    this.selectedProduct = product;
+  }
+
   deleteProdut(id: number) {
-    console.log('deleting product : ' + id);
-    
     this.productserviceService.deleteProduct(id).subscribe(data => {
-      console.log('deleted');
       this.refreshList();
     });;
-    
   }
 }

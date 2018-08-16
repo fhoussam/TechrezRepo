@@ -34,7 +34,8 @@ namespace Dal.Migrations
 
                     b.HasData(
                         new { Id = 1, Description = "Power supply unit" },
-                        new { Id = 2, Description = "Graphics card" }
+                        new { Id = 2, Description = "CPU" },
+                        new { Id = 3, Description = "Graphics card" }
                     );
                 });
 
@@ -61,11 +62,22 @@ namespace Dal.Migrations
                     b.ToTable("Products");
 
                     b.HasData(
-                        new { Id = 1, CategoryID = 1, Description = "Earthwatts 500", Price = 56f, Stock = 23 },
-                        new { Id = 2, CategoryID = 1, Description = "EVGA 850", Price = 80f, Stock = 14 },
-                        new { Id = 3, CategoryID = 1, Description = "Cooler master 750", Price = 69f, Stock = 8 },
-                        new { Id = 4, CategoryID = 2, Description = "Intel 3750k", Price = 250f, Stock = 6 },
-                        new { Id = 5, CategoryID = 2, Description = "Intel 4770k", Price = 320f, Stock = 11 }
+                        new { Id = 1, CategoryID = 1, Description = "Earthwatts 500w", Price = 56f, Stock = 23 },
+                        new { Id = 2, CategoryID = 1, Description = "EVGA 850w", Price = 80f, Stock = 14 },
+                        new { Id = 3, CategoryID = 1, Description = "Cooler master 750w", Price = 69f, Stock = 8 },
+                        new { Id = 4, CategoryID = 1, Description = "Corsair 850W", Price = 250f, Stock = 16 },
+                        new { Id = 5, CategoryID = 1, Description = "BeQuiet! 450W", Price = 250f, Stock = 16 },
+                        new { Id = 6, CategoryID = 1, Description = "Enermax 600W", Price = 250f, Stock = 16 },
+                        new { Id = 7, CategoryID = 2, Description = "Intel i5 3750k", Price = 250f, Stock = 31 },
+                        new { Id = 8, CategoryID = 2, Description = "Intel i7 4770k", Price = 320f, Stock = 15 },
+                        new { Id = 9, CategoryID = 2, Description = "Intel i7 3770k", Price = 299f, Stock = 6 },
+                        new { Id = 10, CategoryID = 2, Description = "Intel Quad Q6600", Price = 80f, Stock = 8 },
+                        new { Id = 11, CategoryID = 2, Description = "Intel i5 3550K", Price = 130f, Stock = 7 },
+                        new { Id = 12, CategoryID = 3, Description = "Nvidia 980 GTX", Price = 280f, Stock = 4 },
+                        new { Id = 13, CategoryID = 3, Description = "MSI 1080 ti Gaming", Price = 550f, Stock = 20 },
+                        new { Id = 14, CategoryID = 3, Description = "MSI 970 GTX Gaming", Price = 199f, Stock = 78 },
+                        new { Id = 15, CategoryID = 3, Description = "Asus 1080 GTX Strix OC", Price = 449f, Stock = 26 },
+                        new { Id = 16, CategoryID = 3, Description = "Gigabyte 1060 GTX Windforce", Price = 220f, Stock = 13 }
                     );
                 });
 

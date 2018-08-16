@@ -2,23 +2,31 @@
   Product List
 </p>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Stock</th>
-      <th>Price</th>
-      <th>Category</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products">
-      <td>{{ product.description }}</td>
-      <td>{{ product.stock }}</td>
-      <td>{{ product.price }}</td>
-      <td>{{ product.categoryDescription }}</td>
-      <td><button class="btn btn-danger" (click)="deleteProdut(product.id)" >Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+<div class='col-sm-7'>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products"
+          [ngStyle]="{'background-color': getTrBackgroundColor(product) }" style="cursor:pointer"
+          (click)="selectProduct(product)">
+        <td>{{ product.description  | useless}}</td>
+        <td>{{ product.stock }}</td>
+        <td>{{ product.price | currency}}</td>
+        <td>{{ product.categoryDescription}}</td>
+        <td><span class="glyphicon glyphicon-remove" (click)="deleteProdut(product.id)"></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class='col-sm-5' *ngIf="selectedProduct">
+  <app-productadd [product]="selectedProduct"></app-productadd>
+</div>

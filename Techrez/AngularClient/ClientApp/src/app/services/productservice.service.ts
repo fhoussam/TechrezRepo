@@ -20,4 +20,8 @@ export class ProductserviceService {
   deleteProduct(productid: number): Observable<any> {
     return this.httpClient.delete(this.rootUrl + '/' + productid);
   }
+
+  updateProduct(product: IProduct): Observable<IProduct> {
+    return this.httpClient.put<IProduct>(this.rootUrl, product);
+  }
 }

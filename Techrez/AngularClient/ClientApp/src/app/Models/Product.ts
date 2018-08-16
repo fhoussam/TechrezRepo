@@ -1,9 +1,9 @@
-export interface IProduct
+export class IProduct
 {
-  Id: number;
-  Description: string;
-  Stock: number;
-  Price: number;
-  CategoryID: number;
-  CategoryDescription: string;
+  id: number;
+  description: string;
+  stock: number;
+  price: number;
+  categoryID: number;
+  categoryDescription: string;
 }

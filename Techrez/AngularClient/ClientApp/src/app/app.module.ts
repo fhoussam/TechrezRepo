@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe, PipeTransform } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -11,7 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductlistComponent } from './components/productlist/productlist.component';
 import { ProductaddComponent } from './components/productadd/productadd.component';
-import { ProductserviceService } from './services/productservice.service'
+import { ProductserviceService } from './services/productservice.service';
+import { UselessPipe } from './pipes/useless.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProductserviceService } from './services/productservice.service'
     FetchDataComponent,
     ProductlistComponent,
     ProductaddComponent,
+    UselessPipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

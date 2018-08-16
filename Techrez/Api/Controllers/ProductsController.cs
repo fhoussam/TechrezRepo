@@ -71,5 +71,13 @@ namespace Api.Controllers
             int productId = await _dal.AddProductAsync(model);
             return Created($"{ Request.Path}/{productId}", null);
         }
+
+        [HttpGet]
+        [Route("init")]
+        public IActionResult InitData()
+        {
+            _dal.InitData();
+            return NoContent();
+        }
     }
 }

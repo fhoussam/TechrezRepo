@@ -1,3 +1,15 @@
+conditional style : [ngStyle]="{'background-color': getTrBackgroundColor(product) }"
+for loop : <tr *ngFor="let product of products"
+click event : <td><span class="glyphicon glyphicon-remove" (click)="deleteProdut(product.id)"></span></td>
+passing data to other components : <app-childcomp [childprop]="selectedProduct"></app-childcomp>, where '@Input() childprop: string'
+when using visual studio, you should cd to ClientApp folder before using angular CLI
+cutom pipes : DO NOT use class name in the html, use the selector f that pipe, only need to generated the pipe and use it on the html right away
+ngStyle : if 'style' atribut is used with it, it simply gonna be appllied no matter what ngif condition is satisfied
+
+<app-product-detail [product]="selectedProduct"></app-product-detail> -> child prop must be declared like this  : @Input() childMessage: string; !!! HA
+when do we use *ng and [ng--] ?
+[(ngModel)]=""
+
 when getting data from server, the returned data is deseriaized using a ts class, so, if this class proporties have capital letters, dont try to get to match the case, because at browser level, everything is lower case. for example, product class had Description prop, on the html template i've tried accessing it while respecting the case,. pro tip, alwys console.log your object to view their real props are named at browser level.
 
 	this one did not work
@@ -62,7 +74,7 @@ toggle a div
 <div *ngIf=isEdit><div> where isEdit is boolean prop on the component
 
 Events :
-<button (click)="onClick()">Click me</button> : again, onClick is a method defind in the component class, like this onClick(){ /*some logic*/ } !! no 'function' keyword is there !!. in that method you can also have access to component props
+<button (click)="deleteProduct(product.id)">Click me</button> : again, onClick is a method defind in the component class, like this onClick(){ /*some logic*/ } !! no 'function' keyword is there !!. in that method you can also have access to component props
 
 Forms :
 <form (submit)="addHobby(hobby.value)">

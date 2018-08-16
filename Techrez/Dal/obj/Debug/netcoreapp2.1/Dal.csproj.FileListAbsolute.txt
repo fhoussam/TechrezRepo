@@ -25,9 +25,9 @@ C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\bin\Debug\netcoreapp
 C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\bin\Debug\netcoreapp2.1\Dal.runtimeconfig.dev.json
 C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\bin\Debug\netcoreapp2.1\Dal.dll
 C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\bin\Debug\netcoreapp2.1\Dal.pdb
-C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.csprojAssemblyReference.cache
 C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.csproj.CoreCompileInputs.cache
 C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.AssemblyInfoInputs.cache
 C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.AssemblyInfo.cs
 C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.dll
 C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.pdb
+C:\Users\BlackShuriken\source\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.csprojAssemblyReference.cache

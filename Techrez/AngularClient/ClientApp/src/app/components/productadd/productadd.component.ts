@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { Form } from '@angular/forms'
+import { IProduct } from '../../Models/Product'
+import { ProductserviceService } from '../../services/productservice.service'
+ 
 @Component({
   selector: 'app-productadd',
   templateUrl: './productadd.component.html',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductaddComponent implements OnInit {
 
-  constructor() { }
+  @Input() product: IProduct;
 
-  ngOnInit() {
+  constructor(private productService: ProductserviceService ) { }
+
+  updateProduct() {
+    this.productService.updateProduct(this.product).subscribe(data => { console.log('product updated'); });
   }
 
+  ngOnInit() {
+    
+  }
 }

@@ -21,5 +21,6 @@ namespace Dal
         Task<Product> UpdateProductAsync(Product product);
         Task<int> AddProductAsync(Product product);
         Task DeleteProductAsync(int id);
+        void InitData();
     }
 }

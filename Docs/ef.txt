@@ -1,3 +1,25 @@
+when updateing init data, (updateing the seed method), be sure to :
+	1 - delete the whole 'Migrations' folder (snpshot cs file also retains the db ttate somehow)
+	2 - delete database
+	3 - comment data section
+	4 - create dbcreate migration
+	5 - update database
+	6 - uncomment data section
+	7 - create dbinit migrtion
+	8 - update database one again
+	9 - the method below are to be run when wanting to init dat to defaut staate
+        public void InitData()
+        {
+			//purge database
+            DbContext.Products.RemoveRange(DbContext.Products);
+            DbContext.Categories.RemoveRange(DbContext.Categories);
+            DbContext.SaveChanges();
+			//delete migration dbinit log
+            DbContext.Database.ExecuteSqlCommand(new RawSqlString("delete from __EFMigrationsHistory where MigrationId like '%data%'"));
+            //run migration like no data has been updated before
+			DbContext.Database.Migrate();
+        }
+	
 Migration & code first
 ref : https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db
 generic steps :
