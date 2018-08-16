@@ -30,7 +30,10 @@ export class ProductlistComponent implements OnInit {
   }
 
   refreshList() {
-    this.productserviceService.getProducts().subscribe(data => { this.products = data; });
+    this.productserviceService.getProducts().subscribe(data => {
+      this.products = data;
+      if(this.products.length > 0) this.selectedProduct = this.products[0];
+    });
   }
 
   selectProduct(product : IProduct):void {
