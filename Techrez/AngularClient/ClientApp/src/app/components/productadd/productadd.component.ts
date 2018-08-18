@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Form } from '@angular/forms'
-import { IProduct } from '../../Models/Product'
+import { Product } from '../../Models/Product'
 import { ProductserviceService } from '../../services/productservice.service'
  
 @Component({
@@ -10,7 +10,7 @@ import { ProductserviceService } from '../../services/productservice.service'
 })
 export class ProductaddComponent implements OnInit {
 
-  @Input() product: IProduct;
+  @Input() product: Product;
 
   constructor(private productService: ProductserviceService ) { }
 

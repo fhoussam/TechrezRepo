@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductserviceService } from '../../services/productservice.service'
-import { IProduct } from '../../Models/Product';
+import { Product } from '../../Models/Product';
+import { List } from 'linqts';
 
 @Component({
   selector: 'app-productlist',
@@ -9,18 +10,30 @@ import { IProduct } from '../../Models/Product';
 })
 export class ProductlistComponent implements OnInit {
 
-  public products: any[] = [];
-  public selectedProduct: IProduct;
-  public sortField : string = 'description';
+  public products: Product[] = [];
+  public selectedProduct: Product;
+  public sortField : string = 'id';
   public isDesc: boolean = false;
 
   constructor(private productserviceService: ProductserviceService) { }
   ngOnInit() {
     this.refreshList();
-    this.selectedProduct = this.products[0];
   }
 
-  getTrBackgroundColor(product: IProduct):string {
+  sort() {
+    if (this.isDesc) {
+      this.products = new List<Product>(this.products).OrderByDescending(x => x[this.sortField]).ToArray();
+    }
+    else
+      this.products = new List<Product>(this.products).OrderBy(x => x[this.sortField]).ToArray();
+  }
+
+  toggleSortOrder() {
+    this.isDesc = !this.isDesc;
+    this.sort();
+  }
+
+  getTrBackgroundColor(product: Product):string {
     if (product === this.selectedProduct)
       return 'azure';
     else if (product.stock < 10)
@@ -32,11 +45,13 @@ export class ProductlistComponent implements OnInit {
   refreshList() {
     this.productserviceService.getProducts().subscribe(data => {
       this.products = data;
-      if(this.products.length > 0) this.selectedProduct = this.products[0];
+      if (this.products.length > 0) {
+        this.selectedProduct = this.products[0];
+      } 
     });
   }
 
-  selectProduct(product : IProduct):void {
+  selectProduct(product : Product):void {
     this.selectedProduct = product;
   }
 
