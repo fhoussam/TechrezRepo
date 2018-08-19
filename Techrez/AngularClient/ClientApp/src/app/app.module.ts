@@ -7,22 +7,22 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { ProductlistComponent } from './components/productlist/productlist.component';
-import { ProductaddComponent } from './components/productadd/productadd.component';
+import { ProductListAdminComponent } from './components/product-list-admin/product-list-admin.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductserviceService } from './services/productservice.service';
 import { UselessPipe } from './pipes/useless.pipe';
+import { ProductListFrontComponent } from './components/product-list-front/product-list-front.component';
+import { ProductListTmpComponent } from './components/product-list-tmp/product-list-tmp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
-    ProductlistComponent,
-    ProductaddComponent,
+    ProductListAdminComponent,
+    ProductEditComponent,
+    ProductListFrontComponent,
+    ProductListTmpComponent,
     UselessPipe,
   ],
   imports: [
@@ -31,10 +31,9 @@ import { UselessPipe } from './pipes/useless.pipe';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'productlist', component: ProductlistComponent },
-      { path: 'productadd', component: ProductaddComponent },
+      { path: 'product-list-admin', component: ProductListAdminComponent },
+      { path: 'product-list-front', component: ProductListFrontComponent },
+      { path: 'product-list-tmp', component: ProductListTmpComponent },
     ])
   ],
   providers: [ProductserviceService],

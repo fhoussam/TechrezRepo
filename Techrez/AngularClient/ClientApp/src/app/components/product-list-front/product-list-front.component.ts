@@ -4,16 +4,16 @@ import { Product } from '../../Models/Product';
 import { List } from 'linqts';
 
 @Component({
-  selector: 'app-productlist',
-  templateUrl: './productlist.component.html',
-  styleUrls: ['./productlist.component.css'],
+  selector: 'app-product-list-front',
+  templateUrl: './product-list-front.component.html',
+  styleUrls: ['./product-list-front.component.css'],
 })
-export class ProductlistComponent implements OnInit {
+export class ProductListFrontComponent implements OnInit {
 
   public products: Product[] = [];
-  public selectedProduct: Product;
   public sortField : string = 'id';
   public isDesc: boolean = false;
+  public isDataLoaded = false;
 
   constructor(private productserviceService: ProductserviceService) { }
   ngOnInit() {
@@ -33,31 +33,10 @@ export class ProductlistComponent implements OnInit {
     this.sort();
   }
 
-  getTrBackgroundColor(product: Product):string {
-    if (product === this.selectedProduct)
-      return '#b8d6d6';
-    else if (product.stock < 10)
-      return '#e6b5b5';
-    else
-      return 'white';
-  }
-
   refreshList() {
     this.productserviceService.getProducts().subscribe(data => {
       this.products = data;
-      if (this.products.length > 0) {
-        this.selectedProduct = this.products[0];
-      } 
+      this.isDataLoaded = true;
     });
-  }
-
-  selectProduct(product : Product):void {
-    this.selectedProduct = product;
-  }
-
-  deleteProdut(id: number) {
-    this.productserviceService.deleteProduct(id).subscribe(data => {
-      this.refreshList();
-    });;
   }
 }

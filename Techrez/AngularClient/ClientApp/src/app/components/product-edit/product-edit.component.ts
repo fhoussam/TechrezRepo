@@ -4,11 +4,11 @@ import { Product } from '../../Models/Product'
 import { ProductserviceService } from '../../services/productservice.service'
  
 @Component({
-  selector: 'app-productadd',
-  templateUrl: './productadd.component.html',
-  styleUrls: ['./productadd.component.css']
+  selector: 'app-product-edit',
+  templateUrl: './product-edit.component.html',
+  styleUrls: ['./product-edit.component.css']
 })
-export class ProductaddComponent implements OnInit {
+export class ProductEditComponent implements OnInit {
 
   @Input() product: Product;
 
