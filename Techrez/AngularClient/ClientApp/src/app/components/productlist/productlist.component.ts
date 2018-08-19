@@ -35,9 +35,9 @@ export class ProductlistComponent implements OnInit {
 
   getTrBackgroundColor(product: Product):string {
     if (product === this.selectedProduct)
-      return 'azure';
+      return '#b8d6d6';
     else if (product.stock < 10)
-      return 'burlywood';
+      return '#e6b5b5';
     else
       return 'white';
   }

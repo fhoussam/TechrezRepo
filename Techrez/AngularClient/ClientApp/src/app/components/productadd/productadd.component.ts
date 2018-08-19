@@ -12,6 +12,10 @@ export class ProductaddComponent implements OnInit {
 
   @Input() product: Product;
 
+  log(message){
+    console.log(message);
+  }
+
   constructor(private productService: ProductserviceService ) { }
 
   updateProduct() {

@@ -5,6 +5,44 @@ passing data to other components : <app-childcomp [childprop]="selectedProduct">
 when using visual studio, you should cd to ClientApp folder before using angular CLI
 cutom pipes : DO NOT use class name in the html, use the selector f that pipe, only need to generated the pipe and use it on the html right away
 ngStyle : if 'style' atribut is used with it, it simply gonna be appllied no matter what ngif condition is satisfied
+angular uses default html5 validation attributs to apply form validation (required, minlength, maxength, etc)
+[class.<class name>]="typecript boolean expression" attribut can be used as an alternative of ngClass or ngStyle
+when using foms : <form #editproductform="ngForm" (ngSubmit)="updateProduct()"> -> each field has to have "name" attribut defined
+() for events
+[] for boolean expression
+*ng--- for if and loop
+
+when using multiple validation messages like this, which is usually the case, consider this :
+    <div class="alert alert-danger" *ngIf="productdescription.touched && !productdescription.valid">
+      <div *ngIf="productdescription.errors.required">Product description is required !</div>
+      <div *ngIf="productdescription.errors.minlength">Should be minimum of {{productdescription.errors.minlength.requiredLength}} catacters !</div>
+      <!--<div *ngIf="productdescription.errors.pattern">Should match the pattern !</div>-->
+    </div>
+	- productdescription is a typecript object that holds validation data for a particular filed or aan entire form
+	- we can use the change event to log productdescription object and inspect all it's properties
+	- typescript is case sensitive, so be careful that minlength and requiredLength properties do not respect the same naming convention
+
+Validation
+  <div class="form-group">
+    <input type="text"
+           required
+           placeholder="First name"
+           class="form-control"
+           ngModel name="firstName"
+           #firstName="ngModel"
+           (change)="log(firstName)"
+           minlength="3"
+           maxlength="10"
+           pattern="banana"
+    />
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+      <div *ngIf="firstName.errors.required">First name is required !</div>
+      <div *ngIf="firstName.errors.minlength">Should be minimum of {{firstName.errors.minlength.requiredLength}} catacters !</div>
+      <div *ngIf="firstName.errors.pattern">Should match the pattern !</div>
+    </div>
+  </div>
+	
+	ng g @angular/material:material-table --name=[name]
 
 <app-product-detail [product]="selectedProduct"></app-product-detail> -> child prop must be declared like this  : @Input() childMessage: string; !!! HA
 when do we use *ng and [ng--] ?
