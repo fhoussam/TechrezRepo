@@ -13,6 +13,9 @@ import { ProductserviceService } from './services/productservice.service';
 import { UselessPipe } from './pipes/useless.pipe';
 import { ProductListFrontComponent } from './components/product-list-front/product-list-front.component';
 import { ProductListTmpComponent } from './components/product-list-tmp/product-list-tmp.component';
+import { CaregoryService } from './services/categories.service';
+import { CateogryDescriptionPipe } from './pipes/cateogryDescription.pipe';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { ProductListTmpComponent } from './components/product-list-tmp/product-l
     ProductListFrontComponent,
     ProductListTmpComponent,
     UselessPipe,
+    CateogryDescriptionPipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,7 +40,7 @@ import { ProductListTmpComponent } from './components/product-list-tmp/product-l
       { path: 'product-list-tmp', component: ProductListTmpComponent },
     ])
   ],
-  providers: [ProductserviceService],
+  providers: [ProductserviceService, CaregoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

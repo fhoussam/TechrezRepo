@@ -43,5 +43,14 @@ namespace Api.Dto
                 Stock = dto.Stock
             };
         }
+
+        public static CategoryDtoGet ToDtoGet(this Category category)
+        {
+            return new CategoryDtoGet()
+            {
+                Id = category.Id,
+                Description = category.Description,
+            };
+        }
     }
 }

@@ -16,7 +16,7 @@
         <td>{{ product.description  | useless}}</td>
         <td>{{ product.stock }}</td>
         <td>{{ product.price | currency}}</td>
-        <td>{{ product.categoryDescription}}</td>
+        <td>{{ product.categoryID | CateogryDescription}}</td>
         <td><span class="glyphicon glyphicon-remove" (click)="deleteProdut(product.id)"></span></td>
       </tr>
     </tbody>

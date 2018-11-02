@@ -8,7 +8,7 @@ namespace Dal
 {
     partial class DalService
     {
-        public async Task<List<Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
             return await DbContext.Products.Include(x => x.Category).ToListAsync();
         }
@@ -53,6 +53,11 @@ namespace Dal
             DbContext.SaveChanges();
             DbContext.Database.ExecuteSqlCommand(new RawSqlString("delete from __EFMigrationsHistory where MigrationId like '%data%'"));
             DbContext.Database.Migrate();
+        }
+
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
+        {
+            return await DbContext.Categories.ToListAsync();
         }
     }
 }
