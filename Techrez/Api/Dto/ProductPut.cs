@@ -1,11 +1,12 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Api.Dto
 {
-    [Serializable]
-    public class ProductDtoPost
+    public class ProductPut
     {
+        [Required]
+        public int Id { get; set; }
+
         [Required]
         [StringLength(maximumLength: 30, MinimumLength = 10)]
         public string Description { get; set; }

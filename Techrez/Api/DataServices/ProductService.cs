@@ -10,9 +10,9 @@ namespace Api.DataServices
     {
         Task<object> GetProductAsync();
         Task<object> GetProductByIdAsync(int id);
-        Task<object> UpdateProductAsync(ProductDtoPut dto);
+        Task<object> UpdateProductAsync(ProductPut dto);
         Task DeleteProductAsync(int id);
-        Task<int> AddProductAsync(ProductDtoPost dto);
+        Task<int> AddProductAsync(ProductPost dto);
         void InitData();
     }
 
@@ -53,7 +53,7 @@ namespace Api.DataServices
             await _dal.DeleteProductAsync(id);
         }
 
-        public async Task<object> UpdateProductAsync(ProductDtoPut dto)
+        public async Task<object> UpdateProductAsync(ProductPut dto)
         {
             var im = new Product()
             {
@@ -67,7 +67,7 @@ namespace Api.DataServices
             return GetDto(om);
         }
 
-        public async Task<int> AddProductAsync(ProductDtoPost dto)
+        public async Task<int> AddProductAsync(ProductPost dto)
         {
             var im = new Product()
             {

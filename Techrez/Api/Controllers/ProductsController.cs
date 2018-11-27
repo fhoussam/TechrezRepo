@@ -45,7 +45,7 @@ namespace Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] ProductDtoPut product)
+        public async Task<IActionResult> Put([FromBody] ProductPut product)
         {
             var dto = await _productService.UpdateProductAsync(product);
             return Created($"{ Request.Path}", dto);
@@ -61,7 +61,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Consumes("application/xml", "application/json")]
-        public async Task<IActionResult> Post([FromBody] ProductDtoPost product)
+        public async Task<IActionResult> Post([FromBody] ProductPost product)
         {
             var dto = await _productService.AddProductAsync(product);
             return Created($"{ Request.Path}/{dto}", null);
