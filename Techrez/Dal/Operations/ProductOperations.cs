@@ -32,10 +32,11 @@ namespace Dal
             return toupdate;
         }
 
-        public Task<int> AddProductAsync(Product product)
+        public async Task<int> AddProductAsync(Product product)
         {
-            DbContext.Products.AddAsync(product);
-            return DbContext.SaveChangesAsync();
+            await DbContext.Products.AddAsync(product);
+            await DbContext.SaveChangesAsync(); //promise (savecganges) should return 1 if success -> to manage later
+            return product.Id;
         }
 
         public async Task DeleteProductAsync(int id)

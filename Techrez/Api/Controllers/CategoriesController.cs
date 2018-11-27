@@ -5,24 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Api.Dto;
+using Api.DataServices;
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
-        public IDalService dalService;
+        private readonly ICategoryService _categoryService;
 
-        public CategoriesController(IDalService dalService)
+        public CategoriesController(ICategoryService categoryService)
         {
-            this.dalService = dalService;
+            _categoryService = categoryService;
         }
 
         public async Task<IActionResult> Get()
         {
-            var model = await dalService.GetCategoriesAsync();
-            var dtoCategories = model.Select(x => x.ToDtoGet());
-            return Ok(dtoCategories);
+            var dto = await _categoryService.GetAllCategoriesAsync();
+            return Ok(dto);
         }
     }
 }

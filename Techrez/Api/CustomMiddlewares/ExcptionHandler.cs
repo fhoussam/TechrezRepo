@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Dal.BusinessExceptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -28,7 +26,7 @@ namespace Api.CustomMiddlewares
             {
                 httpContext.Response.StatusCode = 404;
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateException)
             {
                 httpContext.Response.StatusCode = 400;
             }

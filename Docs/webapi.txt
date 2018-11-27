@@ -1,3 +1,4 @@
+for a delete method, if you try to avoid sending id in the url, (which means, you want to use [from body attribut]), you just gonna have to pass the raw value in the request body, means, [4] instead if [{"id":"4"}], the second form would not work as it requires having a defined class with "id" property so it can be deserialized by mvc.
 NEVER ! return a FUCKING MODEL !! it's gonna give you an error to track, but a huge fucking useless headache, it simply should not belong to the dbcontext
 
 you need to decorate your controller with [Route("api/[controller]")] in order to expose it. '[controller]' is a dynamic way to specefy the controller name.

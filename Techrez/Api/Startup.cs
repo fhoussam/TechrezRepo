@@ -9,6 +9,7 @@ using Dal;
 using Dal.Models;
 using Api.CustomFilters;
 using Swashbuckle.AspNetCore.Swagger;
+using Api.DataServices;
 
 namespace Api
 {
@@ -25,6 +26,7 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDalService, DalService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddDbContext<TechrezDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             //services.AddMemoryCache(); -< to be used later
             services.AddSwaggerGen(options => options.SwaggerDoc("v1", new Info() { Title = "techrezapi", Description = "Techrez Core API" }));
