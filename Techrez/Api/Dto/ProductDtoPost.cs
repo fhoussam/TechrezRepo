@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Api.Dto.Post
+namespace Api.Dto
 {
     [Serializable]
     public class ProductDtoPost

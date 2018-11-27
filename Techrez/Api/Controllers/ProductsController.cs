@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Api.DataServices;
-using Api.Dto.Post;
-using Api.Dto.Put;
+using Api.Dto;
 using Dal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;

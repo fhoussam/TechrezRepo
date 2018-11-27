@@ -41,4 +41,3 @@ D:\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.AssemblyInfoInputs.
 D:\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.AssemblyInfo.cs
 D:\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.dll
 D:\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.pdb
-D:\repos\TechrezRepo\Techrez\Dal\obj\Debug\netcoreapp2.1\Dal.csprojAssemblyReference.cache

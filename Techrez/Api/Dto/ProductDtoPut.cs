@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Api.Dto.Put
+namespace Api.Dto
 {
     public class ProductDtoPut
     {

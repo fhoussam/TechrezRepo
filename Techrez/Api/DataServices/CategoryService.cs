@@ -1,9 +1,4 @@
-﻿using Api.Dto.Post;
-using Api.Dto.Put;
-using Dal;
-using Dal.Models;
-using System;
-using System.Collections.Generic;
+﻿using Dal;
 using System.Linq;
 using System.Threading.Tasks;
 
