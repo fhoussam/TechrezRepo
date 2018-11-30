@@ -26,7 +26,7 @@ namespace Ut
 
             //expected
             string expected =
-                string.Format("description like '%{0}%' and stock > {1} and stock < {2} and price >= {3} and price <= {4} and categoryid = {5}"
+                string.Format("description.Contains(\"{0}\") and stock > {1} and stock < {2} and price >= {3} and price <= {4} and categoryid = {5}"
                 ,productSearchSetting.Description,
                 productSearchSetting.MinStock,
                 productSearchSetting.MaxStock,
