@@ -74,3 +74,5 @@ D:\repos\TechrezRepo\Techrez\Ut\obj\Debug\netcoreapp2.1\Ut.AssemblyInfo.cs
 D:\repos\TechrezRepo\Techrez\Ut\obj\Debug\netcoreapp2.1\Ut.csproj.CopyComplete
 D:\repos\TechrezRepo\Techrez\Ut\obj\Debug\netcoreapp2.1\Ut.dll
 D:\repos\TechrezRepo\Techrez\Ut\obj\Debug\netcoreapp2.1\Ut.pdb
+D:\repos\TechrezRepo\Techrez\Ut\bin\Debug\netcoreapp2.1\Common.dll
+D:\repos\TechrezRepo\Techrez\Ut\bin\Debug\netcoreapp2.1\Common.pdb

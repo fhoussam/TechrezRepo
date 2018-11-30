@@ -3,12 +3,13 @@ using Dal;
 using Dal.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using Common;
 
 namespace Api.DataServices
 {
     public interface IProductService
     {
-        Task<object> GetProductAsync();
+        Task<object> GetProductsAsync(ProductSearchSetting searchSetting);
         Task<object> GetProductByIdAsync(int id);
         Task<object> UpdateProductAsync(ProductPut dto);
         Task DeleteProductAsync(int id);
@@ -36,9 +37,9 @@ namespace Api.DataServices
             _dal = dal;
         }
 
-        public async Task<object> GetProductAsync()
+        public async Task<object> GetProductsAsync(ProductSearchSetting searchSetting)
         {
-            var om = await _dal.GetAllProductsAsync();
+            var om = await _dal.GetProductsAsync(searchSetting);
             return om.Select(x => GetDto(x));
         }
 

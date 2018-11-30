@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Api.DataServices;
 using Api.Dto;
+using Common;
 using Dal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -22,12 +23,13 @@ namespace Api.Controllers
             _productService = productService;
         }
 
-        [HttpGet]
+        [Route("SearchProduts")]
+        [HttpPost]
         //only produces xml
         [Produces("application/xml", "application/json")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> SearchProduts([FromBody] ProductSearchSetting productSearchSetting)
         {
-            var dto = await _productService.GetProductAsync();
+            var dto = await _productService.GetProductsAsync(productSearchSetting);
             return Ok(dto);
         }
 
@@ -59,13 +61,13 @@ namespace Api.Controllers
             return NoContent();
         }
 
-        [HttpPost]
-        [Consumes("application/xml", "application/json")]
-        public async Task<IActionResult> Post([FromBody] ProductPost product)
-        {
-            var dto = await _productService.AddProductAsync(product);
-            return Created($"{ Request.Path}/{dto}", null);
-        }
+        //[HttpPost]
+        //[Consumes("application/xml", "application/json")]
+        //public async Task<IActionResult> Post([FromBody] ProductPost product)
+        //{
+        //    var dto = await _productService.AddProductAsync(product);
+        //    return Created($"{ Request.Path}/{dto}", null);
+        //}
 
         [HttpGet]
         [Route("init")]

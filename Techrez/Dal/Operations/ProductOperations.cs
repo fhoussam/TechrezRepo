@@ -3,11 +3,28 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Dal.Extentions;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using Common;
 
 namespace Dal
 {
     partial class DalService
     {
+        public async Task<List<Product>> GetProductsAsync(SearchSetting filter)
+        {
+            //todo : if where is not well formed, throw back bad request 
+            var query = DbContext.Products.Where(filter.GetWhereLine());
+
+            if (!string.IsNullOrEmpty(filter.OrderColumn))
+                query = query.OrderBy(filter + (filter.IsDesc ? " desc" : string.Empty));
+
+            return await query
+                .Skip(filter.PageIndex * filter.PageSize)
+                .Take(filter.PageSize)
+                .ToListAsync();
+        }
+
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
             return await DbContext.Products.Include(x => x.Category).ToListAsync();
@@ -18,7 +35,7 @@ namespace Dal
             return await DbContext.Products.Include(x => x.Category)
                 .SingleOrDefaultAsync404(x => x.Id == id);
         }
-        
+
         public async Task<Product> UpdateProductAsync(Product product)
         {
             var toupdate = await DbContext.Products.Include(x => x.Category).SingleOrDefaultAsync404(x => x.Id == product.Id);

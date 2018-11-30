@@ -1,4 +1,5 @@
-﻿using Dal.Models;
+﻿using Common;
+using Dal.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace Dal
 
     public interface IDalService
     {
+        Task<List<Product>> GetProductsAsync(SearchSetting searchSetting);
         Task<IEnumerable<Product>> GetAllProductsAsync();
         Task<Product> GetProductByIdAsync(int id);
         Task<Product> UpdateProductAsync(Product product);

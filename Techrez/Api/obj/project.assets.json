@@ -2199,6 +2199,19 @@
           "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.DynamicLinq/1.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.0.1",
+          "System.Linq.Dynamic.Core": "1.0.9"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.InMemory/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -4269,6 +4282,18 @@
           "lib/netstandard1.6/System.Linq.dll": {}
         }
       },
+      "System.Linq.Dynamic.Core/1.0.9": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Linq.Dynamic.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Linq.Dynamic.Core.dll": {}
+        }
+      },
       "System.Linq.Expressions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5478,12 +5503,24 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
       "Dal/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
+          "Common": "1.0.0",
           "Microsoft.AspNetCore.All": "2.1.2",
-          "Microsoft.EntityFrameworkCore": "2.1.1"
+          "Microsoft.EntityFrameworkCore": "2.1.1",
+          "Microsoft.EntityFrameworkCore.DynamicLinq": "1.0.9"
         },
         "compile": {
           "bin/placeholder/Dal.dll": {}
@@ -7238,6 +7275,27 @@
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
         "microsoft.entityframeworkcore.design.2.1.1.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.DynamicLinq/1.0.9": {
+      "sha512": "1wzznHoEXa2wKecaq6Io9AjPMdshxc+FwuP/edymu3FmScNO5KqiNLzGzrlGGO7Jwb/wkoqWyWHQdfNF0a4oWQ==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.dynamiclinq/1.0.9",
+      "files": [
+        ".signature.p7s",
+        "lib/net451/Microsoft.EntityFrameworkCore.DynamicLinq.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.DynamicLinq.xml",
+        "lib/net46/Microsoft.EntityFrameworkCore.DynamicLinq.dll",
+        "lib/net46/Microsoft.EntityFrameworkCore.DynamicLinq.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.DynamicLinq.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.DynamicLinq.xml",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.xml",
+        "lib/uap10.0/Microsoft.EntityFrameworkCore.DynamicLinq.dll",
+        "lib/uap10.0/Microsoft.EntityFrameworkCore.DynamicLinq.pri",
+        "lib/uap10.0/Microsoft.EntityFrameworkCore.DynamicLinq.xml",
+        "microsoft.entityframeworkcore.dynamiclinq.1.0.9.nupkg.sha512",
+        "microsoft.entityframeworkcore.dynamiclinq.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.InMemory/2.1.1": {
@@ -10623,6 +10681,31 @@
         "system.linq.nuspec"
       ]
     },
+    "System.Linq.Dynamic.Core/1.0.9": {
+      "sha512": "I0r3JnfbgfOJtdh1TzhJWC/FOvZ+NRr0KfXK7L7AAO+1Pb7YNNWceqN3OC0/BXbBmLBjvqOq2rqrDJqfmtGzww==",
+      "type": "package",
+      "path": "system.linq.dynamic.core/1.0.9",
+      "files": [
+        ".signature.p7s",
+        "lib/net35/System.Linq.Dynamic.Core.dll",
+        "lib/net35/System.Linq.Dynamic.Core.xml",
+        "lib/net40/System.Linq.Dynamic.Core.dll",
+        "lib/net40/System.Linq.Dynamic.Core.xml",
+        "lib/net45/System.Linq.Dynamic.Core.dll",
+        "lib/net45/System.Linq.Dynamic.Core.xml",
+        "lib/net46/System.Linq.Dynamic.Core.dll",
+        "lib/net46/System.Linq.Dynamic.Core.xml",
+        "lib/netstandard1.3/System.Linq.Dynamic.Core.dll",
+        "lib/netstandard1.3/System.Linq.Dynamic.Core.xml",
+        "lib/netstandard2.0/System.Linq.Dynamic.Core.dll",
+        "lib/netstandard2.0/System.Linq.Dynamic.Core.xml",
+        "lib/uap10.0/System.Linq.Dynamic.Core.dll",
+        "lib/uap10.0/System.Linq.Dynamic.Core.pri",
+        "lib/uap10.0/System.Linq.Dynamic.Core.xml",
+        "system.linq.dynamic.core.1.0.9.nupkg.sha512",
+        "system.linq.dynamic.core.nuspec"
+      ]
+    },
     "System.Linq.Expressions/4.3.0": {
       "sha512": "PGKkrd2khG4CnlyJwxwwaWWiSiWFNBGlgXvJpeO0xCXrZ89ODrQ6tjEWS/kOqZ8GwEOUATtKtzp1eRgmYNfclg==",
       "type": "package",
@@ -13863,6 +13946,11 @@
         "windowsazure.storage.nuspec"
       ]
     },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/Common.csproj",
+      "msbuildProject": "../Common/Common.csproj"
+    },
     "Dal/1.0.0": {
       "type": "project",
       "path": "../Dal/Dal.csproj",
@@ -13871,6 +13959,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "Common >= 1.0.0",
       "Dal >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -13908,6 +13997,9 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
+            "D:\\repos\\TechrezRepo\\Techrez\\Common\\Common.csproj": {
+              "projectPath": "D:\\repos\\TechrezRepo\\Techrez\\Common\\Common.csproj"
+            },
             "D:\\repos\\TechrezRepo\\Techrez\\Dal\\Dal.csproj": {
               "projectPath": "D:\\repos\\TechrezRepo\\Techrez\\Dal\\Dal.csproj"
             }

@@ -1,17 +1,30 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "8d19439ef22c432fe18f0eac697c8789fe30c00a"
+    "signature": "a744a767e244d92d26b3707a087359822a44b9f8"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "Dal/1.0.0": {
         "dependencies": {
+          "Common": "1.0.0",
+          "Microsoft.EntityFrameworkCore.DynamicLinq": "1.0.9",
           "Microsoft.NETCore.App": "2.1.0"
         },
         "runtime": {
           "Dal.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.DynamicLinq/1.0.9": {
+        "dependencies": {
+          "System.Linq.Dynamic.Core": "1.0.9"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Microsoft.NETCore.App/2.1.0": {
@@ -39,6 +52,19 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.0"
         }
+      },
+      "System.Linq.Dynamic.Core/1.0.9": {
+        "runtime": {
+          "lib/netstandard2.0/System.Linq.Dynamic.Core.dll": {
+            "assemblyVersion": "1.0.9.0",
+            "fileVersion": "1.0.9.0"
+          }
+        }
+      },
+      "Common/1.0.0": {
+        "runtime": {
+          "Common.dll": {}
+        }
       }
     }
   },
@@ -47,6 +73,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.EntityFrameworkCore.DynamicLinq/1.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1wzznHoEXa2wKecaq6Io9AjPMdshxc+FwuP/edymu3FmScNO5KqiNLzGzrlGGO7Jwb/wkoqWyWHQdfNF0a4oWQ==",
+      "path": "microsoft.entityframeworkcore.dynamiclinq/1.0.9",
+      "hashPath": "microsoft.entityframeworkcore.dynamiclinq.1.0.9.nupkg.sha512"
     },
     "Microsoft.NETCore.App/2.1.0": {
       "type": "package",
@@ -96,6 +129,18 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "System.Linq.Dynamic.Core/1.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I0r3JnfbgfOJtdh1TzhJWC/FOvZ+NRr0KfXK7L7AAO+1Pb7YNNWceqN3OC0/BXbBmLBjvqOq2rqrDJqfmtGzww==",
+      "path": "system.linq.dynamic.core/1.0.9",
+      "hashPath": "system.linq.dynamic.core.1.0.9.nupkg.sha512"
+    },
+    "Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

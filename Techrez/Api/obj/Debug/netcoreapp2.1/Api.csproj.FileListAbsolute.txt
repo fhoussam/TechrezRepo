@@ -66,3 +66,5 @@ D:\repos\TechrezRepo\Techrez\Api\obj\Debug\netcoreapp2.1\Api.RazorTargetAssembly
 D:\repos\TechrezRepo\Techrez\Api\obj\Debug\netcoreapp2.1\Api.csproj.CopyComplete
 D:\repos\TechrezRepo\Techrez\Api\obj\Debug\netcoreapp2.1\Api.dll
 D:\repos\TechrezRepo\Techrez\Api\obj\Debug\netcoreapp2.1\Api.pdb
+D:\repos\TechrezRepo\Techrez\Api\bin\Debug\netcoreapp2.1\Common.dll
+D:\repos\TechrezRepo\Techrez\Api\bin\Debug\netcoreapp2.1\Common.pdb
