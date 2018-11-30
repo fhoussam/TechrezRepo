@@ -11,23 +11,22 @@ namespace Dal
 {
     partial class DalService
     {
-        public async Task<List<Product>> GetProductsAsync(SearchSetting filter)
+        public async Task<ProductSearchResult> GetProductsAsync(SearchSetting filter)
         {
             //todo : if where is not well formed, throw back bad request 
+            var countTask = DbContext.Products.Where(filter.GetWhereLine()).CountAsync();
+
             var query = DbContext.Products.Where(filter.GetWhereLine());
-
+            
             if (!string.IsNullOrEmpty(filter.OrderColumn))
-                query = query.OrderBy(filter + (filter.IsDesc ? " desc" : string.Empty));
+                query = query.OrderBy(filter.OrderColumn + (filter.IsDesc ? " desc" : string.Empty));
 
-            return await query
+            var pageTask = query
                 .Skip(filter.PageIndex * filter.PageSize)
                 .Take(filter.PageSize)
                 .ToListAsync();
-        }
 
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
-        {
-            return await DbContext.Products.Include(x => x.Category).ToListAsync();
+            return new ProductSearchResult() { Count = await countTask, PageData = await pageTask };
         }
 
         public async Task<Product> GetProductByIdAsync(int id)

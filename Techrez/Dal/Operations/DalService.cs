@@ -17,13 +17,18 @@ namespace Dal
 
     public interface IDalService
     {
-        Task<List<Product>> GetProductsAsync(SearchSetting searchSetting);
-        Task<IEnumerable<Product>> GetAllProductsAsync();
+        Task<ProductSearchResult> GetProductsAsync(SearchSetting searchSetting);
         Task<Product> GetProductByIdAsync(int id);
         Task<Product> UpdateProductAsync(Product product);
         Task<int> AddProductAsync(Product product);
         Task DeleteProductAsync(int id);
         Task<IEnumerable<Category>> GetCategoriesAsync();
         void InitData();
+    }
+
+    public class ProductSearchResult
+    {
+        public int Count { get; set; }
+        public List<Product> PageData { get; set; }
     }
 }

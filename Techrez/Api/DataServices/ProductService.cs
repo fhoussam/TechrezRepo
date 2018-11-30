@@ -39,8 +39,7 @@ namespace Api.DataServices
 
         public async Task<object> GetProductsAsync(ProductSearchSetting searchSetting)
         {
-            var om = await _dal.GetProductsAsync(searchSetting);
-            return om.Select(x => GetDto(x));
+            return await _dal.GetProductsAsync(searchSetting);
         }
 
         public async Task<object> GetProductByIdAsync(int id)
