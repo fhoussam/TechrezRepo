@@ -25,6 +25,7 @@ namespace Api.Controllers
 
         [Route("SearchProduts")]
         [HttpPost]
+
         //only produces xml
         [Produces("application/xml", "application/json")]
         public async Task<IActionResult> SearchProduts([FromBody] ProductSearchSetting productSearchSetting)

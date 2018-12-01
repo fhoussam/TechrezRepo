@@ -34,8 +34,8 @@ namespace Api
             services.AddMvc(options => {
                 //accept header is ignored by default by the browser, that's he way to give him some respect
                 options.RespectBrowserAcceptHeader = true;
-                //generic filter for all controllers
-                options.Filters.Add(typeof(ValidateModelState));
+                options.Filters.Add(typeof(ValidateModelState)); //generic filter for all controllers
+                //options.AllowEmptyInputInBodyModelBinding = true; // allows you to send an empty body to an action
             }
             )
             .AddXmlSerializerFormatters()

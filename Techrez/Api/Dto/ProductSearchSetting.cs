@@ -11,7 +11,7 @@ namespace Api.Dto
     public class ProductSearchSetting : SearchSetting
     {
         [SearchFilterAttribut(Comparator.like)]
-        [StringLength(maximumLength: 30, MinimumLength = 1)]
+        [StringLength(maximumLength: 30, MinimumLength = 0)]
         public string Description { get; set; }
 
         [SearchFilterAttribut(Comparator.lt)]

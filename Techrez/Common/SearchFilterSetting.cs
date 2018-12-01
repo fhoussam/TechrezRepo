@@ -28,28 +28,33 @@ namespace Common
             ).ToList();
 
             List<string> whereLines = new List<string>();
-            foreach (var prop in props)
+
+            if (props.Count == 0)
+                return true.ToString();
+            else
             {
-                string propWhereLine = string.Empty;
-                string value = prop.GetValue(this, null).ToString();
-                string sqlPromName = prop.Name.ToLower().Replace("min", "").Replace("max", "").Replace("'", "''");
-
-                Comparator comparator = prop.GetCustomAttribute<SearchFilterAttribut>().GetComparator();
-                if (comparator != Comparator.like)
+                foreach (var prop in props)
                 {
-                    if (new List<Type>() { typeof(string), typeof(char), typeof(DateTime) }.Contains(prop.PropertyType))
-                        value = "'" + value + "'";
-                    string comparatorDescription = GetDescription(comparator);
-                    whereLines.Add($"{sqlPromName} {comparatorDescription} {value}");
-                }
-                else
-                {
-                    whereLines.Add($"{sqlPromName}.Contains(\"{value}\")");
+                    string propWhereLine = string.Empty;
+                    string value = prop.GetValue(this, null).ToString();
+                    string sqlPromName = prop.Name.ToLower().Replace("min", "").Replace("max", "").Replace("'", "''");
+
+                    Comparator comparator = prop.GetCustomAttribute<SearchFilterAttribut>().GetComparator();
+                    if (comparator != Comparator.like)
+                    {
+                        if (new List<Type>() { typeof(string), typeof(char), typeof(DateTime) }.Contains(prop.PropertyType))
+                            value = "'" + value + "'";
+                        string comparatorDescription = GetDescription(comparator);
+                        whereLines.Add($"{sqlPromName} {comparatorDescription} {value}");
+                    }
+                    else
+                    {
+                        whereLines.Add($"{sqlPromName}.Contains(\"{value}\")");
+                    }
                 }
 
+                return whereLines.Aggregate((x, y) => x + " and " + y);
             }
-
-            return whereLines.Aggregate((x, y) => x + " and " + y);
         }
 
         private static string GetDescription(Enum value)

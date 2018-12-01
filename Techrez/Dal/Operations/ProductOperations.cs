@@ -14,9 +14,10 @@ namespace Dal
         public async Task<ProductSearchResult> GetProductsAsync(SearchSetting filter)
         {
             //todo : if where is not well formed, throw back bad request 
-            var countTask = DbContext.Products.Where(filter.GetWhereLine()).CountAsync();
+            string whereLine = filter.GetWhereLine();
+            var countTask = DbContext.Products.Where(whereLine).CountAsync();
 
-            var query = DbContext.Products.Where(filter.GetWhereLine());
+            var query = DbContext.Products.Where(whereLine);
             
             if (!string.IsNullOrEmpty(filter.OrderColumn))
                 query = query.OrderBy(filter.OrderColumn + (filter.IsDesc ? " desc" : string.Empty));
