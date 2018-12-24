@@ -1,0 +1,33 @@
+<form #editproductform="ngForm" (ngSubmit)="updateProduct()" *ngIf="product != null">
+
+  <div class="form-group" [class.has-error]="productdescription.invalid" [class.has-success]="productdescription.valid && productdescription.dirty">
+
+    <input type="text" required name="description" placeholder="Description" class="form-control" [(ngModel)]="product.description"
+      #productdescription="ngModel" minlength="5" maxlength="30" />
+    <!--pattern="banana"-->
+    <div class="alert alert-danger" *ngIf="productdescription.touched && !productdescription.valid">
+      <div *ngIf="productdescription.errors.required">Product description is required !</div>
+      <div *ngIf="productdescription.errors.minlength">Should be minimum of
+        {{productdescription.errors.minlength.requiredLength}} catacters !</div>
+      <!--<div *ngIf="productdescription.errors.pattern">Should match the pattern !</div>-->
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="number" name="stock" placeholder="Stock" class="form-control" [(ngModel)]="product.stock" />
+  </div>
+  <div class="form-group">
+    <input type="number" name="price" placeholder="Price" class="form-control" [(ngModel)]="product.price" />
+  </div>
+  <div class="form-group">
+    <select name="categoryId" class="form-control" [(ngModel)]="product.categoryID">
+      <option value="" selected="selected"> -- Select a category -- </option>
+      <option *ngFor="let cateogry of categories" value="{{cateogry.id}}">{{cateogry.description}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default" [disabled]="editproductform.invalid">Update</button>
+    <button type="button" class="btn btn-default" (click)=cancelUpdate()>Cancel</button>
+  </div>
+</form>
+

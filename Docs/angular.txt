@@ -1,3 +1,4 @@
+when using ngclass with multiple condition, be ware of class NAMES having spaces within them, you should incllude the mitual one in the "class" attribut while the variations in "[ngClass]" attribut, example : class="glyphicon" [ngClass]="{'glyphicon-triangle-bottom': productFilter.orderColumn=='description' && productFilter.isDesc, 'glyphicon-triangle-top': productFilter.orderColumn=='description' && !productFilter.isDesc}"
 conditional style : [ngStyle]="{'background-color': getTrBackgroundColor(product) }"
 for loop : <tr *ngFor="let product of products"
 click event : <td><span class="glyphicon glyphicon-remove" (click)="deleteProdut(product.id)"></span></td>

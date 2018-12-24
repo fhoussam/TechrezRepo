@@ -1,9 +1,13 @@
-export class Product
+export class product {
+    id: number;
+    description: number;
+    stock: number;
+    price: number;
+    categoryID: number;
+}
+
+export class productSearchResult
 {
-  id: number;
-  description: string;
-  stock: number;
-  price: number;
-  categoryID: number;
-  categoryDescription: string;
+    pageData : product[];
+    count : number;
 }

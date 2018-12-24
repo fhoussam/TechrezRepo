@@ -1,46 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Pipe, PipeTransform } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { ProductListAdminComponent } from './components/product-list-admin/product-list-admin.component';
-import { ProductEditComponent } from './components/product-edit/product-edit.component';
-import { ProductserviceService } from './services/productservice.service';
-import { UselessPipe } from './pipes/useless.pipe';
-import { ProductListFrontComponent } from './components/product-list-front/product-list-front.component';
-import { ProductListTmpComponent } from './components/product-list-tmp/product-list-tmp.component';
-import { CaregoryService } from './services/categories.service';
-import { CateogryDescriptionPipe } from './pipes/cateogryDescription.pipe';
+import { ProductlistComponent } from './components/product/productlist/productlist.component';
+import { ProductService } from './services/product.service';
+import { FormsModule } from '@angular/forms';
+import { ProductdetailsComponent } from './components/product/productdetails/productdetails.component';
+import { AppLoadService } from './services/appsettings.service';
+import { CategoryPipePipe } from './pipes/category-pipe.pipe';
+import { ProducteditComponent } from './components/product/productedit/productedit.component';
+
+export function get_settings(appLoadService: AppLoadService) {
+  return () => appLoadService.getSettings();
+}
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    ProductListAdminComponent,
-    ProductEditComponent,
-    ProductListFrontComponent,
-    ProductListTmpComponent,
-    UselessPipe,
-    CateogryDescriptionPipe,
+    ProductlistComponent,
+    ProductdetailsComponent,
+    CategoryPipePipe,
+    ProducteditComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'product-list-admin', component: ProductListAdminComponent },
-      { path: 'product-list-front', component: ProductListFrontComponent },
-      { path: 'product-list-tmp', component: ProductListTmpComponent },
-    ])
+    FormsModule
   ],
-  providers: [ProductserviceService, CaregoryService],
+  providers: [
+    ProductService,
+    AppLoadService,
+    { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppLoadService], multi: true }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  ngOnInit() {
+    console.log('app start');
+  }
+}

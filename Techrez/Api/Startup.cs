@@ -27,6 +27,7 @@ namespace Api
         {
             services.AddScoped<IDalService, DalService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddDbContext<TechrezDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             //services.AddMemoryCache(); -< to be used later
             services.AddSwaggerGen(options => options.SwaggerDoc("v1", new Info() { Title = "techrezapi", Description = "Techrez Core API" }));

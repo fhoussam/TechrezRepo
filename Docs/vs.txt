@@ -4,3 +4,7 @@ https://stackoverflow.com/questions/35563802/running-npm-command-within-visual-s
 	Type > Select Default Shell + Enter
 	Select > Command Prompt ...cmd.exe
 	Restart VS Code.
+	
+set save all + alt+shift+(up/down) (modifiy multiple lines at once)
+ctrl + ks -> view keys to set set save all
+use ctrl+alt+shift+(up/down) instead of alt+shift+(up/down)

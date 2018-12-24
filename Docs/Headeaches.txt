@@ -1,0 +1,26 @@
+- setting up debugging between vscode and chrome
+addchrome debugger extension
+go to decoumnetation on github and get the lunch config
+I had to use the configuration below to make it work, according to the documentation the key option is userDataDir !!
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Launch localhost",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}",
+            "userDataDir": true
+        },
+        {
+            "name": "Launch index.html",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/index.html"
+        },
+    ]
+}
+ps : "${workspaceFolder} reperesent the currently opened folder in vscode
+one last thing though, dthe following instructions might be needed, followed them, didnt have the time to verify if they're required :
+in chrome.exe shortcut append this to the target, this should enabel remote debugging mode : --remote-debugging-port=9222 where 9222 is the port used to listen to your app !
