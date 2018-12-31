@@ -18,11 +18,11 @@ export function get_settings(appLoadService: AppLoadService) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductlistComponent,
-    ProductdetailsComponent,
-    CategoryPipePipe,
-    ProducteditComponent,
+    AppComponent
+    ,ProductlistComponent
+    ,ProductdetailsComponent
+    ,CategoryPipePipe
+    ,ProducteditComponent
   ],
   imports: [
     BrowserModule,
