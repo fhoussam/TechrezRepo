@@ -10,6 +10,9 @@ import { ProductdetailsComponent } from './components/product/productdetails/pro
 import { AppLoadService } from './services/appsettings.service';
 import { CategoryPipePipe } from './pipes/category-pipe.pipe';
 import { ProducteditComponent } from './components/product/productedit/productedit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatuiComponent } from './components/matui/matui.component';
+import { DemoMaterialModule } from './material-module';
 
 export function get_settings(appLoadService: AppLoadService) {
   return () => appLoadService.getSettings();
@@ -23,12 +26,15 @@ export function get_settings(appLoadService: AppLoadService) {
     ProductdetailsComponent,
     CategoryPipePipe,
     ProducteditComponent,
+    MatuiComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    DemoMaterialModule
   ],
   providers: [
     ProductService,
