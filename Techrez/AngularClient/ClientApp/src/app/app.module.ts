@@ -20,8 +20,8 @@ export function get_settings(appLoadService: AppLoadService) {
   declarations: [
     AppComponent,
     ProductlistComponent
-    ,ProductdetailsComponent,
-    CategoryPipePipe,
+    ,ProductdetailsComponent
+    ,CategoryPipePipe,
     ProducteditComponent,
   ],
   imports: [
