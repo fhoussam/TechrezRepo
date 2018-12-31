@@ -36,4 +36,10 @@ proxy issues :
 		problem resolution of -> SSL certificate problem: Unable to get local issuer certificate 
 		ref : https://confluence.atlassian.com/bitbucketserverkb/ssl-certificate-problem-unable-to-get-local-issuer-certificate-816521128.html
 issue : db.lock permission denied  
-	https://stackoverflow.com/questions/47460039/vs-2017-git-local-commit-db-lock-error-on-every-commit/47472811
+	if git ignore file does not have the right configuration or does not exist
+		https://stackoverflow.com/questions/47460039/vs-2017-git-local-commit-db-lock-error-on-every-commit/47472811
+	if git ignore is good but Visual Studio wants to fuck with you, then refresh git tracking cache :  https://stackoverflow.com/questions/30868544/gitignore-wont-ignore-vs-folder-for-visual-studio-2015-rc-on-windows7-8
+		$ git rm -r --cached .
+		$ git add .
+		$ git commit -m 'Update .gitignore'
+	
