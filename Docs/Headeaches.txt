@@ -24,3 +24,12 @@ I had to use the configuration below to make it work, according to the documenta
 ps : "${workspaceFolder} reperesent the currently opened folder in vscode
 one last thing though, dthe following instructions might be needed, followed them, didnt have the time to verify if they're required :
 in chrome.exe shortcut append this to the target, this should enabel remote debugging mode : --remote-debugging-port=9222 where 9222 is the port used to listen to your app !
+
+- issue : db.lock permission denied  
+	first remember that using the visual studio recommended git ignore is IMPORTANT 
+	if git ignore file does not have the right configuration or does not exist
+		https://stackoverflow.com/questions/47460039/vs-2017-git-local-commit-db-lock-error-on-every-commit/47472811
+	if git ignore is good but Visual Studio wants to fuck with you, then refresh git tracking cache :  https://stackoverflow.com/questions/30868544/gitignore-wont-ignore-vs-folder-for-visual-studio-2015-rc-on-windows7-8
+		$ git rm -r --cached .
+		$ git add .
+		$ git commit -m 'Update .gitignore'
