@@ -19,8 +19,8 @@ export function get_settings(appLoadService: AppLoadService) {
 @NgModule({
   declarations: [
     AppComponent,
-    ProductlistComponent,
-    ProductdetailsComponent,
+    ProductlistComponent
+    ,ProductdetailsComponent,
     CategoryPipePipe,
     ProducteditComponent,
   ],
