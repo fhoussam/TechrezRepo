@@ -20,7 +20,7 @@ export class ProducteditComponent implements OnInit, OnChanges {
   product: product;
   @Input() productid: number;
   @Output() productUpdateCanceled = new EventEmitter<product>();
-  @Output() productUpdated= new EventEmitter<product>();
+  @Output() productUpdated = new EventEmitter<product>();
   
   public categories: category[] = [];
   
