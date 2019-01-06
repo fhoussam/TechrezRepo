@@ -1,24 +1,12 @@
-<div *ngIf="product != null">
-  <div class="form-group">
-      <label class="col-sm-2 control-label" for="inputContact1">Description</label>
-      <div class="col-sm-10">
-        <label class="control-label" for="inputContact1">{{product.description}}</label>
-      </div>
-      <label class="col-sm-2 control-label" for="inputContact1">Stock</label>
-      <div class="col-sm-10">
-        <label class="control-label" for="inputContact1">{{product.stock}}</label>
-      </div>
-      <label class="col-sm-2 control-label" for="inputContact1">Price</label>
-      <div class="col-sm-10">
-        <label class="control-label" for="inputContact1">{{product.price}}</label>
-      </div>
-      <label class="col-sm-2 control-label" for="inputContact1">Category</label>
-      <div class="col-sm-10">
-        <label class="control-label" for="inputContact1">{{product.categoryID | categoryPipe}}</label>
-      </div>
-  </div>
+<mat-list>
+  <mat-list-item><strong>Description :&nbsp;</strong>{{product.description}}</mat-list-item><mat-divider></mat-divider>
+  <mat-list-item><strong>Stock :&nbsp;</strong>{{product.stock}}</mat-list-item><mat-divider></mat-divider>
+  <mat-list-item><strong>Category :&nbsp;</strong>{{product.categoryID | categoryPipe}}</mat-list-item><mat-divider></mat-divider>
+  <mat-list-item><strong>Price :&nbsp;</strong>{{product.price}}</mat-list-item>
+</mat-list>
 
-  <div class="form-group">
-    <button class="btn btn-info" (click)="editProduct()">Update</button>
-  </div>
+<br />
+
+<div class="example-button-row">
+  <button mat-raised-button (click)="editProduct()">Update</button>
 </div>

@@ -1,76 +1,101 @@
-<div class="panel panel-default">
-  <div class="panel-heading">Search</div>
-  <div class="panel-body">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="fdescription">Description</label>
-        <input type="text" class="form-control" [(ngModel)]="productFilter.description">
-      </div>
-      <div class="form-group">
-        <label for="fminPrice">Min Price</label>
-        <input type="number" class="form-control" [(ngModel)]="productFilter.minPrice">
-      </div>
-      <div class="form-group">
-        <label for="fminStock">Min Stock</label>
-        <input type="number" class="form-control" [(ngModel)]="productFilter.minStock">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group" *ngIf="categories != null">
-        <label for="fcategoryID">Category</label>
-        <select class="form-control" [(ngModel)]="productFilter.categoryID">
-          <!-- <option value="" selected="selected"> -- Select a category -- </option> -->
-          <option *ngFor="let category of categories" value="{{category.id}}">{{category.description}}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="fmaxPrice">Max Price</label>
-        <input type="number" class="form-control" [(ngModel)]="productFilter.maxPrice">
-      </div>
-      <div class="form-group">
-        <label for="fmaxStock">Max Stock</label>
-        <input type="number" class="form-control" [(ngModel)]="productFilter.maxStock">
-      </div>
-    </div>
-    <div class="btn-group btn-group-justified">
-      <div class="btn-group"><button type="button" (click)="filterProductList()" class="btn btn-secondary">Apply</button></div>
-      <div class="btn-group"><button type="button" (click)="initFilter()" class="btn btn-secondary">Back to default</button></div>
-    </div>
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Description" [(ngModel)]="productFilter.description">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Min. Stock" [(ngModel)]="productFilter.minStock">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Max. Stock" [(ngModel)]="productFilter.maxStock">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Min. Price" [(ngModel)]="productFilter.minPrice">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Max. Price" [(ngModel)]="productFilter.maxPrice">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Category" [(ngModel)]="productFilter.categoryID">
+      <mat-option value="">All</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category.id">{{category.description}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="example-button-row">
+    <button mat-raised-button (click)="filterProductList()">Apply</button>
+    <button mat-raised-button (click)="initFilter()">Back to default</button>
+    <button mat-raised-button (click)="createNewProduct()">Create new</button>
   </div>
+
 </div>
 
-<button type="button" (click)="createNewProduct()" class="btn btn-default">Create</button>
+<br />
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th *ngFor="let prop of propNames" style="cursor: pointer" (click)="sort(prop)">{{prop}}&nbsp;
-        <span class="glyphicon" [ngClass]="{
-              'glyphicon-triangle-bottom': productFilter.orderColumn==prop && productFilter.isDesc, 
-              'glyphicon-triangle-top': productFilter.orderColumn==prop && !productFilter.isDesc
-            }">
-        </span>
-      </th>
-      <th>#</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products" (dblclick)="selectProduct(product)" [ngClass]="{'selectedRow':selectedProduct == product}">
-      <td>{{product.description}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.stock}}</td>
-      <td>{{product.categoryID | categoryPipe}}</td>
-      <td><button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger" >X</button></td>
-    </tr>
-  </tbody>
+<table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef (click)="sort('description')">
+      Description
+      <mat-icon *ngIf="productFilter.orderColumn=='description'">
+        arrow_drop_{{productFilter.isDesc?'down':'up'}}
+      </mat-icon>
+    </th>
+    <td mat-cell *matCellDef="let product"> {{product.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="stock">
+    <th mat-header-cell *matHeaderCellDef (click)="sort('stock')">
+      Stock
+      <mat-icon *ngIf="productFilter.orderColumn=='stock'">
+        arrow_drop_{{productFilter.isDesc?'down':'up'}}
+      </mat-icon>
+    </th>
+    <td mat-cell *matCellDef="let product"> {{product.stock}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef (click)="sort('price')">
+      Price
+      <mat-icon *ngIf="productFilter.orderColumn=='price'">
+        arrow_drop_{{productFilter.isDesc?'down':'up'}}
+      </mat-icon>
+    </th>
+    <td mat-cell *matCellDef="let product"> {{product.price}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="categoryID">
+    <th mat-header-cell *matHeaderCellDef (click)="sort('categoryID')">
+      category
+      <mat-icon *ngIf="productFilter.orderColumn=='categoryID'">
+        arrow_drop_{{productFilter.isDesc?'down':'up'}}
+      </mat-icon>
+    </th>
+    <td mat-cell *matCellDef="let product"> {{product.categoryID | categoryPipe}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let product">
+      <button mat-raised-button color="warn" (click)="deleteProduct(product.id)">X</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="propNames" style="cursor:pointer"></tr>
+  <tr mat-row *matRowDef="let row; columns: propNames;" [ngClass]="{'selectedRow':selectedProduct == row}" (dblclick)="selectProduct(row)"></tr>
 </table>
 
-<button type="button" class="btn btn-primary" [ngClass]="{'active': x == productFilter.pageIndex}" *ngFor="let dummy of ' '.repeat(pageCount).split(''), let x = index"
-  (click)="selectPage(x)">{{x+1}}</button>
+<br />
 
-<select class="form-control" (change)="changePageSize()" [(ngModel)]="productFilter.pageSize">
-  <option *ngFor="let ps of pageSizes" value="{{ps}}">{{ps}}</option>
-</select>
+<mat-paginator [length]="totalCount"
+               [pageSize]="productFilter.pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="page($event)">
+</mat-paginator>
 
 <div *ngIf="selectedProduct != null">
   <productdetails 

@@ -4,6 +4,7 @@ import { product } from 'src/app/models/product';
 import { productFilter } from 'src/app/models/productfilter';
 import { category } from 'src/app/models/category';
 import { APP_SETTINGS } from 'src/app/models/APP_SETTINGS';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-productlist',
@@ -12,35 +13,35 @@ import { APP_SETTINGS } from 'src/app/models/APP_SETTINGS';
 })
 export class ProductlistComponent implements OnInit {
 
-  constructor(private productService:ProductService) { }
-  products : product[] = [];
-  pageCount : number;
-  productFilter : productFilter;
-  selecedPage : number;
-  pageSizes:number[];
-  propNames:string[];
-  selectedProduct:product;
-  categories:category[];
-  editMode:boolean;
+  constructor(private productService: ProductService) { }
+  products: product[] = [];
+  productFilter: productFilter;
+  selecedPage: number;
+  pageSizeOptions: number[];
+  propNames: string[];
+  selectedProduct: product;
+  categories: category[];
+  editMode: boolean;
+  totalCount: number;
 
   ngOnInit() {
-    this.pageSizes = [ 5, 10, 15 ];
+    this.pageSizeOptions = APP_SETTINGS.pageSizeOptions;
     this.productFilter = new productFilter();
     this.getProducts();
     this.categories = APP_SETTINGS.categories;
     this.editMode = false;
   }
 
-  refreshDetailsSection(nonUpdatedProduct:product)
-  {
+  refreshDetailsSection(nonUpdatedProduct: product) {
     //just getting the old values from the list
-    this.selectedProduct = this.products.filter(x=> x.id == nonUpdatedProduct.id)[0];
+    this.selectedProduct = this.products.filter(x => x.id == nonUpdatedProduct.id)[0];
     this.editMode = false;
   }
 
-  refreshUpdatedProduct(updatedProduct:product){
+  refreshUpdatedProduct(updatedProduct: product) {
     //a copy by prop here is done on purpose as the edit product api response dto is not necesserly is same as grid item data model
-    let oldProductValues = this.products.filter(x=> x.id == updatedProduct.id)[0];
+    let oldProductValues = this.products.filter(x => x.id == updatedProduct.id)[0];
+    //we dont really need to check if null as we disable item selection when edit mode is enabled
     oldProductValues.categoryID = updatedProduct.categoryID;
     oldProductValues.description = updatedProduct.description;
     oldProductValues.price = updatedProduct.price;
@@ -49,71 +50,62 @@ export class ProductlistComponent implements OnInit {
     this.editMode = false;
   }
 
-  getProducts(){
-    return this.productService.getProducts(this.productFilter).subscribe(data => 
-      { 
-        this.products = data.pageData;
-        this.pageCount = data.count / this.productFilter.pageSize;
-        if(data.count / this.products.length > Math.floor(this.pageCount)) {
-          this.pageCount = Math.floor(this.pageCount) + 1; 
-        }
-        this.propNames = ['Description','Stock','Price','Category'];
+  getProducts() {
+    return this.productService.getProducts(this.productFilter).subscribe(data => {
+      this.products = data.pageData;
+      this.totalCount = data.count;
+      this.propNames = ['description', 'stock', 'price', 'categoryID', 'action'];
 
-        //when you call the api the selections gets lost as the objects references on client side are no longer
-        //as a result we need to look at the selected object within the current api search result 
-        if(this.selectedProduct != null){
-          let p = this.products.filter(x=> x.id == this.selectedProduct.id)[0];
-          if(p != null){
-            this.selectedProduct = p;
-          }
+      //when you call the api the selections gets lost as the objects references on client side are no longer
+      //as a result we need to look at the selected object within the current api search result 
+      if (this.selectedProduct != null) {
+        let p = this.products.filter(x => x.id == this.selectedProduct.id)[0];
+        if (p != null) {
+          this.selectedProduct = p;
         }
-        // this.selectedProduct = this.products [0];
-      });
+      }
+
+      // this.selectedProduct = this.products [0];
+    });
   }
 
-  filterProductList(){
+  filterProductList() {
     this.getProducts();
   }
 
-  initFilter(){
+  initFilter() {
     this.productFilter = new productFilter();
     this.getProducts();
   }
 
-  selectPage(selectedIndex)
+  page(pagingEvent: PageEvent)
   {
-    this.productFilter.pageIndex = selectedIndex;
+    this.productFilter.pageSize = pagingEvent.pageSize;
+    this.productFilter.pageIndex = pagingEvent.pageIndex;
     this.getProducts();
   }
 
-  changePageSize()
-  {
-    this.productFilter.pageIndex = 0;
-    this.getProducts();
-  }
-
-  sort(sortColumn)
-  {
-    if(this.productFilter.orderColumn == sortColumn)
+  sort(sortColumn) {
+    if (this.productFilter.orderColumn == sortColumn)
       this.productFilter.isDesc = !this.productFilter.isDesc;
     else
       this.productFilter.orderColumn = sortColumn;
-    this.getProducts(); 
+    this.getProducts();
   }
 
-  selectProduct(p:product){
-    if(!this.editMode)
+  selectProduct(p: product) {
+    if (!this.editMode)
       this.selectedProduct = p;
   }
 
-  deleteProduct(productid:number){
-    this.productService.deleteProduct(productid).subscribe(data => { 
+  deleteProduct(productid: number) {
+    this.productService.deleteProduct(productid).subscribe(data => {
       console.log('product deleted');
       this.getProducts();
     });
   }
 
-  createNewProduct(){
-    
+  createNewProduct() {
+
   }
 }
