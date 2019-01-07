@@ -13,6 +13,7 @@ import { ProducteditComponent } from './components/product/productedit/producted
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatuiComponent } from './components/matui/matui.component';
 import { DemoMaterialModule } from './material-module';
+import { ProductcreateComponent } from './components/product/productcreate/productcreate.component';
 
 export function get_settings(appLoadService: AppLoadService) {
   return () => appLoadService.getSettings();
@@ -27,6 +28,7 @@ export function get_settings(appLoadService: AppLoadService) {
     CategoryPipePipe,
     ProducteditComponent,
     MatuiComponent,
+    ProductcreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ export function get_settings(appLoadService: AppLoadService) {
     BrowserAnimationsModule,
     DemoMaterialModule
   ],
+  entryComponents: [ProductcreateComponent],
   providers: [
     ProductService,
     AppLoadService,

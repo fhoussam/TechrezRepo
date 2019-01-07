@@ -4,7 +4,8 @@ import { product } from 'src/app/models/product';
 import { productFilter } from 'src/app/models/productfilter';
 import { category } from 'src/app/models/category';
 import { APP_SETTINGS } from 'src/app/models/APP_SETTINGS';
-import { PageEvent } from '@angular/material';
+import { PageEvent, MatDialog } from '@angular/material';
+import { ProductcreateComponent } from '../productcreate/productcreate.component';
 
 @Component({
   selector: 'app-productlist',
@@ -13,7 +14,8 @@ import { PageEvent } from '@angular/material';
 })
 export class ProductlistComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, public dialog: MatDialog) { }
+
   products: product[] = [];
   productFilter: productFilter;
   selecedPage: number;
@@ -23,6 +25,19 @@ export class ProductlistComponent implements OnInit {
   categories: category[];
   editMode: boolean;
   totalCount: number;
+
+  public productToAdd = new product();
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ProductcreateComponent, {
+      width: '400px',
+      data: this.productToAdd
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.getProducts();
+    });
+  }
 
   ngOnInit() {
     this.pageSizeOptions = APP_SETTINGS.pageSizeOptions;

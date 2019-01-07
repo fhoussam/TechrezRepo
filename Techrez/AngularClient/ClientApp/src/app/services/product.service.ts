@@ -13,7 +13,9 @@ export class ProductService {
   headers:HttpHeaders;
   constructor(private httpClient : HttpClient) {
     this.headers = new HttpHeaders();
-    this.headers = this.headers.set('Content-Type', 'application/json').set('Accept','application/json');
+    this.headers = this.headers
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json');
   }
 
   private static rootUrl(destination:string):string{ return "https://localhost:44356/api/products/" + destination }
@@ -28,6 +30,10 @@ export class ProductService {
 
   updateProduct(product: product): Observable<product> {
     return this.httpClient.put<product>(ProductService.rootUrl(""), product);
+  }
+
+  addProduct(product: product): Observable<product> {
+    return this.httpClient.post<product>(ProductService.rootUrl(""), product);
   }
 
   deleteProduct(productId:number){

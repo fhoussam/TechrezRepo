@@ -1,12 +1,14 @@
-<mat-list>
-  <mat-list-item><strong>Description :&nbsp;</strong>{{product.description}}</mat-list-item><mat-divider></mat-divider>
-  <mat-list-item><strong>Stock :&nbsp;</strong>{{product.stock}}</mat-list-item><mat-divider></mat-divider>
-  <mat-list-item><strong>Category :&nbsp;</strong>{{product.categoryID | categoryPipe}}</mat-list-item><mat-divider></mat-divider>
-  <mat-list-item><strong>Price :&nbsp;</strong>{{product.price}}</mat-list-item>
-</mat-list>
+<div *ngIf="product != null">
+  <mat-list>
+    <mat-list-item><strong>Description :&nbsp;</strong>{{product.description}}</mat-list-item><mat-divider></mat-divider>
+    <mat-list-item><strong>Stock :&nbsp;</strong>{{product.stock}}</mat-list-item><mat-divider></mat-divider>
+    <mat-list-item><strong>Category :&nbsp;</strong>{{product.categoryID | categoryPipe}}</mat-list-item><mat-divider></mat-divider>
+    <mat-list-item><strong>Price :&nbsp;</strong>{{product.price}}</mat-list-item>
+  </mat-list>
 
-<br />
+  <br />
 
-<div class="example-button-row">
-  <button mat-raised-button (click)="editProduct()">Update</button>
+  <div class="example-button-row">
+    <button mat-raised-button (click)="editProduct()">Update</button>
+  </div>
 </div>

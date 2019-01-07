@@ -1,0 +1,4 @@
+<productedit (productUpdated)="updateParent()" (productUpdateCanceled)="closeModal()" [product]="productToAdd"></productedit>
+<div class="example-button-row">
+  <button mat-stroked-button id="fakeButton" type="submit" style="display:none" class="btn btn-default" [mat-dialog-close]="productToAdd">Fake Update Button</button>
+</div>

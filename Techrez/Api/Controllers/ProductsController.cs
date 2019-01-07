@@ -62,13 +62,13 @@ namespace Api.Controllers
             return NoContent();
         }
 
-        //[HttpPost]
-        //[Consumes("application/xml", "application/json")]
-        //public async Task<IActionResult> Post([FromBody] ProductPost product)
-        //{
-        //    var dto = await _productService.AddProductAsync(product);
-        //    return Created($"{ Request.Path}/{dto}", null);
-        //}
+        [HttpPost]
+        [Consumes("application/xml", "application/json")]
+        public async Task<IActionResult> Post([FromBody] ProductPost product)
+        {
+            var dto = await _productService.AddProductAsync(product);
+            return Created(string.Empty, dto);
+        }
 
         [HttpGet]
         [Route("init")]

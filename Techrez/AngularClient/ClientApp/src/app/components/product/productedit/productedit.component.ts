@@ -13,11 +13,14 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProducteditComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.productService.getProduct(changes.productid.currentValue)
-      .subscribe(data => {  this.product = data; });
+    //beware ! this code gets triggered at component load
+    if (this.productid != null) {
+      this.productService.getProduct(changes.productid.currentValue)
+        .subscribe(data => { this.product = data; });
+    }
   }
 
-  product: product;
+  @Input() product: product;
   @Input() productid: number;
   @Output() productUpdateCanceled = new EventEmitter<product>();
   @Output() productUpdated = new EventEmitter<product>();
@@ -27,10 +30,18 @@ export class ProducteditComponent implements OnInit, OnChanges {
   constructor(private productService:ProductService) { }
 
   updateProduct() {
-    this.productService.updateProduct(this.product).subscribe(data => { 
-      this.productUpdated.emit(data); 
-      console.log('product updated'); 
-    });
+    if (this.productid == null) {
+      this.productService.addProduct(this.product).subscribe(data => {
+        this.productUpdated.emit(data);
+        console.log('product added');
+      });
+    }
+    else {
+      this.productService.updateProduct(this.product).subscribe(data => {
+        this.productUpdated.emit(data);
+        console.log('product updated');
+      });
+    }
   }
 
   ngOnInit() {
@@ -39,8 +50,14 @@ export class ProducteditComponent implements OnInit, OnChanges {
 
   cancelUpdate()
   {
-    this.productService.getProduct(this.product.id).subscribe(data => 
-      this.productUpdateCanceled.emit(data));
+    if (this.productid == null) {
+      this.productUpdateCanceled.emit(null);
+      console.log('product add canceled'); 
+    }
+    else {
+      this.productService.getProduct(this.product.id).subscribe(data =>
+        this.productUpdateCanceled.emit(data));
       console.log('product update canceled'); 
+    }
   }
 }
