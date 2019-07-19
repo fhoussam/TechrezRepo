@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/jsrsasign-all-min.js"></script>
+    <!--<script src="js/jsrsasign-jwths-min.js"></script>
+    <script src="js/jsrsasign-rsa-min.js"></script>-->
+
+    <script>
+
+        function generate_code_verifier(code_challenge) {
+            var hash = KJUR.crypto.Util.hashString(code_challenge, 'sha256');
+            var testdata = hextob64u(hash);
+            return testdata;
+        };
+
+        $(document).ready(function () {
+
+            console.log('home page loaded');
+            $('#btn_login').click(function () {
+
+                var isCodeFlow = true;
+                var nonce = 'N' + Math.random() + '' + Date.now();
+                var state = Date.now() + '' + Math.random() + Math.random();
+                localStorage.setItem('state',state);
+
+                var code_verifier = 'C' + Math.random() + '' + Date.now() + '' + Date.now() + Math.random();
+                var code_challenge = generate_code_verifier(code_verifier);
+
+                localStorage.setItem('code_verifier', code_verifier);
+
+                var url = new URL("http://localhost:5000/connect/authorize");
+
+                url.searchParams.append('client_id', 'jsclient');
+                url.searchParams.append('redirect_uri', 'http://localhost:5003/callback.html');
+                url.searchParams.append('response_type', 'code');
+                url.searchParams.append('scope', 'email openid profile offline_access');
+                url.searchParams.append('nonce', nonce);
+                url.searchParams.append('state', state);
+
+                if (isCodeFlow) {
+                    url.searchParams.append('code_challenge', code_challenge);
+                    url.searchParams.append('code_challenge_method', 'S256');
+                }
+
+                console.log(url.href);
+                window.location.replace(url);
+            });
+        });
+    </script>
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Home Page</h1>
+    <input type="button" id="btn_login" value="Login" />
+</body>
+</html>

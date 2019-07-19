@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var token_endpoint = 'http://localhost:5000/connect/token';
+            var redirect_url = 'http://localhost:5003/callback.html';
+            var userinfo_endpoint = 'http://localhost:5000/connect/userinfo'
+            var client_id = 'jsclient';
+
+            var local_state = localStorage.getItem('state');
+            var code_verifier = localStorage.getItem('code_verifier');
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var code = url.searchParams.get("code");
+            var server_state = url.searchParams.get("state");
+
+            var data = "grant_type=authorization_code&client_id=" + client_id
+                + ("&code_verifier=" + code_verifier + "&code="
+                + code + "&redirect_uri=" + redirect_url);
+
+            logMessage('local_state : ' + local_state);
+            logMessage('server_state : ' + server_state);
+            logMessage('code : ' + code);
+
+            if (local_state === server_state) {
+                $.ajax({
+                    url: token_endpoint,
+                    type: 'post',
+                    data: data,
+                    success: function (resp) {
+                        $.ajax({
+                            url: userinfo_endpoint,
+                            type: 'post',
+                            headers: {
+                                "Authorization": "Bearer " + resp.access_token
+                            },
+                            success: function (userid) {
+                                logMessage('user email : ' + userid.email);
+                            }
+                        });
+
+                        $("#btn_getdata").click(function () {
+                            $.ajax({
+                                url: 'http://localhost:5001/api/product/secure',
+                                type: 'post',
+                                headers: {
+                                    "Authorization": "Bearer " + resp.access_token
+                                },
+                                success: function (protected) {
+                                    logMessage('protected data : ' + JSON.stringify(protected));
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+        });
+
+        function logMessage(message) {
+            $('body').append('<strong>' + message + '</strong></br>');
+        }
+    </script>
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Callback Page</h1>
+    <input type="button" id="btn_getdata" value="Get protected data" /><br />
+</body>
+</html>
