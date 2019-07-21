@@ -26,6 +26,11 @@
         }
 
         $(document).ready(function () {
+
+            oidc.get_user_claims().then((user_claim_set) => {
+                $('body').append('Email : ' + user_claim_set.email + '</br>');
+            });
+
             $("#btn_getdata").click(function () {
                 get_data()
                 .then(resp => {

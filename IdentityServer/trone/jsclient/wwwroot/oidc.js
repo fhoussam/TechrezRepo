@@ -73,16 +73,17 @@
     }
 
     get_user_claims = function () {
+        var current_state = this.state;
         return new Promise((resolve, reject) => {
             $.ajax({
                 url: Wellknown.userinfo_endpoint,
                 type: 'post',
                 headers: {
-                    "Authorization": "Bearer " + access_token
+                    "Authorization": "Bearer " + this.state.access_token
                 },
                 success: function (userid) {
-                    this.state.UserClaimSet.email = userid.email;
-                    resolve(this.state.UserClaimSet);
+                    current_state.userClaimSet.email = userid.email;
+                    resolve(current_state.userClaimSet);
                 },
                 error: function (err) {
                     console.log(err);
@@ -96,7 +97,7 @@
 class State {
 
     constructor() {
-        this.UserClaimSet = new UserClaimSet();
+        this.userClaimSet = new UserClaimSet();
     }
 
     get access_token() {
@@ -127,12 +128,13 @@ class UserClaimSet {
 
     get_claim = function (key) {
         var user_claim_set = JSON.parse(localStorage.getItem('user_claim_set'));
-        return claims_object[key];
+        return user_claim_set[key];
     }
 
     set_claim = function (key, value) {
         var user_claim_set = JSON.parse(localStorage.getItem('user_claim_set'));
-        claims_object[key] = value;
+        if (!user_claim_set) user_claim_set = {};
+        user_claim_set[key] = value;
         localStorage.setItem('user_claim_set', JSON.stringify(user_claim_set));
     }
 }
