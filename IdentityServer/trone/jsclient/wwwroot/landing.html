@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="oidc.js"></script>
+    <script>
+
+        var oidc = new Oidc();
+
+        function get_data() {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: 'http://localhost:5001/api/product/secure',
+                    type: 'post',
+                    headers: {
+                        "Authorization": "Bearer " + oidc.state.access_token
+                    },
+                    success: function (data) {
+                        resolve(data);
+                    },
+                    error: function (err) {
+                        reject(err);
+                    }
+                });
+            });
+        }
+
+        $(document).ready(function () {
+            $("#btn_getdata").click(function () {
+                get_data()
+                .then(resp => {
+                    $('body').append('protected data : ' + JSON.stringify(resp) + '</br>');
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            });
+        });
+    </script>
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Landing Page</h1>
+    <input type="button" id="btn_getdata" value="Get protected data" /><br />
+</body>
+</html>
