@@ -30,11 +30,13 @@
         url.searchParams.append('client_id', Wellknown.client_id);
         url.searchParams.append('redirect_uri', Wellknown.redirect_url);
         url.searchParams.append('response_type', 'code');
-        url.searchParams.append('scope', 'email openid profile offline_access');
+        url.searchParams.append('scope', Wellknown.scopes);
         url.searchParams.append('nonce', nonce);
         url.searchParams.append('state', state);
         url.searchParams.append('code_challenge', code_challenge);
         url.searchParams.append('code_challenge_method', 'S256');
+        url.searchParams.append('x-client-SKU', 'ID_NETSTANDARD1_4');
+        url.searchParams.append('x-client-ver', '5.2.0.0');
         window.location.replace(url);
     }
 
@@ -59,6 +61,9 @@
                     data: data,
                     success: function (resp) {
                         current_state.access_token = resp.access_token;
+                        console.log(resp.access_token);
+                        console.log(resp.id_token);
+                        console.log(resp.refresh_token);
                         resolve(resp.access_token);
                     },
                     error: function (err) {
@@ -81,8 +86,11 @@
                 headers: {
                     "Authorization": "Bearer " + this.state.access_token
                 },
-                success: function (userid) {
-                    current_state.userClaimSet.email = userid.email;
+                success: function (user) {
+                    current_state.userClaimSet.email = user.email;
+                    current_state.userClaimSet.birthdate = user.birthdate;
+                    current_state.userClaimSet.favcolor = user.favcolor;
+                    current_state.userClaimSet.gender = user.gender;
                     resolve(current_state.userClaimSet);
                 },
                 error: function (err) {
@@ -145,4 +153,5 @@ class Wellknown {
     static redirect_url = 'http://localhost:5003/callback.html';
     static userinfo_endpoint = 'http://localhost:5000/connect/userinfo';
     static authorize_endpoint = 'http://localhost:5000/connect/authorize';
+    static scopes = 'openid profile api1 email complementary_profile offline_access';
 }

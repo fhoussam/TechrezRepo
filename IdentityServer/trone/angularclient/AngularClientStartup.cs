@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Microsoft.AspNetCore.Authentication;
+using IdentityModel;
 
 namespace angularclient
 {
@@ -39,12 +41,17 @@ namespace angularclient
                 options.ResponseType = "code id_token";
 
                 options.SaveTokens = true;
-                options.GetClaimsFromUserInfoEndpoint = true;
+                options.GetClaimsFromUserInfoEndpoint = true; //option is important if we want to retreive claims
 
                 options.Scope.Add("offline_access");
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
                 options.Scope.Add("openid");
+                options.Scope.Add("complementary_profile");
+
+                options.ClaimActions.MapJsonKey("favcolor", "favcolor");
+                options.ClaimActions.MapJsonKey(JwtClaimTypes.BirthDate, JwtClaimTypes.BirthDate);
+                options.ClaimActions.MapJsonKey(JwtClaimTypes.Gender, JwtClaimTypes.Gender);
             })
             .AddJwtBearer("Bearer", options =>
             {

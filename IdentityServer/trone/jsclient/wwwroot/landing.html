@@ -29,6 +29,9 @@
 
             oidc.get_user_claims().then((user_claim_set) => {
                 $('body').append('Email : ' + user_claim_set.email + '</br>');
+                $('body').append('Date of birth : ' + user_claim_set.birthdate + '</br>');
+                $('body').append('Genre : ' + user_claim_set.gender + '</br>');
+                $('body').append('Favorite color : ' + user_claim_set.favcolor + '</br>');
             });
 
             $("#btn_getdata").click(function () {

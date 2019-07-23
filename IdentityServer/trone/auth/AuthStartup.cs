@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.DataProtection;
+using IdentityServer4.Services;
 
 namespace auth
 {
@@ -115,6 +116,8 @@ namespace auth
                 };
                 store.Close();
             }
+
+            builder.Services.AddTransient<IProfileService, MyProfileService>();
 
             services.AddAuthentication()
                 .AddGoogle(options =>

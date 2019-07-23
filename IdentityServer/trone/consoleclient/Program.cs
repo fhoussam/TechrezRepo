@@ -21,7 +21,7 @@ namespace consoleclient
 
                 UserName = "houssamfertaq@gmail.com",
                 Password = "H0u$$@m2018",
-                //Scope = "api1"
+                Scope = "openid profile email complementary_profile api1 offline_access"
             })).Result;
 
             if (tokenResponse.IsError)

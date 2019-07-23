@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityModel;
+using IdentityServer4.Models;
 using System.Collections.Generic;
 
 namespace auth
@@ -14,11 +15,15 @@ namespace auth
                 new IdentityResources.Phone(),
                 new IdentityResources.Email(),
                 //no need for that as Profile method already generates an IndetityResource that has an array of claims that includs the two claims below :)
-                //new IdentityResource()
-                //{
-                //    Name = "complementary_profile",
-                //    UserClaims = { JwtClaimTypes.BirthDate, JwtClaimTypes.Gender }
-                //}
+                new IdentityResource()
+                {
+                    Name = "complementary_profile",
+                    UserClaims = {
+                        JwtClaimTypes.BirthDate,
+                        JwtClaimTypes.Gender,
+                        "favcolor"
+                    }
+                }
             };
         }
 
@@ -36,7 +41,13 @@ namespace auth
             {
                 new Client()
                 {
-                    AllowedScopes = { "email","openid","profile","offline_access" },
+                    AllowedScopes = {
+                        "openid",
+                        "profile",
+                        "api1",
+                        "email",
+                        "complementary_profile",
+                    },
                     AllowOfflineAccess = true,
                     AllowedGrantTypes = GrantTypes.Code,
                     ClientId = "jsclient",
@@ -68,12 +79,12 @@ namespace auth
                         "openid",
                         "profile",
                         "api1",
-                        "email"
-                        //and no need to include that either (even if its relevant), bcz each scope in idenitty resource is included in "profile" scope
-                        //complementary_profile
+                        "email",
+                        "complementary_profile",
                     },
 
-                    RequireConsent = false
+                    RequireConsent = false,
+                    
                 },
 
                 // MVC client using hybrid flow
@@ -86,15 +97,14 @@ namespace auth
                     ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = {
+                    AllowedScopes =
+                    {
                         "openid",
                         "profile",
                         "api1",
-                        "email"
-                        //and no need to include that either (even if its relevant), bcz each scope in idenitty resource is included in "profile" scope
-                        //complementary_profile
+                        "email",
+                        "complementary_profile",
                     },
-
                     RequireConsent = false
                 },
             };
