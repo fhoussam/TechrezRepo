@@ -61,6 +61,8 @@ namespace auth
 
                     //ClientSecrets = { new Secret("mvcclientsecret".Sha256()) },
                     RequireClientSecret = false,
+
+                    AccessTokenLifetime = 10,
                 },
 
                 // MVC client using hybrid flow

@@ -60,6 +60,14 @@ namespace angularclient
                 options.SaveToken = true;
                 //options.Audience = "api1";
                 options.Audience = "http://localhost:5000/resources";
+
+                //token validation options
+                options.TokenValidationParameters.ValidateLifetime = true;
+                options.TokenValidationParameters.ClockSkew = TimeSpan.Zero;
+
+                options.TokenValidationParameters.ValidateAudience = true;
+                options.TokenValidationParameters.RequireExpirationTime = true;
+                options.TokenValidationParameters.ValidateIssuerSigningKey = true;
             })
             .AddPolicyScheme("Dynamic", "Dynamic", options =>
             {

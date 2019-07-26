@@ -119,6 +119,21 @@ namespace auth
 
             builder.Services.AddTransient<IProfileService, MyProfileService>();
 
+            //to have control on some ASP idenitity auth cookie 
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+            //    options.Cookie.Name = "YourAppCookieName";
+            //    options.Cookie.HttpOnly = true;
+            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+            //    options.LoginPath = "/Identity/Account/Login";
+            //    // ReturnUrlParameter requires 
+            //    //using Microsoft.AspNetCore.Authentication.Cookies;
+            //    options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+            //    options.SlidingExpiration = true;
+            //});
+
+            //this is actually called under the hood by addIdentityServer, which has his own default cookie scheme
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
