@@ -8,8 +8,9 @@
 
     <script>
         $(document).ready(function () {
+
+            var oidc = new Oidc();
             $('#btn_login').click(function () {
-                var oidc = new Oidc();
                 oidc.authorize();
             });
         });

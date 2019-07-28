@@ -26,7 +26,6 @@
         }
 
         $(document).ready(function () {
-
             oidc.get_user_claims().then((user_claim_set) => {
                 $('body').append('Email : ' + user_claim_set.email + '</br>');
                 $('body').append('Date of birth : ' + user_claim_set.birthdate + '</br>');
@@ -48,7 +47,12 @@
                 localStorage.clear();
                 window.location.replace('home.html');
             });
+
+            $("#btn_refreshToken").click(function () {
+                oidc.get_new_access_token();
+            });
         });
+
     </script>
 
     <meta charset="utf-8" />
@@ -57,6 +61,7 @@
 <body>
     <h1>Landing Page</h1>
     <input type="button" id="btn_getdata" value="Get protected data" /><br />
+    <input type="button" id="btn_refreshToken" value="Refresh token" /><br />
     <input type="button" id="btn_disconnect" value="Disconnect" /><br />
 </body>
 </html>

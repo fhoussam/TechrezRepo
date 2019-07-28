@@ -2,6 +2,13 @@
 
     constructor() {
         this.state = new State();
+        this.interval = null;
+
+        //because when we construct oidc on page load, we lose the instance which contains the interval property state
+        //thus, this temporary and we can get rid off it once we get to benefit from pre built angular DI system
+        if (this.state.access_token) {
+            this.setAccessTokenInrerval();
+        }
     }
 
     is_logged_in = function () {
@@ -11,6 +18,16 @@
         }
         return false;
     }
+
+    parseJwt = function(token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    };
 
     generate_code_verifier = function (code_challenge) {
         var hash = KJUR.crypto.Util.hashString(code_challenge, 'sha256');
@@ -35,9 +52,50 @@
         url.searchParams.append('state', state);
         url.searchParams.append('code_challenge', code_challenge);
         url.searchParams.append('code_challenge_method', 'S256');
-        url.searchParams.append('x-client-SKU', 'ID_NETSTANDARD1_4');
-        url.searchParams.append('x-client-ver', '5.2.0.0');
         window.location.replace(url);
+    }
+    
+    get_new_access_token = function () {
+        return new Promise((resolve, reject) => {
+            var data = "grant_type=refresh_token&client_id=" + Wellknown.client_id
+                + ("&refresh_token=" + this.state.refresh_token);
+
+            var current_state = this.state;
+            var oidc = this;
+
+            $.ajax({
+                url: Wellknown.token_endpoint,
+                type: 'post',
+                data: data,
+                success: function (newtokens) {
+                    current_state.access_token = newtokens.access_token;
+                    current_state.id_token = newtokens.id_token;
+                    oidc.setAccessTokenInrerval();
+                    resolve(newtokens);
+                },
+                error: function (err) {
+                    console.log(err);
+                    reject(err);
+                }
+            });
+        });
+    }
+
+    setAccessTokenInrerval = function () {
+        if (this.interval) clearInterval(this.interval);
+        var oidc = this;
+
+        this.interval = setInterval(function () {
+            var tokenLifeTime = oidc.access_token_life_time;
+            if (tokenLifeTime < 3580) {
+                console.log('Access token is about to expire, getting a fresh token ...');
+                oidc.get_new_access_token();
+            }
+            else {
+                var message = 'Access token expires in : ' + oidc.access_token_life_time + ' seconds.';
+                console.log(message);
+            }
+        }, 2000);
     }
 
     get_access_token = function () {
@@ -54,17 +112,20 @@
                 + code + "&redirect_uri=" + Wellknown.redirect_url);
 
             if (local_state === server_state) {
+
                 var current_state = this.state;
+                var oidc = this;
+
                 $.ajax({
                     url: Wellknown.token_endpoint,
                     type: 'post',
                     data: data,
-                    success: function (resp) {
-                        current_state.access_token = resp.access_token;
-                        console.log(resp.access_token);
-                        console.log(resp.id_token);
-                        console.log(resp.refresh_token);
-                        resolve(resp.access_token);
+                    success: function (tokens) {
+                        current_state.access_token = tokens.access_token;
+                        current_state.id_token = tokens.id_token;
+                        current_state.refresh_token = tokens.refresh_token;
+                        oidc.setAccessTokenInrerval();
+                        resolve(tokens);
                     },
                     error: function (err) {
                         console.log(err);
@@ -100,6 +161,11 @@
             });
         });
     }
+
+    get access_token_life_time()
+    {
+        return (new Date(this.parseJwt(this.state.access_token).exp * 1000).getTime() - new Date().getTime()) / 1000;
+    }
 }
 
 class State {
@@ -114,6 +180,22 @@ class State {
 
     set access_token(value) {
         localStorage.setItem('access_token', value);
+    }
+
+    get refresh_token() {
+        return localStorage.getItem('refresh_token');
+    }
+
+    set refresh_token(value) {
+        localStorage.setItem('refresh_token', value);
+    }
+
+    get id_token() {
+        return localStorage.getItem('id_token');
+    }
+
+    set id_token(value) {
+        localStorage.setItem('id_token', value);
     }
 
     get user_claim_set() {

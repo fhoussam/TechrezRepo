@@ -62,7 +62,8 @@ namespace auth
                     //ClientSecrets = { new Secret("mvcclientsecret".Sha256()) },
                     RequireClientSecret = false,
 
-                    AccessTokenLifetime = 10,
+                    AccessTokenLifetime = 3600,
+                    RefreshTokenUsage = TokenUsage.ReUse //this option let us reuse the refresh token but we should store in the backend later
                 },
 
                 // MVC client using hybrid flow

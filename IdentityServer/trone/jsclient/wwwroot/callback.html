@@ -5,7 +5,7 @@
     <script src="oidc.js"></script>
     <script>
         var oidc = new Oidc();
-        oidc.get_access_token().then((access_token) => { window.location.replace('landing.html'); });
+        oidc.get_access_token().then((tokens) => { window.location.replace('landing.html'); });
     </script>
     <meta charset="utf-8" />
     <title></title>
