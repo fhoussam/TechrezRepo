@@ -1,5 +1,8 @@
 ﻿class Oidc {
 
+    static atltThreshold = 3580;
+    static checkAtltFrequency = 2000;
+
     constructor() {
         this.state = new State();
         this.interval = null;
@@ -87,7 +90,7 @@
 
         this.interval = setInterval(function () {
             var tokenLifeTime = oidc.access_token_life_time;
-            if (tokenLifeTime < 3580) {
+            if (tokenLifeTime < Oidc.atltThreshold) {
                 console.log('Access token is about to expire, getting a fresh token ...');
                 oidc.get_new_access_token();
             }
@@ -95,7 +98,7 @@
                 var message = 'Access token expires in : ' + oidc.access_token_life_time + ' seconds.';
                 console.log(message);
             }
-        }, 2000);
+        }, Oidc.checkAtltFrequency);
     }
 
     get_access_token = function () {
