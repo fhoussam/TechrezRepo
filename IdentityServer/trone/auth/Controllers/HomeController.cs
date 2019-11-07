@@ -9,16 +9,29 @@ using SendGrid;
 using SendGrid.Helpers.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace auth.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IEmailSender _emailSender;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(IEmailSender emailSender)
+        public HomeController(IEmailSender emailSender, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
         {
             _emailSender = emailSender;
+            _signInManager = signInManager;
+            _userManager = userManager;
+        }
+
+        [AllowAnonymous]
+        public async Task<string> TestIdentity() 
+        {
+            var result = await _signInManager.PasswordSignInAsync("houssamfertaq@gmail.com", "H0u$$@m2018", false, false);
+            return "tested";
         }
 
         //pure c#

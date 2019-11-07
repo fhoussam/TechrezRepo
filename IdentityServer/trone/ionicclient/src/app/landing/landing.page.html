@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>landing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-button (click)="getProtectedData()">Get Protected Data</ion-button>
+    <ion-button (click)="refreshAccessToken()">Refresh Access Token</ion-button>
+    <ion-button (click)="disconnect()">Disconnect</ion-button>
+
+    <ion-label class="ad-label" textWrap="true">{{user_claim_set?.email}}</ion-label>
+    <ion-label class="ad-label" textWrap="true">{{user_claim_set?.birthdate}}</ion-label>
+    <ion-label class="ad-label" textWrap="true">{{user_claim_set?.favcolor}}</ion-label>
+    <ion-label class="ad-label" textWrap="true">{{user_claim_set?.gender}}</ion-label>
+
+    <ion-list>
+        <ion-item>
+          <ion-label *ngFor="let data of protectedData">{{data}}</ion-label>
+        </ion-item>
+      </ion-list>
+
+</ion-content>

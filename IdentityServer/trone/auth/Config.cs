@@ -50,6 +50,33 @@ namespace auth
                     },
                     AllowOfflineAccess = true,
                     AllowedGrantTypes = GrantTypes.Code,
+                    ClientId = "ionicclient",
+                    RedirectUris = { "http://localhost:8100/landing" },
+                    RequireConsent = false,
+                    ClientUri = "http://localhost:8100",
+
+                    AllowedCorsOrigins = new List<string>(){ "http://localhost", "http://localhost:8100" },
+                    AllowAccessTokensViaBrowser = true,
+                    RequirePkce = true,
+
+                    //ClientSecrets = { new Secret("mvcclientsecret".Sha256()) },
+                    RequireClientSecret = false,
+
+                    AccessTokenLifetime = 3600,
+                    RefreshTokenUsage = TokenUsage.ReUse //this option let us reuse the refresh token but we should store in the backend later
+                },
+
+                new Client()
+                {
+                    AllowedScopes = {
+                        "openid",
+                        "profile",
+                        "api1",
+                        "email",
+                        "complementary_profile",
+                    },
+                    AllowOfflineAccess = true,
+                    AllowedGrantTypes = GrantTypes.Code,
                     ClientId = "jsclient",
                     RedirectUris = { "http://localhost:5003/callback.html" },
                     RequireConsent = false,
