@@ -12,6 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { OidcService } from './oidc.service';
 
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+
+import { HTTP } from '@ionic-native/http/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,7 +24,9 @@ import { OidcService } from './oidc.service';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    OidcService
+    OidcService,
+    Deeplinks,
+    HTTP
   ],
   bootstrap: [AppComponent]
 })

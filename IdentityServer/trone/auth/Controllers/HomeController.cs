@@ -27,6 +27,12 @@ namespace auth.Controllers
             _userManager = userManager;
         }
 
+        [Route("nonsecure")]
+        public string NonSecure()
+        {
+            return "Not secure";
+        }
+
         [AllowAnonymous]
         public async Task<string> TestIdentity() 
         {

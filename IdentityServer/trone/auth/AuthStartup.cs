@@ -86,6 +86,7 @@ namespace auth
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
                 options.UserInteraction.LoginUrl = "~/Identity/Account/Login";
+                options.IssuerUri = "http://10.0.2.2:5000";
             })
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApis())
@@ -161,7 +162,8 @@ namespace auth
             (
                 "http://localhost:5003", 
                 "http://localhost:5001",
-                "http://localhost:8100"
+                "http://localhost:8100",
+                "ioniclient://ioniclient.trone"
             ));
 
             app.UseCors();

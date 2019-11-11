@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OidcService } from '../oidc.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-landing',
@@ -16,7 +16,7 @@ export class LandingPage implements OnInit {
       () => { 
         this.oidc.get_user_claims().then((user_claim_set:UserClaims) => {
           this.user_claim_set = new UserClaims();
-          // this.user_claim_set.email = user_claim_set.email;
+          this.user_claim_set.email = user_claim_set.email;
           this.user_claim_set.birthdate = user_claim_set.birthdate;
           this.user_claim_set.gender = user_claim_set.gender;
           this.user_claim_set.favcolor = user_claim_set.favcolor;
@@ -28,21 +28,19 @@ export class LandingPage implements OnInit {
 
   ngOnInit() {}
 
-  getProtectedData(){
+  getProtectedData() {
+    let isMobile : boolean = window.location.href.indexOf("8100") != -1;
+    let baseUrl : string = isMobile ? "10.0.2.2:5001" : "localhost:5001";
+    let url : string = "http://" + baseUrl + "/api/product/secure";
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + this.oidc.state.access_token
+    this.http.get(url, { 
+        responseType: 'text', 
+        headers: new HttpHeaders().set('Authorization',  "Bearer " + this.oidc.state.access_token) 
       })
-    };
-
-    this.http.post('http://localhost:5001/api/product/secure', null, httpOptions)
-    .subscribe(function(user){
-      console.log('dfzfezfze');
-    },
-    err => {
-      console.error(err);
-    });
+      .subscribe(
+        response => alert(JSON.stringify('success : ' + response)), 
+        err => alert('error : ' + JSON.stringify(err))
+      );
   }
 
   refreshAccessToken(){
@@ -50,20 +48,7 @@ export class LandingPage implements OnInit {
   }
 
   disconnect() {
-    return new Promise((resolve, reject) => {
-        const formData = new FormData();
-        formData.append('first_name', 'Houssam');
-        formData.append('last_name', 'FERTAQ');
-
-        this.http.post('http://localhost:5001/api/product/nonsecure', formData).subscribe(function(response){
-          resolve(response);
-        },
-        err => {
-          console.error(err);
-          reject(err);
-        });
-    });
-}
+  }
 }
 
 export class UserClaims{

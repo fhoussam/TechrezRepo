@@ -51,11 +51,20 @@ namespace auth
                     AllowOfflineAccess = true,
                     AllowedGrantTypes = GrantTypes.Code,
                     ClientId = "ionicclient",
-                    RedirectUris = { "http://localhost:8100/landing" },
+                    RedirectUris =
+                    {
+                        "http://localhost:8100/landing",
+                        "ioniclient://ioniclient.trone/",
+                    },
                     RequireConsent = false,
                     ClientUri = "http://localhost:8100",
 
-                    AllowedCorsOrigins = new List<string>(){ "http://localhost", "http://localhost:8100" },
+                    AllowedCorsOrigins = new List<string>()
+                    { 
+                        "http://localhost", 
+                        "http://localhost:8100",
+                        "ioniclient://ioniclient.trone"
+                    },
                     AllowAccessTokensViaBrowser = true,
                     RequirePkce = true,
 

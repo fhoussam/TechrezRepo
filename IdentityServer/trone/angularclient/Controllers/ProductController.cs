@@ -17,8 +17,8 @@ namespace angularclient.Controllers
         public string NonSecure()
         {
             //testing form data for token endpoint
-            var first_name = HttpContext.Request.Form["first_name"];
-            var last_name = HttpContext.Request.Form["last_name"];
+            //var first_name = HttpContext.Request.Form["first_name"];
+            //var last_name = HttpContext.Request.Form["last_name"];
             return "Not secure";
         }
 

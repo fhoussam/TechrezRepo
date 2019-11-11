@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using Microsoft.AspNetCore.Authentication;
 using IdentityModel;
+using System.Collections.Generic;
 
 namespace angularclient
 {
@@ -59,7 +60,13 @@ namespace angularclient
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
                 //options.Audience = "api1";
-                options.Audience = "http://localhost:5000/resources";
+
+                //options.Audience = "http://10.0.2.2:5000/resources";
+                options.TokenValidationParameters.ValidAudiences = new List<string>()
+                {
+                    "http://10.0.2.2:5000/resources",
+                    "http://localhost:5000/resources"
+                };
 
                 //token validation options
                 options.TokenValidationParameters.ValidateLifetime = true;
