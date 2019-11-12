@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OidcService } from '../oidc.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-landing',
@@ -10,8 +11,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class LandingPage implements OnInit {
 
   user_claim_set:UserClaims;
-  protectedData:Array<any>;
-  constructor(private oidc:OidcService, private http:HttpClient) { 
+  protectedData:any[] = [];
+  
+  constructor(private oidc:OidcService, private http:HttpClient, private platform:Platform) { 
     this.oidc.get_access_token().then(
       () => { 
         this.oidc.get_user_claims().then((user_claim_set:UserClaims) => {
@@ -29,7 +31,7 @@ export class LandingPage implements OnInit {
   ngOnInit() {}
 
   getProtectedData() {
-    let isMobile : boolean = window.location.href.indexOf("8100") != -1;
+    let isMobile : boolean = this.platform.is('cordova');
     let baseUrl : string = isMobile ? "10.0.2.2:5001" : "localhost:5001";
     let url : string = "http://" + baseUrl + "/api/product/secure";
 
@@ -38,7 +40,9 @@ export class LandingPage implements OnInit {
         headers: new HttpHeaders().set('Authorization',  "Bearer " + this.oidc.state.access_token) 
       })
       .subscribe(
-        response => alert(JSON.stringify('success : ' + response)), 
+        response => {
+          this.protectedData.push(response);
+        },
         err => alert('error : ' + JSON.stringify(err))
       );
   }

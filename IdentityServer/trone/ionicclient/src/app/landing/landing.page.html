@@ -9,14 +9,24 @@
     <ion-button (click)="refreshAccessToken()">Refresh Access Token</ion-button>
     <ion-button (click)="disconnect()">Disconnect</ion-button>
 
-    <ion-label class="ad-label" textWrap="true">{{user_claim_set?.email}}</ion-label>
-    <ion-label class="ad-label" textWrap="true">{{user_claim_set?.birthdate}}</ion-label>
-    <ion-label class="ad-label" textWrap="true">{{user_claim_set?.favcolor}}</ion-label>
-    <ion-label class="ad-label" textWrap="true">{{user_claim_set?.gender}}</ion-label>
+    <ion-list>
+      <ion-item>
+        <ion-label>{{user_claim_set?.email}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{user_claim_set?.birthdate}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{user_claim_set?.favcolor}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{user_claim_set?.gender}}</ion-label>
+      </ion-item>
+    </ion-list>
 
     <ion-list>
-        <ion-item>
-          <ion-label *ngFor="let data of protectedData">{{data}}</ion-label>
+        <ion-item *ngFor="let data of protectedData">
+          <ion-label >{{data}}</ion-label>
         </ion-item>
       </ion-list>
 

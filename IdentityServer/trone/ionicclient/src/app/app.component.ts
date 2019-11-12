@@ -25,19 +25,23 @@ export class AppComponent {
   }
 
   initializeApp() {
+
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this.deeplinks.route({
+      if(this.platform.is('cordova')){
+        this.deeplinks.route({
         '/': {},
-      }).subscribe(match => {
-        // this.oidc.get_access_token(match.$link.url).then((tokens) => { });
-        //navigate to landing page and send the response URL to it
-        this.router.navigateByUrl('/landing?' + match.$link.queryString);
-      }, nomatch => {
-        alert('Got a deeplink that didn\'t match' + JSON.stringify(nomatch));
-      });
+        }).subscribe(match => {
+          // this.oidc.get_access_token(match.$link.url).then((tokens) => { });
+          //navigate to landing page and send the response URL to it
+          this.router.navigateByUrl('/landing?' + match.$link.queryString);
+        }, nomatch => {
+          alert('Got a deeplink that didn\'t match' + JSON.stringify(nomatch));
+        });    
+      }
+
 
     });
   }

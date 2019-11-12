@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { KJUR, hextob64u } from "jsrsasign";
+import { Platform } from '@ionic/angular';
 
 @Injectable({
   providedIn: "root"
@@ -13,24 +14,21 @@ export class OidcService {
   interval : any;
   rtltCheckEnabled:boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private platform:Platform) {
       this.state = new State();
       this.interval = null;
 
       //because when we construct oidc on page load, we lose the instance which contains the interval property state
       //thus, this temporary and we can get rid off it once we get to benefit from pre built angular DI system
-      Wellknown.init();
+      Wellknown.init(this.platform.is('cordova'));
       if (this.state.access_token != null) {
           this.setAccessTokenInrerval();
       }
   }
 
   is_logged_in():boolean {
-      var access_token = localStorage.getItem("access_token");
-      if (access_token) {
-          return true;
-      }
-      return false;
+      let access_token:string = localStorage.getItem("access_token");
+      return access_token != null;
   }
 
   parseJwt(token):any {
@@ -72,7 +70,7 @@ export class OidcService {
 
   get_new_access_token() {
       return new Promise((resolve, reject) => {
-
+          
           const formData = new FormData();
           formData.append("grant_type", "refresh_token");
           formData.append("client_id", Wellknown.client_id);
@@ -83,6 +81,7 @@ export class OidcService {
 
           this.http.post(Wellknown.token_endpoint, formData)
           .subscribe(function(newtokens:any){
+            alert('new access token : ' + newtokens.access_token);
             this.state = new State();
             this.state.access_token = newtokens.access_token;
             this.state.id_token = newtokens.id_token;
@@ -90,7 +89,7 @@ export class OidcService {
             resolve(newtokens);
           },
           err => {
-            console.error(err);
+            alert(JSON.stringify(err));
             reject(err);
           });
       });
@@ -114,6 +113,10 @@ export class OidcService {
 
   get_access_token() {
       return new Promise((resolve, reject) => {
+
+          if(this.is_logged_in())
+            return resolve(null);
+
           var local_state = localStorage.getItem("local_state");
           var code_verifier = localStorage.getItem("code_verifier");
           var url = new URL(window.location.href);
@@ -132,7 +135,7 @@ export class OidcService {
 
           if (local_state === server_state) {
               this.http.post(Wellknown.token_endpoint, formData)
-              .subscribe(function(newtokens:any){
+              .subscribe(function(newtokens:SessionToken){
                 this.state = new State();
                 this.state.access_token = newtokens.access_token;
                 this.state.id_token = newtokens.id_token;
@@ -190,16 +193,21 @@ export class Wellknown {
     static authorize_endpoint : string;
     static scopes : string;
 
-    static init(){
-        let isMobile : boolean = window.location.href.indexOf("8100") != -1;
+    static init(isMobile:boolean){
         let baseUrl : string = isMobile ? "10.0.2.2:5000" : "localhost:5000";
         Wellknown.redirect_url = isMobile ? "ioniclient://ioniclient.trone/" : "http://localhost:8100/landing";
         Wellknown.client_id = "ionicclient";
         Wellknown.token_endpoint = "http://" + baseUrl + "/connect/token";
-        Wellknown.userinfo_endpoint = "http://" + baseUrl + "userinfo";
+        Wellknown.userinfo_endpoint = "http://" + baseUrl + "/connect/userinfo";
         Wellknown.authorize_endpoint = "http://" + baseUrl + "/connect/authorize";
         Wellknown.scopes = "openid profile api1 email complementary_profile offline_access";
     }
+}
+
+export class SessionToken{
+    access_token:string;
+    id_token:string;
+    refresh_token:string;
 }
 
 export class State {
@@ -244,13 +252,13 @@ export class State {
 }
 
 export class UserClaimSet {
-//   get email() {
-//       return this.get_claim("email");
-//   }
+  get email() {
+      return this.get_claim("email");
+  }
 
-//   set email(value) {
-//       this.set_claim("email", value);
-//   }
+  set email(value) {
+      this.set_claim("email", value);
+  }
 
   get_claim = function (key) {
       var user_claim_set = JSON.parse(localStorage.getItem("user_claim_set"));
