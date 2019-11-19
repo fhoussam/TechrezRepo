@@ -13,6 +13,33 @@ namespace angularclient.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        [Authorize]
+        [Route("logoutapilevel")]
+        [HttpPost]
+        public async Task<string> LogoutApiLevel()
+        {
+            var cookies = HttpContext.Request.Cookies;
+
+            try
+            {
+                //await HttpContext.SignOutAsync("Bearer");
+                await HttpContext.SignOutAsync("Cookies");
+                //await HttpContext.SignOutAsync("Cookie");
+                await HttpContext.SignOutAsync("oidc");
+
+                //await HttpContext.Authentication.SignOutAsync("Bearer");
+                //await HttpContext.Authentication.SignOutAsync("Cookies");
+                //await HttpContext.Authentication.SignOutAsync("Cookie");
+                //await HttpContext.Authentication.SignOutAsync("oidc");
+
+                return "User has logged out";
+            }
+            catch (Exception ex)
+            {
+                return "There was an issue logging out";
+            }
+        }
+
         [Route("nonsecure")]
         public string NonSecure()
         {

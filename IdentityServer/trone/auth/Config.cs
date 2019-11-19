@@ -92,7 +92,7 @@ namespace auth
                     RequireConsent = false,
                     ClientUri = "http://localhost:5003",
 
-                    AllowedCorsOrigins = new List<string>(){ "http://localhost", "http://localhost:5003" },
+                    AllowedCorsOrigins = new List<string>(){ "http://localhost", "http://localhost:5003", "http://localhost:5001", "*" },
                     AllowAccessTokensViaBrowser = true,
                     RequirePkce = true,
 

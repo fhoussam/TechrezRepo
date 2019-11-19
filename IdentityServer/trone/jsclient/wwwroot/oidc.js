@@ -101,6 +101,67 @@
         }, Oidc.checkAtltFrequency);
     }
 
+    logout_api_level = function () {
+        var url = 'http://localhost:5001/api/product/logoutapilevel';
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: url,
+                type: 'post',
+                headers: {
+                    'Authorization': 'Bearer ' + this.state.access_token,
+                },
+                success: function (response) {
+                    console.log(response);
+                    resolve(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                    reject(err);
+                }
+            });
+        });
+    }
+
+    logout_op_level = function () {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: Wellknown.token_endpoint,
+                type: 'post',
+                headers: {
+                    'Authorization': 'Bearer ' + this.state.access_token,
+                },
+                success: function (response) {
+                    console.log(err);
+                    resolve(response);
+                },
+                error: function (error) {
+                    console.log(err);
+                    reject(err);
+                }
+            });
+        });
+    }
+
+    logout_revoke = function () {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: Wellknown.token_endpoint,
+                type: 'post',
+                headers: {
+                    'Authorization': 'Bearer ' + this.state.access_token,
+                },
+                success: function (response) {
+                    console.log(err);
+                    resolve(response);
+                },
+                error: function (error) {
+                    console.log(err);
+                    reject(err);
+                }
+            });
+        });
+    }
+
     get_access_token = function () {
         return new Promise((resolve, reject) => {
             var local_state = localStorage.getItem('local_state');

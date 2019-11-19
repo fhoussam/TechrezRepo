@@ -159,14 +159,15 @@ namespace auth
                 await next.Invoke();
             });
 
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins
-            (
-                "http://localhost:5003", 
-                "http://localhost:5001",
-                "http://localhost:8100",
-                "http://localhost",
-                "ioniclient://ioniclient.trone"
-            ));
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().AllowAnyOrigin());
+            //.WithOrigins
+            //(
+            //    "http://localhost:5003",
+            //    "http://localhost:5001",
+            //    "http://localhost:8100",
+            //    "http://localhost",
+            //    "ioniclient://ioniclient.trone"
+            //)) ;
 
             app.UseCors();
 
