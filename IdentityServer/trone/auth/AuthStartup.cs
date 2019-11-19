@@ -43,7 +43,8 @@ namespace auth
                     }
             );
 
-            string connectionString = Configuration.GetConnectionString("SqlServerConnectionString");
+            //little warning, System.Environment is different from locql property IHostingEnvironment Environment
+            string connectionString = Configuration.GetConnectionString("SqlServerConnectionString").Replace("=\\", "=" + System.Environment.MachineName + "\\");
             Console.WriteLine("Connection string : " + connectionString);
 
             services.AddDbContext<IdentityDbContext>(options =>
