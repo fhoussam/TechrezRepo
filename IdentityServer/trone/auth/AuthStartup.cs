@@ -163,6 +163,7 @@ namespace auth
                 "http://localhost:5003", 
                 "http://localhost:5001",
                 "http://localhost:8100",
+                "http://localhost",
                 "ioniclient://ioniclient.trone"
             ));
 

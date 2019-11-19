@@ -54,6 +54,7 @@ namespace auth
                     RedirectUris =
                     {
                         "http://localhost:8100/landing",
+                        "http://localhost:8100/home",
                         "ioniclient://ioniclient.trone/",
                     },
                     RequireConsent = false,

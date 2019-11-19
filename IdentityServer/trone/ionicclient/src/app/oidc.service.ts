@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { KJUR, hextob64u } from "jsrsasign";
 import { Platform } from '@ionic/angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +15,7 @@ export class OidcService {
   interval : any;
   rtltCheckEnabled:boolean = false;
 
-  constructor(private http: HttpClient, private platform:Platform) {
+  constructor(private http: HttpClient, private platform:Platform, private iab: InAppBrowser) {
       this.state = new State();
       this.interval = null;
 
@@ -47,7 +48,8 @@ export class OidcService {
         return r;
     }
 
-  authorize() {
+  authorize():string {
+
       let nonce = "N" + Math.random() + "" + Date.now();
       let state = Date.now() + "" + Math.random() + Math.random();
       let code_verifier = "C" + Math.random() + "" + Date.now() + "" + Date.now() + Math.random();
@@ -65,7 +67,7 @@ export class OidcService {
       url.searchParams.append("state", state);
       url.searchParams.append("code_challenge", code_challenge);
       url.searchParams.append("code_challenge_method", "S256");
-      window.location.replace(url.toString());
+    return url.toString();
   }
 
   get_new_access_token() {
@@ -111,15 +113,12 @@ export class OidcService {
     }, this.checkAtltFrequency);
   }
 
-  get_access_token() {
+  get_access_token(callbackUrl: string) {
       return new Promise((resolve, reject) => {
-
-          if(this.is_logged_in())
-            return resolve(null);
 
           var local_state = localStorage.getItem("local_state");
           var code_verifier = localStorage.getItem("code_verifier");
-          var url = new URL(window.location.href);
+          var url = new URL(callbackUrl);
           var code = url.searchParams.get("code");
           var server_state = url.searchParams.get("state");
 
@@ -195,7 +194,8 @@ export class Wellknown {
 
     static init(isMobile:boolean){
         let baseUrl : string = isMobile ? "10.0.2.2:5000" : "localhost:5000";
-        Wellknown.redirect_url = isMobile ? "ioniclient://ioniclient.trone/" : "http://localhost:8100/landing";
+        // Wellknown.redirect_url = isMobile ? "ioniclient://ioniclient.trone/" : "http://localhost:8100/landing";
+        Wellknown.redirect_url = "http://localhost:8100/home";
         Wellknown.client_id = "ionicclient";
         Wellknown.token_endpoint = "http://" + baseUrl + "/connect/token";
         Wellknown.userinfo_endpoint = "http://" + baseUrl + "/connect/userinfo";
@@ -252,13 +252,37 @@ export class State {
 }
 
 export class UserClaimSet {
-  get email() {
-      return this.get_claim("email");
-  }
+    get email() {
+        return this.get_claim("email");
+    }
+  
+    set email(value) {
+        this.set_claim("email", value);
+    }
 
-  set email(value) {
-      this.set_claim("email", value);
-  }
+    get birthdate() {
+        return this.get_claim("birthdate");
+    }
+  
+    set birthdate(value) {
+        this.set_claim("birthdate", value);
+    }
+
+    get gender() {
+        return this.get_claim("gender");
+    }
+  
+    set gender(value) {
+        this.set_claim("gender", value);
+    }
+
+    get favcolor() {
+        return this.get_claim("favcolor");
+    }
+  
+    set favcolor(value) {
+        this.set_claim("favcolor", value);
+    }
 
   get_claim = function (key) {
       var user_claim_set = JSON.parse(localStorage.getItem("user_claim_set"));

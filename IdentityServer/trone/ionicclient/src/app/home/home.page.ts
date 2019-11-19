@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { OidcService } from '../oidc.service';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Router } from '@angular/router';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +13,12 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  // films: Observable<any>;
-  // constructor(private httpClient: HttpClient) {
-  //   this.httpClient.get('https://jsonplaceholder.typicode.com/todos').subscribe(function(data){ console.log(data); }); 
-  // }
-
   constructor(
     private oidc:OidcService, 
     private http_desktop:HttpClient,
     private http_mobile: HTTP,
     private router:Router,
+    private iab: InAppBrowser
     ){
   }
 
@@ -30,8 +27,20 @@ export class HomePage {
   }
 
   connect(){
-    console.log('connecting user ...');
-    this.oidc.authorize();
+    let auth_url : string = this.oidc.authorize();
+    const browser = this.iab.create(auth_url.toString(),'_blank','hidden=no,location=yes');
+    browser.on('loadstop').subscribe(event => {
+        var call_back_url = new URL(event.url);
+        var code = call_back_url.searchParams.get("code");
+        if(code != null){
+            this.oidc.get_access_token(event.url).then(()=>{
+              this.oidc.get_user_claims().then(()=>{
+                this.router.navigateByUrl('/landing');
+              });
+            });
+            browser.close();
+        }
+     });
   }
 
   testCors() {

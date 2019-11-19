@@ -14,18 +14,11 @@ export class LandingPage implements OnInit {
   protectedData:any[] = [];
   
   constructor(private oidc:OidcService, private http:HttpClient, private platform:Platform) { 
-    this.oidc.get_access_token().then(
-      () => { 
-        this.oidc.get_user_claims().then((user_claim_set:UserClaims) => {
-          this.user_claim_set = new UserClaims();
-          this.user_claim_set.email = user_claim_set.email;
-          this.user_claim_set.birthdate = user_claim_set.birthdate;
-          this.user_claim_set.gender = user_claim_set.gender;
-          this.user_claim_set.favcolor = user_claim_set.favcolor;
-        }
-        ); 
-      }
-    );
+    this.user_claim_set = new UserClaims();
+    this.user_claim_set.email = this.oidc.state.userClaimSet.email;
+    this.user_claim_set.birthdate = this.oidc.state.userClaimSet.birthdate;
+    this.user_claim_set.gender = this.oidc.state.userClaimSet.gender;
+    this.user_claim_set.favcolor = this.oidc.state.userClaimSet.favcolor;
   }
 
   ngOnInit() {}

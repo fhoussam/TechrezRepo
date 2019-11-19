@@ -16,6 +16,8 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 
 import { HTTP } from '@ionic-native/http/ngx';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,7 +28,8 @@ import { HTTP } from '@ionic-native/http/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     OidcService,
     Deeplinks,
-    HTTP
+    HTTP,
+    InAppBrowser
   ],
   bootstrap: [AppComponent]
 })
