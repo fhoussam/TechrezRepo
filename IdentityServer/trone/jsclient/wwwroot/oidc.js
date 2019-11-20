@@ -2,6 +2,7 @@
 
     static atltThreshold = 3580;
     static checkAtltFrequency = 2000;
+    static enableAtltCheck = false;
 
     constructor() {
         this.state = new State();
@@ -9,7 +10,7 @@
 
         //because when we construct oidc on page load, we lose the instance which contains the interval property state
         //thus, this temporary and we can get rid off it once we get to benefit from pre built angular DI system
-        if (this.state.access_token) {
+        if (this.state.access_token && Oidc.enableAtltCheck) {
             this.setAccessTokenInrerval();
         }
     }
@@ -123,19 +124,20 @@
     }
 
     logout_op_level = function () {
+        var url = 'http://localhost:5001/api/product/logoutapilevel';
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: Wellknown.token_endpoint,
+                url: url,
                 type: 'post',
                 headers: {
                     'Authorization': 'Bearer ' + this.state.access_token,
                 },
                 success: function (response) {
-                    console.log(err);
+                    console.log(response);
                     resolve(response);
                 },
                 error: function (error) {
-                    console.log(err);
+                    console.log(error);
                     reject(err);
                 }
             });
@@ -143,20 +145,25 @@
     }
 
     logout_revoke = function () {
+        var url = 'http://localhost:5000/connect/revocation';
         return new Promise((resolve, reject) => {
+
+            var data = "token=" + this.state.access_token;
+
             $.ajax({
-                url: Wellknown.token_endpoint,
+                url: url,
                 type: 'post',
                 headers: {
                     'Authorization': 'Bearer ' + this.state.access_token,
                 },
+                data: data,
                 success: function (response) {
-                    console.log(err);
+                    console.log(response);
                     resolve(response);
                 },
                 error: function (error) {
-                    console.log(err);
-                    reject(err);
+                    console.log(error);
+                    reject(error);
                 }
             });
         });

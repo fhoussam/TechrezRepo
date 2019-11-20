@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace angularclient.Controllers
@@ -13,30 +14,43 @@ namespace angularclient.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        //worked !
         [Authorize]
-        [Route("logoutapilevel")]
-        [HttpPost]
-        public async Task<string> LogoutApiLevel()
+        [Route("Logout")]
+        public async Task Logout()
         {
-            var cookies = HttpContext.Request.Cookies;
-
             try
             {
-                //await HttpContext.SignOutAsync("Bearer");
-                await HttpContext.SignOutAsync("Cookies");
-                //await HttpContext.SignOutAsync("Cookie");
+                int cookiesRequest_count_avant = HttpContext.Request.Cookies.Count();
+                await HttpContext.SignOutAsync("Dynamic");
                 await HttpContext.SignOutAsync("oidc");
-
-                //await HttpContext.Authentication.SignOutAsync("Bearer");
-                //await HttpContext.Authentication.SignOutAsync("Cookies");
-                //await HttpContext.Authentication.SignOutAsync("Cookie");
-                //await HttpContext.Authentication.SignOutAsync("oidc");
-
-                return "User has logged out";
+                await HttpContext.SignOutAsync("Cookies");
+                HttpContext.Response.Cookies.Delete(".AspNetCore.Identity.Application");
+                int cookiesRequest_count_after = HttpContext.Request.Cookies.Count();
             }
             catch (Exception ex)
             {
-                return "There was an issue logging out";
+
+            }
+        }
+
+        //did not work
+        [Authorize]
+        [Route("logoutapilevel")]
+        [HttpPost]
+        public async Task LogoutApiLevel()
+        {
+            try
+            {
+                int cookiesRequest_count_avant = HttpContext.Request.Cookies.Count();
+                await HttpContext.SignOutAsync("Dynamic");
+                await HttpContext.SignOutAsync("oidc");
+                await HttpContext.SignOutAsync("Cookies");
+                HttpContext.Response.Cookies.Delete(".AspNetCore.Identity.Application");
+                int cookiesRequest_count_after = HttpContext.Request.Cookies.Count();
+            }
+            catch (Exception eeee)
+            {
             }
         }
 

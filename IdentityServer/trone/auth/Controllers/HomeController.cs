@@ -8,9 +8,10 @@ using auth.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Authorization;
 
 namespace auth.Controllers
 {
@@ -31,6 +32,20 @@ namespace auth.Controllers
         public string NonSecure()
         {
             return "Not secure";
+        }
+
+        [Authorize]
+        public async Task<IActionResult> LogoutIdentityManual()
+        {
+            await this._signInManager.SignOutAsync();
+            return View("Index");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> LogoutAspManual()
+        {
+            await HttpContext.SignOutAsync();
+            return View("Index");
         }
 
         [AllowAnonymous]
