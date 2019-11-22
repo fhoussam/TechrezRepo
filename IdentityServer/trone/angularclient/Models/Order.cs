@@ -10,10 +10,9 @@ namespace angularclient.Models
     {
         [Key]
         public int Code { get; set; }
-        public List<TechRezUser> Client { get; set; }
-        public List<Product> Product { get; set; }
-
         public int Quantity { get; set; }
         public DateTime OrderDate { get; set; }
+        public string TechRezUserId { get; set; }
+        public int ProductId { get; set; }
     }
 }

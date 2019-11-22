@@ -12,6 +12,9 @@ namespace angularclient.Models
         public int Code { get; set; }
         public string Description { get; set; }
         public int Quantity { get; set; }
-        public List<Category> Category { get; set; }
+        public int CategoryId { get; set; }
+        public double Price { get; set; }
+        public string PhotoUrl { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }
