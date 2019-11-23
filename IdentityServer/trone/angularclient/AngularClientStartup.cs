@@ -10,6 +10,7 @@ using IdentityModel;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using angularclient.Models;
+using angularclient.DbAccess;
 
 namespace angularclient
 {
@@ -25,7 +26,9 @@ namespace angularclient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("TechRezSqlServerConnectionString").Replace("=\\", "=" + System.Environment.MachineName + "\\");
+            string connectionString = Configuration.GetConnectionString("SqlServerConnectionString")
+                .Replace("=\\", "=" + System.Environment.MachineName + "\\");
+
             services.AddDbContext<TechRezDbContext>(options =>
             {
                 options.UseSqlServer(connectionString, o => o.MigrationsAssembly("angualarclient"));
@@ -123,6 +126,8 @@ namespace angularclient
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

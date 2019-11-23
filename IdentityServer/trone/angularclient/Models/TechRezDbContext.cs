@@ -50,22 +50,22 @@ namespace angularclient.Models
             {
                 new Category()
                 {
-                    Code = 1,
+                    Code = "1",
                     Description = "Power Suply"
                 },
                 new Category()
                 {
-                    Code = 2,
+                    Code = "2",
                     Description = "Motherboard"
                 },
                 new Category()
                 {
-                    Code = 3,
+                    Code = "3",
                     Description = "Graphics Card"
                 },
                 new Category()
                 {
-                    Code = 4,
+                    Code = "4",
                     Description = "RAM"
                 },
             };
@@ -75,7 +75,7 @@ namespace angularclient.Models
                 //PSUs
                 new Product()
                 {
-                    Code = 11,
+                    Code = "11",
                     Description = "Corsair RM850x",
                     Quantity = 52,
                     CategoryId = 1,
@@ -84,7 +84,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 12,
+                    Code = "12",
                     Description = "Cooler Master MasterWatt 750W",
                     Quantity = 87,
                     CategoryId = 1,
@@ -93,7 +93,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 13,
+                    Code = "13",
                     Description = "FSP Dagger 500W",
                     Quantity = 65,
                     CategoryId = 1,
@@ -102,7 +102,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 14,
+                    Code = "14",
                     Description = "Gamdias Astrape P1-750G",
                     Quantity = 65,
                     CategoryId = 1,
@@ -111,7 +111,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 15,
+                    Code = "15",
                     Description = "NZXT E850",
                     Quantity = 86,
                     CategoryId = 1,
@@ -120,7 +120,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 16,
+                    Code = "16",
                     Description = "Seasonic Prime 1000 Titanium",
                     Quantity = 86,
                     CategoryId = 1,
@@ -131,7 +131,7 @@ namespace angularclient.Models
                 //mobos
                 new Product()
                 {
-                    Code = 21,
+                    Code = "21",
                     Description = "Gigabyte Z390 Aorus Ultra",
                     Quantity = 63,
                     CategoryId = 2,
@@ -140,7 +140,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 22,
+                    Code = "22",
                     Description = "ASUS ROG Maximus XI Hero Wi-Fi",
                     Quantity = 41,
                     CategoryId = 2,
@@ -149,7 +149,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 23,
+                    Code = "23",
                     Description = "ASUS ROG Strix Z390-I Gaming",
                     Quantity = 85,
                     CategoryId = 2,
@@ -158,7 +158,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 24,
+                    Code = "24",
                     Description = "MSI MPG X570 Gaming Pro Carbon WiFi",
                     Quantity = 34,
                     CategoryId = 2,
@@ -167,7 +167,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 25,
+                    Code = "25",
                     Description = "Gigabyte X470 Aorus Gaming 5 Wi-Fi",
                     Quantity = 64,
                     CategoryId = 2,
@@ -176,7 +176,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 26,
+                    Code = "26",
                     Description = "ASUS TUF H370-Pro Gaming Wi-Fi",
                     Quantity = 16,
                     CategoryId = 2,
@@ -185,7 +185,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 27,
+                    Code = "27",
                     Description = "Gigabyte Z390 UD",
                     Quantity = 52,
                     CategoryId = 2,
@@ -196,7 +196,7 @@ namespace angularclient.Models
                 //Graphics cards
                 new Product()
                 {
-                    Code = 30,
+                    Code = "30",
                     Description = "Nvidia GeForce RTX 2080 Ti",
                     Quantity = 45,
                     CategoryId = 3,
@@ -205,7 +205,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 31,
+                    Code = "31",
                     Description = "AMD Radeon RX 570 4GB",
                     Quantity = 88,
                     CategoryId = 3,
@@ -214,7 +214,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 32,
+                    Code = "32",
                     Description = "Nvidia GeForce RTX 2080 Super",
                     Quantity = 32,
                     CategoryId = 3,
@@ -223,7 +223,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 33,
+                    Code = "33",
                     Description = "Nvidia GeForce RTX 2070 Super",
                     Quantity = 56,
                     CategoryId = 3,
@@ -232,7 +232,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 34,
+                    Code = "34",
                     Description = "Nvidia GeForce RTX 2060 Super",
                     Quantity = 73,
                     CategoryId = 3,
@@ -241,7 +241,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 35,
+                    Code = "35",
                     Description = "AMD Radeon RX 5700 XT",
                     Quantity = 81,
                     CategoryId = 3,
@@ -250,7 +250,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 36,
+                    Code = "36",
                     Description = "GeForce GTX 1660 Super 6GB",
                     Quantity = 47,
                     CategoryId = 3,
@@ -259,7 +259,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 37,
+                    Code = "37",
                     Description = "AMD Radeon RX 590",
                     Quantity = 86,
                     CategoryId = 3,
@@ -268,7 +268,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 38,
+                    Code = "38",
                     Description = "AMD Radeon RX 5700",
                     Quantity = 38,
                     CategoryId = 3,
@@ -277,7 +277,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 39,
+                    Code = "39",
                     Description = "Nvidia GeForce GTX 1660 Ti",
                     Quantity = 76,
                     CategoryId = 3,
@@ -288,7 +288,7 @@ namespace angularclient.Models
                 //Ram
                 new Product()
                 {
-                    Code = 40,
+                    Code = "40",
                     Description = "Corsair Vengeance LED",
                     Quantity = 65,
                     CategoryId = 4,
@@ -297,7 +297,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 41,
+                    Code = "41",
                     Description = "G.Skill Trident Z RGB",
                     Quantity = 65,
                     CategoryId = 4,
@@ -306,7 +306,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 42,
+                    Code = "42",
                     Description = "Kingston HyperX Predator",
                     Quantity = 71,
                     CategoryId = 4,
@@ -315,7 +315,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 43,
+                    Code = "43",
                     Description = "Kingston HyperX Fury ",
                     Quantity = 63,
                     CategoryId = 4,
@@ -324,7 +324,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 44,
+                    Code = "44",
                     Description = "Corsair Dominator Platinum RGB",
                     Quantity = 85,
                     CategoryId = 4,
@@ -333,7 +333,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 45,
+                    Code = "45",
                     Description = "G.Skill Trident Z RGB DC",
                     Quantity = 27,
                     CategoryId = 4,
@@ -342,7 +342,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 46,
+                    Code = "46",
                     Description = "Adata Spectrix D80 ",
                     Quantity = 19,
                     CategoryId = 4,
@@ -351,7 +351,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 47,
+                    Code = "47",
                     Description = "HyperX Fury RGB",
                     Quantity = 36,
                     CategoryId = 4,
@@ -360,7 +360,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 48,
+                    Code = "48",
                     Description = "Corsair Vengeance LPX",
                     Quantity = 85,
                     CategoryId = 4,
@@ -369,7 +369,7 @@ namespace angularclient.Models
                 },
                 new Product()
                 {
-                    Code = 49,
+                    Code = "49",
                     Description = "G.Skill Mac RAM",
                     Quantity = 26,
                     CategoryId = 4,
@@ -382,12 +382,12 @@ namespace angularclient.Models
             {
                 new TechRezUser()
                 {
-                    UserId = "RandomDude_1",
+                    Code = "RandomDude_1",
                     UserName = "RandomDude One",
                 },
                 new TechRezUser()
                 {
-                    UserId = "RandomDude_2",
+                    Code = "RandomDude_2",
                     UserName = "RandomDude Two",
                 },
             };
@@ -396,7 +396,7 @@ namespace angularclient.Models
             {
                 new Order()
                 {
-                    Code = 1,
+                    Code = "1",
                     OrderDate = DateTime.Now.AddDays(-1).AddHours(-2).AddMinutes(3).AddSeconds(4),
                     ProductId = 15,
                     TechRezUserId = "RandomDude_1",
@@ -404,7 +404,7 @@ namespace angularclient.Models
                 },
                 new Order()
                 {
-                    Code = 2,
+                    Code = "2",
                     OrderDate = DateTime.Now.AddDays(-5).AddHours(-6).AddMinutes(7).AddSeconds(8),
                     ProductId = 24,
                     TechRezUserId = "RandomDude_2",

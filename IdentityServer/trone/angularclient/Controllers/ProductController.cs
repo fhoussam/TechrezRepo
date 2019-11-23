@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using angularclient.DbAccess;
+using angularclient.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -11,8 +9,13 @@ namespace angularclient.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : TechRezBaseRepoController<Product, ProductRepository>
     {
+        public ProductController(ProductRepository repository) : base(repository)
+        {
+
+        }
+
         [Route("nonsecure")]
         public string NonSecure()
         {
