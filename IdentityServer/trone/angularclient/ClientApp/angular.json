@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "anglular": {
+    "angularclient": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/anglular",
+            "outputPath": "dist/angularclient",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,6 +50,11 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }
@@ -58,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "anglular:build"
+            "browserTarget": "angularclient:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "anglular:build:production"
+              "browserTarget": "angularclient:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "anglular:build"
+            "browserTarget": "angularclient:build"
           }
         },
         "test": {
@@ -106,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "anglular:serve"
+            "devServerTarget": "angularclient:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "anglular:serve:production"
+              "devServerTarget": "angularclient:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "anglular"
+  "defaultProject": "angularclient"
 }
