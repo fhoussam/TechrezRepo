@@ -1,1 +1,19 @@
-<p>products works!</p>
+<p>Admin product component</p>
+
+<table>
+  <tr>
+    <td style="background-color:aqua;width:750px;height:150px;">
+      <search (searchResultEmitter)="displaySearchResult($event)"></search>
+    </td>
+  </tr>
+  <tr>
+    <td style="background-color:red;width:750px;height:200px;">
+      <list [products]="searchResult"></list>
+    </td>
+  </tr>
+  <tr>
+    <td style="background-color:yellow;width:750px;height:180px;">
+      <explore></explore>
+    </td>
+  </tr>
+</table>

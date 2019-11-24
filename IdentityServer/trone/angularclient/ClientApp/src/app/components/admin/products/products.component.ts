@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { adminProductListItem } from '../../../models/adminProductListItem';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+    selector: 'app-products',
+    templateUrl: './products.component.html',
+    styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
+    searchResult: adminProductListItem[] = [];
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
+
+    displaySearchResult(searchResult) {
+        this.searchResult = searchResult;
+    }
 
 }

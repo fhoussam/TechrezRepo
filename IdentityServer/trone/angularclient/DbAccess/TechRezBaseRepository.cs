@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace angularclient.DbAccess
 {
@@ -55,7 +56,7 @@ namespace angularclient.DbAccess
 
         public async Task<List<TEntity>> GetAll()
         {
-            return await context.Set<TEntity>().ToListAsync();
+            return await context.Set<TEntity>().Take(10).ToListAsync();
         }
 
         public async Task<TEntity> Update(TEntity entity)
