@@ -24,16 +24,16 @@ const approutes: Routes = [
         component: AdminProductsComponent,
         children: [
             //product route tree
-            { path: 'explore/details', component: DetailsComponent },
-            { path: 'explore/orders', component: AdminOrdersComponent },
+            { path: '', component: DetailsComponent },
+            { path: 'explore/details/:id', component: DetailsComponent },
+            { path: 'explore/orders/:id', component: AdminOrdersComponent },
         ]
     },
     { path: 'admin/users', component: UsersComponent },
     { path: 'techrezusers/products', component: TechrezUserProductsComponent },
     { path: 'techrezusers/orders', component: TechrezuserOrdersComponent },
+    //{ path: '', component: AdminProductsComponent },
     //{ path: '**', component: PagenotfoundComponent },
-    { path: '**', component: AdminProductsComponent },
-    { path: '', component: AdminProductsComponent },
 ];
 
 @NgModule({

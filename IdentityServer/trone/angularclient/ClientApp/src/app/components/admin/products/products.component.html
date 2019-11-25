@@ -11,7 +11,7 @@
       <list [products]="searchResult" (itemSelectedEvent)="displayItemDetails($event)"></list>
     </td>
   </tr>
-  <tr>
+  <tr *ngIf="selectedItem">
     <td style="background-color:yellow;width:750px;height:180px;">
       <explore [selectedItem]="selectedItem"></explore>
     </td>
