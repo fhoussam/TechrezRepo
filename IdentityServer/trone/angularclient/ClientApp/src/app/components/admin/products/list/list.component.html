@@ -1,5 +1,5 @@
 <table border="1">
-  <tr *ngFor="let product of products">
+  <tr *ngFor="let product of products" (click)="selectItem(product)">
     <td>{{ product.code }}</td>
     <td>{{ product.description }}</td>
     <td>{{ product.quantity }}</td>

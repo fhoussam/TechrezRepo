@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { ProductsComponent as AdminProductsComponent } from './components/admin/products/products.component';
 import { ProductsComponent as TechrezUserProductsComponent } from './components/techrezuser/products/products.component';
 import { UsersComponent } from './components/admin/users/users.component';
-import { OrdersComponent } from './components/techrezuser/orders/orders.component';
+import { OrdersComponent as TechrezuserOrdersComponent } from './components/techrezuser/orders/orders.component';
+import { OrdersComponent as AdminOrdersComponent } from './components/admin/products/explore/orders/orders.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './components/admin/products/search/search.component';
 import { ListComponent } from './components/admin/products/list/list.component';
@@ -18,10 +19,18 @@ import { ProductService } from './services/product.service';
 import { DetailsComponent } from './components/admin/products/explore/details/details.component';
 
 const approutes: Routes = [
-    { path: 'admin/products', component: AdminProductsComponent },
+    {
+        path: 'admin/products',
+        component: AdminProductsComponent,
+        children: [
+            //product route tree
+            { path: 'explore/details', component: DetailsComponent },
+            { path: 'explore/orders', component: AdminOrdersComponent },
+        ]
+    },
     { path: 'admin/users', component: UsersComponent },
     { path: 'techrezusers/products', component: TechrezUserProductsComponent },
-    { path: 'techrezusers/orders', component: OrdersComponent },
+    { path: 'techrezusers/orders', component: TechrezuserOrdersComponent },
     //{ path: '**', component: PagenotfoundComponent },
     { path: '**', component: AdminProductsComponent },
     { path: '', component: AdminProductsComponent },
@@ -33,7 +42,8 @@ const approutes: Routes = [
         AdminProductsComponent,
         TechrezUserProductsComponent,
         UsersComponent,
-        OrdersComponent,
+        TechrezuserOrdersComponent,
+        AdminOrdersComponent,
         SearchComponent,
         ListComponent,
         ExploreComponent,

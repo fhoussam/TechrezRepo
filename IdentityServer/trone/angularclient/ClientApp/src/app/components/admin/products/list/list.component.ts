@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../../../services/product.service';
 import { adminProductListItem } from '../../../../models/adminProductListItem';
 
@@ -10,10 +10,12 @@ import { adminProductListItem } from '../../../../models/adminProductListItem';
 export class ListComponent implements OnInit {
 
     @Input() products: adminProductListItem[];
+    @Output() itemSelectedEvent = new EventEmitter();
     constructor() {}
 
-    selectItem() {
-
+    selectItem(selectedItem) {
+        let x: any = selectedItem;
+        this.itemSelectedEvent.emit(x);
     }
 
     ngOnInit() {

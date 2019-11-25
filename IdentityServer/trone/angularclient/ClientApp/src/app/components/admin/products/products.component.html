@@ -8,12 +8,12 @@
   </tr>
   <tr>
     <td style="background-color:red;width:750px;height:200px;">
-      <list [products]="searchResult"></list>
+      <list [products]="searchResult" (itemSelectedEvent)="displayItemDetails($event)"></list>
     </td>
   </tr>
   <tr>
     <td style="background-color:yellow;width:750px;height:180px;">
-      <explore></explore>
+      <explore [selectedItem]="selectedItem"></explore>
     </td>
   </tr>
 </table>

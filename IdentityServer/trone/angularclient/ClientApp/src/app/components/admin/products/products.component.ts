@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { adminProductListItem } from '../../../models/adminProductListItem';
 
 @Component({
@@ -10,12 +10,18 @@ export class ProductsComponent implements OnInit {
 
     constructor() { }
     searchResult: adminProductListItem[] = [];
+    selectedItem: adminProductListItem;
 
     ngOnInit() {
     }
 
     displaySearchResult(searchResult) {
         this.searchResult = searchResult;
+    }
+
+    displayItemDetails(selectedItem) {
+        console.log(selectedItem);
+        this.selectedItem = selectedItem;
     }
 
 }
