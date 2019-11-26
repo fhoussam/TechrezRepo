@@ -27,10 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\adminProductEdit.ts" />
     <None Remove="ClientApp\src\app\models\adminProductListItem.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\adminProductEdit.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\adminProductListItem.ts" />
   </ItemGroup>
 

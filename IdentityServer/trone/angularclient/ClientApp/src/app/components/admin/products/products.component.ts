@@ -19,9 +19,7 @@ export class ProductsComponent implements OnInit {
         this.searchResult = searchResult;
     }
 
-    displayItemDetails(selectedItem) {
-        console.log(selectedItem);
+    sendSelectedItemToExplore(selectedItem) {
         this.selectedItem = selectedItem;
     }
-
 }
