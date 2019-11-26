@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { EventEmitter } from 'events';
 import { adminProductListItem } from '../models/adminProductListItem';
 import { BehaviorSubject } from 'rxjs';
 
@@ -8,10 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductEventEmitterService {
 
-    private user = new BehaviorSubject<string>('john');
-    cast = this.user.asObservable();
+    private selectedItem = new BehaviorSubject<adminProductListItem>(new adminProductListItem());
+    cast = this.selectedItem.asObservable();
     constructor() { }
-    sendSelectedItem(newUser) {
-        this.user.next(newUser);
+    sendSelectedItem(selectedItem: adminProductListItem) {
+        this.selectedItem.next(selectedItem);
     }
 }

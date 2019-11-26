@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { adminProductListItem } from '../../../../models/adminProductListItem';
+import { Component, OnInit } from '@angular/core';
+import { ProductEventEmitterService } from '../../../../services/product-event-emitter.service';
 
 @Component({
     selector: 'explore',
@@ -9,11 +8,9 @@ import { adminProductListItem } from '../../../../models/adminProductListItem';
 })
 export class ExploreComponent implements OnInit {
 
-    @Input() selectedItem: adminProductListItem;
-    constructor(private route: ActivatedRoute, private router: Router) {
+    selectedItemCode: string;
+    constructor(private productEventEmitter: ProductEventEmitterService) {
+        this.productEventEmitter.cast.subscribe(selectedItem => this.selectedItemCode = selectedItem.code);
     }
-
-    ngOnInit() {
-
-    }
+    ngOnInit() {}
 }

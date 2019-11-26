@@ -8,12 +8,12 @@
   </tr>
   <tr>
     <td style="background-color:red;width:750px;height:200px;">
-      <list [products]="searchResult" (itemSelectedEvent)="sendSelectedItemToExplore($event)"></list>
+      <list [products]="searchResult"></list>
     </td>
   </tr>
-  <tr *ngIf="selectedItem">
+  <tr>
     <td style="background-color:yellow;width:750px;height:180px;">
-      <explore [selectedItem]="selectedItem"></explore>
+      <explore></explore>
     </td>
   </tr>
 </table>
