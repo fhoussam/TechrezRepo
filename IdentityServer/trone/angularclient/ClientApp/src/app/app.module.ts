@@ -17,6 +17,7 @@ import { PagenotfoundComponent } from './components/shared/pagenotfound/pagenotf
 import { HttpClientModule } from '@angular/common/http'
 import { ProductService } from './services/product.service';
 import { DetailsComponent } from './components/admin/products/explore/details/details.component';
+import { ProductEventEmitterService } from './services/product-event-emitter.service';
 
 const approutes: Routes = [
     {
@@ -57,7 +58,8 @@ const approutes: Routes = [
         HttpClientModule
     ],
     providers: [
-        ProductService
+        ProductService,
+        ProductEventEmitterService
     ],
     bootstrap: [AppComponent]
 })

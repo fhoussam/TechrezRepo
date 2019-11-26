@@ -3,6 +3,7 @@ import { ExploreComponent } from '../explore.component';
 import { adminProductEdit } from '../../../../../models/adminProductEdit';
 import { ActivatedRoute } from '@angular/router';
 import { adminProductListItem } from '../../../../../models/adminProductListItem';
+import { ProductEventEmitterService } from '../../../../../services/product-event-emitter.service';
 
 @Component({
     selector: 'app-details',
@@ -12,11 +13,15 @@ import { adminProductListItem } from '../../../../../models/adminProductListItem
 export class DetailsComponent implements OnInit {
 
     itemToEdit: adminProductEdit;
-    adminProductListItemPreviousState: adminProductListItem; 
+    adminProductListItemPreviousState: adminProductListItem;
+    userReflection: string;
 
-    constructor(private host: ExploreComponent, private route: ActivatedRoute) {
+    constructor(private host: ExploreComponent, private route: ActivatedRoute
+        , private productEventEmitter: ProductEventEmitterService) {
         let id: string = this.route.snapshot.paramMap.get('id');
-        this.adminProductListItemPreviousState = this.host.selectedItem;
+        //this.adminProductListItemPreviousState = this.host.selectedItem;
+        //this.productEventEmitter.event.s
+        this.productEventEmitter.cast.subscribe(user => this.userReflection = user);
     }
 
     ngOnInit() { }
