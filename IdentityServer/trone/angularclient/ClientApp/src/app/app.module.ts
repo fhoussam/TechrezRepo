@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,12 @@ import { HttpClientModule } from '@angular/common/http'
 import { ProductService } from './services/product.service';
 import { DetailsComponent } from './components/admin/products/explore/details/details.component';
 import { ProductEventEmitterService } from './services/product-event-emitter.service';
+import { AppInitService } from './services/app-init.service';
+import { CategoryPipe } from './pipes/category.pipe';
+
+export function get_settings(appLoadService: AppInitService) {
+    return () => appLoadService.getSettings();
+}
 
 const approutes: Routes = [
     {
@@ -49,7 +55,8 @@ const approutes: Routes = [
         ListComponent,
         ExploreComponent,
         PagenotfoundComponent,
-        DetailsComponent
+        DetailsComponent,
+        CategoryPipe
     ],
     imports: [
         BrowserModule,
@@ -59,7 +66,9 @@ const approutes: Routes = [
     ],
     providers: [
         ProductService,
-        ProductEventEmitterService
+        ProductEventEmitterService,
+        AppInitService,
+        { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppInitService], multi: true }
     ],
     bootstrap: [AppComponent]
 })

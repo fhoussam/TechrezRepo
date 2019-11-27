@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace angularclient.Controllers
 {
@@ -11,9 +12,16 @@ namespace angularclient.Controllers
     [ApiController]
     public class ProductController : TechRezBaseRepoController<Product, ProductRepository>
     {
+        private ProductRepository _productRepository;
         public ProductController(ProductRepository repository) : base(repository)
         {
+            this._productRepository = repository;
+        }
 
+        [Route("categories")]
+        public async Task<IActionResult> Categories() {
+            var r = await this._productRepository.GetCategories();
+            return Ok(r);
         }
 
         [Route("nonsecure")]
