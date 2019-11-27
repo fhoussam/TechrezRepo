@@ -25,12 +25,17 @@ import { IAppState, rootReducer, INITIAL_STATE } from './models/appState';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { FeedComponent } from './components/shared/feed/feed.component';
 
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { HomeComponent } from './components/shared/home/home.component';
+
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
 }
 
 const approutes: Routes = [
+    { path: 'home', component: HomeComponent },
     {
         path: 'admin/products',
         component: AdminProductsComponent,
@@ -41,7 +46,11 @@ const approutes: Routes = [
             { path: 'explore/orders/:id', component: AdminOrdersComponent },
         ]
     },
-    { path: 'admin/users', component: UsersComponent },
+    {
+        path: 'admin/users',
+        component: UsersComponent,
+        canActivate: [AuthGuardService]
+    },
     { path: 'techrezusers/products', component: TechrezUserProductsComponent },
     { path: 'techrezusers/orders', component: TechrezuserOrdersComponent },
     //{ path: '', component: AdminProductsComponent },
@@ -62,7 +71,8 @@ const approutes: Routes = [
         PagenotfoundComponent,
         DetailsComponent,
         CategoryPipe,
-        FeedComponent
+        FeedComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
@@ -75,6 +85,8 @@ const approutes: Routes = [
         ProductService,
         ProductEventEmitterService,
         AppInitService,
+        AuthGuardService,
+        AuthService,
         { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppInitService], multi: true }
     ],
     bootstrap: [AppComponent]
