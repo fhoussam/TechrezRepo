@@ -1,18 +1,21 @@
 <p>Admin product component</p>
 
-<table>
+<table style="width:100%;">
   <tr>
-    <td style="background-color:aqua;width:750px;height:150px;">
+    <td style="background-color:aqua;height:150px;">
       <search (searchResultEmitter)="displaySearchResult($event)"></search>
+    </td>
+    <td rowspan="3" style="background-color:grey;width:50%;">
+      <app-feed></app-feed>
     </td>
   </tr>
   <tr>
-    <td style="background-color:red;width:750px;height:200px;">
+    <td style="background-color:red;height:200px;">
       <list [products]="searchResult"></list>
     </td>
   </tr>
   <tr>
-    <td style="background-color:yellow;width:750px;height:180px;">
+    <td style="background-color:yellow;height:180px;">
       <explore></explore>
     </td>
   </tr>

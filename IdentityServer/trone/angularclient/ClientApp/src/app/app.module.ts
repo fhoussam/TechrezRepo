@@ -21,6 +21,11 @@ import { ProductEventEmitterService } from './services/product-event-emitter.ser
 import { AppInitService } from './services/app-init.service';
 import { CategoryPipe } from './pipes/category.pipe';
 
+import { IAppState, rootReducer, INITIAL_STATE } from './models/appState';
+import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import { FeedComponent } from './components/shared/feed/feed.component';
+
+
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
 }
@@ -56,13 +61,15 @@ const approutes: Routes = [
         ExploreComponent,
         PagenotfoundComponent,
         DetailsComponent,
-        CategoryPipe
+        CategoryPipe,
+        FeedComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         RouterModule.forRoot(approutes),
-        HttpClientModule
+        HttpClientModule,
+        NgReduxModule,
     ],
     providers: [
         ProductService,
@@ -72,4 +79,8 @@ const approutes: Routes = [
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(ngRedux: NgRedux<IAppState>) {
+        ngRedux.configureStore(rootReducer, INITIAL_STATE)
+    }
+}
