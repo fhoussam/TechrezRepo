@@ -9,8 +9,11 @@ import { ProductEventEmitterService } from '../../../../services/product-event-e
 export class ExploreComponent implements OnInit {
 
     selectedItemCode: string;
-    constructor(private productEventEmitter: ProductEventEmitterService) {
+    constructor(
+        private productEventEmitter: ProductEventEmitterService,
+    ) {
         this.productEventEmitter.cast.subscribe(selectedItem => this.selectedItemCode = selectedItem.code);
     }
+
     ngOnInit() {}
 }

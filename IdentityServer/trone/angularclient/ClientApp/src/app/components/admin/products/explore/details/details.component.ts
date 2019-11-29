@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { adminProductListItem } from '../../../../../models/adminProductListItem';
 import { ProductEventEmitterService } from '../../../../../services/product-event-emitter.service';
 import { NgRedux } from '@angular-redux/store';
@@ -15,11 +15,10 @@ export class DetailsComponent implements OnInit {
 
     selectedItem: adminProductListItem;
     constructor(
-        private route: ActivatedRoute,
         private productEventEmitter: ProductEventEmitterService,
         private ngRedux: NgRedux<IAppState>,
     ) {
-        let id: string = this.route.snapshot.paramMap.get('id');
+        //let id: string = this.route.snapshot.paramMap.get('id');
         this.productEventEmitter.cast.subscribe(selectedItem => this.selectedItem = selectedItem);
     }
 

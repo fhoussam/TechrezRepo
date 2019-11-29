@@ -28,7 +28,7 @@ export class ListComponent implements OnInit {
         this.ngRedux.dispatch({ type : OPEN_PRODUCT });
         this.selectedItemCode = selectedItem.code;
         this.productEventEmitter.sendSelectedItem(selectedItem);
-        let url: string = 'admin/products/explore/details/' + selectedItem.code;
-        this.router.navigateByUrl(url);
+        let url: string = 'admin/products/explore/details';
+        this.router.navigateByUrl(url, { skipLocationChange: true });
     }
 }

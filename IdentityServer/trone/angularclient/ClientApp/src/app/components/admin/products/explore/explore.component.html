@@ -1,5 +1,5 @@
-<a routerLink="explore/details/{{selectedItemCode}}" routerLinkActive="active">Details</a>
-<br />
-<a routerLink="explore/orders/{{selectedItemCode}}" routerLinkActive="active">Orders</a>
-<br />
-<router-outlet></router-outlet>
+<ul *ngIf="selectedItemCode">
+  <li><a [routerLink]="['explore/details']" skipLocationChange>Details</a></li>
+  <li><a [routerLink]="['explore/orders']" skipLocationChange>Orders</a></li>
+  <router-outlet></router-outlet>
+</ul>
