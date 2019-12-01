@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injector, NgZone } from '@angular/core';
 import { adminProductListItem } from '../../../models/adminProductListItem';
+import { ProductEventEmitterService } from '../../../services/product-event-emitter.service';
+import { propertyToUrl, urlToProperty, urlToList } from "query-string-params";
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
     selector: 'app-products',
@@ -8,18 +11,24 @@ import { adminProductListItem } from '../../../models/adminProductListItem';
 })
 export class ProductsComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        private productEventEmitter: ProductEventEmitterService,
+        private router: Router,
+        private injector: Injector
+    ) {
+        this.productEventEmitter.cast.subscribe(selectedItem => {
+            if (selectedItem.code) {
+                this.selectedItemCode = selectedItem.code;
+            }
+        });
+    }
     searchResult: adminProductListItem[] = [];
-    selectedItem: adminProductListItem;
+    selectedItemCode: string = null;
 
     ngOnInit() {
     }
 
     displaySearchResult(searchResult) {
         this.searchResult = searchResult;
-    }
-
-    sendSelectedItemToExplore(selectedItem) {
-        this.selectedItem = selectedItem;
     }
 }

@@ -7,16 +7,16 @@ import { ProductsComponent as AdminProductsComponent } from './components/admin/
 import { ProductsComponent as TechrezUserProductsComponent } from './components/techrezuser/products/products.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { OrdersComponent as TechrezuserOrdersComponent } from './components/techrezuser/orders/orders.component';
-import { OrdersComponent as AdminOrdersComponent } from './components/admin/products/explore/orders/orders.component';
+import { OrdersComponent as AdminOrdersComponent } from './components/admin/products/orders/orders.component';
+import { EditDetailsComponent } from './components/admin/products/editDetails/editDetails.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './components/admin/products/search/search.component';
 import { ListComponent } from './components/admin/products/list/list.component';
-import { ExploreComponent } from './components/admin/products/explore/explore.component';
 import { PagenotfoundComponent } from './components/shared/pagenotfound/pagenotfound.component';
+
 
 import { HttpClientModule } from '@angular/common/http'
 import { ProductService } from './services/product.service';
-import { DetailsComponent } from './components/admin/products/explore/details/details.component';
 import { ProductEventEmitterService } from './services/product-event-emitter.service';
 import { AppInitService } from './services/app-init.service';
 import { CategoryPipe } from './pipes/category.pipe';
@@ -29,6 +29,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './components/shared/home/home.component';
 
+import { FormsModule } from '@angular/forms';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
@@ -36,15 +37,13 @@ export function get_settings(appLoadService: AppInitService) {
 
 const approutes: Routes = [
     { path: 'home', component: HomeComponent },
-    { path: '', component: HomeComponent },
+    //{ path: '', component: HomeComponent },
     {
         path: 'admin/products',
         component: AdminProductsComponent,
         children: [
-            //product route tree
-            { path: '', component: DetailsComponent },
-            { path: 'explore/details', component: DetailsComponent },
-            { path: 'explore/orders', component: AdminOrdersComponent },
+            { path: 'details', component: EditDetailsComponent },
+            { path: 'orders', component: AdminOrdersComponent },
         ]
     },
     {
@@ -67,9 +66,8 @@ const approutes: Routes = [
         AdminOrdersComponent,
         SearchComponent,
         ListComponent,
-        ExploreComponent,
         PagenotfoundComponent,
-        DetailsComponent,
+        EditDetailsComponent,
         CategoryPipe,
         FeedComponent,
         HomeComponent
@@ -80,6 +78,7 @@ const approutes: Routes = [
         RouterModule.forRoot(approutes),
         HttpClientModule,
         NgReduxModule,
+        FormsModule,
     ],
     providers: [
         ProductService,
@@ -93,6 +92,6 @@ const approutes: Routes = [
 })
 export class AppModule {
     constructor(ngRedux: NgRedux<IAppState>) {
-        ngRedux.configureStore(rootReducer, INITIAL_STATE)
+        ngRedux.configureStore(rootReducer, INITIAL_STATE);
     }
 }

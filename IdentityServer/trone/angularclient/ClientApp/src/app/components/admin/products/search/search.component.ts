@@ -1,9 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { adminProductListItem } from '../../../../models/adminProductListItem';
 import { ProductService } from '../../../../services/product.service';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../../../models/appState';
 import { SEARCH_PRODUCT } from '../../../../models/constants';
+import { category } from '../../../../models/category';
+import { APP_SETTINGS } from '../../../../models/APP_SETTINGS';
+import { productSearchParam } from '../../../../models/productSearchParam';
+import { urlToProperty } from "query-string-params";
 
 @Component({
     selector: 'search',
@@ -13,9 +16,24 @@ import { SEARCH_PRODUCT } from '../../../../models/constants';
 export class SearchComponent implements OnInit {
 
     @Output() searchResultEmitter = new EventEmitter();
+    categoryId: string;
+    categories: category[];
+    searchParams: productSearchParam;
 
-    constructor(private productService: ProductService, private ngRedux: NgRedux<IAppState>) {
-        this.search();
+    constructor(
+        private productService: ProductService,
+        private ngRedux: NgRedux<IAppState>,
+    ) {
+        if (location.search) {
+            this.searchParams = urlToProperty(location.search);
+            if (this.searchParams) {
+                this.search();
+            }
+        }
+        else
+            this.searchParams = new productSearchParam();
+
+        this.categories = APP_SETTINGS.categories;
     }
     ngOnInit() { }
 

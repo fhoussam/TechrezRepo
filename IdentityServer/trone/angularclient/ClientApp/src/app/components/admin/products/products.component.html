@@ -10,13 +10,17 @@
     </td>
   </tr>
   <tr>
-    <td style="background-color:red;height:200px;">
+    <td style="background-color:red;height:200px;" *ngIf="searchResult.length > 0">
       <list [products]="searchResult"></list>
     </td>
   </tr>
   <tr>
     <td style="background-color:yellow;height:180px;">
-      <explore></explore>
+      <ul>
+        <li><a [routerLink]="['details']" skipLocationChange queryParamsHandling="preserve">Details</a></li>
+        <li><a [routerLink]="['orders']" skipLocationChange queryParamsHandling="preserve">Orders</a></li>
+        <router-outlet></router-outlet>
+      </ul>
     </td>
   </tr>
 </table>

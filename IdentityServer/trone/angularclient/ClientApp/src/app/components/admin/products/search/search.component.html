@@ -1,1 +1,9 @@
-<p>search works!</p>
+<form>
+  <input type="text" [(ngModel)]="searchParams.description" name="description">
+  <br />
+  <select [(ngModel)]="searchParams.categoryId" name="categoryId">
+    <option *ngFor="let category of categories" value="{{category.code}}">{{category.description}}</option>
+  </select>
+  <br /><br /><br />
+  <button (click)="search()">Search</button>
+</form>

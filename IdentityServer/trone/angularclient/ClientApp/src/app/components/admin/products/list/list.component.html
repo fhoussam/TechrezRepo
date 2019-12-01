@@ -1,4 +1,4 @@
-<table border="1">
+<table border="1" *ngIf="products">
   <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItemCode) ? 'grey' : 'inherit' }">
     <td>{{ product.code }}</td>
     <td>{{ product.description }}</td>
