@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\helpers\custom-url-serializer.ts" />
     <None Remove="ClientApp\src\app\models\adminProductEdit.ts" />
     <None Remove="ClientApp\src\app\models\adminProductListItem.ts" />
     <None Remove="ClientApp\src\app\models\appState.ts" />
@@ -37,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\helpers\custom-url-serializer.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\adminProductEdit.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\adminProductListItem.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\appState.ts" />

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Injector, NgZone } from '@angular/core';
 import { adminProductListItem } from '../../../models/adminProductListItem';
 import { ProductEventEmitterService } from '../../../services/product-event-emitter.service';
-import { propertyToUrl, urlToProperty, urlToList } from "query-string-params";
 import { Router, NavigationExtras } from '@angular/router';
 
 @Component({

@@ -9,7 +9,7 @@ import { UsersComponent } from './components/admin/users/users.component';
 import { OrdersComponent as TechrezuserOrdersComponent } from './components/techrezuser/orders/orders.component';
 import { OrdersComponent as AdminOrdersComponent } from './components/admin/products/orders/orders.component';
 import { EditDetailsComponent } from './components/admin/products/editDetails/editDetails.component';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, UrlSerializer } from '@angular/router';
 import { SearchComponent } from './components/admin/products/search/search.component';
 import { ListComponent } from './components/admin/products/list/list.component';
 import { PagenotfoundComponent } from './components/shared/pagenotfound/pagenotfound.component';
@@ -30,6 +30,7 @@ import { AuthService } from './services/auth.service';
 import { HomeComponent } from './components/shared/home/home.component';
 
 import { FormsModule } from '@angular/forms';
+import { CustomUrlSerializer } from './helpers/custom-url-serializer';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
@@ -86,7 +87,8 @@ const approutes: Routes = [
         AppInitService,
         AuthGuardService,
         AuthService,
-        { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppInitService], multi: true }
+        { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppInitService], multi: true },
+        { provide: UrlSerializer, useClass: CustomUrlSerializer },
     ],
     bootstrap: [AppComponent]
 })
