@@ -24,18 +24,6 @@ export class EditDetailsComponent implements OnInit {
     ) {
         //let id: string = this.route.snapshot.paramMap.get('id');
         this.productEventEmitter.cast.subscribe(selectedItem => this.selectedItem = selectedItem);
-
-        //to refactor
-        let searchParams: any = urlToProperty(location.search);
-        searchParams.st = "details";
-        let queryString: string = propertyToUrl(searchParams);
-        this.router.navigate(["/admin/products/" + searchParams.st], { queryParams: searchParams })
-            .then(() => {
-                let url: string = "/admin/products?" + queryString;
-                this._location.replaceState(url);
-            }).catch(navResult => {
-                console.log("fail : " + navResult);
-            });
     }
 
     ngOnInit() { }

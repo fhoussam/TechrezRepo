@@ -60,19 +60,7 @@ export class ListComponent implements OnInit {
         let searchParams: any = urlToProperty(location.search);
         searchParams.si = selectedItem.code;
         let queryString: string = propertyToUrl(searchParams);
-
-        let tab: string = "details";
-        if (searchParams.st)
-            tab = searchParams.st;
-
-            //what a fkn headache !
-        this.router.navigate(["/admin/products/" + tab], { queryParams: searchParams })
-            .then(navResult => {
-                //console.log('success : ' + navResult);
-                let url: string = "/admin/products?" + queryString;
-                this.location.replaceState(url);
-            }).catch(navResult => {
-                console.log("fail : " + navResult);
-            });
+        var st = searchParams.st != null ? searchParams.st : "details";
+        this.router.navigateByUrl("/admin/products/" + st + "?" + queryString);
     }
 }
