@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using angularclient.DbAccess;
+using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Mvc;
 
 namespace angularclient.Controllers
@@ -12,12 +13,13 @@ namespace angularclient.Controllers
         where TRepository : IRepository<TEntity>
     {
         private readonly TRepository repository;
+        protected HostingEnvironment _hostingEnvironment;
 
-        public TechRezBaseRepoController(TRepository repository)
+        public TechRezBaseRepoController(TRepository repository, HostingEnvironment hostingEnvironment)
         {
             this.repository = repository;
+            this._hostingEnvironment = hostingEnvironment;
         }
-
 
         // GET: api/[controller]
         [HttpGet]

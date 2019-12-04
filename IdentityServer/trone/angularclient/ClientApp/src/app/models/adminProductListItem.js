@@ -4,6 +4,7 @@ var adminProductListItem = /** @class */ (function () {
     function adminProductListItem() {
         this.code = '';
         this.description = '';
+        this.photoUrl = '';
         this.quantity = 0;
         this.price = 0;
         this.categoryId = 0;

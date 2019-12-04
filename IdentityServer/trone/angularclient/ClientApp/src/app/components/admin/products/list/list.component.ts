@@ -34,6 +34,8 @@ export class ListComponent implements OnInit {
     };
 
     selectedItemCode: string;
+    selectedItemPhotoUrl: string;
+
     constructor(
         private router: Router,
         private productEventEmitter: ProductEventEmitterService,
@@ -49,7 +51,10 @@ export class ListComponent implements OnInit {
     selectItem(selectedItem: adminProductListItem) {
 
         this.ngRedux.dispatch({ type: OPEN_PRODUCT });
+
         this.selectedItemCode = selectedItem.code;
+        this.selectedItemPhotoUrl = "http://localhost:5001/api/product/images/" + selectedItem.photoUrl;
+
         this.productEventEmitter.sendSelectedItem(selectedItem);
 
         let searchParams: any = urlToProperty(location.search);

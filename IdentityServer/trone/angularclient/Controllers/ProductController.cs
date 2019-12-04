@@ -2,6 +2,7 @@
 using angularclient.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -13,9 +14,21 @@ namespace angularclient.Controllers
     public class ProductController : TechRezBaseRepoController<Product, ProductRepository>
     {
         private ProductRepository _productRepository;
-        public ProductController(ProductRepository repository) : base(repository)
+        private HostingEnvironment _hostingEnvironment;
+
+        [HttpGet]
+        [Route("images/{category}/{imageName}")]
+        public IActionResult GetRandomImage(string category, string imageName) 
+        {
+            string directory = System.IO.Directory.GetParent(_hostingEnvironment.ContentRootPath).ToString() + "\\Product_Photos\\";
+            var image = System.IO.File.OpenRead(directory + category + "\\" + imageName);
+            return File(image, "image/jpeg"); //uising a FileStreamResult
+        }
+
+        public ProductController(ProductRepository repository, HostingEnvironment hostingEnvironment) : base(repository, hostingEnvironment)
         {
             this._productRepository = repository;
+            this._hostingEnvironment = hostingEnvironment;
         }
 
         [Route("categories")]
