@@ -3,4 +3,7 @@ export class adminProductEdit {
     description: string;
     quantity: number;
     price: number;
+    categoryId: number;
+
+    constructor() {}
 }

@@ -1,3 +1,17 @@
-<p>details works!</p>
-<p>{{selectedItem.description}}</p>
+<p *ngIf="selectedItem">Editing details of : {{selectedItem.description}}</p>
+
+Description<input type="text" [(ngModel)]="product.description" />
+<br />
+Price<input type="text" [(ngModel)]="product.price" />
+<br />
+Qauntity<input type="text" [(ngModel)]="product.quantity" />
+<br />
+Category
+<select [(ngModel)]="product.categoryId">
+  <option *ngFor="let category of categories" value="{{category.code}}">{{category.description}}</option>
+</select>
+<br />
+Photo<input type="file" (change)="fileSelected($event)"/>
+<br />
 <button (click)="saveChanges()">Save Changes</button>
+<br />

@@ -2,7 +2,7 @@
   <tr>
     <td>
       <table border="1" *ngIf="products">
-        <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItemCode) ? 'grey' : 'inherit' }">
+        <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItem.code) ? 'grey' : 'inherit' }">
           <td>{{ product.code }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.quantity }}</td>
@@ -12,7 +12,7 @@
       </table>
     </td>
     <td style="background-color:white">
-      <img *ngIf="selectedItemPhotoUrl" [src]="selectedItemPhotoUrl" width="300" height="150" />
+      <img *ngIf="selectedItem" [src]="'http://localhost:5001/api/product/images/' + selectedItem.photoUrl" width="300" height="150" />
     </td>
   </tr>
 </table>

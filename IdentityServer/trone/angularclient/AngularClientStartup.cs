@@ -117,8 +117,8 @@ namespace angularclient
             {
                 options.Filters.Add(new CustomAntiForgeryAttributeAttribute());
             })
-            //why are we using this ?
-            //.SetCompatibilityVersion(CompatibilityVersion.Version_2_0)
+            //why are we using this ? (we needed that to eliminate 400 http error in file upload)
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
             ;
 
             // In production, the Angular files will be served from this directory
