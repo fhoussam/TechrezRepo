@@ -31,6 +31,7 @@ import { HomeComponent } from './components/shared/home/home.component';
 
 import { FormsModule } from '@angular/forms';
 import { CustomUrlSerializer } from './helpers/custom-url-serializer';
+import { DatePipe } from '@angular/common';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
@@ -89,6 +90,7 @@ const approutes: Routes = [
         AuthService,
         { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppInitService], multi: true },
         { provide: UrlSerializer, useClass: CustomUrlSerializer },
+        DatePipe,
     ],
     bootstrap: [AppComponent]
 })

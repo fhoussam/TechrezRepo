@@ -1,24 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("./constants");
 exports.INITIAL_STATE = {
-    lastOperationTimeStamp: null,
+    operations: [],
 };
 function rootReducer(state, action) {
-    switch (action.type) {
-        case constants_1.SEARCH_PRODUCT:
-            return Object.assign({}, state, {
-                lastOperationTimeStamp: new Date()
-            });
-        case constants_1.SAVE_PRODUCT:
-            return Object.assign({}, state, {
-                lastOperationTimeStamp: new Date()
-            });
-        case constants_1.OPEN_PRODUCT:
-            return Object.assign({}, state, {
-                lastOperationTimeStamp: new Date()
-            });
-    }
+    action.operation = new Operation();
+    action.operation.user = 'Current User';
+    action.operation.datetime = new Date();
+    action.operation.type = action.type;
+    var result = Object.assign({}, state, {
+        operations: state.operations
+            .concat(Object.assign({}, action.operation))
+            .sort(function (a, b) {
+            return b.datetime.getTime() - a.datetime.getTime();
+        })
+    });
+    return result;
 }
 exports.rootReducer = rootReducer;
+var Operation = /** @class */ (function () {
+    function Operation() {
+        this.user = '';
+        this.datetime = null;
+        this.type = null;
+    }
+    return Operation;
+}());
+exports.Operation = Operation;
 //# sourceMappingURL=appState.js.map
