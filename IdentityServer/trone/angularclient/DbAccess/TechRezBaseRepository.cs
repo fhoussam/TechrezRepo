@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 
 namespace angularclient.DbAccess
 {
@@ -30,6 +31,7 @@ namespace angularclient.DbAccess
         }
         public async Task<TEntity> Add(TEntity entity)
         {
+            entity.Code = Guid.NewGuid().ToString();
             context.Set<TEntity>().Add(entity);
             await context.SaveChangesAsync();
             return entity;

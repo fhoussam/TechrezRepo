@@ -4,27 +4,27 @@ exports.INITIAL_STATE = {
     operations: [],
 };
 function rootReducer(state, action) {
-    action.operation = new Operation();
-    action.operation.user = 'Current User';
-    action.operation.datetime = new Date();
-    action.operation.type = action.type;
+    action.feed = new Feed();
+    action.feed.userName = 'Current User';
+    action.feed.dateTimeStamp = new Date();
+    action.feed.operationType = action.type;
     var result = Object.assign({}, state, {
         operations: state.operations
-            .concat(Object.assign({}, action.operation))
+            .concat(Object.assign({}, action.feed))
             .sort(function (a, b) {
-            return b.datetime.getTime() - a.datetime.getTime();
+            return b.dateTimeStamp.getTime() - a.dateTimeStamp.getTime();
         })
     });
     return result;
 }
 exports.rootReducer = rootReducer;
-var Operation = /** @class */ (function () {
-    function Operation() {
-        this.user = '';
-        this.datetime = null;
-        this.type = null;
+var Feed = /** @class */ (function () {
+    function Feed() {
+        this.userName = '';
+        this.dateTimeStamp = null;
+        this.operationType = null;
     }
-    return Operation;
+    return Feed;
 }());
-exports.Operation = Operation;
+exports.Feed = Feed;
 //# sourceMappingURL=appState.js.map
