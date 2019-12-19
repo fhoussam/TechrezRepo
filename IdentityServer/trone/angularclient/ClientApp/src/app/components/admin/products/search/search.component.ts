@@ -1,7 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../../../services/product.service';
-import { NgRedux, select } from '@angular-redux/store';
-import { IAppState } from '../../../../models/appState';
 import { SEARCH_PRODUCT } from '../../../../models/constants';
 import { category } from '../../../../models/category';
 import { APP_SETTINGS } from '../../../../models/APP_SETTINGS';
@@ -22,7 +20,6 @@ export class SearchComponent implements OnInit {
 
     constructor(
         private productService: ProductService,
-        private ngRedux: NgRedux<IAppState>,
     ) {
         if (location.search) {
             this.searchParams = urlToProperty(location.search);
@@ -41,7 +38,6 @@ export class SearchComponent implements OnInit {
         this.productService.getProducts().subscribe(data => {
             let x: any = data;
             this.searchResultEmitter.emit(x);
-            this.ngRedux.dispatch({ type: SEARCH_PRODUCT });
         });
     }
 }

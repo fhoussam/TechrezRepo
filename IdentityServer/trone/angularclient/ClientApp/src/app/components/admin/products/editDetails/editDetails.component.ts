@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { adminProductListItem } from '../../../../models/adminProductListItem';
 import { ProductEventEmitterService } from '../../../../services/product-event-emitter.service';
-import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../../models/appState';
 import { SAVE_PRODUCT } from '../../../../models/constants';
 import { propertyToUrl, urlToProperty, urlToList } from "query-string-params";
 import { Location } from '@angular/common';
@@ -31,7 +29,6 @@ export class EditDetailsComponent implements OnInit {
 
     constructor(
         private productEventEmitter: ProductEventEmitterService,
-        private ngRedux: NgRedux<IAppState>,
         private productService: ProductService,
     ) {
         this.categories = APP_SETTINGS.categories;
@@ -57,7 +54,6 @@ export class EditDetailsComponent implements OnInit {
             if (resp.path) this.selectedItem.photoUrl = resp.path;
             this.selectedItem.categoryId = this.product.categoryId;
             this.selectedItem.quantity = this.product.quantity;
-            this.ngRedux.dispatch({ type: SAVE_PRODUCT });
         });
     }
 }

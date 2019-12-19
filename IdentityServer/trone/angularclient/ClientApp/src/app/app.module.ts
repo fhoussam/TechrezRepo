@@ -21,8 +21,6 @@ import { ProductEventEmitterService } from './services/product-event-emitter.ser
 import { AppInitService } from './services/app-init.service';
 import { CategoryPipe } from './pipes/category.pipe';
 
-import { IAppState, rootReducer, INITIAL_STATE } from './models/appState';
-import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { FeedComponent } from './components/shared/feed/feed.component';
 
 import { AuthGuardService } from './services/auth-guard.service';
@@ -79,7 +77,6 @@ const approutes: Routes = [
         AppRoutingModule,
         RouterModule.forRoot(approutes),
         HttpClientModule,
-        NgReduxModule,
         FormsModule,
     ],
     providers: [
@@ -95,7 +92,6 @@ const approutes: Routes = [
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(ngRedux: NgRedux<IAppState>) {
-        ngRedux.configureStore(rootReducer, INITIAL_STATE);
+    constructor() {
     }
 }

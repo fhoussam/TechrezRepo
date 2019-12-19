@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { adminProductListItem } from '../models/adminProductListItem';
-import { adminProductEdit } from '../models/adminProductEdit';
-import { Feed } from '../models/appState';
+import { Feed } from '../models/Feed';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +12,7 @@ export class FeedService {
     url: string = 'http://localhost:5001/api/feed';
 
     getAll() {
-        return this.http.get<adminProductListItem[]>(this.url);
+        return this.http.get<Feed[]>(this.url);
     }
 
     add(feed: Feed) {

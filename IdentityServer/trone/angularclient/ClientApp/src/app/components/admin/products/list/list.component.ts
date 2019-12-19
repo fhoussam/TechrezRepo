@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { adminProductListItem } from '../../../../models/adminProductListItem';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductEventEmitterService } from '../../../../services/product-event-emitter.service';
-import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../../models/appState';
 import { OPEN_PRODUCT } from '../../../../models/constants';
 import { propertyToUrl, urlToProperty, urlToList } from "query-string-params";
 import { Location } from '@angular/common';
@@ -38,7 +36,6 @@ export class ListComponent implements OnInit {
     constructor(
         private router: Router,
         private productEventEmitter: ProductEventEmitterService,
-        private ngRedux: NgRedux<IAppState>,
         private location: Location,
     ) {
 
@@ -50,11 +47,7 @@ export class ListComponent implements OnInit {
     selectItem(selectedItem: adminProductListItem) {
 
         this.selectedItem = selectedItem;
-
-        this.ngRedux.dispatch({ type: OPEN_PRODUCT });
-
         this.productEventEmitter.sendSelectedItem(selectedItem);
-
         let searchParams: any = urlToProperty(location.search);
         searchParams.si = selectedItem.code;
         let queryString: string = propertyToUrl(searchParams);

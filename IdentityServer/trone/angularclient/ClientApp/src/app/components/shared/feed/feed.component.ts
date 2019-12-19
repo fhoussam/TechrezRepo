@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { select } from '@angular-redux/store';
-import { Feed } from '../../../models/appState';
-import { OPEN_PRODUCT, SEARCH_PRODUCT, SAVE_PRODUCT } from '../../../models/constants';
 import { DatePipe } from '@angular/common';
+import { Feed } from '../../../models/Feed';
+import { FeedService } from '../../../services/feed.service';
 
 @Component({
     selector: 'app-feed',
@@ -11,29 +10,31 @@ import { DatePipe } from '@angular/common';
 })
 export class FeedComponent implements OnInit {
 
-    @select() operations;
-    constructor(private datePipe: DatePipe) { }
+    feeds: Feed[];
 
-    getOperationText(operation: Feed) {
+    constructor(private datePipe: DatePipe, private feedService: FeedService) {
+        feedService.getAll().subscribe((feeds) => {
+            console.log(feeds);
+            this.feeds = feeds; 
+        });
+    }
 
-        //console.log(operation.type);
-
+    getOperationText(feed: Feed) {
         var action = 'has done something';
-        switch (operation.operationType) {
-            case OPEN_PRODUCT:
+        switch (feed.operationType) {
+            case 'OPEN_PRODUCT':
                 action = 'has opened a product';
                 break;
-            case SEARCH_PRODUCT:
+            case 'SEARCH_PRODUCT':
                 action = 'has searched for a product';
                 break;
-            case SAVE_PRODUCT:
+            case 'SAVE_PRODUCT':
                 action = 'has updated a product';
                 break;
         }
-        return operation.userName + ' ' + action + ' at ' + this.datePipe.transform(operation.dateTimeStamp, 'hh:mm:ss'); 
+        return feed.userName + ' ' + action + ' at ' + this.datePipe.transform(feed.dateTimeStamp, 'hh:mm:ss'); 
     }
 
     ngOnInit() {
     }
-
 }
