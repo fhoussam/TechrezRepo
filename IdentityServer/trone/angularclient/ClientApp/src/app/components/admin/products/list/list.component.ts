@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProductEventEmitterService } from '../../../../services/product-event-emitter.service';
 import { OPEN_PRODUCT } from '../../../../models/constants';
 import { propertyToUrl, urlToProperty, urlToList } from "query-string-params";
-import { Location } from '@angular/common';
+import { FeedService } from '../../../../services/feed.service';
 
 @Component({
     selector: 'list',
@@ -36,7 +36,7 @@ export class ListComponent implements OnInit {
     constructor(
         private router: Router,
         private productEventEmitter: ProductEventEmitterService,
-        private location: Location,
+        private feedService: FeedService,
     ) {
 
     }
@@ -45,13 +45,14 @@ export class ListComponent implements OnInit {
     }
 
     selectItem(selectedItem: adminProductListItem) {
-
         this.selectedItem = selectedItem;
         this.productEventEmitter.sendSelectedItem(selectedItem);
         let searchParams: any = urlToProperty(location.search);
         searchParams.si = selectedItem.code;
         let queryString: string = propertyToUrl(searchParams);
         var st = searchParams.st != null ? searchParams.st : "details";
-        this.router.navigateByUrl("/admin/products/" + st + "?" + queryString);
+        this.router.navigateByUrl("/admin/products/" + st + "?" + queryString).then(() => {
+            this.feedService.add(OPEN_PRODUCT);
+        });
     }
 }

@@ -35,6 +35,8 @@
     <None Remove="ClientApp\src\app\models\constants.ts" />
     <None Remove="ClientApp\src\app\models\Feed.ts" />
     <None Remove="ClientApp\src\app\models\productSearchParam.ts" />
+    <None Remove="ClientApp\src\app\Redux\feed.reducer.ts" />
+    <None Remove="ClientApp\src\app\Redux\Feed\feeds.actions.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +48,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\constants.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\Feed.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\productSearchParam.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Redux\Feed\feed.reducer.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Redux\Feed\feeds.actions.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

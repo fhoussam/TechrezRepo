@@ -13,5 +13,10 @@ namespace angularclient.DbAccess
         {
             this._context = context;
         }
+
+        public override async Task<List<Feed>> GetAll()
+        {
+            return await _context.Set<Feed>().OrderByDescending(x=> x.DateTimeStamp).Take(10).ToListAsync();
+        }
     }
 }

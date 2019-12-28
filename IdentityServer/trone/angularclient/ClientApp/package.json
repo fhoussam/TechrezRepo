@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ngrx/store": "^8.6.0",
     "@whaaaley/query-string": "^0.2.0",
     "easy-query-string": "^2.0.2",
     "query-string-params": "^1.7.5",

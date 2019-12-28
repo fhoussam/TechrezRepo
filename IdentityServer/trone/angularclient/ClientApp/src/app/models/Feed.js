@@ -1,10 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Feed = /** @class */ (function () {
-    function Feed() {
-        this.userName = '';
-        this.dateTimeStamp = null;
-        this.operationType = null;
+    //constructor() {
+    //    this.userName = '';
+    //    this.dateTimeStamp = null;
+    //    this.operationType = null;
+    //}
+    function Feed(userName, dateTimeStamp, operationType) {
+        this.userName = userName;
+        this.dateTimeStamp = dateTimeStamp;
+        this.operationType = operationType;
     }
     return Feed;
 }());

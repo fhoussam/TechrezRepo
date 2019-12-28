@@ -31,6 +31,9 @@ import { FormsModule } from '@angular/forms';
 import { CustomUrlSerializer } from './helpers/custom-url-serializer';
 import { DatePipe } from '@angular/common';
 
+import { StoreModule } from '@ngrx/store';
+import { feedReducer } from './Redux/Feed/feed.reducer';
+
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
 }
@@ -78,6 +81,7 @@ const approutes: Routes = [
         RouterModule.forRoot(approutes),
         HttpClientModule,
         FormsModule,
+        StoreModule.forRoot({ feeds: feedReducer})
     ],
     providers: [
         ProductService,

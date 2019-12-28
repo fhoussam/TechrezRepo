@@ -10,6 +10,7 @@ import { adminProductEdit } from '../../../../models/adminProductEdit';
 import { category } from '../../../../models/category';
 import { APP_SETTINGS } from '../../../../models/APP_SETTINGS';
 import { ProductService } from '../../../../services/product.service';
+import { FeedService } from '../../../../services/feed.service';
 
 @Component({
     selector: 'app-details',
@@ -30,6 +31,7 @@ export class EditDetailsComponent implements OnInit {
     constructor(
         private productEventEmitter: ProductEventEmitterService,
         private productService: ProductService,
+        private feedService: FeedService
     ) {
         this.categories = APP_SETTINGS.categories;
         this.selectedItem = new adminProductListItem();
@@ -54,6 +56,7 @@ export class EditDetailsComponent implements OnInit {
             if (resp.path) this.selectedItem.photoUrl = resp.path;
             this.selectedItem.categoryId = this.product.categoryId;
             this.selectedItem.quantity = this.product.quantity;
+            this.feedService.add(SAVE_PRODUCT);
         });
     }
 }

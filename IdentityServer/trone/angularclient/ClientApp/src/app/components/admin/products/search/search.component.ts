@@ -5,6 +5,7 @@ import { category } from '../../../../models/category';
 import { APP_SETTINGS } from '../../../../models/APP_SETTINGS';
 import { productSearchParam } from '../../../../models/productSearchParam';
 import { urlToProperty } from "query-string-params";
+import { FeedService } from '../../../../services/feed.service';
 
 @Component({
     selector: 'search',
@@ -16,10 +17,10 @@ export class SearchComponent implements OnInit {
     @Output() searchResultEmitter = new EventEmitter();
     categoryId: string;
     categories: category[];
-    searchParams: productSearchParam;
-
+    searchParams: productSearchParam
     constructor(
         private productService: ProductService,
+        private feedService: FeedService,
     ) {
         if (location.search) {
             this.searchParams = urlToProperty(location.search);
@@ -38,6 +39,7 @@ export class SearchComponent implements OnInit {
         this.productService.getProducts().subscribe(data => {
             let x: any = data;
             this.searchResultEmitter.emit(x);
+            this.feedService.add(SEARCH_PRODUCT);
         });
     }
 }

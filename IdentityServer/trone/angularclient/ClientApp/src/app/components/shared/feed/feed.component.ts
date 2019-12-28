@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Feed } from '../../../models/Feed';
-import { FeedService } from '../../../services/feed.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { OPEN_PRODUCT, SEARCH_PRODUCT, SAVE_PRODUCT } from '../../../models/constants';
 
 @Component({
     selector: 'app-feed',
@@ -10,25 +12,25 @@ import { FeedService } from '../../../services/feed.service';
 })
 export class FeedComponent implements OnInit {
 
-    feeds: Feed[];
+    feeds: Observable<{ feeds: Feed[] }>;
 
-    constructor(private datePipe: DatePipe, private feedService: FeedService) {
-        feedService.getAll().subscribe((feeds) => {
-            console.log(feeds);
-            this.feeds = feeds; 
-        });
+    constructor(
+        private datePipe: DatePipe,
+        private feedStore: Store<{ feeds: { feeds: Feed[] }}>
+    ) {
+        this.feeds = this.feedStore.select('feeds');
     }
 
     getOperationText(feed: Feed) {
-        var action = 'has done something';
+        let action : string = '';
         switch (feed.operationType) {
-            case 'OPEN_PRODUCT':
+            case OPEN_PRODUCT:
                 action = 'has opened a product';
                 break;
-            case 'SEARCH_PRODUCT':
+            case SEARCH_PRODUCT:
                 action = 'has searched for a product';
                 break;
-            case 'SAVE_PRODUCT':
+            case SAVE_PRODUCT:
                 action = 'has updated a product';
                 break;
         }

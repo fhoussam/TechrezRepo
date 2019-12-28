@@ -56,7 +56,7 @@ namespace angularclient.DbAccess
             return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public virtual async Task<List<TEntity>> GetAll()
         {
             return await context.Set<TEntity>().Take(10).ToListAsync();
         }

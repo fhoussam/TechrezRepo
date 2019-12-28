@@ -7,15 +7,16 @@ import { adminProductEdit } from '../models/adminProductEdit';
   providedIn: 'root'
 })
 export class ProductService {
-
     
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+    ) { }
 
     getProducts() {
         return this.http.get<adminProductListItem[]>('http://localhost:5001/api/product');
     }
 
-    save(productFormData : adminProductEdit, productImage : File) {
+    save(productFormData: adminProductEdit, productImage: File) {
         const fd = new FormData();
         if (productImage) fd.append("productImage", productImage, productImage.name);
         fd.append("productData", JSON.stringify(productFormData));
