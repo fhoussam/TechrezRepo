@@ -1,6 +1,10 @@
 import { Feed } from '../../models/Feed';
 import * as FeedActions from './feeds.actions';
 
+export interface AppState {
+    feeds: Feed[];
+}
+
 const initial_state = { feeds: [] }
 
 export function feedReducer(state = initial_state, action: FeedActions.FeedAction) {
