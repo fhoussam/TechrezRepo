@@ -1,5 +1,5 @@
-<div style="max-height:500px; overflow-y:scroll;">
-  <div *ngFor="let feed of (feeds | async).feeds">
+<cdk-virtual-scroll-viewport itemSize="50" class="container">
+  <div *cdkVirtualFor="let feed of (feeds | async).feeds" class="feed">
     <p>{{getOperationText(feed)}}</p>
   </div>
-</div>
+</cdk-virtual-scroll-viewport>

@@ -34,6 +34,8 @@ import { DatePipe } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { feedReducer } from './Redux/Feed/feed.reducer';
 
+import { ScrollingModule } from '@angular/cdk/scrolling'
+
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
 }
@@ -81,7 +83,8 @@ const approutes: Routes = [
         RouterModule.forRoot(approutes),
         HttpClientModule,
         FormsModule,
-        StoreModule.forRoot({ feeds: feedReducer})
+        StoreModule.forRoot({ feeds: feedReducer }),
+        ScrollingModule,
     ],
     providers: [
         ProductService,

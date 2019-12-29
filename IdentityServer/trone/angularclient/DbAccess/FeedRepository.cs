@@ -16,7 +16,7 @@ namespace angularclient.DbAccess
 
         public override async Task<List<Feed>> GetAll()
         {
-            return await _context.Set<Feed>().OrderByDescending(x=> x.DateTimeStamp).Take(10).ToListAsync();
+            return await _context.Set<Feed>().OrderByDescending(x=> x.DateTimeStamp).Take(200).ToListAsync();
         }
     }
 }
