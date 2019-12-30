@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Feed } from '../models/Feed';
 import { Store } from '@ngrx/store';
 import { AppState } from '../Redux/Feed/feed.reducer';
@@ -16,8 +16,14 @@ export class FeedService {
     ) { }
     url: string = 'http://localhost:5001/api/feed';
 
-    getAll() {
-        return this.http.get<Feed[]>(this.url);
+    //to refactor
+    getAll(lastSeen: string = null) {
+        if (lastSeen) {
+            let params = new HttpParams().set("lastSeen", lastSeen);
+            return this.http.get<Feed[]>(this.url, { params: params });
+        }
+        else
+            return this.http.get<Feed[]>(this.url);
     }
 
     add(operationType: string) {

@@ -1,5 +1,7 @@
-<cdk-virtual-scroll-viewport itemSize="50" class="container">
-  <div *cdkVirtualFor="let feed of (feeds | async).feeds" class="feed">
-    <p>{{getOperationText(feed)}}</p>
-  </div>
-</cdk-virtual-scroll-viewport>
+<div *ngIf="feeds">
+  <cdk-virtual-scroll-viewport itemSize="50" class="container" (scrolledIndexChange)="nextBatch($event, feeds[feeds.length-1].code)">
+    <div *cdkVirtualFor="let feed of feeds" class="feed">
+      <p>{{getOperationText(feed)}}</p>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

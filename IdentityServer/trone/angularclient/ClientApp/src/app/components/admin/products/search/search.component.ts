@@ -39,7 +39,7 @@ export class SearchComponent implements OnInit {
         this.productService.getProducts().subscribe(data => {
             let x: any = data;
             this.searchResultEmitter.emit(x);
-            this.feedService.add(SEARCH_PRODUCT);
+            //this.feedService.add(SEARCH_PRODUCT);
         });
     }
 }
