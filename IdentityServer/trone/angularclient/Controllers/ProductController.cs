@@ -2,7 +2,7 @@
 using angularclient.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -33,7 +33,7 @@ namespace angularclient.Controllers
     public class ProductController : TechRezBaseRepoController<Product, ProductRepository>
     {
         private ProductRepository _productRepository;
-        private HostingEnvironment _hostingEnvironment;
+        protected IWebHostEnvironment _webHostEnvironment;
 
         [HttpPost]
         [Route("save")]
@@ -61,7 +61,7 @@ namespace angularclient.Controllers
                     ? product.PhotoUrl.Replace(".jpg", "_" + DateTime.Now.ToString(format) + ".jpg")
                     : product.PhotoUrl.Replace(parsedDate.ToString(format), timestamp);
 
-                string filePath = Directory.GetParent(_hostingEnvironment.ContentRootPath)
+                string filePath = Directory.GetParent(_webHostEnvironment.ContentRootPath)
                     .ToString() + "\\Product_Photos\\" + newUrl.Replace("/", "\\");
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
@@ -84,15 +84,15 @@ namespace angularclient.Controllers
         [Route("images/{category}/{imageName}")]
         public IActionResult getimage(string category, string imageName)
         {
-            string directory = System.IO.Directory.GetParent(_hostingEnvironment.ContentRootPath).ToString() + "\\Product_Photos\\";
+            string directory = System.IO.Directory.GetParent(_webHostEnvironment.ContentRootPath).ToString() + "\\Product_Photos\\";
             var image = System.IO.File.OpenRead(directory + category + "\\" + imageName);
             return File(image, "image/jpeg"); //uising a FileStreamResult
         }
 
-        public ProductController(ProductRepository repository, HostingEnvironment hostingEnvironment) : base(repository, hostingEnvironment)
+        public ProductController(ProductRepository repository, IWebHostEnvironment webHostEnvironment) : base(repository, webHostEnvironment)
         {
             this._productRepository = repository;
-            this._hostingEnvironment = hostingEnvironment;
+            this._webHostEnvironment = webHostEnvironment;
         }
 
         [Route("categories")]

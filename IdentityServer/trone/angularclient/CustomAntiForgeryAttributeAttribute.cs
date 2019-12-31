@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
 using System;
 
 namespace angularclient
@@ -24,7 +23,8 @@ namespace angularclient
 
             public void OnResourceExecuted(ResourceExecutedContext context)
             {
-                bool isJwtClient = ((HttpRequestHeaders)context.HttpContext.Request.Headers).HeaderAuthorization.ToString().StartsWith("Bearer ");
+                //bool isJwtClient = ((HttpRequestHeaders)context.HttpContext.Request.Headers).HeaderAuthorization.ToString().StartsWith("Bearer ");
+                bool isJwtClient = true;
                 bool isChallengeRequest = context.HttpContext.Request.Path == "/Default/ChallengeUser";
                 if (!isJwtClient && !isChallengeRequest)
                 {

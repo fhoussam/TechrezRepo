@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using angularclient.Models;
 using angularclient.DbAccess;
+using Microsoft.Extensions.Hosting;
 
 namespace angularclient
 {
@@ -116,10 +117,10 @@ namespace angularclient
             services.AddMvc(options =>
             {
                 options.Filters.Add(new CustomAntiForgeryAttributeAttribute());
+                options.EnableEndpointRouting = true;
             })
             //why are we using this ? (we needed that to eliminate 400 http error in file upload)
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-            ;
+            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -130,9 +131,7 @@ namespace angularclient
             services.AddScoped<ProductRepository>();
             services.AddScoped<FeedRepository>();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -141,41 +140,40 @@ namespace angularclient
             else
             {
                 app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            if (!env.IsDevelopment())
+            {
+                app.UseSpaStaticFiles();
+            }
 
             app.UseAuthentication();
 
-            app.UseCors(o =>
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
             {
-                o.AllowAnyHeader();
-                o.AllowAnyMethod();
-                o.AllowAnyOrigin();
-                o.AllowCredentials();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            app.MapWhen(x => x.Request.Path.Value.StartsWith("/api"), builder =>
+            app.UseSpa(spa =>
             {
-                app.UseMvcWithDefaultRoute();
-            });
+                // To learn more about options for serving an Angular SPA from ASP.NET Core,
+                // see https://go.microsoft.com/fwlink/?linkid=864501
 
-            app.MapWhen(x => !x.Request.Path.Value.StartsWith("/api"), builder =>
-            {
-                app.UseSpa(spa =>
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
                 {
-                    // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                    // see https://go.microsoft.com/fwlink/?linkid=864501
-
-                    spa.Options.SourcePath = "ClientApp";
-
-                    if (env.IsDevelopment())
-                    {
-                        spa.UseAngularCliServer(npmScript: "start");
-                    }
-                });
-            });;
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
         }
     }
 }

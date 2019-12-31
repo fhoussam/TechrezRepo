@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using angularclient.DbAccess;
 using angularclient.Models;
-using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace angularclient.Controllers
@@ -14,12 +14,12 @@ namespace angularclient.Controllers
     public class FeedController : ControllerBase
     {
         private FeedRepository _feedRepository;
-        private HostingEnvironment _hostingEnvironment;
+        private IWebHostEnvironment _webHostEnvironment;
 
-        public FeedController(FeedRepository repository, HostingEnvironment hostingEnvironment) 
+        public FeedController(FeedRepository repository, IWebHostEnvironment webHostEnvironment) 
         {
             this._feedRepository = repository;
-            this._hostingEnvironment = hostingEnvironment;
+            this._webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/[controller]
