@@ -7,6 +7,7 @@ import { OPEN_PRODUCT, SEARCH_PRODUCT, SAVE_PRODUCT } from '../../../models/cons
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { throttleTime, mergeMap, scan, map, tap } from 'rxjs/operators';
 import { FeedService } from '../../../services/feed.service';
+import { AddFeeds } from '../../../Redux/Feed/feeds.actions';
 
 @Component({
     selector: 'app-feed',
@@ -25,17 +26,18 @@ export class FeedComponent implements OnInit {
         private feedService: FeedService,
         private feedStore: Store<{ feeds: { feeds: Feed[] } }>,
     ) {
-        //this.feedStore.select('feeds').subscribe(a => {
-        //    this.feeds = a.feeds;
-        //});
+        this.feedStore.select('feeds').subscribe(a => {
+            this.feeds = a.feeds;
+            //console.log(this.feeds.length);
+        });
 
         this.offset.pipe(
             throttleTime(1000),
             mergeMap(x => this.getBatch(x)),
-            map(x => Object.values(x))
+            map(x => Object.values(x)),
+            tap(x => this.theEnd = x.length == 0),
         ).subscribe((x: Feed[]) => {
-            this.feeds = [...this.feeds, ...x];
-            console.log("current feed length : " + this.feeds.length);
+            this.feedStore.dispatch(new AddFeeds(x))
         });
     }
 
@@ -68,7 +70,7 @@ export class FeedComponent implements OnInit {
                 action = 'has updated a product';
                 break;
         }
-        return feed.code + ' - ' + feed.userName + ' ' + action + ' at ' + this.datePipe.transform(feed.dateTimeStamp, 'hh:mm:ss');
+        return feed.userName + ' ' + action + ' at ' + this.datePipe.transform(feed.dateTimeStamp, 'hh:mm:ss');
     }
 
     ngOnInit() {

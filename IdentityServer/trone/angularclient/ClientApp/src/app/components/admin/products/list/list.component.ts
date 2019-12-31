@@ -52,7 +52,7 @@ export class ListComponent implements OnInit {
         let queryString: string = propertyToUrl(searchParams);
         var st = searchParams.st != null ? searchParams.st : "details";
         this.router.navigateByUrl("/admin/products/" + st + "?" + queryString).then(() => {
-           // this.feedService.add(OPEN_PRODUCT);
+            this.feedService.add(OPEN_PRODUCT);
         });
     }
 }

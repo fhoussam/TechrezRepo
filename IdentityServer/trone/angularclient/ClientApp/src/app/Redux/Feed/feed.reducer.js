@@ -25,8 +25,8 @@ function feedReducer(state, action) {
     switch (action.type) {
         case FeedActions.ADD_FEED:
             return __assign(__assign({}, state), { feeds: __spreadArrays([action.payload], state.feeds) });
-        case FeedActions.LOAD_FEEDS:
-            return __assign(__assign({}, state), { feeds: action.payload });
+        case FeedActions.ADD_FEEDS:
+            return __assign(__assign({}, state), { feeds: __spreadArrays(state.feeds, action.payload) });
         default:
             return state;
     }

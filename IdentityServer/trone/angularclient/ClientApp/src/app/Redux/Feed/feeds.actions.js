@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ADD_FEED = 'ADD_FEED';
-exports.LOAD_FEEDS = 'LOAD_FEEDS';
+exports.ADD_FEEDS = 'ADD_FEEDS';
 var AddFeed = /** @class */ (function () {
     function AddFeed(payload) {
         this.payload = payload;
@@ -10,12 +10,12 @@ var AddFeed = /** @class */ (function () {
     return AddFeed;
 }());
 exports.AddFeed = AddFeed;
-var LoadFeeds = /** @class */ (function () {
-    function LoadFeeds(payload) {
+var AddFeeds = /** @class */ (function () {
+    function AddFeeds(payload) {
         this.payload = payload;
-        this.type = exports.LOAD_FEEDS;
+        this.type = exports.ADD_FEEDS;
     }
-    return LoadFeeds;
+    return AddFeeds;
 }());
-exports.LoadFeeds = LoadFeeds;
+exports.AddFeeds = AddFeeds;
 //# sourceMappingURL=feeds.actions.js.map

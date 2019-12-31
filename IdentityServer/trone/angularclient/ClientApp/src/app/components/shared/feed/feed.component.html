@@ -1,7 +1,11 @@
-<div *ngIf="feeds != null && feeds.length > 0">
+<div *ngIf="feeds.length > 0">
   <cdk-virtual-scroll-viewport itemSize="50" class="container" (scrolledIndexChange)="nextBatch($event, feeds[feeds.length-1].code)">
     <div *cdkVirtualFor="let feed of feeds" class="feed">
       <p>{{getOperationText(feed)}}</p>
     </div>
   </cdk-virtual-scroll-viewport>
+</div>
+<div>Current total {{feeds.length}}</div>
+<div *ngIf="theEnd">
+  The End
 </div>
