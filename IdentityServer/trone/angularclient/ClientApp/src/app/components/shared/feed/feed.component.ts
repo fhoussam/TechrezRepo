@@ -15,32 +15,31 @@ import { FeedService } from '../../../services/feed.service';
 })
 export class FeedComponent implements OnInit {
 
-    feeds: Feed[];
+    feeds: Feed[] = [];
     @ViewChild(CdkVirtualScrollViewport, { static: false }) viewport: CdkVirtualScrollViewport;
     theEnd: boolean = false;
     offset = new BehaviorSubject(null);
 
     constructor(
         private datePipe: DatePipe,
-        private feedStore: Store<{ feeds: { feeds: Feed[] } }>,
         private feedService: FeedService,
+        private feedStore: Store<{ feeds: { feeds: Feed[] } }>,
     ) {
-        this.feedStore.select('feeds').subscribe(a => this.feeds = a.feeds);
+        //this.feedStore.select('feeds').subscribe(a => {
+        //    this.feeds = a.feeds;
+        //});
 
         this.offset.pipe(
-            throttleTime(3000),
+            throttleTime(1000),
             mergeMap(x => this.getBatch(x)),
-            scan((acc, batch) => {
-                return { ...acc, ...batch }
-            }, {}),
-            map(x => this.feeds.concat(Object.values(x)))
-        ).subscribe(x => {
-            this.feeds = x;
+            map(x => Object.values(x))
+        ).subscribe((x: Feed[]) => {
+            this.feeds = [...this.feeds, ...x];
+            console.log("current feed length : " + this.feeds.length);
         });
     }
 
     getBatch(lastSeen: any): any {
-        console.log('last seen : ' + lastSeen);
         return this.feedService.getAll(lastSeen);
     }
 

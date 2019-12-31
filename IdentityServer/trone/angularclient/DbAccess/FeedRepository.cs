@@ -30,7 +30,7 @@ namespace angularclient.DbAccess
                 select f
             )
             .OrderByDescending(x => x.DateTimeStamp)
-            .Take(20)
+            .Take(10)
             .ToListAsync();
         }
 
