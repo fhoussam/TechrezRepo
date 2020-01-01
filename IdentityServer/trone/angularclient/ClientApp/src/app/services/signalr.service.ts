@@ -31,7 +31,7 @@ export class SignalRService {
     public addTransferFeedDataListener = () => {
         this.hubConnection.on('transferfeeddata', (data: Feed[]) => {
             this.feedStore.dispatch(new AddNewFeeds(data))
-            console.log(data);
+            //console.log(data);
         });
     }
 
