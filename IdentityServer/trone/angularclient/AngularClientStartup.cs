@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using angularclient.Models;
 using angularclient.DbAccess;
 using Microsoft.Extensions.Hosting;
+using angularclient.SignalR;
 
 namespace angularclient
 {
@@ -106,7 +107,16 @@ namespace angularclient
             })
             ;
 
-            services.AddCors();
+            //services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .WithOrigins("http://localhost:5001");
+                });
+            });
 
             services.AddAntiforgery(options =>
             {
@@ -130,6 +140,8 @@ namespace angularclient
 
             services.AddScoped<ProductRepository>();
             services.AddScoped<FeedRepository>();
+
+            services.AddSignalR();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -143,6 +155,8 @@ namespace angularclient
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -160,6 +174,8 @@ namespace angularclient
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+
+                endpoints.MapHub<FeedHub>("/feedhub");
             });
 
             app.UseSpa(spa =>

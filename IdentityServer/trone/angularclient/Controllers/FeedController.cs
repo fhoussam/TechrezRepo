@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using angularclient.DbAccess;
 using angularclient.Models;
+using angularclient.SignalR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace angularclient.Controllers
 {
@@ -15,11 +17,25 @@ namespace angularclient.Controllers
     {
         private FeedRepository _feedRepository;
         private IWebHostEnvironment _webHostEnvironment;
+        private IHubContext<FeedHub> _hub;
 
-        public FeedController(FeedRepository repository, IWebHostEnvironment webHostEnvironment) 
+        public FeedController(
+            FeedRepository repository, 
+            IWebHostEnvironment webHostEnvironment,
+            IHubContext<FeedHub> hub
+        ) 
         {
-            this._feedRepository = repository;
-            this._webHostEnvironment = webHostEnvironment;
+            _feedRepository = repository;
+            _webHostEnvironment = webHostEnvironment;
+            _hub = hub;
+        }
+
+        [Route("triggerFakeOperation")]
+        public IActionResult TriggerFakeOperation()
+        {
+            //var timerManager = new TimerManager(() => _hub.Clients.All.SendAsync("transferchartdata", DataManager.GetData()));
+            _hub.Clients.All.SendAsync("transferfeeddata", DataManager.GetData());
+            return Ok(new { Message = "Request Completed" });
         }
 
         // GET: api/[controller]
@@ -36,4 +52,47 @@ namespace angularclient.Controllers
             return CreatedAtAction("Get", new { id = feed.Code }, feed);
         }
     }
+
+    public static class DataManager
+    {
+        public static List<Feed> GetData()
+        {
+            return new List<Feed>(){ 
+                new Feed()
+                {
+                    Code = new Guid().ToString(),
+                    DateTimeStamp = DateTime.Now,
+                    OperationType = "SAVE_PRODUCT",
+                    UserName = "User N-" + new Random().Next(1, 20)
+                } 
+            };
+        }
+    }
+
+    //public class TimerManager
+    //{
+    //    private Timer _timer;
+    //    private AutoResetEvent _autoResetEvent;
+    //    private Action _action;
+
+    //    public DateTime TimerStarted { get; }
+
+    //    public TimerManager(Action action)
+    //    {
+    //        _action = action;
+    //        _autoResetEvent = new AutoResetEvent(false);
+    //        _timer = new Timer(Execute, _autoResetEvent, 1000, 2000);
+    //        TimerStarted = DateTime.Now;
+    //    }
+
+    //    public void Execute(object stateInfo)
+    //    {
+    //        _action();
+
+    //        if ((DateTime.Now - TimerStarted).Seconds > 60)
+    //        {
+    //            _timer.Dispose();
+    //        }
+    //    }
+    //}
 }

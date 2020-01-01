@@ -5,7 +5,7 @@ import { APP_SETTINGS } from '../models/APP_SETTINGS';
 import { Store } from '@ngrx/store';
 import { FeedService } from './feed.service';
 import { AppState } from '../Redux/Feed/feed.reducer';
-import { AddFeeds } from '../Redux/Feed/feeds.actions';
+import { AddOldFeeds } from '../Redux/Feed/feeds.actions';
 
 @Injectable({
   providedIn: 'root'

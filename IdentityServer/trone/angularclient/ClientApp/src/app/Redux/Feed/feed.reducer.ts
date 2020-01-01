@@ -14,10 +14,15 @@ export function feedReducer(state = initial_state, action: FeedActions.FeedActio
                 ...state,
                 feeds: [action.payload, ...state.feeds]
             };
-        case FeedActions.ADD_FEEDS:
+        case FeedActions.ADD_OLD_FEEDS:
             return {
                 ...state,
                 feeds: [...state.feeds, ...action.payload]
+            };
+        case FeedActions.ADD_NEW_FEEDS:
+            return {
+                ...state,
+                feeds: [...action.payload, ...state.feeds]
             };
         default:
             return state;

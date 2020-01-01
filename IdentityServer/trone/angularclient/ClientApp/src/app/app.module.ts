@@ -35,6 +35,7 @@ import { StoreModule } from '@ngrx/store';
 import { feedReducer } from './Redux/Feed/feed.reducer';
 
 import { ScrollingModule } from '@angular/cdk/scrolling'
+import { SignalRService } from './services/signalr.service';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
@@ -95,6 +96,7 @@ const approutes: Routes = [
         { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppInitService], multi: true },
         { provide: UrlSerializer, useClass: CustomUrlSerializer },
         DatePipe,
+        SignalRService,
     ],
     bootstrap: [AppComponent]
 })

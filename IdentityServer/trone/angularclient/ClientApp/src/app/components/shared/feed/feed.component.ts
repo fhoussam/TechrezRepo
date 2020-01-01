@@ -7,7 +7,9 @@ import { OPEN_PRODUCT, SEARCH_PRODUCT, SAVE_PRODUCT } from '../../../models/cons
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { throttleTime, mergeMap, scan, map, tap } from 'rxjs/operators';
 import { FeedService } from '../../../services/feed.service';
-import { AddFeeds } from '../../../Redux/Feed/feeds.actions';
+import { AddOldFeeds } from '../../../Redux/Feed/feeds.actions';
+import { HttpClient } from '@angular/common/http';
+import { SignalRService } from '../../../services/signalr.service';
 
 @Component({
     selector: 'app-feed',
@@ -25,6 +27,8 @@ export class FeedComponent implements OnInit {
         private datePipe: DatePipe,
         private feedService: FeedService,
         private feedStore: Store<{ feeds: { feeds: Feed[] } }>,
+        public signalRService: SignalRService,
+        private http: HttpClient
     ) {
         this.feedStore.select('feeds').subscribe(a => {
             this.feeds = a.feeds;
@@ -37,7 +41,7 @@ export class FeedComponent implements OnInit {
             map(x => Object.values(x)),
             tap(x => this.theEnd = x.length == 0),
         ).subscribe((x: Feed[]) => {
-            this.feedStore.dispatch(new AddFeeds(x))
+            this.feedStore.dispatch(new AddOldFeeds(x))
         });
     }
 
@@ -74,5 +78,16 @@ export class FeedComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.signalRService.startConnection();
+        this.signalRService.addTransferFeedDataListener();
+        //this.signalRService.addBroadcastFeedDataListener();
+        //this.startHttpRequest();
     }
+
+    //private startHttpRequest = () => {
+    //    this.http.get('http://localhost:5001/api/feed/triggerFakeOperation')
+    //        .subscribe(res => {
+    //            console.log(res);
+    //        })
+    //}
 }
