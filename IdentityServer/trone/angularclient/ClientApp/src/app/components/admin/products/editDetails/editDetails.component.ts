@@ -3,9 +3,6 @@ import { adminProductListItem } from '../../../../models/adminProductListItem';
 import { ProductEventEmitterService } from '../../../../services/product-event-emitter.service';
 import { SAVE_PRODUCT } from '../../../../models/constants';
 import { propertyToUrl, urlToProperty, urlToList } from "query-string-params";
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
-import { NgModel } from '@angular/forms'
 import { adminProductEdit } from '../../../../models/adminProductEdit';
 import { category } from '../../../../models/category';
 import { APP_SETTINGS } from '../../../../models/APP_SETTINGS';
@@ -31,7 +28,7 @@ export class EditDetailsComponent implements OnInit {
     constructor(
         private productEventEmitter: ProductEventEmitterService,
         private productService: ProductService,
-        private feedService: FeedService
+        private feedService: FeedService,
     ) {
         this.categories = APP_SETTINGS.categories;
         this.selectedItem = new adminProductListItem();

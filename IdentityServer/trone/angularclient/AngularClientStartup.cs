@@ -13,6 +13,8 @@ using angularclient.Models;
 using angularclient.DbAccess;
 using Microsoft.Extensions.Hosting;
 using angularclient.SignalR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Antiforgery;
 
 namespace angularclient
 {
@@ -57,7 +59,7 @@ namespace angularclient
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true; //option is important if we want to retreive claims
 
-                options.Scope.Add("offline_access");
+                    options.Scope.Add("offline_access");
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
                 options.Scope.Add("openid");
@@ -72,17 +74,17 @@ namespace angularclient
                 options.Authority = "http://localhost:5000";
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
-                //options.Audience = "api1";
+                    //options.Audience = "api1";
 
-                //options.Audience = "http://10.0.2.2:5000/resources";
-                options.TokenValidationParameters.ValidAudiences = new List<string>()
+                    //options.Audience = "http://10.0.2.2:5000/resources";
+                    options.TokenValidationParameters.ValidAudiences = new List<string>()
                 {
-                    "http://10.0.2.2:5000/resources",
-                    "http://localhost:5000/resources"
+                        "http://10.0.2.2:5000/resources",
+                        "http://localhost:5000/resources"
                 };
 
-                //token validation options
-                options.TokenValidationParameters.ValidateLifetime = true;
+                    //token validation options
+                    options.TokenValidationParameters.ValidateLifetime = true;
                 options.TokenValidationParameters.ClockSkew = TimeSpan.Zero;
 
                 options.TokenValidationParameters.ValidateAudience = true;
@@ -104,10 +106,13 @@ namespace angularclient
                     }
 
                 };
-            })
-            ;
+            });
 
-            //services.AddCors();
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-XSRF-TOKEN";
+            });
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
@@ -118,31 +123,20 @@ namespace angularclient
                 });
             });
 
-            services.AddAntiforgery(options =>
-            {
-                options.HeaderName = "ANGHX-XSRF-TOKEN";
-                options.Cookie.Name = "ANGCX-XSRF-TOKEN";
-            });
+            services.AddScoped<ProductRepository>();
+            services.AddScoped<FeedRepository>();
+            services.AddSignalR();
 
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(new CustomAntiForgeryAttributeAttribute());
-                options.EnableEndpointRouting = true;
-            })
-            //why are we using this ? (we needed that to eliminate 400 http error in file upload)
-            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
+            services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-
-            services.AddScoped<ProductRepository>();
-            services.AddScoped<FeedRepository>();
-
-            services.AddSignalR();
         }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -156,14 +150,14 @@ namespace angularclient
                 app.UseHsts();
             }
 
-            app.UseCors("CorsPolicy");
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
 
@@ -193,3 +187,4 @@ namespace angularclient
         }
     }
 }
+

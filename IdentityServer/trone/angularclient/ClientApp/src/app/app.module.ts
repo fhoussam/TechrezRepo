@@ -36,6 +36,7 @@ import { feedReducer } from './Redux/Feed/feed.reducer';
 
 import { ScrollingModule } from '@angular/cdk/scrolling'
 import { SignalRService } from './services/signalr.service';
+import { CookieService } from 'ngx-cookie-service';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
@@ -97,6 +98,7 @@ const approutes: Routes = [
         { provide: UrlSerializer, useClass: CustomUrlSerializer },
         DatePipe,
         SignalRService,
+        CookieService,
     ],
     bootstrap: [AppComponent]
 })

@@ -85,7 +85,7 @@ export class FeedComponent implements OnInit {
     }
 
     //private startHttpRequest = () => {
-    //    this.http.get('http://localhost:5001/api/feed/triggerFakeOperation')
+    //    this.http.get('https://localhost:44301/api/feed/triggerFakeOperation')
     //        .subscribe(res => {
     //            console.log(res);
     //        })

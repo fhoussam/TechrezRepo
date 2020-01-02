@@ -14,7 +14,7 @@ export class FeedService {
         private http: HttpClient,
         private feedStore: Store<AppState>,
     ) { }
-    url: string = 'http://localhost:5001/api/feed';
+    url: string = 'https://localhost:44301/api/feed';
 
     //to refactor
     getAll(lastSeen: string = null) {

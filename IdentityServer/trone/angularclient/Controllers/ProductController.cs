@@ -35,6 +35,7 @@ namespace angularclient.Controllers
         private ProductRepository _productRepository;
         protected IWebHostEnvironment _webHostEnvironment;
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("save")]
         public async Task<IActionResult> Save(

@@ -24,6 +24,7 @@
     "@ngrx/store": "^8.6.0",
     "@whaaaley/query-string": "^0.2.0",
     "easy-query-string": "^2.0.2",
+    "ngx-cookie-service": "^2.2.0",
     "query-string-params": "^1.7.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
