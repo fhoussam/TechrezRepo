@@ -6,6 +6,7 @@ import { APP_SETTINGS } from '../../../../models/APP_SETTINGS';
 import { ProductSearchParams } from '../../../../models/productSearchParam';
 import { urlToProperty } from "query-string-params";
 import { FeedService } from '../../../../services/feed.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'search',
@@ -18,9 +19,11 @@ export class SearchComponent implements OnInit {
     categoryId: string;
     categories: category[];
     searchParams: ProductSearchParams
+
     constructor(
         private productService: ProductService,
         private feedService: FeedService,
+        private route: Router,
     ) {
         if (location.search) {
             this.searchParams = urlToProperty(location.search);
@@ -40,9 +43,18 @@ export class SearchComponent implements OnInit {
 
     search() {
         this.productService.getProducts(this.searchParams).subscribe(data => {
+
             let x: any = data;
             this.searchResultEmitter.emit(x);
             this.feedService.add(SEARCH_PRODUCT);
+
+            this.route.navigate([], {
+                queryParams: {
+                    categoryId: this.searchParams.CategoryId,
+                    description: this.searchParams.Description,
+                },
+                queryParamsHandling: 'merge',
+            });
         });
     }
 }
