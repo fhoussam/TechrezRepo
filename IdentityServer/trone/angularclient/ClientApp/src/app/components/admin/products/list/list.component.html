@@ -1,8 +1,8 @@
-<table>
+<table *ngIf="products.length > 0">
   <tr>
     <td>
-      <table border="1" *ngIf="products">
-        <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItem.code) ? 'grey' : 'inherit' }">
+      <table border="1">
+        <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItem?.code) ? 'grey' : 'inherit' }">
           <td>{{ product.code }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.quantity }}</td>
@@ -16,4 +16,3 @@
     </td>
   </tr>
 </table>
-

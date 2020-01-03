@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { adminProductListItem } from '../models/adminProductListItem';
 import { adminProductEdit } from '../models/adminProductEdit';
 import { CookieService } from 'ngx-cookie-service';
+import { ProductSearchParams } from '../models/productSearchParam';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,21 @@ export class ProductService {
         private cookie: CookieService
     ) { }
 
-    getProducts() {
-        return this.http.get<adminProductListItem[]>('https://localhost:44301/api/product');
+    getProducts(searchParams: ProductSearchParams) {
+        var params = new HttpParams();
+        params.append("CategoryId", searchParams.CategoryId.toString());
+        params.append("Description", searchParams.Description);
+
+        var headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+
+        const httpOptions : any = {
+            headers: { 'Content-Type': 'application/json' },
+            params: { 'CategoryId': searchParams.CategoryId.toString(), 'Description': searchParams.Description }
+        };
+
+        return this.http.get<adminProductListItem[]>('https://localhost:44301/api/product', httpOptions);
     }
 
     save(productFormData: adminProductEdit, productImage: File) {

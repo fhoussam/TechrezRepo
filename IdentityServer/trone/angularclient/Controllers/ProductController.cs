@@ -30,10 +30,17 @@ namespace angularclient.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : TechRezBaseRepoController<Product, ProductRepository>
+    public class ProductController : ControllerBase
+    //: TechRezBaseRepoController<Product, ProductRepository>
     {
         private ProductRepository _productRepository;
-        protected IWebHostEnvironment _webHostEnvironment;
+        private IWebHostEnvironment _webHostEnvironment;
+
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] ProductSearchParams productSearchParams) 
+        {
+            return Ok(await _productRepository.GetAll(productSearchParams));
+        }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -90,7 +97,8 @@ namespace angularclient.Controllers
             return File(image, "image/jpeg"); //uising a FileStreamResult
         }
 
-        public ProductController(ProductRepository repository, IWebHostEnvironment webHostEnvironment) : base(repository, webHostEnvironment)
+        public ProductController(ProductRepository repository, IWebHostEnvironment webHostEnvironment) 
+            //: base(repository, webHostEnvironment)
         {
             this._productRepository = repository;
             this._webHostEnvironment = webHostEnvironment;

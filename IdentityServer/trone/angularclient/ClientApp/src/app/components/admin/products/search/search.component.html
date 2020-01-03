@@ -1,7 +1,7 @@
 <form>
-  <input type="text" [(ngModel)]="searchParams.description" name="description">
+  <input type="text" [(ngModel)]="searchParams.Description" name="Description">
   <br />
-  <select [(ngModel)]="searchParams.categoryId" name="categoryId">
+  <select [(ngModel)]="searchParams.CategoryId" name="CategoryId">
     <option *ngFor="let category of categories" value="{{category.code}}">{{category.description}}</option>
   </select>
   <br /><br /><br />

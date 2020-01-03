@@ -18,11 +18,13 @@ export class ListComponent implements OnInit {
     //warnig, setter get triggerted 2 times (for some reason)
     private _products;
     get products(): adminProductListItem[] {
+
         return this._products;
     }
     @Input()
     set products(val: adminProductListItem[]) {
         this._products = val;
+
         if (val.length > 0 && location.search) {
             let searchParams: any = urlToProperty(location.search);
             let itemToSelect: adminProductListItem = val.find(x => x.code == searchParams.si);

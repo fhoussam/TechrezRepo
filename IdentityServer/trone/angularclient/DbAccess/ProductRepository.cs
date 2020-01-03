@@ -16,7 +16,15 @@ namespace angularclient.DbAccess
 
         // We can add new methods specific to the product repository here in the future
         public async Task<List<Category>> GetCategories() {
-            return await _context.Set<Category>().Take(10).ToListAsync();
+            return await _context.Set<Category>().ToListAsync();
+        }
+
+        public async Task<List<Product>> GetAll(ProductSearchParams productSearchParams) 
+        {
+            return await _context.Set<Product>().Where(x =>
+                (string.IsNullOrEmpty(productSearchParams.Description) || x.Description.Contains(productSearchParams.Description))
+                && (!productSearchParams.CategoryId.HasValue || x.CategoryId == productSearchParams.CategoryId)
+            ).ToListAsync();
         }
     }
 }
