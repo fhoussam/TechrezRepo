@@ -43,6 +43,12 @@ export class FeedComponent implements OnInit {
         ).subscribe((x: Feed[]) => {
             this.feedStore.dispatch(new AddOldFeeds(x))
         });
+
+        this.signalRService.onDataPush.subscribe(x => {
+            //console.log(x)
+            if(this.viewport)
+              this.viewport.scrollToIndex(0);
+        });
     }
 
     getBatch(lastSeen: any): any {
