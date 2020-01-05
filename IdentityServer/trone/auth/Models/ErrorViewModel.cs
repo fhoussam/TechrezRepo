@@ -6,6 +6,21 @@ namespace auth.Models
     {
         public string RequestId { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public ErrorViewModel()
+        {
+        }
+
+        public ErrorViewModel(string error)
+        {
+            Error = new ErrorMessage { Error = error };
+        }
+
+        public ErrorMessage Error { get; set; }
+    }
+
+    public class ErrorMessage { 
+        public string Error { get; set; }
+        public string ErrorDescription { get; set; }
+        public string RequestId { get; set; }
     }
 }

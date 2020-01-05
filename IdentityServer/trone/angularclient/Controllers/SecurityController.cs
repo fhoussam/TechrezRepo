@@ -66,4 +66,22 @@ public class SecurityController : Controller
         else
             return new ChallengeResult("oidc", authenticationProperties);
     }
+
+    [Authorize]
+    [Route("logout")]
+    [HttpGet]
+    public IActionResult Logout() 
+    {
+        //HttpContext.SignInAsync()
+        
+        return SignOut(new AuthenticationProperties()
+        {
+            RedirectUri = "https://localhost:44301/home",
+        }, "Cookies", "oidc");
+
+        //return new SignOutResult("oidc", new AuthenticationProperties()
+        //{
+        //    RedirectUri = "home",
+        //});
+    }
 }

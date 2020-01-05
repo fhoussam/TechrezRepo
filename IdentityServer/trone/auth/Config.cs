@@ -113,6 +113,7 @@ namespace auth
                     RedirectUris = { "https://localhost:44301/signin-oidc" },
                     FrontChannelLogoutUri = "https://localhost:44301/signout-oidc",
                     PostLogoutRedirectUris = { "https://localhost:44301/signout-callback-oidc" },
+                    AllowedCorsOrigins = new List<string>(){ "http://localhost", "https://localhost:44301" },
 
                     AllowOfflineAccess = true,
                     AllowedScopes = {
@@ -124,7 +125,6 @@ namespace auth
                     },
 
                     RequireConsent = false,
-                    
                 },
 
                 // MVC client using hybrid flow

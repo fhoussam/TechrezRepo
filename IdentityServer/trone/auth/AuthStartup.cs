@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,19 +12,21 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.DataProtection;
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 namespace auth
 {
     public class AuthStartup
     {
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment Environment { get; }
+        public IWebHostEnvironment WebHostEnvironment { get; }
         public ILoggerFactory LoggerFactory { get; }
 
-        public AuthStartup(IConfiguration configuration, IHostingEnvironment environment, ILoggerFactory loggerFactory)
+        public AuthStartup(IConfiguration configuration, IWebHostEnvironment environment, ILoggerFactory loggerFactory)
         {
             Configuration = configuration;
-            Environment = environment;
+            WebHostEnvironment = environment;
             LoggerFactory = loggerFactory;
         }
 
@@ -56,16 +56,16 @@ namespace auth
             {
                 options.SignIn.RequireConfirmedEmail = true;
             })
-                .AddDefaultUI()
+                //.AddDefaultUI()
                 .AddEntityFrameworkStores<IdentityDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddTransient<IEmailSender, EmailSender>();
-            services.Configure<AuthMessageSenderOptions>(Configuration);
+            //services.AddTransient<IEmailSender, EmailSender>();
+            //services.Configure<AuthMessageSenderOptions>(Configuration);
 
             services.AddMvc()
                 //we should know why we this line is for 
-                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1)
+                //.SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1)
                 ;
 
             services.AddAntiforgery(options =>
@@ -86,7 +86,8 @@ namespace auth
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
-                options.UserInteraction.LoginUrl = "~/Identity/Account/Login";
+                //options.UserInteraction.LoginUrl = "~/Identity/Account/Login";
+                //options.UserInteraction.LogoutUrl = "~/Identity/Account/Logout";
                 options.IssuerUri = "http://10.0.2.2:5000";
             })
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
@@ -95,7 +96,7 @@ namespace auth
                 .AddAspNetIdentity<IdentityUser>()
                 ;
 
-            if (Environment.IsDevelopment())
+            if (WebHostEnvironment.IsDevelopment())
             //if(false)
             {
                 Console.WriteLine("Loading dev credentials");
@@ -159,21 +160,24 @@ namespace auth
                 await next.Invoke();
             });
 
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+            //.AllowAnyOrigin()
+            .WithOrigins
             (
-                "http://localhost:5003", 
+                "http://localhost:5003",
                 "https://localhost:44301",
                 "http://localhost:8100",
                 "http://localhost",
                 "ioniclient://ioniclient.trone"
-            ));
+            )
+            );
 
-            app.UseCors();
+            app.UseRouting();
 
-            if (Environment.IsDevelopment())
+            if (WebHostEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();
             }
             else
             {
@@ -182,7 +186,13 @@ namespace auth
 
             app.UseStaticFiles();
             app.UseIdentityServer();
-            app.UseMvcWithDefaultRoute();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
+            });
         }
     }
 }

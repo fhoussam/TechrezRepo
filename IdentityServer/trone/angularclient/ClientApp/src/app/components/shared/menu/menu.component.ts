@@ -31,4 +31,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     challengeOidc() {
         this.auth.challengeOidc();
     }
+
+    logout() {
+        this.auth.logout();
+    }
 }

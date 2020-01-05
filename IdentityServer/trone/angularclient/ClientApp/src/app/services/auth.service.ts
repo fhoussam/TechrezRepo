@@ -22,6 +22,10 @@ export class AuthService {
         return true;
     }
 
+    public logout() {
+        window.location.replace("https://localhost:44301/api/security/logout");
+    }
+
     public challengeOidc() {
         let router = this.injector.get(Router);
         window.location.replace("https://localhost:44301/api/security/challengeoidc?returnUrl=" + router.url);

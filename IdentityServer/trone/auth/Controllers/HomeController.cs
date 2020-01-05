@@ -7,24 +7,26 @@ using Microsoft.AspNetCore.Mvc;
 using auth.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNet.Identity.Owin;
 
 namespace auth.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEmailSender _emailSender;
+        //private readonly IEmailSender _emailSender;
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        //private readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(IEmailSender emailSender, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public HomeController(
+            //IEmailSender emailSender, 
+            SignInManager<IdentityUser> signInManager
+            //, UserManager<IdentityUser> userManager
+            )
         {
-            _emailSender = emailSender;
+            //_emailSender = emailSender;
             _signInManager = signInManager;
-            _userManager = userManager;
+            //_userManager = userManager;
         }
 
         [Route("nonsecure")]
@@ -34,14 +36,14 @@ namespace auth.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<string> TestIdentity() 
+        public async Task<IActionResult> TestIdentity() 
         {
             var result = await _signInManager.PasswordSignInAsync("houssamfertaq@gmail.com", "H0u$$@m2018", false, false);
-            return "tested";
+            return Ok(result);
         }
 
         //pure c#
-        public void TestSendGrid()
+        public IActionResult TestSendGrid()
         {
             //var apiKey = Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
             var apiKey = "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";
@@ -53,15 +55,16 @@ namespace auth.Controllers
             var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var result = client.SendEmailAsync(msg).Result;
+            return Ok(result);
         }
 
         //using fancy DI, inorder to simulate what asp identity would do
         public void TestSendGrid2()
         {
-            var email = "houssamfertaq@gmail.com";
-            var subject = "Sending with SendGrid is Fun";
-            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
-            _emailSender.SendEmailAsync(email, subject, htmlContent);
+            //var email = "houssamfertaq@gmail.com";
+            //var subject = "Sending with SendGrid is Fun";
+            //var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            //_emailSender.SendEmailAsync(email, subject, htmlContent);
         }
 
         public IActionResult Index()
