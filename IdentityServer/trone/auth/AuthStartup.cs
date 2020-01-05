@@ -162,7 +162,7 @@ namespace auth
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins
             (
                 "http://localhost:5003", 
-                "http://localhost:5001",
+                "https://localhost:44301",
                 "http://localhost:8100",
                 "http://localhost",
                 "ioniclient://ioniclient.trone"

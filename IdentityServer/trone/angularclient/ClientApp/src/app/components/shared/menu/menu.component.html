@@ -1,0 +1,12 @@
+<ul>
+  <li><a routerLinkActive="active" routerLink="home">Home (everyone)</a></li>
+  <li><a routerLinkActive="active" routerLink="admin/products" *ngIf="isAuthenticated">Products (admin)</a></li>
+  <li><a routerLinkActive="active" routerLink="admin/users" *ngIf="isAuthenticated">Users (admin)</a></li>
+  <li><a routerLinkActive="active" routerLink="techrezusers/products" *ngIf="isAuthenticated">Products (techrezuser)</a></li>
+  <li><a routerLinkActive="active" routerLink="techrezusers/orders" *ngIf="isAuthenticated">Orders (techrezuser)</a></li>
+  <li style="float:right"><a style="cursor:pointer" *ngIf="isAuthenticated">Logout</a></li>
+  <li style="float:right"><a style="cursor:pointer" (click)="challengeOidc()" *ngIf="!isAuthenticated">Login</a></li>
+  <li style="float:right"><a style="cursor:pointer" *ngIf="isAuthenticated">My Account</a></li>
+</ul>
+
+<router-outlet></router-outlet>

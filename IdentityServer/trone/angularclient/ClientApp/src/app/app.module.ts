@@ -15,7 +15,7 @@ import { ListComponent } from './components/admin/products/list/list.component';
 import { PagenotfoundComponent } from './components/shared/pagenotfound/pagenotfound.component';
 
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { ProductEventEmitterService } from './services/product-event-emitter.service';
 import { AppInitService } from './services/app-init.service';
@@ -37,6 +37,7 @@ import { feedReducer } from './Redux/Feed/feed.reducer';
 import { ScrollingModule } from '@angular/cdk/scrolling'
 import { SignalRService } from './services/signalr.service';
 import { CookieService } from 'ngx-cookie-service';
+import { MenuComponent } from './components/shared/menu/menu.component';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
@@ -77,7 +78,8 @@ const approutes: Routes = [
         EditDetailsComponent,
         CategoryPipe,
         FeedComponent,
-        HomeComponent
+        HomeComponent,
+        MenuComponent
     ],
     imports: [
         BrowserModule,

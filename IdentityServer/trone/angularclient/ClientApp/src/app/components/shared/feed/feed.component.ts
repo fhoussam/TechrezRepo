@@ -10,6 +10,7 @@ import { FeedService } from '../../../services/feed.service';
 import { AddOldFeeds } from '../../../Redux/Feed/feeds.actions';
 import { HttpClient } from '@angular/common/http';
 import { SignalRService } from '../../../services/signalr.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
     selector: 'app-feed',
@@ -28,7 +29,6 @@ export class FeedComponent implements OnInit {
         private feedService: FeedService,
         private feedStore: Store<{ feeds: { feeds: Feed[] } }>,
         public signalRService: SignalRService,
-        private http: HttpClient
     ) {
         this.feedStore.select('feeds').subscribe(a => {
             this.feeds = a.feeds;
