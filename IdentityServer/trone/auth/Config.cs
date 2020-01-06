@@ -61,8 +61,8 @@ namespace auth
                     ClientUri = "http://localhost:8100",
 
                     AllowedCorsOrigins = new List<string>()
-                    { 
-                        "http://localhost", 
+                    {
+                        "http://localhost",
                         "http://localhost:8100",
                         "ioniclient://ioniclient.trone"
                     },

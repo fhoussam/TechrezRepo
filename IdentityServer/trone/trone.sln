@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "auth", "auth\auth.csproj", "{C529CE0D-7D6F-4C92-A311-6739FDB7CA60}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "angularclient", "angularclient\angularclient.csproj", "{2CBBD818-EC69-49BC-B16D-555689FC8CCB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "consoleclient", "consoleclient\consoleclient.csproj", "{94982C33-63D2-4CDA-A79E-E2B30CBC3651}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jsclient", "jsclient\jsclient.csproj", "{888408E3-4C91-48A6-A017-7DC99D360F91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jsclient", "jsclient\jsclient.csproj", "{888408E3-4C91-48A6-A017-7DC99D360F91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "auth", "auth\auth.csproj", "{53F13F3C-CD11-477A-8E57-1F0697F6F431}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C529CE0D-7D6F-4C92-A311-6739FDB7CA60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C529CE0D-7D6F-4C92-A311-6739FDB7CA60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C529CE0D-7D6F-4C92-A311-6739FDB7CA60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C529CE0D-7D6F-4C92-A311-6739FDB7CA60}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CBBD818-EC69-49BC-B16D-555689FC8CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CBBD818-EC69-49BC-B16D-555689FC8CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CBBD818-EC69-49BC-B16D-555689FC8CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{888408E3-4C91-48A6-A017-7DC99D360F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{888408E3-4C91-48A6-A017-7DC99D360F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{888408E3-4C91-48A6-A017-7DC99D360F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F13F3C-CD11-477A-8E57-1F0697F6F431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F13F3C-CD11-477A-8E57-1F0697F6F431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F13F3C-CD11-477A-8E57-1F0697F6F431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F13F3C-CD11-477A-8E57-1F0697F6F431}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
