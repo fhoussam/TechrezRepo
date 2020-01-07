@@ -1853,3 +1853,433 @@ token: '[PII is hidden. For more details, see https://aka.ms/IdentityModel/PII.]
 2020-01-06 01:46:28.957 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
 2020-01-06 01:46:28.969 +01:00 [INF] Profile service returned the following claim types: sub birthdate gender favcolor preferred_username name email email_verified
 2020-01-06 01:46:28.969 +01:00 [DBG] End userinfo request
+2020-01-07 14:35:28.894 +01:00 [INF] Starting host...
+2020-01-07 14:35:29.244 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 14:35:29.257 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 14:35:29.261 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 14:35:29.261 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 14:35:29.261 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 14:35:29.261 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 14:35:29.261 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 14:35:29.261 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 14:35:30.647 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 14:35:30.649 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 14:35:30.649 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 14:35:30.649 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 14:35:30.649 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 14:35:30.649 +01:00 [DBG] Error Url: /home/error
+2020-01-07 14:35:30.649 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 14:39:27.187 +01:00 [INF] Starting host...
+2020-01-07 14:39:27.320 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 14:39:27.336 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 14:39:27.340 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 14:39:27.341 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 14:39:27.341 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 14:39:27.341 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 14:39:27.341 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 14:39:27.341 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 14:39:27.907 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 14:39:27.909 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 14:39:27.909 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 14:39:27.909 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 14:39:27.909 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 14:39:27.909 +01:00 [DBG] Error Url: /home/error
+2020-01-07 14:39:27.909 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 14:39:30.960 +01:00 [ERR] The view 'ForgotPassword' was not found. Searched locations: ["/Views/Account/ForgotPassword.cshtml","/Views/Shared/ForgotPassword.cshtml"]
+2020-01-07 14:39:31.000 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'ForgotPassword' was not found. The following locations were searched:
+/Views/Account/ForgotPassword.cshtml
+/Views/Shared/ForgotPassword.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-01-07 14:43:21.023 +01:00 [INF] Starting host...
+2020-01-07 14:43:21.145 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 14:43:21.156 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 14:43:21.159 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 14:43:21.159 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 14:43:21.159 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 14:43:21.159 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 14:43:21.159 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 14:43:21.159 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 14:43:21.710 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 14:43:21.712 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 14:43:21.712 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 14:43:21.712 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 14:43:21.712 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 14:43:21.712 +01:00 [DBG] Error Url: /home/error
+2020-01-07 14:43:21.712 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 14:43:25.069 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The partial view '_ValidationScriptsPartial' was not found. The following locations were searched:
+/Views/Account/_ValidationScriptsPartial.cshtml
+/Views/Shared/_ValidationScriptsPartial.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.RenderPartialCoreAsync(String partialViewName, Object model, ViewDataDictionary viewData, TextWriter writer)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.PartialAsync(String partialViewName, Object model, ViewDataDictionary viewData)
+   at AspNetCore.Views_Account_ForgotPassword.<ExecuteAsync>b__16_1() in C:\Users\houssam\Documents\techrez\TechrezRepo\IdentityServer\trone\auth\Views\Account\ForgotPassword.cshtml:line 24
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPage.RenderSectionAsyncCore(String sectionName, Boolean required)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPage.RenderSection(String name, Boolean required)
+   at AspNetCore.Views_Shared__Layout.<>c__DisplayClass23_0.<<ExecuteAsync>b__1>d.MoveNext() in C:\Users\houssam\Documents\techrez\TechrezRepo\IdentityServer\trone\auth\Views\Shared\_Layout.cshtml:line 59
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.SetOutputContentAsync()
+   at AspNetCore.Views_Shared__Layout.ExecuteAsync() in C:\Users\houssam\Documents\techrez\TechrezRepo\IdentityServer\trone\auth\Views\Shared\_Layout.cshtml:line 7
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderLayoutAsync(ViewContext context, ViewBufferTextWriter bodyWriter)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-01-07 17:28:16.449 +01:00 [INF] Starting host...
+2020-01-07 17:28:16.562 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 17:28:16.573 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 17:28:16.576 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 17:28:16.577 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 17:28:16.577 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 17:28:16.577 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 17:28:16.577 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 17:28:16.577 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 17:28:17.018 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 17:28:17.020 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 17:28:17.020 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 17:28:17.020 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 17:28:17.020 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 17:28:17.020 +01:00 [DBG] Error Url: /home/error
+2020-01-07 17:28:17.020 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 17:28:45.901 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 17:29:18.446 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 17:29:20.036 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:13:24.218 +01:00 [INF] Starting host...
+2020-01-07 22:13:24.419 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 22:13:24.429 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 22:13:24.434 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 22:13:24.434 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 22:13:24.434 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 22:13:24.434 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 22:13:24.434 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 22:13:24.434 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 22:13:25.306 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 22:13:25.308 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 22:13:25.308 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 22:13:25.308 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 22:13:25.308 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 22:13:25.308 +01:00 [DBG] Error Url: /home/error
+2020-01-07 22:13:25.308 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 22:15:15.459 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:16:19.350 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:18:27.717 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: The SSL connection could not be established, see inner exception.
+ ---> System.IO.IOException: Authentication failed because the remote party has closed the transport stream.
+   at System.Net.Security.SslStream.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.PartialFrameCallback(AsyncProtocolRequest asyncRequest)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Net.Security.SslStream.ThrowIfExceptional()
+   at System.Net.Security.SslStream.InternalEndProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Net.Security.SslStream.EndProcessAuthentication(IAsyncResult result)
+   at System.Net.Security.SslStream.EndAuthenticateAsClient(IAsyncResult asyncResult)
+   at System.Net.Security.SslStream.<>c.<AuthenticateAsClientAsync>b__65_1(IAsyncResult iar)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsyncCore(Stream stream, SslClientAuthenticationOptions sslOptions, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsyncCore(Stream stream, SslClientAuthenticationOptions sslOptions, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at SendGrid.Helpers.Reliability.RetryDelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at SendGrid.SendGridClient.MakeRequest(HttpRequestMessage request, CancellationToken cancellationToken)
+   at SendGrid.SendGridClient.RequestAsync(Method method, String requestBody, String queryParams, String urlPath, CancellationToken cancellationToken)
+   at SendGrid.SendGridClient.SendEmailAsync(SendGridMessage msg, CancellationToken cancellationToken)
+   at IdentityServer4.Quickstart.UI.AccountController.ForgotPassword(ForgotPasswordViewModel model) in C:\Users\houssam\Documents\techrez\TechrezRepo\IdentityServer\trone\auth\Quickstart\Account\AccountController.cs:line 338
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-01-07 22:19:16.606 +01:00 [INF] Starting host...
+2020-01-07 22:19:16.726 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 22:19:16.744 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 22:19:16.749 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 22:19:16.749 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 22:19:16.749 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 22:19:16.750 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 22:19:16.750 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 22:19:16.750 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 22:19:17.139 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 22:19:17.142 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 22:19:17.142 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 22:19:17.142 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 22:19:17.142 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 22:19:17.142 +01:00 [DBG] Error Url: /home/error
+2020-01-07 22:19:17.142 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 22:19:22.800 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:20:17.361 +01:00 [ERR] The view 'ResetPassword' was not found. Searched locations: ["/Views/Account/ResetPassword.cshtml","/Views/Shared/ResetPassword.cshtml"]
+2020-01-07 22:20:17.402 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'ResetPassword' was not found. The following locations were searched:
+/Views/Account/ResetPassword.cshtml
+/Views/Shared/ResetPassword.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-01-07 22:29:31.154 +01:00 [INF] Starting host...
+2020-01-07 22:29:31.269 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 22:29:31.280 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 22:29:31.284 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 22:29:31.284 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 22:29:31.284 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 22:29:31.284 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 22:29:31.284 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 22:29:31.284 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 22:29:31.740 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 22:29:31.741 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 22:29:31.742 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 22:29:31.742 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 22:29:31.742 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 22:29:31.742 +01:00 [DBG] Error Url: /home/error
+2020-01-07 22:29:31.742 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 22:29:40.739 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:31:56.722 +01:00 [DBG] CORS request made for path: /Account/ResetPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:32:45.341 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:33:29.724 +01:00 [DBG] CORS request made for path: /Account/ResetPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:35:28.003 +01:00 [WRN] VerifyUserTokenAsync() failed with purpose: EmailConfirmation for user 3443a6de-4682-4ec2-a9b2-e9474808ae78.
+2020-01-07 22:35:50.026 +01:00 [WRN] VerifyUserTokenAsync() failed with purpose: EmailConfirmation for user 3443a6de-4682-4ec2-a9b2-e9474808ae78.
+2020-01-07 22:37:35.712 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:47:09.911 +01:00 [INF] Starting host...
+2020-01-07 22:47:10.033 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 22:47:10.049 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 22:47:10.053 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 22:47:10.053 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 22:47:10.053 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 22:47:10.053 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 22:47:10.053 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 22:47:10.053 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 22:47:10.482 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 22:47:10.484 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 22:47:10.484 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 22:47:10.484 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 22:47:10.484 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 22:47:10.484 +01:00 [DBG] Error Url: /home/error
+2020-01-07 22:47:10.485 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 22:47:20.074 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:47:46.052 +01:00 [DBG] CORS request made for path: /Account/ResetPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:47:57.941 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-07 22:47:58.111 +01:00 [DBG] Augmenting SignInContext
+2020-01-07 22:47:58.112 +01:00 [DBG] Adding idp claim with value: local
+2020-01-07 22:47:58.113 +01:00 [DBG] Adding auth_time claim with value: 1578433678
+2020-01-07 22:47:58.126 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-07 22:47:58.141 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"3443a6de-4682-4ec2-a9b2-e9474808ae78","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000034-0003-ff00-b63f-84710c7967bb","TimeStamp":"2020-01-07T21:47:58.0000000Z","ProcessId":4264,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-07 22:48:32.730 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-01-07 23:00:02.002 +01:00 [INF] Starting host...
+2020-01-07 23:00:02.118 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 23:00:02.138 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 23:00:02.142 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 23:00:02.142 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 23:00:02.142 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 23:00:02.142 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 23:00:02.143 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 23:00:02.143 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 23:00:02.581 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 23:00:02.584 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 23:00:02.584 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 23:00:02.584 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 23:00:02.584 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 23:00:02.584 +01:00 [DBG] Error Url: /home/error
+2020-01-07 23:00:02.584 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 23:00:06.376 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-01-07 23:02:05.836 +01:00 [INF] Starting host...
+2020-01-07 23:02:05.951 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 23:02:05.964 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 23:02:05.967 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 23:02:05.967 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 23:02:05.967 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 23:02:05.967 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 23:02:05.967 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 23:02:05.967 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 23:02:06.399 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 23:02:06.403 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 23:02:06.403 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 23:02:06.403 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 23:02:06.403 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 23:02:06.403 +01:00 [DBG] Error Url: /home/error
+2020-01-07 23:02:06.403 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 23:04:22.132 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-01-07 23:04:54.866 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-01-07 23:06:02.659 +01:00 [INF] Starting host...
+2020-01-07 23:06:02.780 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 23:06:02.790 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 23:06:02.793 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 23:06:02.793 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 23:06:02.793 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 23:06:02.793 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 23:06:02.793 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 23:06:02.793 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 23:06:03.196 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 23:06:03.198 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 23:06:03.198 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 23:06:03.198 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 23:06:03.198 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 23:06:03.198 +01:00 [DBG] Error Url: /home/error
+2020-01-07 23:06:03.198 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 23:06:10.872 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-01-07 23:06:58.062 +01:00 [INF] Starting host...
+2020-01-07 23:06:58.311 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 23:06:58.371 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 23:06:58.381 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 23:06:58.381 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 23:06:58.381 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 23:06:58.381 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 23:06:58.381 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 23:06:58.381 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 23:06:58.860 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 23:06:58.862 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 23:06:58.862 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 23:06:58.862 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 23:06:58.862 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 23:06:58.862 +01:00 [DBG] Error Url: /home/error
+2020-01-07 23:06:58.862 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 23:07:05.465 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-01-07 23:09:46.532 +01:00 [INF] Starting host...
+2020-01-07 23:09:46.660 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 23:09:46.673 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 23:09:46.676 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 23:09:46.676 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 23:09:46.676 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 23:09:46.676 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 23:09:46.676 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 23:09:46.677 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 23:09:47.131 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 23:09:47.133 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 23:09:47.133 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 23:09:47.133 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 23:09:47.133 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 23:09:47.133 +01:00 [DBG] Error Url: /home/error
+2020-01-07 23:09:47.133 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 23:09:50.291 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-01-07 23:11:04.654 +01:00 [INF] Starting host...
+2020-01-07 23:11:04.783 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-07 23:11:04.795 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-07 23:11:04.799 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-07 23:11:04.799 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-07 23:11:04.799 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-07 23:11:04.799 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-07 23:11:04.799 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-07 23:11:04.799 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-07 23:11:05.333 +01:00 [DBG] Login Url: /Account/Login
+2020-01-07 23:11:05.335 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-07 23:11:05.336 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-07 23:11:05.336 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-07 23:11:05.336 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-07 23:11:05.337 +01:00 [DBG] Error Url: /home/error
+2020-01-07 23:11:05.337 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-07 23:11:07.507 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-01-07 23:11:11.959 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-01-07 23:11:12.007 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-01-07 23:11:13.710 +01:00 [DBG] Augmenting SignInContext
+2020-01-07 23:11:13.711 +01:00 [DBG] Adding amr claim with value: external
+2020-01-07 23:11:13.714 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-07 23:11:13.716 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-01-07 23:11:13.731 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"2203204b-b348-412f-945f-de422a1f0254","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000073-0001-fc00-b63f-84710c7967bb","TimeStamp":"2020-01-07T22:11:13.0000000Z","ProcessId":15036,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
