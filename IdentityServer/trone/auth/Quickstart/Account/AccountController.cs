@@ -19,6 +19,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using auth.Quickstart.Account;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using auth.ViewModels.AccountViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -33,6 +35,7 @@ namespace IdentityServer4.Quickstart.UI
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
         private readonly IEmailSender _emailSender;
+        private readonly ILogger _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -41,7 +44,8 @@ namespace IdentityServer4.Quickstart.UI
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
-            IEmailSender emailSender
+            IEmailSender emailSender,
+            ILogger<AccountController> logger
             )
         {
             _userManager = userManager;
@@ -51,6 +55,7 @@ namespace IdentityServer4.Quickstart.UI
             _schemeProvider = schemeProvider;
             _events = events;
             _emailSender = emailSender;
+            _logger = logger;
         }
 
         /// <summary>
@@ -154,7 +159,55 @@ namespace IdentityServer4.Quickstart.UI
             return View(vm);
         }
 
-        
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Register(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User created a new account with password.");
+
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    _logger.LogInformation("User created a new account with password.");
+                    return RedirectToLocal(returnUrl);
+                }
+                AddErrors(result);
+            }
+
+            // If execution got this far, something failed, redisplay the form.
+            return View(model);
+        }
+
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+        }
+
         /// <summary>
         /// Show logout page
         /// </summary>

@@ -3,6 +3,8 @@
 using auth.Data;
 using auth.Models;
 using auth.Services;
+using auth.Utils;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -84,7 +86,8 @@ namespace auth
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients())
-                .AddAspNetIdentity<ApplicationUser>();
+                .AddAspNetIdentity<ApplicationUser>()
+                ;
 
             builder.AddDeveloperSigningCredential();
 
@@ -134,6 +137,7 @@ namespace auth
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.AddTransient<IProfileService, ProfileService>();
         }
 
         public void Configure(IApplicationBuilder app)

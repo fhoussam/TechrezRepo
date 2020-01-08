@@ -59,7 +59,7 @@ namespace angularclient
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true; //option is important if we want to retreive claims
 
-                    options.Scope.Add("offline_access");
+                options.Scope.Add("offline_access");
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
                 options.Scope.Add("openid");

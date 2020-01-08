@@ -38,9 +38,9 @@ public class SecurityController : Controller
             var claimsIdentity = (User.Identity as ClaimsIdentity);
             var userContext = new UserContext()
             {
-                Birthdate = claimsIdentity.FindFirst("birthDate").Value,
+                Birthdate = claimsIdentity.FindFirst("birthdate").Value,
                 Email = claimsIdentity.FindFirst("email").Value,
-                FavColor = claimsIdentity.FindFirst("favColor").Value,
+                FavColor = claimsIdentity.FindFirst("favcolor").Value,
                 Gender = claimsIdentity.FindFirst("gender").Value,
                 Name = claimsIdentity.FindFirst("name").Value,
             };
