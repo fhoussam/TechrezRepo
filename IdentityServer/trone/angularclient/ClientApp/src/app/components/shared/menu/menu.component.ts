@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -14,6 +15,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
     constructor(
         private auth: AuthService,
+        private router: Router,
     ) {
 
     }
@@ -29,7 +31,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     }
 
     challengeOidc() {
-        this.auth.challengeOidc();
+        this.auth.challengeOidc(this.router.url);
     }
 
     logout() {

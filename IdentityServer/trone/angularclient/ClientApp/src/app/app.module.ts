@@ -50,17 +50,27 @@ const approutes: Routes = [
         path: 'admin/products',
         component: AdminProductsComponent,
         children: [
-            { path: 'details', component: EditDetailsComponent },
+            {
+                path: 'details', component: EditDetailsComponent },
             { path: 'orders', component: AdminOrdersComponent },
-        ]
+        ],
+        canActivate: [AuthGuardService]
     },
     {
         path: 'admin/users',
         component: UsersComponent,
         canActivate: [AuthGuardService]
     },
-    { path: 'techrezusers/products', component: TechrezUserProductsComponent },
-    { path: 'techrezusers/orders', component: TechrezuserOrdersComponent },
+    {
+        path: 'techrezusers/products',
+        component: TechrezUserProductsComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: 'techrezusers/orders',
+        component: TechrezuserOrdersComponent,
+        canActivate: [AuthGuardService]
+    },
     //{ path: '**', component: PagenotfoundComponent },
 ];
 
