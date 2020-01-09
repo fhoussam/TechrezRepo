@@ -34,17 +34,9 @@ export class ProductService {
 
     save(productFormData: adminProductEdit, productImage: File) {
 
-        let cookieValue = this.cookie.get('XSRF-REQUEST-TOKEN');
-
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'X-XSRF-TOKEN': cookieValue
-            })
-        };
-
         const fd = new FormData();
         if (productImage) fd.append("productImage", productImage, productImage.name);
         fd.append("productData", JSON.stringify(productFormData));
-        return this.http.post("https://localhost:44301/api/product/save", fd, httpOptions);
+        return this.http.post("https://localhost:44301/api/product/save", fd);
     }
 }

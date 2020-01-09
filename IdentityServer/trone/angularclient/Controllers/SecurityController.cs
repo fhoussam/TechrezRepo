@@ -20,6 +20,7 @@ public class SecurityController : Controller
     [Route("antiforgery")]
     [HttpGet]
     [IgnoreAntiforgeryToken]
+    [AllowAnonymous]
     public IActionResult GenerateAntiForgeryTokens()
     {
         var tokens = _antiForgery.GetAndStoreTokens(HttpContext);
@@ -53,6 +54,7 @@ public class SecurityController : Controller
             return Ok();
     }
 
+    [AllowAnonymous]
     [Route("challengeoidc")]
     [HttpGet]
     public IActionResult ChallengeOidc(string returnUrl)
@@ -70,7 +72,6 @@ public class SecurityController : Controller
             return new ChallengeResult("oidc", authenticationProperties);
     }
 
-    [Authorize]
     [Route("logout")]
     [HttpGet]
     public IActionResult Logout()

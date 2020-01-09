@@ -16,6 +16,7 @@ using angularclient.SignalR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace angularclient
 {
@@ -142,6 +143,12 @@ namespace angularclient
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
+            });
+
+            services.AddControllers(config =>
+            {
+                //config.Filters.Add<AuthorizeFilter>();
+                config.Filters.Add<ValidateAntiForgeryTokenAttribute>();
             });
         }
 

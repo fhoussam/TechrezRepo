@@ -90,6 +90,7 @@ namespace angularclient.Controllers
 
         [HttpGet]
         [Route("images/{category}/{imageName}")]
+        [IgnoreAntiforgeryToken]
         public IActionResult getimage(string category, string imageName)
         {
             string directory = System.IO.Directory.GetParent(_webHostEnvironment.ContentRootPath).ToString() + "\\Product_Photos\\";

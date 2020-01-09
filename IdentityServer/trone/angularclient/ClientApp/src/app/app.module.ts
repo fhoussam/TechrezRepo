@@ -15,7 +15,7 @@ import { ListComponent } from './components/admin/products/list/list.component';
 import { PagenotfoundComponent } from './components/shared/pagenotfound/pagenotfound.component';
 
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { ProductEventEmitterService } from './services/product-event-emitter.service';
 import { AppInitService } from './services/app-init.service';
@@ -38,6 +38,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling'
 import { SignalRService } from './services/signalr.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MenuComponent } from './components/shared/menu/menu.component';
+import { AntiforgeryInterceptorService } from './interceptors/antiforgery-interceptor.service';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
@@ -104,6 +105,7 @@ const approutes: Routes = [
         ScrollingModule,
     ],
     providers: [
+        [{ provide: HTTP_INTERCEPTORS, useClass: AntiforgeryInterceptorService, multi: true }],
         ProductService,
         ProductEventEmitterService,
         AppInitService,

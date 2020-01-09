@@ -140,12 +140,6 @@ namespace auth
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddTransient<IProfileService, ProfileService>();
-
-            services.AddControllers(config =>
-            {
-                config.Filters.Add<AuthorizeFilter>();
-                config.Filters.Add<ValidateAntiForgeryTokenAttribute>();
-            });
         }
 
         public void Configure(IApplicationBuilder app)

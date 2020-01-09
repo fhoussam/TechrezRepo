@@ -24,12 +24,12 @@ export class AppInitService {
 
         const promise_antiforgery = this.httpClient.get('https://localhost:44301/api/security/antiforgery').toPromise()
             .then(x => console.log('init anti forgery')
-        );
+            );
 
         const promise_usercontext = this.auth.getUserContext().toPromise().then(x => {
             console.log('checking user context');
         });
 
-        return Promise.all([promise_categories, promise_antiforgery, promise_usercontext]);
+        return promise_antiforgery.then(x => Promise.all([promise_categories, promise_usercontext]));
     }
 }
