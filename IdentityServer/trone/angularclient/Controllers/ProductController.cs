@@ -37,6 +37,7 @@ namespace angularclient.Controllers
         private IWebHostEnvironment _webHostEnvironment;
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Get([FromQuery] ProductSearchParams productSearchParams) 
         {
             return Ok(await _productRepository.GetAll(productSearchParams));

@@ -12,5 +12,6 @@ namespace angularclient.Models
         public string FavColor { get; set; }
         public string Gender { get; set; }
         public string Birthdate { get; set; }
+        public string[] Roles { get; set; }
     }
 }

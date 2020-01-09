@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using angularclient.SignalR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Antiforgery;
+using Microsoft.IdentityModel.Tokens;
 
 namespace angularclient
 {
@@ -68,6 +69,14 @@ namespace angularclient
                 options.ClaimActions.MapJsonKey("favcolor", "favcolor");
                 options.ClaimActions.MapJsonKey(JwtClaimTypes.BirthDate, JwtClaimTypes.BirthDate);
                 options.ClaimActions.MapJsonKey(JwtClaimTypes.Gender, JwtClaimTypes.Gender);
+                options.ClaimActions.MapJsonKey(JwtClaimTypes.Role, JwtClaimTypes.Role);
+
+                //teaching openid middleware what claim actually represents the role, so IsInRole method knows what to do
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    NameClaimType = "name",
+                    RoleClaimType = "role",
+                };
             })
             .AddJwtBearer("Bearer", options =>
             {

@@ -54,7 +54,10 @@ const approutes: Routes = [
                 path: 'details', component: EditDetailsComponent },
             { path: 'orders', component: AdminOrdersComponent },
         ],
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+            allowedRoles: ['admin']
+        }
     },
     {
         path: 'admin/users',

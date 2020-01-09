@@ -31,7 +31,9 @@ namespace auth
         {
             return new ApiResource[]
             {
-                new ApiResource("api1", "My API #1" )
+                new ApiResource("api1", "My API #1"
+                //, new List<string> {"role"}
+                )
             };
         }
 

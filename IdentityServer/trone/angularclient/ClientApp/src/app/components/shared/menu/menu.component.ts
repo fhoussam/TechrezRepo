@@ -12,6 +12,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
     private userContextSubscribtion: Subscription;
     isAuthenticated = false;
+    roles : string[]
 
     constructor(
         private auth: AuthService,
@@ -23,7 +24,13 @@ export class MenuComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.userContextSubscribtion = this.auth.userContext.subscribe(userContext => {
             this.isAuthenticated = !!userContext;
+            if (this.isAuthenticated)
+                this.roles = userContext.roles;
         });
+    }
+
+    hasRole(roleName: string) {
+        return this.roles.includes(roleName);
     }
 
     ngOnDestroy(): void {

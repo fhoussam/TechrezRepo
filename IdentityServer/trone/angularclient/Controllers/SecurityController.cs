@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using System.Linq;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -19,7 +20,7 @@ public class SecurityController : Controller
     [Route("antiforgery")]
     [HttpGet]
     [IgnoreAntiforgeryToken]
-    public IActionResult GenerateAntiForgeryTokens()    
+    public IActionResult GenerateAntiForgeryTokens()
     {
         var tokens = _antiForgery.GetAndStoreTokens(HttpContext);
         Response.Cookies.Append("XSRF-REQUEST-TOKEN", tokens.RequestToken, new Microsoft.AspNetCore.Http.CookieOptions
@@ -31,7 +32,7 @@ public class SecurityController : Controller
 
     [Route("usercontext")]
     [HttpGet]
-    public IActionResult UserContext() 
+    public IActionResult UserContext()
     {
         if (User.Identity.IsAuthenticated)
         {
@@ -43,6 +44,7 @@ public class SecurityController : Controller
                 FavColor = claimsIdentity.FindFirst("favcolor").Value,
                 Gender = claimsIdentity.FindFirst("gender").Value,
                 Name = claimsIdentity.FindFirst("name").Value,
+                Roles = claimsIdentity.FindAll("role").Select(x => x.Value).ToArray()
             };
 
             return Ok(userContext);
@@ -60,7 +62,8 @@ public class SecurityController : Controller
             RedirectUri = returnUrl,
         };
 
-        if (User.Identity.IsAuthenticated) {
+        if (User.Identity.IsAuthenticated)
+        {
             return Redirect("/admin/users");
         }
         else
@@ -70,10 +73,10 @@ public class SecurityController : Controller
     [Authorize]
     [Route("logout")]
     [HttpGet]
-    public IActionResult Logout() 
+    public IActionResult Logout()
     {
         //HttpContext.SignInAsync()
-        
+
         return SignOut(new AuthenticationProperties()
         {
             RedirectUri = "https://localhost:44301/home",

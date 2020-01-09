@@ -17,11 +17,20 @@ export class AuthGuardService implements CanActivate  {
         route: ActivatedRouteSnapshot,
         router: RouterStateSnapshot
     ): boolean | Promise<boolean> | Observable<boolean> {
+
+        const allowedRoles = route.data.allowedRoles;
+
         return this.auth.userContext.pipe(map(usercontext => {
-            if (!!usercontext)
+            if (!!usercontext && this.isAuthorized(allowedRoles, usercontext.roles))
                 return true;
             else
                 this.auth.challengeOidc(router.url.toString());
         }));
+    }
+
+    private isAuthorized(allowedRoles: string[], userRoles: string[]): boolean {
+        if (!allowedRoles || allowedRoles.length == 0) return true;
+        let intersect: string[] = allowedRoles.filter(value => -1 !== userRoles.indexOf(value))
+        return intersect.length != 0;
     }
 }
