@@ -43,7 +43,6 @@ namespace angularclient.Controllers
             return Ok(await _productRepository.GetAll(productSearchParams));
         }
 
-        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("save")]
         public async Task<IActionResult> Save(

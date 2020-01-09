@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -138,6 +140,12 @@ namespace auth
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddTransient<IProfileService, ProfileService>();
+
+            services.AddControllers(config =>
+            {
+                config.Filters.Add<AuthorizeFilter>();
+                config.Filters.Add<ValidateAntiForgeryTokenAttribute>();
+            });
         }
 
         public void Configure(IApplicationBuilder app)
