@@ -94,9 +94,16 @@ namespace angularclient.Controllers
         [IgnoreAntiforgeryToken]
         public IActionResult getimage(string category, string imageName)
         {
-            string directory = System.IO.Directory.GetParent(_webHostEnvironment.ContentRootPath).ToString() + "\\Product_Photos\\";
-            var image = System.IO.File.OpenRead(directory + category + "\\" + imageName);
-            return File(image, "image/jpeg"); //uising a FileStreamResult
+            try
+            {
+                string directory = System.IO.Directory.GetParent(_webHostEnvironment.ContentRootPath).ToString() + "\\Product_Photos\\";
+                var image = System.IO.File.OpenRead(directory + category + "\\" + imageName);
+                return File(image, "image/jpeg"); //uising a FileStreamResult
+            }
+            catch (System.IO.FileNotFoundException exp)
+            {
+                return NotFound();
+            }
         }
 
         public ProductController(ProductRepository repository, IWebHostEnvironment webHostEnvironment) 
