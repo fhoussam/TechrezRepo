@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using angularclient.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace angularclient
 {
@@ -137,7 +139,6 @@ namespace angularclient
             services.AddScoped<FeedRepository>();
             services.AddSignalR();
 
-
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -145,11 +146,24 @@ namespace angularclient
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddControllers(config =>
+            //services.AddAuthorization(options => options.AddPolicy("ShouldBeAuthorized", policy => policy.AddRequirements(new ShouldBeAuthorizedRequirement())));
+
+            services.AddHttpContextAccessor();
+
+            services.AddSingleton<IAuthorizationHandler, CanMakeCriticalChangesHandler>();
+
+            services.AddAuthorization(options =>
             {
-                //config.Filters.Add<AuthorizeFilter>();
-                config.Filters.Add<ValidateAntiForgeryTokenAttribute>();
+                options.AddPolicy("ShouldBeAuthorized",
+                    policy => policy.Requirements.Add(new ShouldBeAuthorizedRequirement()));
             });
+
+            //services.AddControllers(config =>
+            //{
+            //    //config.Filters.Add<AuthorizeFilter>();
+            //    config.Filters.Add<ValidateAntiForgeryTokenAttribute>();
+            //});
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

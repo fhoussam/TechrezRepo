@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using angularclient.DbAccess;
 using angularclient.Models;
 using angularclient.SignalR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -13,6 +14,8 @@ namespace angularclient.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "ShouldBeAuthorized")]
+
     public class FeedController : ControllerBase
     {
         private FeedRepository _feedRepository;
@@ -31,6 +34,8 @@ namespace angularclient.Controllers
         }
 
         [Route("triggerFakeOperation")]
+        [AllowAnonymous]
+        [IgnoreAntiforgeryToken]
         public IActionResult TriggerFakeOperation()
         {
             //var timerManager = new TimerManager(() => _hub.Clients.All.SendAsync("transferchartdata", DataManager.GetData()));

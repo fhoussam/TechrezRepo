@@ -30,7 +30,8 @@ namespace angularclient.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "admin")]
+    [Authorize(Policy = "ShouldBeAuthorized")]
+
     public class ProductController : ControllerBase
     //: TechRezBaseRepoController<Product, ProductRepository>
     {
