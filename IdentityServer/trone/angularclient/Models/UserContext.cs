@@ -7,6 +7,7 @@ namespace angularclient.Models
 {
     public class UserContext
     {
+        public string AuthTime { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string FavColor { get; set; }

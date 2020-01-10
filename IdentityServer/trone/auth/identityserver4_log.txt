@@ -6838,3 +6838,1055 @@ System.ArgumentNullException: Value cannot be null. (Parameter 'value')
 2020-01-09 12:05:57.517 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
 2020-01-09 12:05:57.540 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
 2020-01-09 12:05:57.540 +01:00 [DBG] End userinfo request
+2020-01-09 23:14:03.442 +01:00 [INF] Starting host...
+2020-01-09 23:14:03.579 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-09 23:14:03.594 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-09 23:14:03.599 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-09 23:14:03.599 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-09 23:14:03.599 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-09 23:14:03.599 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-09 23:14:03.599 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-09 23:14:03.600 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-09 23:14:04.125 +01:00 [DBG] Login Url: /Account/Login
+2020-01-09 23:14:04.126 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-09 23:14:04.126 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-09 23:14:04.126 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-09 23:14:04.126 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-09 23:14:04.126 +01:00 [DBG] Error Url: /home/error
+2020-01-09 23:14:04.126 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-09 23:14:04.142 +01:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-01-09 23:14:04.257 +01:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-01-09 23:14:04.257 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-01-09 23:14:04.259 +01:00 [DBG] Start discovery request
+2020-01-09 23:14:04.580 +01:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-01-09 23:14:04.586 +01:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-01-09 23:14:04.586 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-01-09 23:14:04.588 +01:00 [DBG] Start key discovery request
+2020-01-09 23:14:04.691 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-09 23:14:04.700 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-09 23:14:04.700 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-09 23:14:04.704 +01:00 [DBG] Start authorize request
+2020-01-09 23:14:04.709 +01:00 [DBG] No user present in authorize request
+2020-01-09 23:14:04.711 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:14:04.724 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:04.733 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:14:04.734 +01:00 [DBG] No PKCE used.
+2020-01-09 23:14:04.757 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:14:04.770 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zYS_rgUp1UYgSfX5Uh57kKsE2zUBQNM-ipNcxtwjiTF1Kn805WkwaQAPgDjbI4ultX2isJQ2OVY6Ryky14PHKvCpMJf7HEQ52aKj8JG7Vp2ONnlH5iax9tzJQCuOxwyprjUIWFIT-_R6mvcBupQp_oN6jYXy3zxzLRvX7ET9ZomFK_hDk3WrVSc1W-slvfVZLzr3Y9Rh0ct0UGtR081hMGl6KqpIMTFC57pS8hcCY92SrTQoNrQYHTRtG7sCXwIroutgLQ2YI6zlryreAIWzfW","UiLocales":null,"Nonce":"637142048446555741.YWJiYmFhNmYtOTBkOC00M2EyLWIzOWItNWZlYWE1NGFhZTMzODk3YzBlYTYtMzZjYS00NzZmLThjNTctODQ4MGU4MDgxZmYx","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142048446555741.YWJiYmFhNmYtOTBkOC00M2EyLWIzOWItNWZlYWE1NGFhZTMzODk3YzBlYTYtMzZjYS00NzZmLThjNTctODQ4MGU4MDgxZmYx","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zYS_rgUp1UYgSfX5Uh57kKsE2zUBQNM-ipNcxtwjiTF1Kn805WkwaQAPgDjbI4ultX2isJQ2OVY6Ryky14PHKvCpMJf7HEQ52aKj8JG7Vp2ONnlH5iax9tzJQCuOxwyprjUIWFIT-_R6mvcBupQp_oN6jYXy3zxzLRvX7ET9ZomFK_hDk3WrVSc1W-slvfVZLzr3Y9Rh0ct0UGtR081hMGl6KqpIMTFC57pS8hcCY92SrTQoNrQYHTRtG7sCXwIroutgLQ2YI6zlryreAIWzfW","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-09 23:14:04.790 +01:00 [INF] Showing login: User is not authenticated
+2020-01-09 23:14:04.885 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:14:04.885 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:04.886 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:14:04.886 +01:00 [DBG] No PKCE used.
+2020-01-09 23:14:04.887 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:14:04.892 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:07.866 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-09 23:14:07.916 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:14:07.916 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:07.916 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:14:07.916 +01:00 [DBG] No PKCE used.
+2020-01-09 23:14:07.917 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:14:07.919 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:14:07.919 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:07.919 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:14:07.919 +01:00 [DBG] No PKCE used.
+2020-01-09 23:14:07.919 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:14:07.920 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:12.484 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-09 23:14:12.540 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:14:12.541 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:12.542 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:14:12.542 +01:00 [DBG] No PKCE used.
+2020-01-09 23:14:12.548 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:14:14.378 +01:00 [DBG] Augmenting SignInContext
+2020-01-09 23:14:14.379 +01:00 [DBG] Adding idp claim with value: local
+2020-01-09 23:14:14.380 +01:00 [DBG] Adding auth_time claim with value: 1578608054
+2020-01-09 23:14:14.391 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-09 23:14:14.402 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000009a-0800-fc00-b63f-84710c7967bb","TimeStamp":"2020-01-09T22:14:14.0000000Z","ProcessId":13656,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-09 23:14:14.404 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:14.428 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-09 23:14:14.429 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-09 23:14:14.429 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-09 23:14:14.433 +01:00 [DBG] Start authorize callback request
+2020-01-09 23:14:14.439 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-09 23:14:14.439 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:14:14.439 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:14.439 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:14:14.440 +01:00 [DBG] No PKCE used.
+2020-01-09 23:14:14.440 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:14:14.441 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zYS_rgUp1UYgSfX5Uh57kKsE2zUBQNM-ipNcxtwjiTF1Kn805WkwaQAPgDjbI4ultX2isJQ2OVY6Ryky14PHKvCpMJf7HEQ52aKj8JG7Vp2ONnlH5iax9tzJQCuOxwyprjUIWFIT-_R6mvcBupQp_oN6jYXy3zxzLRvX7ET9ZomFK_hDk3WrVSc1W-slvfVZLzr3Y9Rh0ct0UGtR081hMGl6KqpIMTFC57pS8hcCY92SrTQoNrQYHTRtG7sCXwIroutgLQ2YI6zlryreAIWzfW","UiLocales":null,"Nonce":"637142048446555741.YWJiYmFhNmYtOTBkOC00M2EyLWIzOWItNWZlYWE1NGFhZTMzODk3YzBlYTYtMzZjYS00NzZmLThjNTctODQ4MGU4MDgxZmYx","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"S7yPEKeydIjvZ3MH8ga24Q","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142048446555741.YWJiYmFhNmYtOTBkOC00M2EyLWIzOWItNWZlYWE1NGFhZTMzODk3YzBlYTYtMzZjYS00NzZmLThjNTctODQ4MGU4MDgxZmYx","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zYS_rgUp1UYgSfX5Uh57kKsE2zUBQNM-ipNcxtwjiTF1Kn805WkwaQAPgDjbI4ultX2isJQ2OVY6Ryky14PHKvCpMJf7HEQ52aKj8JG7Vp2ONnlH5iax9tzJQCuOxwyprjUIWFIT-_R6mvcBupQp_oN6jYXy3zxzLRvX7ET9ZomFK_hDk3WrVSc1W-slvfVZLzr3Y9Rh0ct0UGtR081hMGl6KqpIMTFC57pS8hcCY92SrTQoNrQYHTRtG7sCXwIroutgLQ2YI6zlryreAIWzfW","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-09 23:14:14.450 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-09 23:14:14.452 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-09 23:14:14.490 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-09 23:14:14.500 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-09 23:14:14.502 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-09 23:14:14.590 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****sdJQ","$type":"Token"},{"TokenType":"code","TokenValue":"****cBd8","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"8000009b-0800-fc00-b63f-84710c7967bb","TimeStamp":"2020-01-09T22:14:14.0000000Z","ProcessId":13656,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-09 23:14:14.592 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zYS_rgUp1UYgSfX5Uh57kKsE2zUBQNM-ipNcxtwjiTF1Kn805WkwaQAPgDjbI4ultX2isJQ2OVY6Ryky14PHKvCpMJf7HEQ52aKj8JG7Vp2ONnlH5iax9tzJQCuOxwyprjUIWFIT-_R6mvcBupQp_oN6jYXy3zxzLRvX7ET9ZomFK_hDk3WrVSc1W-slvfVZLzr3Y9Rh0ct0UGtR081hMGl6KqpIMTFC57pS8hcCY92SrTQoNrQYHTRtG7sCXwIroutgLQ2YI6zlryreAIWzfW","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-09 23:14:14.600 +01:00 [DBG] Augmenting SignInContext
+2020-01-09 23:14:14.601 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-09 23:14:15.067 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-09 23:14:15.074 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-09 23:14:15.075 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-09 23:14:15.082 +01:00 [DBG] Start token request.
+2020-01-09 23:14:15.084 +01:00 [DBG] Start client validation
+2020-01-09 23:14:15.087 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-09 23:14:15.089 +01:00 [DBG] Start parsing for secret in post body
+2020-01-09 23:14:15.090 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-09 23:14:15.090 +01:00 [DBG] Secret id found: angularclient
+2020-01-09 23:14:15.090 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:15.099 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-09 23:14:15.099 +01:00 [DBG] Client validation success
+2020-01-09 23:14:15.102 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"80000074-0001-2f00-b63f-84710c7967bb","TimeStamp":"2020-01-09T22:14:15.0000000Z","ProcessId":13656,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-09 23:14:15.105 +01:00 [DBG] Start token request validation
+2020-01-09 23:14:15.112 +01:00 [DBG] Start validation of authorization code token request
+2020-01-09 23:14:15.157 +01:00 [DBG] Validation of authorization code token request success
+2020-01-09 23:14:15.162 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"_DxOze5mrHO9SxTTXB17p9ZyGlXi5SVi2wDWSOxcBd8","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"_DxOze5mrHO9SxTTXB17p9ZyGlXi5SVi2wDWSOxcBd8","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-09 23:14:15.170 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:15.190 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-09 23:14:15.190 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-09 23:14:15.276 +01:00 [DBG] Creating refresh token
+2020-01-09 23:14:15.276 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-09 23:14:15.291 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:15.292 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-09 23:14:15.292 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-09 23:14:15.295 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****Sf3Q","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****pb7A","$type":"Token"},{"TokenType":"access_token","TokenValue":"****jKpA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"80000074-0001-2f00-b63f-84710c7967bb","TimeStamp":"2020-01-09T22:14:15.0000000Z","ProcessId":13656,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-09 23:14:15.296 +01:00 [DBG] Token request success.
+2020-01-09 23:14:15.323 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-09 23:14:15.324 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-09 23:14:15.324 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-09 23:14:15.327 +01:00 [DBG] Start userinfo request
+2020-01-09 23:14:15.328 +01:00 [DBG] Bearer token found in header
+2020-01-09 23:14:15.388 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:15.392 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:14:15.393 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-09 23:14:15.394 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578608055,"exp":1578611655,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578608054,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-09 23:14:15.400 +01:00 [DBG] Creating userinfo response
+2020-01-09 23:14:15.412 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-09 23:14:15.414 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-09 23:14:15.416 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-09 23:14:15.416 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-09 23:14:15.540 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-09 23:14:15.541 +01:00 [DBG] End userinfo request
+2020-01-09 23:16:24.843 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-09 23:16:24.859 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-09 23:16:24.859 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-09 23:16:24.860 +01:00 [DBG] Start authorize request
+2020-01-09 23:16:24.860 +01:00 [DBG] No user present in authorize request
+2020-01-09 23:16:24.861 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:16:24.862 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:16:24.862 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:16:24.862 +01:00 [DBG] No PKCE used.
+2020-01-09 23:16:24.864 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:16:24.865 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yw3e2qfBtrZZPI1RPfFrZbGS7-W4n4AocVDlw5L0VBYWrOrVKISlG5yEMMqiUNF22xD9VEixNm-uwURvM7NcpqzwJE_yrBkcFVawwZBmIJzI1ST615xLkJZCrezd1O-55DG1UmNNHXLEaSpYnbug1TGbvZVsikIyQxjjhC9NpRR5KWoVRCeoh_7JxlojkDVA47G_Y1JecVNyEaJuNpdaWS_bveRZfWl3W_5NENpoKp34D8Z1fZi4X6OisUsXy-FII8v6lSkEnGxJECBvVyUT2a","UiLocales":null,"Nonce":"637142049848269493.YWJhZjgxMTAtM2Y2Zi00YmEwLWE4YTktMmFmNjI4YjIwZGQwNDgzMmQwOTYtOWUzNS00Nzg2LThlYmItYmYwY2JmYjJjODgw","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142049848269493.YWJhZjgxMTAtM2Y2Zi00YmEwLWE4YTktMmFmNjI4YjIwZGQwNDgzMmQwOTYtOWUzNS00Nzg2LThlYmItYmYwY2JmYjJjODgw","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yw3e2qfBtrZZPI1RPfFrZbGS7-W4n4AocVDlw5L0VBYWrOrVKISlG5yEMMqiUNF22xD9VEixNm-uwURvM7NcpqzwJE_yrBkcFVawwZBmIJzI1ST615xLkJZCrezd1O-55DG1UmNNHXLEaSpYnbug1TGbvZVsikIyQxjjhC9NpRR5KWoVRCeoh_7JxlojkDVA47G_Y1JecVNyEaJuNpdaWS_bveRZfWl3W_5NENpoKp34D8Z1fZi4X6OisUsXy-FII8v6lSkEnGxJECBvVyUT2a","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-09 23:16:24.865 +01:00 [INF] Showing login: User is not authenticated
+2020-01-09 23:16:24.873 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:16:24.873 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:16:24.874 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:16:24.874 +01:00 [DBG] No PKCE used.
+2020-01-09 23:16:24.874 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:16:24.874 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:24.837 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-09 23:28:24.845 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-09 23:28:24.845 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-09 23:28:24.845 +01:00 [DBG] Start authorize request
+2020-01-09 23:28:24.846 +01:00 [DBG] No user present in authorize request
+2020-01-09 23:28:24.846 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:28:24.847 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:24.847 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:28:24.847 +01:00 [DBG] No PKCE used.
+2020-01-09 23:28:24.848 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:28:24.849 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6wPczbo8JSX_EZSzAkRaAHkm0T48hOxR5CQ4sqy7nQc9Erco8bMCuOZ-57OUYsWf9UGYejfwECJVhcUds7jRjWlBAG1SznO05T8yujNWVj5z5IRvK4qgalZWTvGJZkfnaR8R7E1NYCJUo5EuYTRpmXfhu8hAf2_XT3jwP6C4dQlJDtOFR6MYTt9D8Z5v9qNllg2QyyoVnJGMpZ-_xgmtqdcdcCOJcao3Nc4xYlVObzcwpVMrW-yFRPkpshQ6H_Omq5e0yPSbGZEwlwnTf__Dbn-","UiLocales":null,"Nonce":"637142057048140475.YTAxNDQzMTUtNzk3NC00MDUyLWI1NjYtNTdiYzY4NWZlY2JhZGU5ZmExOTgtNDc5ZC00MjdhLWFjM2UtOTgzZjk5NGRhZWEx","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142057048140475.YTAxNDQzMTUtNzk3NC00MDUyLWI1NjYtNTdiYzY4NWZlY2JhZGU5ZmExOTgtNDc5ZC00MjdhLWFjM2UtOTgzZjk5NGRhZWEx","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6wPczbo8JSX_EZSzAkRaAHkm0T48hOxR5CQ4sqy7nQc9Erco8bMCuOZ-57OUYsWf9UGYejfwECJVhcUds7jRjWlBAG1SznO05T8yujNWVj5z5IRvK4qgalZWTvGJZkfnaR8R7E1NYCJUo5EuYTRpmXfhu8hAf2_XT3jwP6C4dQlJDtOFR6MYTt9D8Z5v9qNllg2QyyoVnJGMpZ-_xgmtqdcdcCOJcao3Nc4xYlVObzcwpVMrW-yFRPkpshQ6H_Omq5e0yPSbGZEwlwnTf__Dbn-","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-09 23:28:24.849 +01:00 [INF] Showing login: User is not authenticated
+2020-01-09 23:28:24.861 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:28:24.862 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:24.862 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:28:24.862 +01:00 [DBG] No PKCE used.
+2020-01-09 23:28:24.862 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:28:24.862 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:26.419 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-09 23:28:26.428 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:28:26.429 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:26.430 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:28:26.431 +01:00 [DBG] No PKCE used.
+2020-01-09 23:28:26.432 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:28:26.441 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:28:26.442 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:26.442 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:28:26.443 +01:00 [DBG] No PKCE used.
+2020-01-09 23:28:26.444 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:28:26.445 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:28.976 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-09 23:28:28.981 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:28:28.986 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:28.986 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:28:28.987 +01:00 [DBG] No PKCE used.
+2020-01-09 23:28:28.988 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:28:29.038 +01:00 [DBG] Augmenting SignInContext
+2020-01-09 23:28:29.038 +01:00 [DBG] Adding idp claim with value: local
+2020-01-09 23:28:29.038 +01:00 [DBG] Adding auth_time claim with value: 1578608909
+2020-01-09 23:28:29.039 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-09 23:28:29.042 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000073-0003-2f00-b63f-84710c7967bb","TimeStamp":"2020-01-09T22:28:29.0000000Z","ProcessId":13656,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-09 23:28:29.042 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:29.047 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-09 23:28:29.047 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-09 23:28:29.047 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-09 23:28:29.047 +01:00 [DBG] Start authorize callback request
+2020-01-09 23:28:29.052 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-09 23:28:29.052 +01:00 [DBG] Start authorize request protocol validation
+2020-01-09 23:28:29.052 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:29.052 +01:00 [DBG] Checking for PKCE parameters
+2020-01-09 23:28:29.052 +01:00 [DBG] No PKCE used.
+2020-01-09 23:28:29.053 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-09 23:28:29.054 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6wPczbo8JSX_EZSzAkRaAHkm0T48hOxR5CQ4sqy7nQc9Erco8bMCuOZ-57OUYsWf9UGYejfwECJVhcUds7jRjWlBAG1SznO05T8yujNWVj5z5IRvK4qgalZWTvGJZkfnaR8R7E1NYCJUo5EuYTRpmXfhu8hAf2_XT3jwP6C4dQlJDtOFR6MYTt9D8Z5v9qNllg2QyyoVnJGMpZ-_xgmtqdcdcCOJcao3Nc4xYlVObzcwpVMrW-yFRPkpshQ6H_Omq5e0yPSbGZEwlwnTf__Dbn-","UiLocales":null,"Nonce":"637142057048140475.YTAxNDQzMTUtNzk3NC00MDUyLWI1NjYtNTdiYzY4NWZlY2JhZGU5ZmExOTgtNDc5ZC00MjdhLWFjM2UtOTgzZjk5NGRhZWEx","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"mTtKGt3mSsQiYq3Y_HBAug","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142057048140475.YTAxNDQzMTUtNzk3NC00MDUyLWI1NjYtNTdiYzY4NWZlY2JhZGU5ZmExOTgtNDc5ZC00MjdhLWFjM2UtOTgzZjk5NGRhZWEx","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6wPczbo8JSX_EZSzAkRaAHkm0T48hOxR5CQ4sqy7nQc9Erco8bMCuOZ-57OUYsWf9UGYejfwECJVhcUds7jRjWlBAG1SznO05T8yujNWVj5z5IRvK4qgalZWTvGJZkfnaR8R7E1NYCJUo5EuYTRpmXfhu8hAf2_XT3jwP6C4dQlJDtOFR6MYTt9D8Z5v9qNllg2QyyoVnJGMpZ-_xgmtqdcdcCOJcao3Nc4xYlVObzcwpVMrW-yFRPkpshQ6H_Omq5e0yPSbGZEwlwnTf__Dbn-","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-09 23:28:29.055 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-09 23:28:29.055 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-09 23:28:29.056 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-09 23:28:29.056 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-09 23:28:29.056 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-09 23:28:29.061 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****TcXw","$type":"Token"},{"TokenType":"code","TokenValue":"****gV3g","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"80000074-0003-2f00-b63f-84710c7967bb","TimeStamp":"2020-01-09T22:28:29.0000000Z","ProcessId":13656,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-09 23:28:29.062 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6wPczbo8JSX_EZSzAkRaAHkm0T48hOxR5CQ4sqy7nQc9Erco8bMCuOZ-57OUYsWf9UGYejfwECJVhcUds7jRjWlBAG1SznO05T8yujNWVj5z5IRvK4qgalZWTvGJZkfnaR8R7E1NYCJUo5EuYTRpmXfhu8hAf2_XT3jwP6C4dQlJDtOFR6MYTt9D8Z5v9qNllg2QyyoVnJGMpZ-_xgmtqdcdcCOJcao3Nc4xYlVObzcwpVMrW-yFRPkpshQ6H_Omq5e0yPSbGZEwlwnTf__Dbn-","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-09 23:28:29.063 +01:00 [DBG] Augmenting SignInContext
+2020-01-09 23:28:29.063 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-09 23:28:29.180 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-09 23:28:29.181 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-09 23:28:29.181 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-09 23:28:29.181 +01:00 [DBG] Start token request.
+2020-01-09 23:28:29.181 +01:00 [DBG] Start client validation
+2020-01-09 23:28:29.183 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-09 23:28:29.183 +01:00 [DBG] Start parsing for secret in post body
+2020-01-09 23:28:29.184 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-09 23:28:29.185 +01:00 [DBG] Secret id found: angularclient
+2020-01-09 23:28:29.185 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:29.186 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-09 23:28:29.186 +01:00 [DBG] Client validation success
+2020-01-09 23:28:29.186 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"800000a3-0002-1900-b63f-84710c7967bb","TimeStamp":"2020-01-09T22:28:29.0000000Z","ProcessId":13656,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-09 23:28:29.186 +01:00 [DBG] Start token request validation
+2020-01-09 23:28:29.186 +01:00 [DBG] Start validation of authorization code token request
+2020-01-09 23:28:29.187 +01:00 [DBG] Validation of authorization code token request success
+2020-01-09 23:28:29.187 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"qTRPnj--Jj_qbTeXprpE9dVl1zO3tWABdoIJbGxgV3g","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"qTRPnj--Jj_qbTeXprpE9dVl1zO3tWABdoIJbGxgV3g","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-09 23:28:29.187 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:29.188 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-09 23:28:29.188 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-09 23:28:29.220 +01:00 [DBG] Creating refresh token
+2020-01-09 23:28:29.220 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-09 23:28:29.221 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:29.221 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-09 23:28:29.221 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-09 23:28:29.224 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****Y7KQ","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****NNs0","$type":"Token"},{"TokenType":"access_token","TokenValue":"****PIgw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800000a3-0002-1900-b63f-84710c7967bb","TimeStamp":"2020-01-09T22:28:29.0000000Z","ProcessId":13656,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-09 23:28:29.224 +01:00 [DBG] Token request success.
+2020-01-09 23:28:29.235 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-09 23:28:29.236 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-09 23:28:29.236 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-09 23:28:29.236 +01:00 [DBG] Start userinfo request
+2020-01-09 23:28:29.236 +01:00 [DBG] Bearer token found in header
+2020-01-09 23:28:29.237 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:29.237 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-09 23:28:29.238 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-09 23:28:29.238 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578608909,"exp":1578612509,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578608909,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-09 23:28:29.238 +01:00 [DBG] Creating userinfo response
+2020-01-09 23:28:29.238 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-09 23:28:29.238 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-09 23:28:29.238 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-09 23:28:29.238 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-09 23:28:29.277 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-09 23:28:29.277 +01:00 [DBG] End userinfo request
+2020-01-10 00:11:43.877 +01:00 [INF] Starting host...
+2020-01-10 00:11:43.996 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-10 00:11:44.008 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-10 00:11:44.012 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-10 00:11:44.012 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-10 00:11:44.012 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-10 00:11:44.012 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-10 00:11:44.012 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-10 00:11:44.012 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-10 00:11:44.711 +01:00 [DBG] Login Url: /Account/Login
+2020-01-10 00:11:44.712 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-10 00:11:44.712 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-10 00:11:44.712 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-10 00:11:44.712 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-10 00:11:44.712 +01:00 [DBG] Error Url: /home/error
+2020-01-10 00:11:44.712 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-10 00:11:44.726 +01:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-01-10 00:11:44.832 +01:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-01-10 00:11:44.832 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-01-10 00:11:44.834 +01:00 [DBG] Start discovery request
+2020-01-10 00:11:45.168 +01:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-01-10 00:11:45.170 +01:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-01-10 00:11:45.170 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-01-10 00:11:45.172 +01:00 [DBG] Start key discovery request
+2020-01-10 00:11:52.804 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-10 00:11:52.824 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-10 00:11:52.824 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-10 00:11:52.831 +01:00 [DBG] Start authorize request
+2020-01-10 00:11:52.841 +01:00 [DBG] No user present in authorize request
+2020-01-10 00:11:52.845 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:11:52.859 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:11:52.880 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:11:52.882 +01:00 [DBG] No PKCE used.
+2020-01-10 00:11:52.911 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:11:52.931 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yW1RZCVtBRbDz8FH2rfJcTr8oaN0OqtDVF7md_cICV7uU6Yx-_U7fDhcumedCfuosqah74RUK5EqL35ZhxUaXQMtgmpuSG2Oaqjj7Xh55maOpmlt3F_s4URIVYNwazdlh_NXGPB4fUKibbqsS7ohnj0y8nBry1b0ZpixIOY71FZX4IY2LWo8Zd2ltglN5JFkUm1UX56eff08Sw2RxbB8RE8ouv4vRCgEPvm4OixzDBckT3S1jp_cm_99Yi_QJcBjtmmyGowIkSqgaHtA1e4jEiovbVU4M_Go2PZJ9iY90VJg","UiLocales":null,"Nonce":"637142083127711548.NGM4MGVjMGUtZTc1ZC00MTZjLWI0MjgtMmI3ZTYzNDMzY2RhODkzMmU4ODktZjMwNC00MzM1LWIzOWEtMTdhYTU5YTdiMDUx","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142083127711548.NGM4MGVjMGUtZTc1ZC00MTZjLWI0MjgtMmI3ZTYzNDMzY2RhODkzMmU4ODktZjMwNC00MzM1LWIzOWEtMTdhYTU5YTdiMDUx","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yW1RZCVtBRbDz8FH2rfJcTr8oaN0OqtDVF7md_cICV7uU6Yx-_U7fDhcumedCfuosqah74RUK5EqL35ZhxUaXQMtgmpuSG2Oaqjj7Xh55maOpmlt3F_s4URIVYNwazdlh_NXGPB4fUKibbqsS7ohnj0y8nBry1b0ZpixIOY71FZX4IY2LWo8Zd2ltglN5JFkUm1UX56eff08Sw2RxbB8RE8ouv4vRCgEPvm4OixzDBckT3S1jp_cm_99Yi_QJcBjtmmyGowIkSqgaHtA1e4jEiovbVU4M_Go2PZJ9iY90VJg","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 00:11:52.963 +01:00 [INF] Showing login: User is not authenticated
+2020-01-10 00:11:53.068 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:11:53.069 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:11:53.069 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:11:53.069 +01:00 [DBG] No PKCE used.
+2020-01-10 00:11:53.069 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:11:53.073 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:02.556 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 00:12:02.637 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:12:02.637 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:02.638 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:12:02.638 +01:00 [DBG] No PKCE used.
+2020-01-10 00:12:02.639 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:12:04.087 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 00:12:04.089 +01:00 [DBG] Adding idp claim with value: local
+2020-01-10 00:12:04.089 +01:00 [DBG] Adding auth_time claim with value: 1578611524
+2020-01-10 00:12:04.101 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 00:12:04.113 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"800000ab-0003-2a00-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:12:04.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-10 00:12:04.115 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:04.147 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-10 00:12:04.148 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-10 00:12:04.148 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-10 00:12:04.154 +01:00 [DBG] Start authorize callback request
+2020-01-10 00:12:04.164 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 00:12:04.164 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:12:04.164 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:04.164 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:12:04.164 +01:00 [DBG] No PKCE used.
+2020-01-10 00:12:04.165 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:12:04.165 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yW1RZCVtBRbDz8FH2rfJcTr8oaN0OqtDVF7md_cICV7uU6Yx-_U7fDhcumedCfuosqah74RUK5EqL35ZhxUaXQMtgmpuSG2Oaqjj7Xh55maOpmlt3F_s4URIVYNwazdlh_NXGPB4fUKibbqsS7ohnj0y8nBry1b0ZpixIOY71FZX4IY2LWo8Zd2ltglN5JFkUm1UX56eff08Sw2RxbB8RE8ouv4vRCgEPvm4OixzDBckT3S1jp_cm_99Yi_QJcBjtmmyGowIkSqgaHtA1e4jEiovbVU4M_Go2PZJ9iY90VJg","UiLocales":null,"Nonce":"637142083127711548.NGM4MGVjMGUtZTc1ZC00MTZjLWI0MjgtMmI3ZTYzNDMzY2RhODkzMmU4ODktZjMwNC00MzM1LWIzOWEtMTdhYTU5YTdiMDUx","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"NMFGJIlsmYw8o0QyczU0ZA","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142083127711548.NGM4MGVjMGUtZTc1ZC00MTZjLWI0MjgtMmI3ZTYzNDMzY2RhODkzMmU4ODktZjMwNC00MzM1LWIzOWEtMTdhYTU5YTdiMDUx","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yW1RZCVtBRbDz8FH2rfJcTr8oaN0OqtDVF7md_cICV7uU6Yx-_U7fDhcumedCfuosqah74RUK5EqL35ZhxUaXQMtgmpuSG2Oaqjj7Xh55maOpmlt3F_s4URIVYNwazdlh_NXGPB4fUKibbqsS7ohnj0y8nBry1b0ZpixIOY71FZX4IY2LWo8Zd2ltglN5JFkUm1UX56eff08Sw2RxbB8RE8ouv4vRCgEPvm4OixzDBckT3S1jp_cm_99Yi_QJcBjtmmyGowIkSqgaHtA1e4jEiovbVU4M_Go2PZJ9iY90VJg","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 00:12:04.171 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-10 00:12:04.174 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-10 00:12:04.208 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-10 00:12:04.216 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 00:12:04.217 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 00:12:04.288 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****Agjg","$type":"Token"},{"TokenType":"code","TokenValue":"****dCJA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800000ac-0003-2a00-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:12:04.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 00:12:04.291 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yW1RZCVtBRbDz8FH2rfJcTr8oaN0OqtDVF7md_cICV7uU6Yx-_U7fDhcumedCfuosqah74RUK5EqL35ZhxUaXQMtgmpuSG2Oaqjj7Xh55maOpmlt3F_s4URIVYNwazdlh_NXGPB4fUKibbqsS7ohnj0y8nBry1b0ZpixIOY71FZX4IY2LWo8Zd2ltglN5JFkUm1UX56eff08Sw2RxbB8RE8ouv4vRCgEPvm4OixzDBckT3S1jp_cm_99Yi_QJcBjtmmyGowIkSqgaHtA1e4jEiovbVU4M_Go2PZJ9iY90VJg","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-10 00:12:04.299 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 00:12:04.300 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 00:12:04.547 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-10 00:12:04.552 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-10 00:12:04.552 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-10 00:12:04.555 +01:00 [DBG] Start token request.
+2020-01-10 00:12:04.558 +01:00 [DBG] Start client validation
+2020-01-10 00:12:04.565 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-10 00:12:04.566 +01:00 [DBG] Start parsing for secret in post body
+2020-01-10 00:12:04.568 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-10 00:12:04.568 +01:00 [DBG] Secret id found: angularclient
+2020-01-10 00:12:04.568 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:04.576 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-10 00:12:04.577 +01:00 [DBG] Client validation success
+2020-01-10 00:12:04.580 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"8000015b-0800-f500-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:12:04.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-10 00:12:04.582 +01:00 [DBG] Start token request validation
+2020-01-10 00:12:04.587 +01:00 [DBG] Start validation of authorization code token request
+2020-01-10 00:12:04.624 +01:00 [DBG] Validation of authorization code token request success
+2020-01-10 00:12:04.631 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"oxon7BIOZfgy1eP_PvrIn0OaXMlv2138PutP9lldCJA","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"oxon7BIOZfgy1eP_PvrIn0OaXMlv2138PutP9lldCJA","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-10 00:12:04.637 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:04.655 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-10 00:12:04.656 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 00:12:04.738 +01:00 [DBG] Creating refresh token
+2020-01-10 00:12:04.739 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-10 00:12:04.752 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:04.753 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 00:12:04.753 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 00:12:04.757 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****Zb7A","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****O_4k","$type":"Token"},{"TokenType":"access_token","TokenValue":"****QixA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"8000015b-0800-f500-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:12:04.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 00:12:04.758 +01:00 [DBG] Token request success.
+2020-01-10 00:12:04.784 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-10 00:12:04.785 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-10 00:12:04.785 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-10 00:12:04.788 +01:00 [DBG] Start userinfo request
+2020-01-10 00:12:04.790 +01:00 [DBG] Bearer token found in header
+2020-01-10 00:12:04.833 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:04.835 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:12:04.836 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-10 00:12:04.838 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578611524,"exp":1578615124,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578611524,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-10 00:12:04.842 +01:00 [DBG] Creating userinfo response
+2020-01-10 00:12:04.847 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:12:04.847 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:12:04.849 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-10 00:12:04.849 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:12:04.864 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-10 00:12:04.865 +01:00 [DBG] End userinfo request
+2020-01-10 00:43:40.048 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-10 00:43:40.056 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-10 00:43:40.056 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-10 00:43:40.057 +01:00 [DBG] Start authorize request
+2020-01-10 00:43:40.058 +01:00 [DBG] No user present in authorize request
+2020-01-10 00:43:40.058 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:43:40.059 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:40.060 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:43:40.061 +01:00 [DBG] No PKCE used.
+2020-01-10 00:43:40.062 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:43:40.064 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xjopsQLTM61z_-mfTaMn5XhSupmsNsVQ8MReDSil5k3ea39ve-eh6VQd3CiBsMKOFM6p8qrw3FyrBMsAVPm6sLN_50YEWoow2l_jzfuLM6UGcx9ZFrQiZNTNCU9ueEbKAu5MBITuq50mM7N1cO1uhqBMHSLjBnSTbFf1shlTrJmFmBnU1Z4ESi5C3oLnE_SbyN6t1NYgRCxB4mjaL0YIacq_9fWRff2O7gPd1PJ0SSKCfufPsX4T3CIDjBAXjl6wiUMxMR2thkXNyD-UpDh_tkbm6Mn_wK4VO9pjU7aB_3Og","UiLocales":null,"Nonce":"637142102200262975.YzQ2ZjRjYTctN2I4MS00MThlLWE1YWMtNGJkY2RlNjNlZGJiMTkwYmJlNTctYmNmNy00YmMyLTgwOTctNWE3ZjViOWJhNzVj","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142102200262975.YzQ2ZjRjYTctN2I4MS00MThlLWE1YWMtNGJkY2RlNjNlZGJiMTkwYmJlNTctYmNmNy00YmMyLTgwOTctNWE3ZjViOWJhNzVj","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xjopsQLTM61z_-mfTaMn5XhSupmsNsVQ8MReDSil5k3ea39ve-eh6VQd3CiBsMKOFM6p8qrw3FyrBMsAVPm6sLN_50YEWoow2l_jzfuLM6UGcx9ZFrQiZNTNCU9ueEbKAu5MBITuq50mM7N1cO1uhqBMHSLjBnSTbFf1shlTrJmFmBnU1Z4ESi5C3oLnE_SbyN6t1NYgRCxB4mjaL0YIacq_9fWRff2O7gPd1PJ0SSKCfufPsX4T3CIDjBAXjl6wiUMxMR2thkXNyD-UpDh_tkbm6Mn_wK4VO9pjU7aB_3Og","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 00:43:40.065 +01:00 [INF] Showing login: User is not authenticated
+2020-01-10 00:43:40.090 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:43:40.091 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:40.091 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:43:40.091 +01:00 [DBG] No PKCE used.
+2020-01-10 00:43:40.092 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:43:40.092 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:42.903 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 00:43:42.912 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:43:42.913 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:42.914 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:43:42.914 +01:00 [DBG] No PKCE used.
+2020-01-10 00:43:42.916 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:43:42.919 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:43:42.919 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:42.919 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:43:42.920 +01:00 [DBG] No PKCE used.
+2020-01-10 00:43:42.920 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:43:42.921 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.310 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 00:43:46.324 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:43:46.325 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.325 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:43:46.326 +01:00 [DBG] No PKCE used.
+2020-01-10 00:43:46.327 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:43:46.413 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 00:43:46.413 +01:00 [DBG] Adding idp claim with value: local
+2020-01-10 00:43:46.413 +01:00 [DBG] Adding auth_time claim with value: 1578613426
+2020-01-10 00:43:46.415 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 00:43:46.423 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000073-0002-3a00-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:43:46.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-10 00:43:46.424 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.436 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-10 00:43:46.437 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-10 00:43:46.437 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-10 00:43:46.437 +01:00 [DBG] Start authorize callback request
+2020-01-10 00:43:46.438 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 00:43:46.438 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:43:46.438 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.439 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:43:46.439 +01:00 [DBG] No PKCE used.
+2020-01-10 00:43:46.441 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:43:46.442 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xjopsQLTM61z_-mfTaMn5XhSupmsNsVQ8MReDSil5k3ea39ve-eh6VQd3CiBsMKOFM6p8qrw3FyrBMsAVPm6sLN_50YEWoow2l_jzfuLM6UGcx9ZFrQiZNTNCU9ueEbKAu5MBITuq50mM7N1cO1uhqBMHSLjBnSTbFf1shlTrJmFmBnU1Z4ESi5C3oLnE_SbyN6t1NYgRCxB4mjaL0YIacq_9fWRff2O7gPd1PJ0SSKCfufPsX4T3CIDjBAXjl6wiUMxMR2thkXNyD-UpDh_tkbm6Mn_wK4VO9pjU7aB_3Og","UiLocales":null,"Nonce":"637142102200262975.YzQ2ZjRjYTctN2I4MS00MThlLWE1YWMtNGJkY2RlNjNlZGJiMTkwYmJlNTctYmNmNy00YmMyLTgwOTctNWE3ZjViOWJhNzVj","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"qPBQp9WQUgxvPSUtefR8kA","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142102200262975.YzQ2ZjRjYTctN2I4MS00MThlLWE1YWMtNGJkY2RlNjNlZGJiMTkwYmJlNTctYmNmNy00YmMyLTgwOTctNWE3ZjViOWJhNzVj","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xjopsQLTM61z_-mfTaMn5XhSupmsNsVQ8MReDSil5k3ea39ve-eh6VQd3CiBsMKOFM6p8qrw3FyrBMsAVPm6sLN_50YEWoow2l_jzfuLM6UGcx9ZFrQiZNTNCU9ueEbKAu5MBITuq50mM7N1cO1uhqBMHSLjBnSTbFf1shlTrJmFmBnU1Z4ESi5C3oLnE_SbyN6t1NYgRCxB4mjaL0YIacq_9fWRff2O7gPd1PJ0SSKCfufPsX4T3CIDjBAXjl6wiUMxMR2thkXNyD-UpDh_tkbm6Mn_wK4VO9pjU7aB_3Og","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 00:43:46.442 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-10 00:43:46.442 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-10 00:43:46.444 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-10 00:43:46.444 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 00:43:46.444 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 00:43:46.448 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****0AMw","$type":"Token"},{"TokenType":"code","TokenValue":"****1FW0","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"80000074-0002-3a00-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:43:46.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 00:43:46.449 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xjopsQLTM61z_-mfTaMn5XhSupmsNsVQ8MReDSil5k3ea39ve-eh6VQd3CiBsMKOFM6p8qrw3FyrBMsAVPm6sLN_50YEWoow2l_jzfuLM6UGcx9ZFrQiZNTNCU9ueEbKAu5MBITuq50mM7N1cO1uhqBMHSLjBnSTbFf1shlTrJmFmBnU1Z4ESi5C3oLnE_SbyN6t1NYgRCxB4mjaL0YIacq_9fWRff2O7gPd1PJ0SSKCfufPsX4T3CIDjBAXjl6wiUMxMR2thkXNyD-UpDh_tkbm6Mn_wK4VO9pjU7aB_3Og","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-10 00:43:46.449 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 00:43:46.450 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 00:43:46.581 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-10 00:43:46.582 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-10 00:43:46.582 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-10 00:43:46.582 +01:00 [DBG] Start token request.
+2020-01-10 00:43:46.582 +01:00 [DBG] Start client validation
+2020-01-10 00:43:46.582 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-10 00:43:46.582 +01:00 [DBG] Start parsing for secret in post body
+2020-01-10 00:43:46.583 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-10 00:43:46.584 +01:00 [DBG] Secret id found: angularclient
+2020-01-10 00:43:46.584 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.586 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-10 00:43:46.586 +01:00 [DBG] Client validation success
+2020-01-10 00:43:46.586 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"800000d9-0002-3800-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:43:46.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-10 00:43:46.587 +01:00 [DBG] Start token request validation
+2020-01-10 00:43:46.587 +01:00 [DBG] Start validation of authorization code token request
+2020-01-10 00:43:46.588 +01:00 [DBG] Validation of authorization code token request success
+2020-01-10 00:43:46.588 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"CrAI9_1EiCCUDa3w6G2IJY_EAu2-qQKGjVZYyHM1FW0","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"CrAI9_1EiCCUDa3w6G2IJY_EAu2-qQKGjVZYyHM1FW0","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-10 00:43:46.589 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.589 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-10 00:43:46.589 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 00:43:46.611 +01:00 [DBG] Creating refresh token
+2020-01-10 00:43:46.611 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-10 00:43:46.612 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.613 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 00:43:46.613 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 00:43:46.615 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****QlyA","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****nrpw","$type":"Token"},{"TokenType":"access_token","TokenValue":"****KCyQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800000d9-0002-3800-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:43:46.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 00:43:46.615 +01:00 [DBG] Token request success.
+2020-01-10 00:43:46.623 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-10 00:43:46.624 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-10 00:43:46.625 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-10 00:43:46.625 +01:00 [DBG] Start userinfo request
+2020-01-10 00:43:46.625 +01:00 [DBG] Bearer token found in header
+2020-01-10 00:43:46.626 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.627 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:43:46.627 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-10 00:43:46.627 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578613426,"exp":1578617026,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578613426,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-10 00:43:46.627 +01:00 [DBG] Creating userinfo response
+2020-01-10 00:43:46.627 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:43:46.627 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:43:46.628 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-10 00:43:46.628 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:43:46.642 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-10 00:43:46.642 +01:00 [DBG] End userinfo request
+2020-01-10 00:52:08.350 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-10 00:52:08.358 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-10 00:52:08.358 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-10 00:52:08.358 +01:00 [DBG] Start authorize request
+2020-01-10 00:52:08.362 +01:00 [DBG] No user present in authorize request
+2020-01-10 00:52:08.362 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:52:08.362 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:08.366 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:52:08.369 +01:00 [DBG] No PKCE used.
+2020-01-10 00:52:08.372 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:52:08.373 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zkJX4ZmatbfgVc_aSOA-5pQjUiM8M2975ToMCaayge0ATt6nXU4A9gWvmnFh8EdAh4UNfU0-7V2NRGlLRwXciW7oXeqHRtX9Ehs10xEKEZ7zMZnPMMNfbXV9aFzT33248-NfdKXIHmIFFh88BTm3HCbZVb78gcuRbBsnCoF-B_aNkq2J1Kn1fYWbnA00TNvEXOUVAs1GgI-qsOpmWLv4B68ZDy7C-Bgl53uzn0HKGroIJ1fwhp7Lok9OQC8phfuA_84OXSRtK9QIwMk1FW0DML5UroW49oU99qZoclY8Y80Q","UiLocales":null,"Nonce":"637142107283031689.MTY0ODIyM2MtNWRmYS00NGU1LThkOWYtZTc5MDAzYjNjNzg5ODEwMGYzZjgtMDI5OC00Y2I0LTg2NDItNzYyNTA4MTlmOWVm","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142107283031689.MTY0ODIyM2MtNWRmYS00NGU1LThkOWYtZTc5MDAzYjNjNzg5ODEwMGYzZjgtMDI5OC00Y2I0LTg2NDItNzYyNTA4MTlmOWVm","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zkJX4ZmatbfgVc_aSOA-5pQjUiM8M2975ToMCaayge0ATt6nXU4A9gWvmnFh8EdAh4UNfU0-7V2NRGlLRwXciW7oXeqHRtX9Ehs10xEKEZ7zMZnPMMNfbXV9aFzT33248-NfdKXIHmIFFh88BTm3HCbZVb78gcuRbBsnCoF-B_aNkq2J1Kn1fYWbnA00TNvEXOUVAs1GgI-qsOpmWLv4B68ZDy7C-Bgl53uzn0HKGroIJ1fwhp7Lok9OQC8phfuA_84OXSRtK9QIwMk1FW0DML5UroW49oU99qZoclY8Y80Q","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 00:52:08.373 +01:00 [INF] Showing login: User is not authenticated
+2020-01-10 00:52:08.414 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:52:08.419 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:08.419 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:52:08.419 +01:00 [DBG] No PKCE used.
+2020-01-10 00:52:08.420 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:52:08.420 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:11.093 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 00:52:11.108 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:52:11.108 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:11.108 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:52:11.109 +01:00 [DBG] No PKCE used.
+2020-01-10 00:52:11.109 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:52:11.110 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:52:11.110 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:11.110 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:52:11.110 +01:00 [DBG] No PKCE used.
+2020-01-10 00:52:11.110 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:52:11.111 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.152 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 00:52:15.163 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:52:15.163 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.164 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:52:15.164 +01:00 [DBG] No PKCE used.
+2020-01-10 00:52:15.165 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:52:15.216 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 00:52:15.216 +01:00 [DBG] Adding idp claim with value: local
+2020-01-10 00:52:15.216 +01:00 [DBG] Adding auth_time claim with value: 1578613935
+2020-01-10 00:52:15.218 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 00:52:15.221 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000016d-0002-1600-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:52:15.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-10 00:52:15.223 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.232 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-10 00:52:15.239 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-10 00:52:15.239 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-10 00:52:15.239 +01:00 [DBG] Start authorize callback request
+2020-01-10 00:52:15.240 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 00:52:15.240 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:52:15.240 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.240 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:52:15.240 +01:00 [DBG] No PKCE used.
+2020-01-10 00:52:15.241 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:52:15.241 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zkJX4ZmatbfgVc_aSOA-5pQjUiM8M2975ToMCaayge0ATt6nXU4A9gWvmnFh8EdAh4UNfU0-7V2NRGlLRwXciW7oXeqHRtX9Ehs10xEKEZ7zMZnPMMNfbXV9aFzT33248-NfdKXIHmIFFh88BTm3HCbZVb78gcuRbBsnCoF-B_aNkq2J1Kn1fYWbnA00TNvEXOUVAs1GgI-qsOpmWLv4B68ZDy7C-Bgl53uzn0HKGroIJ1fwhp7Lok9OQC8phfuA_84OXSRtK9QIwMk1FW0DML5UroW49oU99qZoclY8Y80Q","UiLocales":null,"Nonce":"637142107283031689.MTY0ODIyM2MtNWRmYS00NGU1LThkOWYtZTc5MDAzYjNjNzg5ODEwMGYzZjgtMDI5OC00Y2I0LTg2NDItNzYyNTA4MTlmOWVm","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"XxTg7gtn2AUJ4GFnDMXa5g","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142107283031689.MTY0ODIyM2MtNWRmYS00NGU1LThkOWYtZTc5MDAzYjNjNzg5ODEwMGYzZjgtMDI5OC00Y2I0LTg2NDItNzYyNTA4MTlmOWVm","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zkJX4ZmatbfgVc_aSOA-5pQjUiM8M2975ToMCaayge0ATt6nXU4A9gWvmnFh8EdAh4UNfU0-7V2NRGlLRwXciW7oXeqHRtX9Ehs10xEKEZ7zMZnPMMNfbXV9aFzT33248-NfdKXIHmIFFh88BTm3HCbZVb78gcuRbBsnCoF-B_aNkq2J1Kn1fYWbnA00TNvEXOUVAs1GgI-qsOpmWLv4B68ZDy7C-Bgl53uzn0HKGroIJ1fwhp7Lok9OQC8phfuA_84OXSRtK9QIwMk1FW0DML5UroW49oU99qZoclY8Y80Q","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 00:52:15.241 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-10 00:52:15.242 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-10 00:52:15.243 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-10 00:52:15.243 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 00:52:15.243 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 00:52:15.246 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****9Ajw","$type":"Token"},{"TokenType":"code","TokenValue":"****qfkY","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"8000016e-0002-1600-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:52:15.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 00:52:15.246 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6zkJX4ZmatbfgVc_aSOA-5pQjUiM8M2975ToMCaayge0ATt6nXU4A9gWvmnFh8EdAh4UNfU0-7V2NRGlLRwXciW7oXeqHRtX9Ehs10xEKEZ7zMZnPMMNfbXV9aFzT33248-NfdKXIHmIFFh88BTm3HCbZVb78gcuRbBsnCoF-B_aNkq2J1Kn1fYWbnA00TNvEXOUVAs1GgI-qsOpmWLv4B68ZDy7C-Bgl53uzn0HKGroIJ1fwhp7Lok9OQC8phfuA_84OXSRtK9QIwMk1FW0DML5UroW49oU99qZoclY8Y80Q","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-10 00:52:15.247 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 00:52:15.249 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 00:52:15.359 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-10 00:52:15.377 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-10 00:52:15.377 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-10 00:52:15.377 +01:00 [DBG] Start token request.
+2020-01-10 00:52:15.377 +01:00 [DBG] Start client validation
+2020-01-10 00:52:15.377 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-10 00:52:15.377 +01:00 [DBG] Start parsing for secret in post body
+2020-01-10 00:52:15.378 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-10 00:52:15.378 +01:00 [DBG] Secret id found: angularclient
+2020-01-10 00:52:15.378 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.379 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-10 00:52:15.379 +01:00 [DBG] Client validation success
+2020-01-10 00:52:15.379 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"800000e6-0003-2f00-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:52:15.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-10 00:52:15.379 +01:00 [DBG] Start token request validation
+2020-01-10 00:52:15.379 +01:00 [DBG] Start validation of authorization code token request
+2020-01-10 00:52:15.380 +01:00 [DBG] Validation of authorization code token request success
+2020-01-10 00:52:15.380 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"ubVMTTHFmUVPc4BQ6CYx_na7pyXLAaOlJUGuEvpqfkY","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"ubVMTTHFmUVPc4BQ6CYx_na7pyXLAaOlJUGuEvpqfkY","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-10 00:52:15.381 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.381 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-10 00:52:15.381 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 00:52:15.396 +01:00 [DBG] Creating refresh token
+2020-01-10 00:52:15.396 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-10 00:52:15.397 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.397 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 00:52:15.397 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 00:52:15.399 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****YUzA","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****EI4g","$type":"Token"},{"TokenType":"access_token","TokenValue":"****vQPA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800000e6-0003-2f00-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:52:15.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 00:52:15.399 +01:00 [DBG] Token request success.
+2020-01-10 00:52:15.404 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-10 00:52:15.408 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-10 00:52:15.408 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-10 00:52:15.408 +01:00 [DBG] Start userinfo request
+2020-01-10 00:52:15.408 +01:00 [DBG] Bearer token found in header
+2020-01-10 00:52:15.410 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.410 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:52:15.410 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-10 00:52:15.410 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578613935,"exp":1578617535,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578613935,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-10 00:52:15.410 +01:00 [DBG] Creating userinfo response
+2020-01-10 00:52:15.410 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:52:15.411 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:52:15.411 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-10 00:52:15.411 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:52:15.420 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-10 00:52:15.420 +01:00 [DBG] End userinfo request
+2020-01-10 00:58:13.609 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-10 00:58:13.610 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-10 00:58:13.610 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-10 00:58:13.610 +01:00 [DBG] Start authorize request
+2020-01-10 00:58:13.611 +01:00 [DBG] No user present in authorize request
+2020-01-10 00:58:13.611 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:58:13.611 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:13.611 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:58:13.611 +01:00 [DBG] No PKCE used.
+2020-01-10 00:58:13.612 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:58:13.612 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xmIVcqaOFQlcMAcbDhy6aI5fWR12UVK5eM1s1XJZa24SgVaF8nQhe15c5aRktXW-9p7gPSG7Iu8mzvJFX_WUURSLTCmc-6accWVv3768laEiuf-ljWnrovGT5kDmHGk_0y6TQl7M-CBldgAClZtJOhk6GK5LyNUWMKUU3YDcKDBeU2sZgd-ZHcIQ65XkBIy5WkROW6g7W-AcKLUGN_caL3sGkg_FWt1dNlQ7w5sKTc8PBamm0VxpKSrSy8RIMsimIYSTOcmHOiefuVTuqdyx2vB9wb8bbFuBMgo-9RRc8ZRA","UiLocales":null,"Nonce":"637142110935926939.M2Q3YzY4YzYtZjI3NS00MDc4LTg4NTEtODJmYzNiNjM0YTcyMDVkODc0NzMtZWNiYy00YjViLWJkOWMtZTZkZTI4YzM1YmNh","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142110935926939.M2Q3YzY4YzYtZjI3NS00MDc4LTg4NTEtODJmYzNiNjM0YTcyMDVkODc0NzMtZWNiYy00YjViLWJkOWMtZTZkZTI4YzM1YmNh","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xmIVcqaOFQlcMAcbDhy6aI5fWR12UVK5eM1s1XJZa24SgVaF8nQhe15c5aRktXW-9p7gPSG7Iu8mzvJFX_WUURSLTCmc-6accWVv3768laEiuf-ljWnrovGT5kDmHGk_0y6TQl7M-CBldgAClZtJOhk6GK5LyNUWMKUU3YDcKDBeU2sZgd-ZHcIQ65XkBIy5WkROW6g7W-AcKLUGN_caL3sGkg_FWt1dNlQ7w5sKTc8PBamm0VxpKSrSy8RIMsimIYSTOcmHOiefuVTuqdyx2vB9wb8bbFuBMgo-9RRc8ZRA","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 00:58:13.612 +01:00 [INF] Showing login: User is not authenticated
+2020-01-10 00:58:13.626 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:58:13.626 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:13.626 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:58:13.626 +01:00 [DBG] No PKCE used.
+2020-01-10 00:58:13.627 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:58:13.627 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:15.946 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 00:58:15.950 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:58:15.950 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:15.950 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:58:15.950 +01:00 [DBG] No PKCE used.
+2020-01-10 00:58:15.956 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:58:15.956 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:58:15.956 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:15.956 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:58:15.956 +01:00 [DBG] No PKCE used.
+2020-01-10 00:58:15.957 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:58:15.958 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:19.654 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 00:58:19.669 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:58:19.670 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:19.670 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:58:19.670 +01:00 [DBG] No PKCE used.
+2020-01-10 00:58:19.670 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:58:19.769 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 00:58:19.769 +01:00 [DBG] Adding idp claim with value: local
+2020-01-10 00:58:19.770 +01:00 [DBG] Adding auth_time claim with value: 1578614299
+2020-01-10 00:58:19.770 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 00:58:19.779 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"800001f9-0003-2e00-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:58:19.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-10 00:58:19.779 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:19.793 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-10 00:58:19.794 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-10 00:58:19.794 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-10 00:58:19.794 +01:00 [DBG] Start authorize callback request
+2020-01-10 00:58:19.794 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 00:58:19.794 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 00:58:19.794 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:19.794 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 00:58:19.794 +01:00 [DBG] No PKCE used.
+2020-01-10 00:58:19.795 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 00:58:19.795 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xmIVcqaOFQlcMAcbDhy6aI5fWR12UVK5eM1s1XJZa24SgVaF8nQhe15c5aRktXW-9p7gPSG7Iu8mzvJFX_WUURSLTCmc-6accWVv3768laEiuf-ljWnrovGT5kDmHGk_0y6TQl7M-CBldgAClZtJOhk6GK5LyNUWMKUU3YDcKDBeU2sZgd-ZHcIQ65XkBIy5WkROW6g7W-AcKLUGN_caL3sGkg_FWt1dNlQ7w5sKTc8PBamm0VxpKSrSy8RIMsimIYSTOcmHOiefuVTuqdyx2vB9wb8bbFuBMgo-9RRc8ZRA","UiLocales":null,"Nonce":"637142110935926939.M2Q3YzY4YzYtZjI3NS00MDc4LTg4NTEtODJmYzNiNjM0YTcyMDVkODc0NzMtZWNiYy00YjViLWJkOWMtZTZkZTI4YzM1YmNh","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"r5KFETb1glrAJVu8GCqd1g","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142110935926939.M2Q3YzY4YzYtZjI3NS00MDc4LTg4NTEtODJmYzNiNjM0YTcyMDVkODc0NzMtZWNiYy00YjViLWJkOWMtZTZkZTI4YzM1YmNh","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xmIVcqaOFQlcMAcbDhy6aI5fWR12UVK5eM1s1XJZa24SgVaF8nQhe15c5aRktXW-9p7gPSG7Iu8mzvJFX_WUURSLTCmc-6accWVv3768laEiuf-ljWnrovGT5kDmHGk_0y6TQl7M-CBldgAClZtJOhk6GK5LyNUWMKUU3YDcKDBeU2sZgd-ZHcIQ65XkBIy5WkROW6g7W-AcKLUGN_caL3sGkg_FWt1dNlQ7w5sKTc8PBamm0VxpKSrSy8RIMsimIYSTOcmHOiefuVTuqdyx2vB9wb8bbFuBMgo-9RRc8ZRA","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 00:58:19.795 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-10 00:58:19.795 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-10 00:58:19.796 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-10 00:58:19.796 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 00:58:19.796 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 00:58:19.799 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****G1jg","$type":"Token"},{"TokenType":"code","TokenValue":"****erDA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800001a7-0800-fc00-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:58:19.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 00:58:19.813 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xmIVcqaOFQlcMAcbDhy6aI5fWR12UVK5eM1s1XJZa24SgVaF8nQhe15c5aRktXW-9p7gPSG7Iu8mzvJFX_WUURSLTCmc-6accWVv3768laEiuf-ljWnrovGT5kDmHGk_0y6TQl7M-CBldgAClZtJOhk6GK5LyNUWMKUU3YDcKDBeU2sZgd-ZHcIQ65XkBIy5WkROW6g7W-AcKLUGN_caL3sGkg_FWt1dNlQ7w5sKTc8PBamm0VxpKSrSy8RIMsimIYSTOcmHOiefuVTuqdyx2vB9wb8bbFuBMgo-9RRc8ZRA","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-10 00:58:19.814 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 00:58:19.814 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 00:58:19.960 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-10 00:58:19.960 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-10 00:58:19.960 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-10 00:58:19.960 +01:00 [DBG] Start token request.
+2020-01-10 00:58:19.961 +01:00 [DBG] Start client validation
+2020-01-10 00:58:19.961 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-10 00:58:19.961 +01:00 [DBG] Start parsing for secret in post body
+2020-01-10 00:58:19.961 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-10 00:58:19.961 +01:00 [DBG] Secret id found: angularclient
+2020-01-10 00:58:19.962 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:19.962 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-10 00:58:19.962 +01:00 [DBG] Client validation success
+2020-01-10 00:58:19.962 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"800001d9-0800-f600-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:58:19.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-10 00:58:19.962 +01:00 [DBG] Start token request validation
+2020-01-10 00:58:19.962 +01:00 [DBG] Start validation of authorization code token request
+2020-01-10 00:58:19.963 +01:00 [DBG] Validation of authorization code token request success
+2020-01-10 00:58:19.963 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"2sMNZsCBIVa52b4VtS_Cj3ypJnt9k0hDb4q8zQQerDA","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"2sMNZsCBIVa52b4VtS_Cj3ypJnt9k0hDb4q8zQQerDA","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-10 00:58:21.015 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:21.015 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-10 00:58:21.016 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 00:58:21.075 +01:00 [DBG] Creating refresh token
+2020-01-10 00:58:21.075 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-10 00:58:21.077 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:21.079 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 00:58:21.079 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 00:58:21.082 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****4QbA","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****OgWg","$type":"Token"},{"TokenType":"access_token","TokenValue":"****drzQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800001d9-0800-f600-b63f-84710c7967bb","TimeStamp":"2020-01-09T23:58:21.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 00:58:21.083 +01:00 [DBG] Token request success.
+2020-01-10 00:58:21.088 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-10 00:58:21.094 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-10 00:58:21.094 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-10 00:58:21.094 +01:00 [DBG] Start userinfo request
+2020-01-10 00:58:21.094 +01:00 [DBG] Bearer token found in header
+2020-01-10 00:58:21.097 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:21.097 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 00:58:21.097 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-10 00:58:21.097 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578614301,"exp":1578617901,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578614299,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-10 00:58:21.098 +01:00 [DBG] Creating userinfo response
+2020-01-10 00:58:21.098 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:58:21.098 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:58:21.098 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-10 00:58:21.098 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 00:58:21.118 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-10 00:58:21.118 +01:00 [DBG] End userinfo request
+2020-01-10 01:00:46.684 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-10 01:00:46.685 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-10 01:00:46.685 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-10 01:00:46.685 +01:00 [DBG] Start authorize request
+2020-01-10 01:00:46.685 +01:00 [DBG] No user present in authorize request
+2020-01-10 01:00:46.685 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:00:46.685 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:46.686 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:00:46.686 +01:00 [DBG] No PKCE used.
+2020-01-10 01:00:46.686 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:00:46.686 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yS2eL_v7pW5_diID2ZsEUUJrDOv8mZIC_NyEOYjSluEBEaAhBYWbKytU2Pw5gpgtPSE8I9wF2wh894E6A_qdcTj6ABwx14lQnbDlSrZE1UPm8VJZagaAlv7HlMI8VJNOlk5OxuSrIvvPk54pJPb5K31hXPu4aWtYz7-lePm2ui6BSQQGqaKj_V4cTFsSilndsftVDhcy1So63junypJzlFrn-eaPNVaEZZCQ1YTLCHDL8eZo1Qa2tXT-Jh-3HMAqL_bkveNUG7ehI1Lay07zhYhj7o-4tdJBgtnji0orth9Q","UiLocales":null,"Nonce":"637142112466610990.ZDVkZTg2MjQtZGY5Ni00NzAwLThjMzQtOTdkZGFiMjUzZjVhNDg2NTIwY2EtYjZjMC00MTNhLWI2YzgtYjg3OWU0NmRiZWZl","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142112466610990.ZDVkZTg2MjQtZGY5Ni00NzAwLThjMzQtOTdkZGFiMjUzZjVhNDg2NTIwY2EtYjZjMC00MTNhLWI2YzgtYjg3OWU0NmRiZWZl","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yS2eL_v7pW5_diID2ZsEUUJrDOv8mZIC_NyEOYjSluEBEaAhBYWbKytU2Pw5gpgtPSE8I9wF2wh894E6A_qdcTj6ABwx14lQnbDlSrZE1UPm8VJZagaAlv7HlMI8VJNOlk5OxuSrIvvPk54pJPb5K31hXPu4aWtYz7-lePm2ui6BSQQGqaKj_V4cTFsSilndsftVDhcy1So63junypJzlFrn-eaPNVaEZZCQ1YTLCHDL8eZo1Qa2tXT-Jh-3HMAqL_bkveNUG7ehI1Lay07zhYhj7o-4tdJBgtnji0orth9Q","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 01:00:46.686 +01:00 [INF] Showing login: User is not authenticated
+2020-01-10 01:00:46.701 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:00:46.701 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:46.701 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:00:46.701 +01:00 [DBG] No PKCE used.
+2020-01-10 01:00:46.702 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:00:46.702 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:51.836 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 01:00:51.842 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:00:51.843 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:51.843 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:00:51.843 +01:00 [DBG] No PKCE used.
+2020-01-10 01:00:51.845 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:00:51.891 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 01:00:51.891 +01:00 [DBG] Adding idp claim with value: local
+2020-01-10 01:00:51.891 +01:00 [DBG] Adding auth_time claim with value: 1578614451
+2020-01-10 01:00:51.892 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 01:00:51.896 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000097-0002-1800-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:00:51.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-10 01:00:51.896 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:51.909 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-10 01:00:51.909 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-10 01:00:51.909 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-10 01:00:51.909 +01:00 [DBG] Start authorize callback request
+2020-01-10 01:00:51.910 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 01:00:51.910 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:00:51.911 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:51.911 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:00:51.911 +01:00 [DBG] No PKCE used.
+2020-01-10 01:00:51.912 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:00:51.913 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yS2eL_v7pW5_diID2ZsEUUJrDOv8mZIC_NyEOYjSluEBEaAhBYWbKytU2Pw5gpgtPSE8I9wF2wh894E6A_qdcTj6ABwx14lQnbDlSrZE1UPm8VJZagaAlv7HlMI8VJNOlk5OxuSrIvvPk54pJPb5K31hXPu4aWtYz7-lePm2ui6BSQQGqaKj_V4cTFsSilndsftVDhcy1So63junypJzlFrn-eaPNVaEZZCQ1YTLCHDL8eZo1Qa2tXT-Jh-3HMAqL_bkveNUG7ehI1Lay07zhYhj7o-4tdJBgtnji0orth9Q","UiLocales":null,"Nonce":"637142112466610990.ZDVkZTg2MjQtZGY5Ni00NzAwLThjMzQtOTdkZGFiMjUzZjVhNDg2NTIwY2EtYjZjMC00MTNhLWI2YzgtYjg3OWU0NmRiZWZl","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"jQheePilq0GIV40mCnTh7w","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142112466610990.ZDVkZTg2MjQtZGY5Ni00NzAwLThjMzQtOTdkZGFiMjUzZjVhNDg2NTIwY2EtYjZjMC00MTNhLWI2YzgtYjg3OWU0NmRiZWZl","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yS2eL_v7pW5_diID2ZsEUUJrDOv8mZIC_NyEOYjSluEBEaAhBYWbKytU2Pw5gpgtPSE8I9wF2wh894E6A_qdcTj6ABwx14lQnbDlSrZE1UPm8VJZagaAlv7HlMI8VJNOlk5OxuSrIvvPk54pJPb5K31hXPu4aWtYz7-lePm2ui6BSQQGqaKj_V4cTFsSilndsftVDhcy1So63junypJzlFrn-eaPNVaEZZCQ1YTLCHDL8eZo1Qa2tXT-Jh-3HMAqL_bkveNUG7ehI1Lay07zhYhj7o-4tdJBgtnji0orth9Q","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 01:00:51.913 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-10 01:00:51.913 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-10 01:00:51.914 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-10 01:00:51.914 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 01:00:51.914 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 01:00:51.922 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****zkfw","$type":"Token"},{"TokenType":"code","TokenValue":"****LvlU","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"80000098-0002-1800-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:00:51.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 01:00:51.922 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6yS2eL_v7pW5_diID2ZsEUUJrDOv8mZIC_NyEOYjSluEBEaAhBYWbKytU2Pw5gpgtPSE8I9wF2wh894E6A_qdcTj6ABwx14lQnbDlSrZE1UPm8VJZagaAlv7HlMI8VJNOlk5OxuSrIvvPk54pJPb5K31hXPu4aWtYz7-lePm2ui6BSQQGqaKj_V4cTFsSilndsftVDhcy1So63junypJzlFrn-eaPNVaEZZCQ1YTLCHDL8eZo1Qa2tXT-Jh-3HMAqL_bkveNUG7ehI1Lay07zhYhj7o-4tdJBgtnji0orth9Q","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-10 01:00:51.922 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 01:00:51.928 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 01:00:52.177 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-10 01:00:52.178 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-10 01:00:52.178 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-10 01:00:52.178 +01:00 [DBG] Start token request.
+2020-01-10 01:00:52.178 +01:00 [DBG] Start client validation
+2020-01-10 01:00:52.178 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-10 01:00:52.178 +01:00 [DBG] Start parsing for secret in post body
+2020-01-10 01:00:52.178 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-10 01:00:52.178 +01:00 [DBG] Secret id found: angularclient
+2020-01-10 01:00:52.178 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:52.178 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-10 01:00:52.178 +01:00 [DBG] Client validation success
+2020-01-10 01:00:52.179 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"800000d8-0001-5700-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:00:52.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-10 01:00:52.179 +01:00 [DBG] Start token request validation
+2020-01-10 01:00:52.179 +01:00 [DBG] Start validation of authorization code token request
+2020-01-10 01:00:52.181 +01:00 [DBG] Validation of authorization code token request success
+2020-01-10 01:00:52.181 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"xVgpqLt4hZb17rmBsxNsyVUAifUR0cO_zXFOMLuLvlU","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"xVgpqLt4hZb17rmBsxNsyVUAifUR0cO_zXFOMLuLvlU","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-10 01:00:52.181 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:52.181 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-10 01:00:52.182 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 01:00:52.198 +01:00 [DBG] Creating refresh token
+2020-01-10 01:00:52.198 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-10 01:00:52.200 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:52.201 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 01:00:52.201 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 01:00:52.203 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****tsOA","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****_ZnA","$type":"Token"},{"TokenType":"access_token","TokenValue":"****cFlw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800000d8-0001-5700-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:00:52.0000000Z","ProcessId":21628,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 01:00:52.203 +01:00 [DBG] Token request success.
+2020-01-10 01:00:52.207 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-10 01:00:52.207 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-10 01:00:52.207 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-10 01:00:52.207 +01:00 [DBG] Start userinfo request
+2020-01-10 01:00:52.207 +01:00 [DBG] Bearer token found in header
+2020-01-10 01:00:52.209 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:52.209 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:00:52.209 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-10 01:00:52.209 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578614452,"exp":1578618052,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578614451,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-10 01:00:52.210 +01:00 [DBG] Creating userinfo response
+2020-01-10 01:00:52.210 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:00:52.210 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:00:52.210 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-10 01:00:52.210 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:00:52.223 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-10 01:00:52.223 +01:00 [DBG] End userinfo request
+2020-01-10 01:07:18.720 +01:00 [INF] Starting host...
+2020-01-10 01:07:18.897 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-10 01:07:18.916 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-10 01:07:18.919 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-10 01:07:18.920 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-10 01:07:18.920 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-10 01:07:18.920 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-10 01:07:18.920 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-10 01:07:18.920 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-10 01:07:19.821 +01:00 [DBG] Login Url: /Account/Login
+2020-01-10 01:07:19.822 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-10 01:07:19.822 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-10 01:07:19.822 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-10 01:07:19.823 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-10 01:07:19.823 +01:00 [DBG] Error Url: /home/error
+2020-01-10 01:07:19.823 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-10 01:07:19.838 +01:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-01-10 01:07:20.019 +01:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-01-10 01:07:20.019 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-01-10 01:07:20.022 +01:00 [DBG] Start discovery request
+2020-01-10 01:07:20.345 +01:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-01-10 01:07:20.346 +01:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-01-10 01:07:20.347 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-01-10 01:07:20.348 +01:00 [DBG] Start key discovery request
+2020-01-10 01:07:20.462 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-10 01:07:20.475 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-10 01:07:20.475 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-10 01:07:20.480 +01:00 [DBG] Start authorize request
+2020-01-10 01:07:20.489 +01:00 [DBG] No user present in authorize request
+2020-01-10 01:07:20.492 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:07:20.509 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:20.526 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:07:20.528 +01:00 [DBG] No PKCE used.
+2020-01-10 01:07:20.561 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:07:20.579 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6z_RaL4J9xxhz-O4wixb_lRrWcSI0wOZmwpAhgEgOKyDxmhBcN6yDUTxUBC5TmAQIb33p4ZVraRsRszAT1Gx1fORqKMCyxJL2UmCjY2fkE_-QE7sxR4474xBT3SP1HA73cFiMkevjXXcTM9sasuM43bt-blV97yiWVIaKnLSuuCQcsV3_DzxeZl-dOhNS7AeczxVNzz78XvA7hw8fHR71A8FgtArk6chD2WWN_HB7XkgIIhe_4unGrPR20RdJaNPCSinlRdxtQyVcXpfHNjLijqv_Ov2YAcehFfpNPHyrqlvg","UiLocales":null,"Nonce":"637142116404264805.YWI4NzNhN2UtOWQ3Yy00ODljLTlhYzktMDFiZGNmY2Q3ZWI1MjgwNDE2ZTQtOThmYy00MGU0LWJjZDQtOGRkNzE2OWJjOTU5","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142116404264805.YWI4NzNhN2UtOWQ3Yy00ODljLTlhYzktMDFiZGNmY2Q3ZWI1MjgwNDE2ZTQtOThmYy00MGU0LWJjZDQtOGRkNzE2OWJjOTU5","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6z_RaL4J9xxhz-O4wixb_lRrWcSI0wOZmwpAhgEgOKyDxmhBcN6yDUTxUBC5TmAQIb33p4ZVraRsRszAT1Gx1fORqKMCyxJL2UmCjY2fkE_-QE7sxR4474xBT3SP1HA73cFiMkevjXXcTM9sasuM43bt-blV97yiWVIaKnLSuuCQcsV3_DzxeZl-dOhNS7AeczxVNzz78XvA7hw8fHR71A8FgtArk6chD2WWN_HB7XkgIIhe_4unGrPR20RdJaNPCSinlRdxtQyVcXpfHNjLijqv_Ov2YAcehFfpNPHyrqlvg","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 01:07:20.604 +01:00 [INF] Showing login: User is not authenticated
+2020-01-10 01:07:20.755 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:07:20.756 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:20.756 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:07:20.756 +01:00 [DBG] No PKCE used.
+2020-01-10 01:07:20.756 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:07:20.762 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:25.969 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 01:07:26.086 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:07:26.087 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:26.087 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:07:26.087 +01:00 [DBG] No PKCE used.
+2020-01-10 01:07:26.088 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:07:27.726 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 01:07:27.727 +01:00 [DBG] Adding idp claim with value: local
+2020-01-10 01:07:27.727 +01:00 [DBG] Adding auth_time claim with value: 1578614847
+2020-01-10 01:07:27.738 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 01:07:27.748 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000207-0003-2e00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:27.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-10 01:07:27.749 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:27.778 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-10 01:07:27.778 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-10 01:07:27.779 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-10 01:07:27.782 +01:00 [DBG] Start authorize callback request
+2020-01-10 01:07:27.788 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 01:07:27.788 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:07:27.789 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:27.789 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:07:27.789 +01:00 [DBG] No PKCE used.
+2020-01-10 01:07:27.789 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:07:27.790 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6z_RaL4J9xxhz-O4wixb_lRrWcSI0wOZmwpAhgEgOKyDxmhBcN6yDUTxUBC5TmAQIb33p4ZVraRsRszAT1Gx1fORqKMCyxJL2UmCjY2fkE_-QE7sxR4474xBT3SP1HA73cFiMkevjXXcTM9sasuM43bt-blV97yiWVIaKnLSuuCQcsV3_DzxeZl-dOhNS7AeczxVNzz78XvA7hw8fHR71A8FgtArk6chD2WWN_HB7XkgIIhe_4unGrPR20RdJaNPCSinlRdxtQyVcXpfHNjLijqv_Ov2YAcehFfpNPHyrqlvg","UiLocales":null,"Nonce":"637142116404264805.YWI4NzNhN2UtOWQ3Yy00ODljLTlhYzktMDFiZGNmY2Q3ZWI1MjgwNDE2ZTQtOThmYy00MGU0LWJjZDQtOGRkNzE2OWJjOTU5","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"gqa9N2GNhyGjXFVGiyBi2A","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142116404264805.YWI4NzNhN2UtOWQ3Yy00ODljLTlhYzktMDFiZGNmY2Q3ZWI1MjgwNDE2ZTQtOThmYy00MGU0LWJjZDQtOGRkNzE2OWJjOTU5","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6z_RaL4J9xxhz-O4wixb_lRrWcSI0wOZmwpAhgEgOKyDxmhBcN6yDUTxUBC5TmAQIb33p4ZVraRsRszAT1Gx1fORqKMCyxJL2UmCjY2fkE_-QE7sxR4474xBT3SP1HA73cFiMkevjXXcTM9sasuM43bt-blV97yiWVIaKnLSuuCQcsV3_DzxeZl-dOhNS7AeczxVNzz78XvA7hw8fHR71A8FgtArk6chD2WWN_HB7XkgIIhe_4unGrPR20RdJaNPCSinlRdxtQyVcXpfHNjLijqv_Ov2YAcehFfpNPHyrqlvg","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 01:07:27.795 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-10 01:07:27.800 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-10 01:07:27.851 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-10 01:07:27.862 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 01:07:27.864 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 01:07:27.973 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****PJcw","$type":"Token"},{"TokenType":"code","TokenValue":"****VRv0","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"80000208-0003-2e00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:27.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 01:07:27.976 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6z_RaL4J9xxhz-O4wixb_lRrWcSI0wOZmwpAhgEgOKyDxmhBcN6yDUTxUBC5TmAQIb33p4ZVraRsRszAT1Gx1fORqKMCyxJL2UmCjY2fkE_-QE7sxR4474xBT3SP1HA73cFiMkevjXXcTM9sasuM43bt-blV97yiWVIaKnLSuuCQcsV3_DzxeZl-dOhNS7AeczxVNzz78XvA7hw8fHR71A8FgtArk6chD2WWN_HB7XkgIIhe_4unGrPR20RdJaNPCSinlRdxtQyVcXpfHNjLijqv_Ov2YAcehFfpNPHyrqlvg","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-10 01:07:27.984 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 01:07:27.987 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 01:07:28.357 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-10 01:07:28.363 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-10 01:07:28.364 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-10 01:07:28.373 +01:00 [DBG] Start token request.
+2020-01-10 01:07:28.377 +01:00 [DBG] Start client validation
+2020-01-10 01:07:28.383 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-10 01:07:28.386 +01:00 [DBG] Start parsing for secret in post body
+2020-01-10 01:07:28.389 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-10 01:07:28.389 +01:00 [DBG] Secret id found: angularclient
+2020-01-10 01:07:28.389 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:28.398 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-10 01:07:28.398 +01:00 [DBG] Client validation success
+2020-01-10 01:07:28.400 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"800001c3-0800-fc00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:28.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-10 01:07:28.404 +01:00 [DBG] Start token request validation
+2020-01-10 01:07:28.409 +01:00 [DBG] Start validation of authorization code token request
+2020-01-10 01:07:28.445 +01:00 [DBG] Validation of authorization code token request success
+2020-01-10 01:07:28.449 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"_rlfGQ4SE9xPDKzblfSOUYVCH4B3VBUZq0xUYyJVRv0","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"_rlfGQ4SE9xPDKzblfSOUYVCH4B3VBUZq0xUYyJVRv0","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-10 01:07:28.458 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:28.468 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-10 01:07:28.469 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 01:07:28.522 +01:00 [DBG] Creating refresh token
+2020-01-10 01:07:28.522 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-10 01:07:28.533 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:28.534 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 01:07:28.534 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 01:07:28.539 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****1eJw","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****ch2Q","$type":"Token"},{"TokenType":"access_token","TokenValue":"****o8bQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800001c3-0800-fc00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:28.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 01:07:28.539 +01:00 [DBG] Token request success.
+2020-01-10 01:07:28.569 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-10 01:07:28.570 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-10 01:07:28.571 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-10 01:07:28.573 +01:00 [DBG] Start userinfo request
+2020-01-10 01:07:28.575 +01:00 [DBG] Bearer token found in header
+2020-01-10 01:07:28.623 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:28.626 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:28.627 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-10 01:07:28.628 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578614848,"exp":1578618448,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578614847,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-10 01:07:28.631 +01:00 [DBG] Creating userinfo response
+2020-01-10 01:07:28.633 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:07:28.635 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:07:28.637 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-10 01:07:28.637 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:07:28.649 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-10 01:07:28.650 +01:00 [DBG] End userinfo request
+2020-01-10 01:07:41.858 +01:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2020-01-10 01:07:41.860 +01:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2020-01-10 01:07:41.861 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2020-01-10 01:07:41.869 +01:00 [DBG] Processing signout request for 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 01:07:41.872 +01:00 [DBG] Start end session request validation
+2020-01-10 01:07:41.876 +01:00 [DBG] Start identity token validation
+2020-01-10 01:07:41.880 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:41.880 +01:00 [DBG] Client found: angularclient / null
+2020-01-10 01:07:41.882 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-10 01:07:41.884 +01:00 [DBG] Token validation success
+{"ClientId":"angularclient","ClientName":null,"ValidateLifetime":false,"AccessTokenType":null,"ExpectedScope":null,"TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578614848,"exp":1578615148,"iss":"http://localhost:5000","aud":"angularclient","nonce":"637142116404264805.YWI4NzNhN2UtOWQ3Yy00ODljLTlhYzktMDFiZGNmY2Q3ZWI1MjgwNDE2ZTQtOThmYy00MGU0LWJjZDQtOGRkNzE2OWJjOTU5","iat":1578614848,"at_hash":"I6WqGl_5glxwEvYVIOcRkA","s_hash":"PpeobU5baRDsGoaURs-Z-w","sid":"gqa9N2GNhyGjXFVGiyBi2A","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578614847,"idp":"local","amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-10 01:07:41.888 +01:00 [INF] End session request validation success
+{"ClientId":"angularclient","ClientName":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","PostLogOutUri":"https://localhost:44301/signout-callback-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6w9m0HF8SerlK8MRBJLadRNqQQYfQV5etTD099A2E1qzGPofaHqySUkfwImGxwLl8nt5kDdZlA1iX3LpNYGH4XBV3WO8wCDuEwFMvfcmik1otBngwxFM5-ZscRfl4keNRJHdN0k35oxLv3jOEwsQj_T","Raw":{"post_logout_redirect_uri":"https://localhost:44301/signout-callback-oidc","id_token_hint":"***REDACTED***","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6w9m0HF8SerlK8MRBJLadRNqQQYfQV5etTD099A2E1qzGPofaHqySUkfwImGxwLl8nt5kDdZlA1iX3LpNYGH4XBV3WO8wCDuEwFMvfcmik1otBngwxFM5-ZscRfl4keNRJHdN0k35oxLv3jOEwsQj_T","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"EndSessionRequestValidationLog"}
+2020-01-10 01:07:41.889 +01:00 [DBG] Success validating end session request from angularclient
+2020-01-10 01:07:42.094 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-01-10 01:07:42.096 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-01-10 01:07:42.097 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-01-10 01:07:42.098 +01:00 [INF] {"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"Houssam","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"8000020a-0003-2e00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:42.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-01-10 01:07:42.430 +01:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2020-01-10 01:07:42.439 +01:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2020-01-10 01:07:42.439 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2020-01-10 01:07:42.441 +01:00 [DBG] Processing signout callback request
+2020-01-10 01:07:42.453 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:42.454 +01:00 [DBG] Client front-channel logout URLs: https://localhost:44301/signout-oidc?sid=gqa9N2GNhyGjXFVGiyBi2A&iss=http%3A%2F%2Flocalhost%3A5000
+2020-01-10 01:07:42.454 +01:00 [DBG] No client back-channel logout URLs
+2020-01-10 01:07:42.454 +01:00 [INF] Successful signout callback.
+2020-01-10 01:07:42.454 +01:00 [DBG] Client front-channel iframe urls: ["https://localhost:44301/signout-oidc?sid=gqa9N2GNhyGjXFVGiyBi2A&iss=http%3A%2F%2Flocalhost%3A5000"]
+2020-01-10 01:07:42.454 +01:00 [DBG] No client back-channel iframe urls
+2020-01-10 01:07:51.356 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-01-10 01:07:51.358 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-01-10 01:07:51.358 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-01-10 01:07:51.358 +01:00 [DBG] Start authorize request
+2020-01-10 01:07:51.359 +01:00 [DBG] No user present in authorize request
+2020-01-10 01:07:51.359 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:07:51.359 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:51.360 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:07:51.360 +01:00 [DBG] No PKCE used.
+2020-01-10 01:07:51.361 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:07:51.362 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xnqd_joggKlrrCmJ85UYdhl_CMSpEgD6Oz6S6TqAJ7rELFMy2pIod4C-qDKC8KGeO7PtUuxnagChIXB5wyYMShXKRnzAKYXfiJok2jvCxwaAzswi_BexT2_Zpn7xhUhTPgRdmuMKAfa2KIDFII7neTKeFatvgK-GEEGK_ahBEXBoJns6he97CQU71Ac9487jFqefGdX7fCYVpmpV_HuegC1nM_-cZ1c-OaQUMkif-L34Ag27RX6LgLV_64Pvyuh5Mq_s2Oo2qNpCXweQgIt8nZ","UiLocales":null,"Nonce":"637142116713354710.N2EwODVkNjEtMTFiNy00ZTgyLWE1OTktZDllZWI2NGYwMzE1ZDc1OWY4YzItOGQ0ZC00NjYxLWIxZjAtNWI5NTYyMTRhODMz","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142116713354710.N2EwODVkNjEtMTFiNy00ZTgyLWE1OTktZDllZWI2NGYwMzE1ZDc1OWY4YzItOGQ0ZC00NjYxLWIxZjAtNWI5NTYyMTRhODMz","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xnqd_joggKlrrCmJ85UYdhl_CMSpEgD6Oz6S6TqAJ7rELFMy2pIod4C-qDKC8KGeO7PtUuxnagChIXB5wyYMShXKRnzAKYXfiJok2jvCxwaAzswi_BexT2_Zpn7xhUhTPgRdmuMKAfa2KIDFII7neTKeFatvgK-GEEGK_ahBEXBoJns6he97CQU71Ac9487jFqefGdX7fCYVpmpV_HuegC1nM_-cZ1c-OaQUMkif-L34Ag27RX6LgLV_64Pvyuh5Mq_s2Oo2qNpCXweQgIt8nZ","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 01:07:51.362 +01:00 [INF] Showing login: User is not authenticated
+2020-01-10 01:07:51.379 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:07:51.379 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:51.379 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:07:51.379 +01:00 [DBG] No PKCE used.
+2020-01-10 01:07:51.380 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:07:51.380 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.410 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-10 01:07:55.420 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:07:55.421 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.421 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:07:55.421 +01:00 [DBG] No PKCE used.
+2020-01-10 01:07:55.422 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:07:55.469 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 01:07:55.469 +01:00 [DBG] Adding idp claim with value: local
+2020-01-10 01:07:55.469 +01:00 [DBG] Adding auth_time claim with value: 1578614875
+2020-01-10 01:07:55.470 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 01:07:55.473 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":"angularclient","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000020d-0003-2e00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:55.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-01-10 01:07:55.473 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.484 +01:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-01-10 01:07:55.484 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-01-10 01:07:55.485 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-01-10 01:07:55.485 +01:00 [DBG] Start authorize callback request
+2020-01-10 01:07:55.485 +01:00 [DBG] User in authorize request: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 01:07:55.485 +01:00 [DBG] Start authorize request protocol validation
+2020-01-10 01:07:55.486 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.486 +01:00 [DBG] Checking for PKCE parameters
+2020-01-10 01:07:55.486 +01:00 [DBG] No PKCE used.
+2020-01-10 01:07:55.486 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-01-10 01:07:55.487 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","AllowedRedirectUris":["https://localhost:44301/signin-oidc"],"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile offline_access email complementary_profile","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xnqd_joggKlrrCmJ85UYdhl_CMSpEgD6Oz6S6TqAJ7rELFMy2pIod4C-qDKC8KGeO7PtUuxnagChIXB5wyYMShXKRnzAKYXfiJok2jvCxwaAzswi_BexT2_Zpn7xhUhTPgRdmuMKAfa2KIDFII7neTKeFatvgK-GEEGK_ahBEXBoJns6he97CQU71Ac9487jFqefGdX7fCYVpmpV_HuegC1nM_-cZ1c-OaQUMkif-L34Ag27RX6LgLV_64Pvyuh5Mq_s2Oo2qNpCXweQgIt8nZ","UiLocales":null,"Nonce":"637142116713354710.N2EwODVkNjEtMTFiNy00ZTgyLWE1OTktZDllZWI2NGYwMzE1ZDc1OWY4YzItOGQ0ZC00NjYxLWIxZjAtNWI5NTYyMTRhODMz","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"2lbAHeDmjtqJ3qOJremofw","Raw":{"client_id":"angularclient","redirect_uri":"https://localhost:44301/signin-oidc","response_type":"code id_token","scope":"openid profile offline_access email complementary_profile","response_mode":"form_post","nonce":"637142116713354710.N2EwODVkNjEtMTFiNy00ZTgyLWE1OTktZDllZWI2NGYwMzE1ZDc1OWY4YzItOGQ0ZC00NjYxLWIxZjAtNWI5NTYyMTRhODMz","state":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xnqd_joggKlrrCmJ85UYdhl_CMSpEgD6Oz6S6TqAJ7rELFMy2pIod4C-qDKC8KGeO7PtUuxnagChIXB5wyYMShXKRnzAKYXfiJok2jvCxwaAzswi_BexT2_Zpn7xhUhTPgRdmuMKAfa2KIDFII7neTKeFatvgK-GEEGK_ahBEXBoJns6he97CQU71Ac9487jFqefGdX7fCYVpmpV_HuegC1nM_-cZ1c-OaQUMkif-L34Ag27RX6LgLV_64Pvyuh5Mq_s2Oo2qNpCXweQgIt8nZ","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-01-10 01:07:55.488 +01:00 [DBG] Client is configured to not require consent, no consent is required
+2020-01-10 01:07:55.488 +01:00 [DBG] Creating Hybrid Flow response.
+2020-01-10 01:07:55.489 +01:00 [DBG] Creating Implicit Flow response.
+2020-01-10 01:07:55.490 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 01:07:55.490 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 01:07:55.492 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":"https://localhost:44301/signin-oidc","Endpoint":"Authorize","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"hybrid","Tokens":[{"TokenType":"id_token","TokenValue":"****r__g","$type":"Token"},{"TokenType":"code","TokenValue":"****E0gI","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"8000020e-0003-2e00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:55.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 01:07:55.493 +01:00 [DBG] Authorize endpoint response
+{"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","ClientId":"angularclient","RedirectUri":"https://localhost:44301/signin-oidc","State":"CfDJ8BpvjAXSVlxDgQZ7erX2-6xnqd_joggKlrrCmJ85UYdhl_CMSpEgD6Oz6S6TqAJ7rELFMy2pIod4C-qDKC8KGeO7PtUuxnagChIXB5wyYMShXKRnzAKYXfiJok2jvCxwaAzswi_BexT2_Zpn7xhUhTPgRdmuMKAfa2KIDFII7neTKeFatvgK-GEEGK_ahBEXBoJns6he97CQU71Ac9487jFqefGdX7fCYVpmpV_HuegC1nM_-cZ1c-OaQUMkif-L34Ag27RX6LgLV_64Pvyuh5Mq_s2Oo2qNpCXweQgIt8nZ","Scope":"openid profile email complementary_profile offline_access","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-01-10 01:07:55.493 +01:00 [DBG] Augmenting SignInContext
+2020-01-10 01:07:55.494 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-10 01:07:55.604 +01:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-01-10 01:07:55.605 +01:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-01-10 01:07:55.605 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-01-10 01:07:55.606 +01:00 [DBG] Start token request.
+2020-01-10 01:07:55.606 +01:00 [DBG] Start client validation
+2020-01-10 01:07:55.606 +01:00 [DBG] Start parsing Basic Authentication secret
+2020-01-10 01:07:55.606 +01:00 [DBG] Start parsing for secret in post body
+2020-01-10 01:07:55.607 +01:00 [DBG] Parser found secret: PostBodySecretParser
+2020-01-10 01:07:55.607 +01:00 [DBG] Secret id found: angularclient
+2020-01-10 01:07:55.607 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.608 +01:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-01-10 01:07:55.608 +01:00 [DBG] Client validation success
+2020-01-10 01:07:55.608 +01:00 [INF] {"ClientId":"angularclient","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"800001c5-0800-fc00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:55.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-01-10 01:07:55.608 +01:00 [DBG] Start token request validation
+2020-01-10 01:07:55.608 +01:00 [DBG] Start validation of authorization code token request
+2020-01-10 01:07:55.610 +01:00 [DBG] Validation of authorization code token request success
+2020-01-10 01:07:55.611 +01:00 [INF] Token request validation success, {"ClientId":"angularclient","ClientName":null,"GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"FQHazWdtfx2W3pgM5jS1ELGTYnslcE5uumEQuaXE0gI","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"angularclient","client_secret":"***REDACTED***","code":"FQHazWdtfx2W3pgM5jS1ELGTYnslcE5uumEQuaXE0gI","grant_type":"authorization_code","redirect_uri":"https://localhost:44301/signin-oidc"},"$type":"TokenRequestValidationLog"}
+2020-01-10 01:07:55.611 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.612 +01:00 [DBG] Getting claims for access token for client: angularclient
+2020-01-10 01:07:55.612 +01:00 [DBG] Getting claims for access token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312
+2020-01-10 01:07:55.631 +01:00 [DBG] Creating refresh token
+2020-01-10 01:07:55.632 +01:00 [DBG] Setting an absolute lifetime: 2592000
+2020-01-10 01:07:55.634 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.634 +01:00 [DBG] Getting claims for identity token for subject: 07c2084b-ccf2-4620-ba06-555bcf80f312 and client: angularclient
+2020-01-10 01:07:55.634 +01:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-01-10 01:07:55.638 +01:00 [INF] {"ClientId":"angularclient","ClientName":null,"RedirectUri":null,"Endpoint":"Token","SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","Scopes":"openid profile email complementary_profile offline_access","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****rJBg","$type":"Token"},{"TokenType":"refresh_token","TokenValue":"****42p4","$type":"Token"},{"TokenType":"access_token","TokenValue":"****afPg","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"800001c5-0800-fc00-b63f-84710c7967bb","TimeStamp":"2020-01-10T00:07:55.0000000Z","ProcessId":20012,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-01-10 01:07:55.638 +01:00 [DBG] Token request success.
+2020-01-10 01:07:55.644 +01:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2020-01-10 01:07:55.644 +01:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2020-01-10 01:07:55.644 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2020-01-10 01:07:55.644 +01:00 [DBG] Start userinfo request
+2020-01-10 01:07:55.644 +01:00 [DBG] Bearer token found in header
+2020-01-10 01:07:55.645 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.646 +01:00 [DBG] client configuration validation for client angularclient succeeded.
+2020-01-10 01:07:55.646 +01:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-01-10 01:07:55.646 +01:00 [DBG] Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1578614875,"exp":1578618475,"iss":"http://localhost:5000","client_id":"angularclient","sub":"07c2084b-ccf2-4620-ba06-555bcf80f312","auth_time":1578614875,"idp":"local","email":"houssamfertaq@gmail.com","role":["admin","techrezuser 03"],"birthdate":"16/10/1988","favcolor":"navy","gender":"male","name":"Houssam","scope":["openid","profile","email","complementary_profile","offline_access"],"amr":"pwd"},"$type":"TokenValidationLog"}
+2020-01-10 01:07:55.646 +01:00 [DBG] Creating userinfo response
+2020-01-10 01:07:55.647 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:07:55.647 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:07:55.648 +01:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at email email_verified favcolor
+2020-01-10 01:07:55.648 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
+2020-01-10 01:07:55.657 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
+2020-01-10 01:07:55.657 +01:00 [DBG] End userinfo request

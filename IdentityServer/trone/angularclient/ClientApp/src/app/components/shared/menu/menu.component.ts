@@ -23,9 +23,10 @@ export class MenuComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.userContextSubscribtion = this.auth.userContext.subscribe(userContext => {
-            this.isAuthenticated = !!userContext;
-            if (this.isAuthenticated)
+            this.isAuthenticated = !!(userContext.authTime);
+            if (this.isAuthenticated) {
                 this.roles = userContext.roles;
+            }
         });
     }
 

@@ -8,6 +8,8 @@ using System.Linq;
 
 [Route("api/[controller]")]
 [ApiController]
+[IgnoreAntiforgeryToken]
+[AllowAnonymous]
 
 public class SecurityController : Controller
 {
@@ -19,8 +21,6 @@ public class SecurityController : Controller
 
     [Route("antiforgery")]
     [HttpGet]
-    [IgnoreAntiforgeryToken]
-    [AllowAnonymous]
     public IActionResult GenerateAntiForgeryTokens()
     {
         var tokens = _antiForgery.GetAndStoreTokens(HttpContext);
@@ -33,6 +33,7 @@ public class SecurityController : Controller
 
     [Route("usercontext")]
     [HttpGet]
+    [ValidateAntiForgeryToken]
     public IActionResult UserContext()
     {
         if (User.Identity.IsAuthenticated)
@@ -40,6 +41,7 @@ public class SecurityController : Controller
             var claimsIdentity = (User.Identity as ClaimsIdentity);
             var userContext = new UserContext()
             {
+                AuthTime = claimsIdentity.FindFirst("auth_time").Value,
                 Birthdate = claimsIdentity.FindFirst("birthdate").Value,
                 Email = claimsIdentity.FindFirst("email").Value,
                 FavColor = claimsIdentity.FindFirst("favcolor").Value,
@@ -51,10 +53,9 @@ public class SecurityController : Controller
             return Ok(userContext);
         }
         else
-            return Ok();
+            return Ok(new UserContext() { Roles = new string[] { "visitor" } });
     }
 
-    [AllowAnonymous]
     [Route("challengeoidc")]
     [HttpGet]
     public IActionResult ChallengeOidc(string returnUrl)
@@ -76,16 +77,9 @@ public class SecurityController : Controller
     [HttpGet]
     public IActionResult Logout()
     {
-        //HttpContext.SignInAsync()
-
         return SignOut(new AuthenticationProperties()
         {
             RedirectUri = "https://localhost:44301/home",
         }, "Cookies", "oidc");
-
-        //return new SignOutResult("oidc", new AuthenticationProperties()
-        //{
-        //    RedirectUri = "home",
-        //});
     }
 }

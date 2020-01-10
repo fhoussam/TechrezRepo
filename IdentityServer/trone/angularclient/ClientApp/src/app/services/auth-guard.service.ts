@@ -21,10 +21,27 @@ export class AuthGuardService implements CanActivate  {
         const allowedRoles = route.data.allowedRoles;
 
         return this.auth.userContext.pipe(map(usercontext => {
-            if (!!usercontext && this.isAuthorized(allowedRoles, usercontext.roles))
-                return true;
-            else
-                this.auth.challengeOidc(router.url.toString());
+
+            if (usercontext == null) {
+                return false;
+            }
+            else {
+
+                if (usercontext.authTime != null) {
+                    let isAuthorized: boolean = this.isAuthorized(allowedRoles, usercontext.roles);
+                    if (!isAuthorized) {
+                        return false;
+                    }
+                    else {
+                        //console.log('granting user to ' + route + ', roles : ' + JSON.stringify(usercontext.roles));
+                        return true;
+                    }
+                }
+                else {
+                    //setTimeout(() => { this.auth.challengeOidc(router.url.toString()) }, 5000); 
+                    this.auth.challengeOidc(router.url.toString());
+                }
+            }
         }));
     }
 

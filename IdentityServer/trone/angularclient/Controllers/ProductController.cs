@@ -30,6 +30,7 @@ namespace angularclient.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "admin")]
     public class ProductController : ControllerBase
     //: TechRezBaseRepoController<Product, ProductRepository>
     {
@@ -37,7 +38,6 @@ namespace angularclient.Controllers
         private IWebHostEnvironment _webHostEnvironment;
 
         [HttpGet]
-        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Get([FromQuery] ProductSearchParams productSearchParams) 
         {
             return Ok(await _productRepository.GetAll(productSearchParams));
@@ -106,6 +106,7 @@ namespace angularclient.Controllers
         }
 
         [Route("categories")]
+        [AllowAnonymous]
         public async Task<IActionResult> Categories()
         {
             var r = await this._productRepository.GetCategories();
@@ -113,6 +114,8 @@ namespace angularclient.Controllers
         }
 
         [Route("nonsecure")]
+        [AllowAnonymous]
+        [IgnoreAntiforgeryToken]
         public string NonSecure()
         {
             //testing form data for token endpoint
@@ -123,6 +126,7 @@ namespace angularclient.Controllers
 
         [Authorize]
         [Route("secure")]
+        [IgnoreAntiforgeryToken]
         public string Secure()
         {
             var user_claims = User.Claims;

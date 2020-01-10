@@ -63,17 +63,26 @@ const approutes: Routes = [
     {
         path: 'admin/users',
         component: UsersComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+            allowedRoles: ['admin']
+        }
     },
     {
         path: 'techrezusers/products',
         component: TechrezUserProductsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+            allowedRoles: ['techrezuser 03']
+        }
     },
     {
         path: 'techrezusers/orders',
         component: TechrezuserOrdersComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+            allowedRoles: ['techrezuser 03']
+        }
     },
     //{ path: '**', component: PagenotfoundComponent },
 ];

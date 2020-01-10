@@ -1,4 +1,5 @@
 export interface IUserContext {
+    authTime: string,
     Name: string,
     Email: string,
     FavColor: string,

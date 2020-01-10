@@ -15,21 +15,25 @@ export class AppInitService {
     ) { }
 
     getSettings(): Promise<any> {
+        return this.httpClient.get('https://localhost:44301/api/security/antiforgery').toPromise().then(x => {
+            console.log('init anti forgery');
 
-        const promise_categories = this.httpClient.get<category[]>('https://localhost:44301/api/product/categories').toPromise()
-            .then(settings => {
-                console.log('init app data');
-                APP_SETTINGS.categories = settings;
-            })
+            //this.auth.getUserContext().subscribe(x => console.log('aaaa  ' + JSON.stringify(x)));
 
-        const promise_antiforgery = this.httpClient.get('https://localhost:44301/api/security/antiforgery').toPromise()
-            .then(x => console.log('init anti forgery')
-            );
 
-        const promise_usercontext = this.auth.getUserContext().toPromise().then(x => {
-            console.log('checking user context');
+            return Promise.all([
+                this.httpClient.get<category[]>('https://localhost:44301/api/product/categories').toPromise()
+                    .then(settings => {
+                        console.log('init app data');
+                        APP_SETTINGS.categories = settings;
+                    }),
+
+                
+
+                this.auth.getUserContext().toPromise().then(x => {
+                    console.log('checking user context');
+                }),
+            ]);
         });
-
-        return promise_antiforgery.then(x => Promise.all([promise_categories, promise_usercontext]));
     }
 }
