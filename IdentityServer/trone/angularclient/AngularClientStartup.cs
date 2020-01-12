@@ -19,6 +19,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using angularclient.Filters;
 using Microsoft.AspNetCore.Authorization;
+using angularclient.Middlewares;
+using angularclient.Services;
 
 namespace angularclient
 {
@@ -86,17 +88,17 @@ namespace angularclient
                 options.Authority = "http://localhost:5000";
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
-                    //options.Audience = "api1";
+                //options.Audience = "api1";
 
-                    //options.Audience = "http://10.0.2.2:5000/resources";
-                    options.TokenValidationParameters.ValidAudiences = new List<string>()
+                //options.Audience = "http://10.0.2.2:5000/resources";
+                options.TokenValidationParameters.ValidAudiences = new List<string>()
                 {
                         "http://10.0.2.2:5000/resources",
                         "http://localhost:5000/resources"
                 };
 
-                    //token validation options
-                    options.TokenValidationParameters.ValidateLifetime = true;
+                //token validation options
+                options.TokenValidationParameters.ValidateLifetime = true;
                 options.TokenValidationParameters.ClockSkew = TimeSpan.Zero;
 
                 options.TokenValidationParameters.ValidateAudience = true;
@@ -131,7 +133,7 @@ namespace angularclient
                 {
                     builder.AllowAnyHeader()
                             .AllowAnyMethod()
-                            .WithOrigins("http://localhost:4200")
+                            .WithOrigins("http://localhost:4200", "https://localhost:44301")
                             .AllowCredentials()
                             ;
                 });
@@ -139,6 +141,8 @@ namespace angularclient
 
             services.AddScoped<ProductRepository>();
             services.AddScoped<FeedRepository>();
+            services.AddScoped<IProductService, ProductService>();
+
             services.AddSignalR();
 
             services.AddControllersWithViews();
@@ -184,7 +188,9 @@ namespace angularclient
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
+
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
@@ -197,6 +203,8 @@ namespace angularclient
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCustomeExcptionHandler();
 
             app.UseEndpoints(endpoints =>
             {

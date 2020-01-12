@@ -11,6 +11,9 @@ using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using angularclient.Services;
+using System.ComponentModel.DataAnnotations;
+using angularclient.ValidationAttributes;
 
 namespace angularclient.Controllers
 {
@@ -19,12 +22,23 @@ namespace angularclient.Controllers
         public TechRezException(string message) : base(message) { }
     }
 
-    public class PeoductPostSave
+    public class ProductPostSave
     {
         public string Code { get; set; }
+
+        [Required]
+        [StringLength(100, MinimumLength = 5)]
         public string Description { get; set; }
+
+        [RequiredGreaterThanZero]
+        [Required]
         public int Quantity { get; set; }
+
+        [Required]
         public int CategoryId { get; set; }
+
+        [Required]
+        [Range(1, double.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public double Price { get; set; }
     }
 
@@ -35,58 +49,30 @@ namespace angularclient.Controllers
     public class ProductController : ControllerBase
     //: TechRezBaseRepoController<Product, ProductRepository>
     {
-        private ProductRepository _productRepository;
         private IWebHostEnvironment _webHostEnvironment;
+        private IProductService _productService;
+
+        public ProductController(IWebHostEnvironment webHostEnvironment, IProductService productService)
+        //: base(repository, webHostEnvironment)
+        {
+            _webHostEnvironment = webHostEnvironment;
+            _productService = productService;
+        }
 
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] ProductSearchParams productSearchParams) 
         {
-            return Ok(await _productRepository.GetAll(productSearchParams));
+            return Ok(await _productService.GetAll(productSearchParams));
         }
 
         [HttpPost]
         [Route("save")]
         public async Task<IActionResult> Save(
-            [ModelBinder(BinderType = typeof(JsonModelBinder))] PeoductPostSave productData, 
+            [ModelBinder(BinderType = typeof(JsonModelBinder))] ProductPostSave productData, 
                 IFormFile productImage)
         {
-            var product = await _productRepository.Get(productData.Code);
-            string newUrl = string.Empty;
-
-            if (productImage != null && productImage.Length > 0) {
-                //var filePath = Path.GetTempFileName();
-                var format = "yyyyMMddHHmmssffff";
-                var timestamp = DateTime.Now.ToString(format);
-                var dateExists = DateTime.TryParseExact
-                (
-                    s: product.PhotoUrl.Split('_').Last().Split('.')[0],
-                    format: format,
-                    provider: null,
-                    style: 0,
-                    out var parsedDate
-                );
-
-                newUrl = !dateExists
-                    ? product.PhotoUrl.Replace(".jpg", "_" + DateTime.Now.ToString(format) + ".jpg")
-                    : product.PhotoUrl.Replace(parsedDate.ToString(format), timestamp);
-
-                string filePath = Directory.GetParent(_webHostEnvironment.ContentRootPath)
-                    .ToString() + "\\Product_Photos\\" + newUrl.Replace("/", "\\");
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                    await productImage.CopyToAsync(stream);
-
-                product.PhotoUrl = newUrl;
-            }
-
-            product.Description = productData.Description;
-            product.CategoryId = productData.CategoryId;
-            
-            product.Price = productData.Price;
-
-            await _productRepository.Update(product);
-
-            return Ok(new { path = newUrl });
+            string newImageUrl = await _productService.Save(productData, productImage);
+            return Ok(new { path = newImageUrl });
         }
 
         [HttpGet]
@@ -100,25 +86,17 @@ namespace angularclient.Controllers
                 var image = System.IO.File.OpenRead(directory + category + "\\" + imageName);
                 return File(image, "image/jpeg"); //uising a FileStreamResult
             }
-            catch (System.IO.FileNotFoundException exp)
+            catch (FileNotFoundException)
             {
                 return NotFound();
             }
-        }
-
-        public ProductController(ProductRepository repository, IWebHostEnvironment webHostEnvironment) 
-            //: base(repository, webHostEnvironment)
-        {
-            this._productRepository = repository;
-            this._webHostEnvironment = webHostEnvironment;
         }
 
         [Route("categories")]
         [AllowAnonymous]
         public async Task<IActionResult> Categories()
         {
-            var r = await this._productRepository.GetCategories();
-            return Ok(r);
+            return Ok(await _productService.GetCategories());
         }
 
         [Route("nonsecure")]
