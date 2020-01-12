@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EnvironmentExtensions;
+using Microsoft.AspNetCore.Hosting;
 
 namespace angularclient.Filters
 {
@@ -16,10 +18,12 @@ namespace angularclient.Filters
     public class CanMakeCriticalChangesHandler : AuthorizationHandler<ShouldBeAuthorizedRequirement>
     {
         private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CanMakeCriticalChangesHandler(IHttpContextAccessor httpContextAccessor)
+        public CanMakeCriticalChangesHandler(IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment)
         {
             this.httpContextAccessor = httpContextAccessor;
+            this._webHostEnvironment = webHostEnvironment;
         }
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ShouldBeAuthorizedRequirement requirement)
@@ -34,9 +38,8 @@ namespace angularclient.Filters
             var httpContext = httpContextAccessor.HttpContext;
             var claimsIdentity = (httpContext.User.Identity as System.Security.Claims.ClaimsIdentity);
             var roles = claimsIdentity.FindAll("role").Select(x => x.Value).ToArray();
-            var isAdmin = roles.Contains("admin");
 
-            if (isAdmin)
+            if (_webHostEnvironment.IsFrontDevMode() || roles.Contains("admin") || roles.Contains("techrezuser 03"))
             {
                 context.Succeed(requirement);
             }

@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Linq;
+using angularclient.Filters;
+using Microsoft.AspNetCore.Hosting;
+using EnvironmentExtensions;
+using System.Collections.Generic;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -14,9 +18,11 @@ using System.Linq;
 public class SecurityController : Controller
 {
     private IAntiforgery _antiForgery;
-    public SecurityController(IAntiforgery antiForgery)
+    private IWebHostEnvironment _webHostEnvironment;
+    public SecurityController(IAntiforgery antiForgery, IWebHostEnvironment webHostEnvironment)
     {
         _antiForgery = antiForgery;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     [Route("antiforgery")]
@@ -33,10 +39,24 @@ public class SecurityController : Controller
 
     [Route("usercontext")]
     [HttpGet]
-    [ValidateAntiForgeryToken]
+    [CustomAntiForgery]
     public IActionResult UserContext()
     {
-        if (User.Identity.IsAuthenticated)
+        if (_webHostEnvironment.IsFrontDevMode()) 
+        {
+            return Ok(new UserContext()
+            {
+                AuthTime = "6516515616",
+                Birthdate = "16/10/1988",
+                Email = "houssamfertaq@gmail.com",
+                FavColor = "navy",
+                Gender = "male",
+                Name = "Houssam FERTAQ",
+                Roles = new List<string>() { "admin", "techrezuser 03" }.ToArray(),
+            });
+        }
+
+        else if (User.Identity.IsAuthenticated)
         {
             var claimsIdentity = (User.Identity as ClaimsIdentity);
             var userContext = new UserContext()

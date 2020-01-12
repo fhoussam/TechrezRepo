@@ -131,7 +131,9 @@ namespace angularclient
                 {
                     builder.AllowAnyHeader()
                             .AllowAnyMethod()
-                            .WithOrigins("http://localhost:5001");
+                            .WithOrigins("http://localhost:4200")
+                            .AllowCredentials()
+                            ;
                 });
             });
 
@@ -158,11 +160,12 @@ namespace angularclient
                     policy => policy.Requirements.Add(new ShouldBeAuthorizedRequirement()));
             });
 
-            //services.AddControllers(config =>
-            //{
-            //    //config.Filters.Add<AuthorizeFilter>();
-            //    config.Filters.Add<ValidateAntiForgeryTokenAttribute>();
-            //});
+            services.AddControllers(config =>
+            {
+                //config.Filters.Add<AuthorizeFilter>();
+                //config.Filters.Add<ValidateAntiForgeryTokenAttribute>();
+                config.Filters.Add<CustomAntiForgeryAttribute>();
+            });
             services.AddControllers();
         }
 

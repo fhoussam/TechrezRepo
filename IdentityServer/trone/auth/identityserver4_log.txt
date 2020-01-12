@@ -8607,3 +8607,25 @@ System.ArgumentNullException: Value cannot be null. (Parameter 'value')
 2020-01-10 12:18:42.501 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
 2020-01-10 12:18:42.510 +01:00 [INF] Profile service returned the following claim types: email role role birthdate favcolor gender name
 2020-01-10 12:18:42.512 +01:00 [DBG] End userinfo request
+2020-01-11 23:27:33.331 +01:00 [INF] Starting host...
+2020-01-11 23:27:33.609 +01:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-01-11 23:27:33.629 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-01-11 23:27:33.633 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-01-11 23:27:33.633 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-01-11 23:27:33.633 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-01-11 23:27:33.633 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-01-11 23:27:33.633 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-01-11 23:27:33.633 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-01-11 23:27:34.725 +01:00 [DBG] Login Url: /Account/Login
+2020-01-11 23:27:34.728 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-01-11 23:27:34.728 +01:00 [DBG] Logout Url: /Account/Logout
+2020-01-11 23:27:34.728 +01:00 [DBG] ConsentUrl Url: /consent
+2020-01-11 23:27:34.728 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-01-11 23:27:34.729 +01:00 [DBG] Error Url: /home/error
+2020-01-11 23:27:34.729 +01:00 [DBG] Error Id Parameter: errorId
+2020-01-11 23:27:50.815 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-01-11 23:27:50.966 +01:00 [DBG] Augmenting SignInContext
+2020-01-11 23:27:50.967 +01:00 [DBG] Adding idp claim with value: local
+2020-01-11 23:27:50.968 +01:00 [DBG] Adding auth_time claim with value: 1578781670
+2020-01-11 23:27:50.977 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-01-11 23:27:50.998 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"07c2084b-ccf2-4620-ba06-555bcf80f312","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000008-0000-9c00-b63f-84710c7967bb","TimeStamp":"2020-01-11T22:27:50.0000000Z","ProcessId":16844,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
