@@ -1,9 +1,9 @@
 <form>
-  <select [(ngModel)]="searchParams.categoryId" name="categoryId">
+  <select [ngModel]="searchParams?.categoryId" (ngModelChange)="searchParams.categoryId = $event" name="categoryId">
     <option *ngFor="let category of categories" value="{{category.code}}">{{category.description}}</option>
   </select>
   <br />
-  <input type="text" [(ngModel)]="searchParams.description" name="description">
+  <input type="text" [ngModel]="searchParams?.description" (ngModelChange)="searchParams.description = $event" name="description">
   <br /><br /><br />
   <button (click)="search()">Search</button>
 </form>

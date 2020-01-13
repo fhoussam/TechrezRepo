@@ -58,6 +58,9 @@ const approutes: Routes = [
                 component: ListComponent,
                 children: [
                     {
+                        path: ':id', component: EditDetailsComponent
+                    },
+                    {
                         path: ':id/details', component: EditDetailsComponent
                     },
                     {

@@ -12,21 +12,13 @@ export class ProductService {
     
     constructor(
         private http: HttpClient,
-        private cookie: CookieService
     ) { }
 
     getProducts(searchParams: ProductSearchParams) {
-        var params = new HttpParams();
-        params.append("CategoryId", searchParams.categoryId.toString());
-        params.append("Description", searchParams.description);
-
-        var headers = new HttpHeaders({
-            'Content-Type': 'application/json'
-        });
 
         const httpOptions : any = {
             headers: { 'Content-Type': 'application/json' },
-            params: { 'CategoryId': searchParams.categoryId.toString(), 'Description': searchParams.description }
+            params: searchParams
         };
 
         return this.http.get<adminProductListItem[]>('https://localhost:44301/api/product', httpOptions);

@@ -28,11 +28,14 @@ export class SearchComponent implements OnInit {
     ) {
         this.categories = APP_SETTINGS.categories;
 
-        this.searchParams = this.router.url.toString().split('?')[1]
-            ? urlToProperty('?' + this.router.url.toString().split('?')[1])
-            : new ProductSearchParams('Asus', 2);
-
-        this.search();
+        let queryParam: string = this.router.url.toString().split('?')[1];
+        if (queryParam) {
+            this.searchParams = urlToProperty('?' + this.router.url.toString().split('?')[1]);
+            this.search();
+        }
+        else {
+            this.searchParams = new ProductSearchParams();
+        }
     }
 
     ngOnInit() {}
