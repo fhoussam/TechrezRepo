@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProductSearchParams = /** @class */ (function () {
-    function ProductSearchParams() {
+    function ProductSearchParams(description, categoryId) {
+        this.description = description;
+        this.categoryId = categoryId;
     }
     return ProductSearchParams;
 }());

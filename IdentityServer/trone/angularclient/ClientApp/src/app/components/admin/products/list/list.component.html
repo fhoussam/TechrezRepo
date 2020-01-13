@@ -1,4 +1,4 @@
-<table *ngIf="products.length > 0">
+<table *ngIf="products && products.length > 0">
   <tr>
     <td>
       <table border="1">
@@ -13,6 +13,19 @@
     </td>
     <td style="background-color:white">
       <img *ngIf="selectedItem" [src]="'https://localhost:44301/api/product/images/' + selectedItem.photoUrl" width="300" height="150" />
+    </td>
+  </tr>
+</table>
+<table style="background-color:yellow;">
+  <tr>
+    <td *ngIf="!!selectedItem">
+      <ul>
+        <li><a routerLink="{{selectedItem.code}}/details" queryParamsHandling="preserve" routerLinkActive="active">Details</a></li>
+        <li><a routerLink="{{selectedItem.code}}/orders" queryParamsHandling="preserve" routerLinkActive="active">Orders</a></li>
+      </ul>
+    </td>
+    <td>
+      <router-outlet></router-outlet>
     </td>
   </tr>
 </table>

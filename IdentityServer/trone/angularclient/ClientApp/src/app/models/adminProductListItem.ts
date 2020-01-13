@@ -7,7 +7,7 @@ export class adminProductListItem {
     categoryId: number;
 
     constructor() {
-        this.code = '';
+        this.code = null;
         this.description = '';
         this.photoUrl = '';
         this.quantity = 0;

@@ -5,6 +5,7 @@ import { ProductEventEmitterService } from '../../../../services/product-event-e
 import { OPEN_PRODUCT } from '../../../../models/constants';
 import { propertyToUrl, urlToProperty, urlToList } from "query-string-params";
 import { FeedService } from '../../../../services/feed.service';
+import { ProductSearchParams } from '../../../../models/productSearchParam';
 
 @Component({
     selector: 'list',
@@ -13,48 +14,52 @@ import { FeedService } from '../../../../services/feed.service';
 })
 export class ListComponent implements OnInit {
 
-    //we had to use setter prop to know when the list of products is filled
-    //either we use getter/setter strategy or on ngOnChanges from angular/core
-    //warnig, setter get triggerted 2 times (for some reason)
-    private _products;
-    get products(): adminProductListItem[] {
-
-        return this._products;
-    }
-    @Input()
-    set products(val: adminProductListItem[]) {
-        this._products = val;
-
-        if (val.length > 0 && location.search) {
-            let searchParams: any = urlToProperty(location.search);
-            let itemToSelect: adminProductListItem = val.find(x => x.code == searchParams.si);
-            if (itemToSelect)
-                this.selectItem(itemToSelect);
-        }
-    }
-
+    @Input() products: adminProductListItem[];
     selectedItem: adminProductListItem;
 
     constructor(
         private router: Router,
-        private productEventEmitter: ProductEventEmitterService,
+        private productEventEmitter: ProductEventEmitterService, //just to send potential changes back
         private feedService: FeedService,
+        private activatedRoute: ActivatedRoute,
     ) {
 
     }
 
     ngOnInit() {
+        if (this.router.url.toString().split('?')[1]) {
+            let productid = this.router.url.match(/\d{2}/);
+            if (productid && this.products) {
+                this.selectItem(this.products.find((x) => x.code == productid.toString()));
+            }
+        }
     }
 
     selectItem(selectedItem: adminProductListItem) {
+
         this.selectedItem = selectedItem;
-        this.productEventEmitter.sendSelectedItem(selectedItem);
-        let searchParams: any = urlToProperty(location.search);
-        searchParams.si = selectedItem.code;
-        let queryString: string = propertyToUrl(searchParams);
-        var st = searchParams.st != null ? searchParams.st : "details";
-        this.router.navigateByUrl("/admin/products/" + st + "?" + queryString).then(() => {
-            this.feedService.add(OPEN_PRODUCT);
-        });
+
+        if (this.router.url.split('/').length == 5) {
+            let previous_productid = this.router.url.match(/\d{2}/);
+            let newUrl: string = this.router.url
+                .replace('/' + previous_productid + '/', '/' + selectedItem.code + '/');
+            this.router.navigateByUrl(newUrl, {
+                queryParamsHandling: "merge",
+            }).then(() => {
+                this.feedService.add(OPEN_PRODUCT);
+            });
+        }
+        else {
+            this.productEventEmitter.sendSelectedItem(selectedItem);
+            this.router.navigate(
+                [selectedItem.code, this.router.url.split('/')[4] || 'details'],
+                {
+                    relativeTo: this.activatedRoute,
+                    queryParamsHandling: "merge",
+                }
+            ).then(() => {
+                this.feedService.add(OPEN_PRODUCT);
+            });
+        }
     }
 }

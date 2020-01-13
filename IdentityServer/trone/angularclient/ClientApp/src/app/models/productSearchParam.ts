@@ -1,6 +1,8 @@
 export class ProductSearchParams {
-    Description: string;
-    CategoryId: number;
-    si: string;
-    st: string;
+    description: string;
+    categoryId: number;
+    constructor(description, categoryId) {
+        this.description = description;
+        this.categoryId = categoryId;
+    }
 }

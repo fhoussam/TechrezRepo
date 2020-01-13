@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var adminProductListItem = /** @class */ (function () {
     function adminProductListItem() {
-        this.code = '';
+        this.code = null;
         this.description = '';
         this.photoUrl = '';
         this.quantity = 0;

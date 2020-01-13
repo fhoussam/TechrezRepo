@@ -28,7 +28,7 @@ import { AuthService } from './services/auth.service';
 import { HomeComponent } from './components/shared/home/home.component';
 
 import { FormsModule } from '@angular/forms';
-import { CustomUrlSerializer } from './helpers/custom-url-serializer';
+//import { CustomUrlSerializer } from './helpers/custom-url-serializer';
 import { DatePipe } from '@angular/common';
 
 import { StoreModule } from '@ngrx/store';
@@ -45,15 +45,26 @@ export function get_settings(appLoadService: AppInitService) {
 }
 
 const approutes: Routes = [
-    { path: 'home', component: HomeComponent },
-    //{ path: '', component: HomeComponent },
+    {
+        path: 'home',
+        component: HomeComponent
+    },
     {
         path: 'admin/products',
         component: AdminProductsComponent,
         children: [
             {
-                path: 'details', component: EditDetailsComponent },
-            { path: 'orders', component: AdminOrdersComponent },
+                path: '',
+                component: ListComponent,
+                children: [
+                    {
+                        path: ':id/details', component: EditDetailsComponent
+                    },
+                    {
+                        path: ':id/orders', component: AdminOrdersComponent
+                    },
+                ]
+            },
         ],
         canActivate: [AuthGuardService],
         data: {
@@ -121,7 +132,7 @@ const approutes: Routes = [
         AuthGuardService,
         AuthService,
         { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppInitService], multi: true },
-        { provide: UrlSerializer, useClass: CustomUrlSerializer },
+        //{ provide: UrlSerializer, useClass: CustomUrlSerializer },
         DatePipe,
         SignalRService,
         CookieService,

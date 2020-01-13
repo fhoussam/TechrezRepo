@@ -17,8 +17,8 @@ export class ProductService {
 
     getProducts(searchParams: ProductSearchParams) {
         var params = new HttpParams();
-        params.append("CategoryId", searchParams.CategoryId.toString());
-        params.append("Description", searchParams.Description);
+        params.append("CategoryId", searchParams.categoryId.toString());
+        params.append("Description", searchParams.description);
 
         var headers = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ export class ProductService {
 
         const httpOptions : any = {
             headers: { 'Content-Type': 'application/json' },
-            params: { 'CategoryId': searchParams.CategoryId.toString(), 'Description': searchParams.Description }
+            params: { 'CategoryId': searchParams.categoryId.toString(), 'Description': searchParams.description }
         };
 
         return this.http.get<adminProductListItem[]>('https://localhost:44301/api/product', httpOptions);
