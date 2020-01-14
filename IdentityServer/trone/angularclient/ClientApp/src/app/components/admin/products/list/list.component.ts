@@ -38,14 +38,17 @@ export class ListComponent implements OnInit, OnDestroy {
 
         //sub, destroy, pipe async for visiblity ofsub tabs, get rid of regexp in selectitem method
         //next step : http://localhost:4200/admin/products/22
-        this.routeSub = this.activatedRoute.firstChild.url.subscribe(x => {
-            if (x[0])
-              console.log(x[0].path);
-        });
+        if (this.activatedRoute.firstChild) {
+            this.routeSub = this.activatedRoute.firstChild.url.subscribe(x => {
+                if (x[0])
+                    console.log(x[0].path);
+            });
+        }
     }
 
     ngOnDestroy(): void {
-        this.routeSub.unsubscribe();
+        if (this.routeSub)
+          this.routeSub.unsubscribe();
     }
 
     selectItem(selectedItem: adminProductListItem) {
