@@ -60,9 +60,16 @@ namespace angularclient.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] ProductSearchParams productSearchParams) 
+        public async Task<IActionResult> Get([FromQuery] ProductSearchParams productSearchParams)
         {
             return Ok(await _productService.GetAll(productSearchParams));
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            return Ok(await _productService.Get(id.ToString()));
         }
 
         [HttpPost]

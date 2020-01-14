@@ -18,30 +18,38 @@ export class ListComponent implements OnInit, OnDestroy {
     @Input() products: adminProductListItem[];
     selectedItem: adminProductListItem;
     routeSub: Subscription;
+    currentId: string;
 
     constructor(
         private router: Router,
-        private productEventEmitter: ProductEventEmitterService, //just to send potential changes back
         private feedService: FeedService,
-        private activatedRoute: ActivatedRoute,
+        private route: ActivatedRoute,
+        private productEventEmitter: ProductEventEmitterService,
     ) {
-
+        //list compo is loaded twice, to be fixed
+        //console.log('!!!!!!');
     }
 
     ngOnInit() {
-        if (this.router.url.toString().split('?')[1]) {
-            let productid = this.router.url.match(/\d{2}/);
-            if (productid && this.products) {
-                this.selectItem(this.products.find((x) => x.code == productid.toString()));
+        this.productEventEmitter.cast.subscribe(receivedItem => {
+            if (this.products) {
+                let itemToUpdate = this.products.find((x) => x.code == receivedItem.code);
+                if (itemToUpdate) {
+                    itemToUpdate.categoryId = receivedItem.categoryId;
+                    itemToUpdate.description = receivedItem.description;
+                    itemToUpdate.price = receivedItem.price;
+                    itemToUpdate.quantity = receivedItem.quantity;
+                    if (!!receivedItem.photoUrl)
+                        itemToUpdate.photoUrl = receivedItem.photoUrl;
+                }
             }
-        }
+        });
 
-        //sub, destroy, pipe async for visiblity ofsub tabs, get rid of regexp in selectitem method
-        //next step : http://localhost:4200/admin/products/22
-        if (this.activatedRoute.firstChild) {
-            this.routeSub = this.activatedRoute.firstChild.url.subscribe(x => {
-                if (x[0])
-                    console.log(x[0].path);
+        if (this.route.firstChild) {
+            this.routeSub = this.route.firstChild.url.subscribe((x) => {
+                if (!!x[0] && !!x[0].path) {
+                    this.currentId = x[0].path;
+                }
             });
         }
     }
@@ -66,11 +74,10 @@ export class ListComponent implements OnInit, OnDestroy {
             });
         }
         else {
-            this.productEventEmitter.sendSelectedItem(selectedItem);
             this.router.navigate(
                 [selectedItem.code, this.router.url.split('/')[4] || 'details'],
                 {
-                    relativeTo: this.activatedRoute,
+                    relativeTo: this.route,
                     queryParamsHandling: "merge",
                 }
             ).then(() => {

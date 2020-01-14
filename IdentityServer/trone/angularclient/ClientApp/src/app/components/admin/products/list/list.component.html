@@ -16,16 +16,9 @@
     </td>
   </tr>
 </table>
-<table style="background-color:yellow;">
-  <tr>
-    <td *ngIf="!!selectedItem">
-      <ul>
-        <li><a routerLink="{{selectedItem.code}}/details" queryParamsHandling="preserve" routerLinkActive="active">Details</a></li>
-        <li><a routerLink="{{selectedItem.code}}/orders" queryParamsHandling="preserve" routerLinkActive="active">Orders</a></li>
-      </ul>
-    </td>
-    <td>
-      <router-outlet></router-outlet>
-    </td>
-  </tr>
-</table>
+<br />
+<ul *ngIf="currentId">
+  <li><a routerLink="{{currentId}}/details" queryParamsHandling="preserve" routerLinkActive="active">Details</a></li>
+  <li><a routerLink="{{currentId}}/orders" queryParamsHandling="preserve" routerLinkActive="active">Orders</a></li>
+</ul>
+<router-outlet></router-outlet>

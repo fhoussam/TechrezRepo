@@ -17,12 +17,24 @@ namespace angularclient.Services
         Task<string> Save(ProductPostSave productData, IFormFile productImage);
         Task<List<Category>> GetCategories();
         Task<List<Product>> GetAll(ProductSearchParams productSearchParams);
+        Task<Product> Get(string Code);
     }
 
     public class ProductService : IProductService
     {
         private IWebHostEnvironment _webHostEnvironment;
         private ProductRepository _productRepository;
+
+        public async Task<Product> Get(string code) 
+        {
+            var result = await _productRepository.Get(code);
+
+            if (result == null)
+                throw new NotFoundException();
+
+            else
+                return result;
+        }
 
         public ProductService(IWebHostEnvironment webHostEnvironment, ProductRepository productRepository)
         {
@@ -68,12 +80,12 @@ namespace angularclient.Services
 
             product.Description = productData.Description;
             product.CategoryId = productData.CategoryId;
-
+            product.Quantity = productData.Quantity;
             product.Price = productData.Price;
 
             await _productRepository.Update(product);
 
-            return newUrl;
+            return string.IsNullOrEmpty(newUrl) ? product.PhotoUrl : newUrl;
         }
 
         public async Task<List<Category>> GetCategories() 

@@ -58,7 +58,7 @@ const approutes: Routes = [
                 component: ListComponent,
                 children: [
                     {
-                        path: ':id', component: EditDetailsComponent
+                        path: ':id', redirectTo: ':id/details'
                     },
                     {
                         path: ':id/details', component: EditDetailsComponent

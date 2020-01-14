@@ -31,10 +31,16 @@ namespace angularclient.Middlewares
             {
                 httpContext.Response.StatusCode = 400;
             }
-            catch (Exception)
+            catch (Exception exp)
             {
+                logException(exp);
                 httpContext.Response.StatusCode = 500;
             }
+        }
+
+        private void logException(Exception exp) 
+        { 
+            
         }
     }
 

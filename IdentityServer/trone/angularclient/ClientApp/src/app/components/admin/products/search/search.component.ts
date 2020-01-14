@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ProductService } from '../../../../services/product.service';
 import { SEARCH_PRODUCT } from '../../../../models/constants';
 import { category } from '../../../../models/category';
@@ -7,35 +7,35 @@ import { ProductSearchParams } from '../../../../models/productSearchParam';
 import { urlToProperty } from "query-string-params";
 import { FeedService } from '../../../../services/feed.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
+
+    ngOnDestroy(): void {
+        this.routeSub.unsubscribe();
+    }
 
     @Output() searchResultEmitter = new EventEmitter();
     categoryId: string;
-    categories: category[];
-    searchParams: ProductSearchParams
+    categories = APP_SETTINGS.categories;
+    searchParams = new ProductSearchParams();;
+    routeSub: Subscription;
 
     constructor(
         private productService: ProductService,
         private feedService: FeedService,
         private router: Router,
-        private activatedRoute: ActivatedRoute,
+        private route: ActivatedRoute,
     ) {
-        this.categories = APP_SETTINGS.categories;
-
-        let queryParam: string = this.router.url.toString().split('?')[1];
-        if (queryParam) {
-            this.searchParams = urlToProperty('?' + this.router.url.toString().split('?')[1]);
-            this.search();
-        }
-        else {
-            this.searchParams = new ProductSearchParams();
-        }
+        this.routeSub = this.route.queryParams.subscribe((x: ProductSearchParams) => {
+            this.searchParams.categoryId = x.categoryId;
+            this.searchParams.description = x.description;
+        });
     }
 
     ngOnInit() {}
@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit {
         this.productService.getProducts(this.searchParams).subscribe(data => {
 
             this.router.navigate([], {
-                relativeTo: this.activatedRoute,
+                relativeTo: this.route,
                 queryParams: this.searchParams,
                 queryParamsHandling: 'merge',
             });
