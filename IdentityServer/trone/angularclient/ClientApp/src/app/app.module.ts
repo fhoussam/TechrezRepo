@@ -98,7 +98,14 @@ const approutes: Routes = [
             allowedRoles: ['techrezuser 03']
         }
     },
-    //{ path: '**', component: PagenotfoundComponent },
+    {
+        path: 'notfound',
+        component: PagenotfoundComponent
+    },
+    {
+        path: '**',
+        component: PagenotfoundComponent
+    },
 ];
 
 @NgModule({

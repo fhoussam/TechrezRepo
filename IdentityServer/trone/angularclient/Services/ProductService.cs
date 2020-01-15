@@ -4,6 +4,7 @@ using angularclient.Middlewares;
 using angularclient.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,7 +48,7 @@ namespace angularclient.Services
             var product = await _productRepository.Get(productData.Code);
 
             if (product == null)
-                throw new NotFoundException();
+                throw new DbUpdateException();
 
             string newUrl = string.Empty;
 
