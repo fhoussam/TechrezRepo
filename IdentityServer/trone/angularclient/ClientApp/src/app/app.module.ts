@@ -54,19 +54,13 @@ const approutes: Routes = [
         component: AdminProductsComponent,
         children: [
             {
-                path: '',
-                component: ListComponent,
-                children: [
-                    {
-                        path: ':id', redirectTo: ':id/details'
-                    },
-                    {
-                        path: ':id/details', component: EditDetailsComponent
-                    },
-                    {
-                        path: ':id/orders', component: AdminOrdersComponent
-                    },
-                ]
+                path: ':id', redirectTo: ':id/details'
+            },
+            {
+                path: ':id/details', component: EditDetailsComponent
+            },
+            {
+                path: ':id/orders', component: AdminOrdersComponent
             },
         ],
         canActivate: [AuthGuardService],

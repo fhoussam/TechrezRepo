@@ -26,8 +26,6 @@ export class ListComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private productEventEmitter: ProductEventEmitterService,
     ) {
-        //list compo is loaded twice, to be fixed
-        //console.log('!!!!!!');
     }
 
     ngOnInit() {
@@ -60,29 +58,17 @@ export class ListComponent implements OnInit, OnDestroy {
     }
 
     selectItem(selectedItem: adminProductListItem) {
-
         this.selectedItem = selectedItem;
 
-        if (this.router.url.split('/').length == 5) {
-            let previous_productid = this.router.url.match(/\d{2}/);
-            let newUrl: string = this.router.url
-                .replace('/' + previous_productid + '/', '/' + selectedItem.code + '/');
-            this.router.navigateByUrl(newUrl, {
-                queryParamsHandling: "merge",
-            }).then(() => {
-                this.feedService.add(OPEN_PRODUCT);
-            });
-        }
-        else {
-            this.router.navigate(
-                [selectedItem.code, this.router.url.split('/')[4] || 'details'],
-                {
-                    relativeTo: this.route,
-                    queryParamsHandling: "merge",
-                }
-            ).then(() => {
-                this.feedService.add(OPEN_PRODUCT);
-            });
-        }
+        let selectedTab = this.route.snapshot.firstChild
+            ? this.route.snapshot.firstChild.routeConfig.path.split('/')[1]
+            : 'details';
+
+        this.router.navigate(
+            [selectedItem.code + '/' + selectedTab],
+            { relativeTo: this.route, queryParamsHandling: "merge" }
+        ).then(() => {
+            this.feedService.add(OPEN_PRODUCT);
+        });
     }
 }
