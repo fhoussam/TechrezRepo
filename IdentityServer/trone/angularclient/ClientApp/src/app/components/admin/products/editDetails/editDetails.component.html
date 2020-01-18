@@ -1,24 +1,56 @@
-<div *ngIf="product" style="background-color:#95cab8">
+<div style="background-color:#95cab8">
   <p>Editing details of : {{itemDescription}}</p>
 
-  Description
-  <input type="text" [(ngModel)]="product.description" />
-  <br />
-  Price
-  <input type="text" [(ngModel)]="product.price" />
-  <br />
-  Qauntity
-  <input type="number" [(ngModel)]="product.quantity" step="1" />
-  <br />
-  Category
-  <select [(ngModel)]="product.categoryId">
-    <option *ngFor="let category of categories" value="{{category.code}}">{{category.description}}</option>
-  </select>
-  <br />
-  Photo
-  <input type="file" (change)="fileSelected($event)" />
-  <br />
-  <button (click)="saveChanges()">Save Changes</button>
-  <br />
+  <div>
+    <form (ngSubmit)="saveChanges(f)" #f="ngForm">
+      <input type="hidden" name="code" ngModel />
+
+      <!--Description field-->
+      <label for="description">Description</label>
+      <ul *ngIf="!descvalidator.valid">
+        <li *ngIf="descvalidator.errors.required">
+          <span class="validation-error">Description is required</span>
+        </li>
+        <li *ngIf="descvalidator.errors.minlength">
+          <span class="validation-error">
+            Should be minimum of {{descvalidator.errors.minlength.requiredLength}} catacters !
+          </span>
+        </li>
+      </ul>
+      <input
+             type="text"
+             name="description"
+             required
+             ngModel
+             #descvalidator="ngModel"
+             placeholder="Enter Description ..."
+             minlength="5"
+             maxlength="30"
+             >
+
+      <label for="price">Price</label>
+      <ul *ngIf="!pricevalidator.valid">
+        <li *ngIf="pricevalidator.errors.required">
+          <span class="validation-error">Price is required</span>
+        </li>
+      </ul>
+
+      <input type="number" name="price" required ngModel #pricevalidator="ngModel">
+
+      <label for="quantity">Quantity</label>
+      <input type="number" name="quantity" required ngModel>
+
+      <input type="file" (change)="fileSelected($event)" />
+
+      <label for="country">Category</label>
+      <select name="categoryId" required ngModel>
+        <option value="">Please select a category</option>
+        <option *ngFor="let category of categories" value="{{category.code}}">{{category.description}}</option>
+      </select>
+
+      <input type="submit" value="Save" [disabled]="!f.valid">
+      <!--<input type="submit" value="Save">-->
+    </form>
+  </div>
 
 </div>

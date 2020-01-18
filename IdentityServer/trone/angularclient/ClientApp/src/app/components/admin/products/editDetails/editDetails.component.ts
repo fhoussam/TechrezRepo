@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { adminProductListItem } from '../../../../models/adminProductListItem';
 import { ProductEventEmitterService } from '../../../../services/product-event-emitter.service';
 import { SAVE_PRODUCT } from '../../../../models/constants';
@@ -10,6 +10,7 @@ import { ProductService } from '../../../../services/product.service';
 import { FeedService } from '../../../../services/feed.service';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'app-details',
@@ -22,11 +23,12 @@ export class EditDetailsComponent implements OnInit, OnDestroy {
         this.routeSub.unsubscribe();
     }
 
-    product: adminProductEdit;
+    //product: adminProductEdit;
     categories: category[];
     selectedFile: File = null;
     routeSub: Subscription;
     itemDescription: string;
+    @ViewChild('f', {static : false} ) editFormRef: NgForm; 
 
     fileSelected(event) {
         this.selectedFile = <File>event.target.files[0];
@@ -42,18 +44,11 @@ export class EditDetailsComponent implements OnInit, OnDestroy {
         this.categories = APP_SETTINGS.categories;
        
         this.routeSub = this.route.url.subscribe((r) => {
-            this.productService.getProduct(r[0].path).subscribe((x:adminProductEdit) => {
-                this.product = new adminProductEdit();
-                this.product.code = x.code;
-                this.product.categoryId = x.categoryId;
-                this.product.description = x.description;
-                this.product.price = x.price;
-                this.product.quantity = x.quantity;
+            this.productService.getProduct(r[0].path).subscribe((x: adminProductEdit) => {
+                this.editFormRef.form.patchValue(x);
                 this.itemDescription = x.description;
             });
         });
-
-        
     }
 
     ngOnInit() {
@@ -61,10 +56,15 @@ export class EditDetailsComponent implements OnInit, OnDestroy {
     }
 
     saveChanges() {
-        this.productService.save(this.product, this.selectedFile).subscribe((resp: any) => {
-            //send changes to list compo
-            this.productEventEmitter.sendSelectedItem(this.product.toAdminProductListItem());
-            this.feedService.add(SAVE_PRODUCT);
-        });
+        console.log(this.editFormRef.errors);
+        //console.log(this.editFormRef);
+        //console.log(this.editFormRef.errors);
+        //console.log(this.editFormRef.form.errors);
+        //console.log(this.editFormRef.hasError('required','price'));
+        //this.productService.save(this.editFormRef.form.value, this.selectedFile).subscribe((resp: any) => {
+        //    //send changes to list compo
+        //    this.productEventEmitter.sendSelectedItem(this.editFormRef.form.value as adminProductListItem);
+        //    this.feedService.add(SAVE_PRODUCT);
+        //});
     }
 }

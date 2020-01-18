@@ -127,6 +127,7 @@ const approutes: Routes = [
         FormsModule,
         StoreModule.forRoot({ feeds: feedReducer }),
         ScrollingModule,
+        FormsModule,
     ],
     providers: [
         [{ provide: HTTP_INTERCEPTORS, useClass: AntiforgeryInterceptorService, multi: true }],
