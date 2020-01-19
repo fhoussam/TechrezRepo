@@ -1,45 +1,20 @@
-﻿using angularclient.DbAccess;
-using angularclient.Models;
+﻿using angularclient.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using angularclient.Services;
-using System.ComponentModel.DataAnnotations;
-using angularclient.ValidationAttributes;
 
 namespace angularclient.Controllers
 {
     public class TechRezException : Exception
     {
         public TechRezException(string message) : base(message) { }
-    }
-
-    public class ProductPostSave
-    {
-        public string Code { get; set; }
-
-        [Required]
-        [StringLength(100, MinimumLength = 5)]
-        public string Description { get; set; }
-
-        [RequiredGreaterThanZero]
-        [Required]
-        public int Quantity { get; set; }
-
-        [Required]
-        public int CategoryId { get; set; }
-
-        [Required]
-        [Range(1, double.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
-        public double Price { get; set; }
     }
 
     [Route("api/[controller]")]
@@ -57,6 +32,14 @@ namespace angularclient.Controllers
         {
             _webHostEnvironment = webHostEnvironment;
             _productService = productService;
+        }
+
+        //an endpoint for testing validation
+        [HttpGet]
+        [Route("validate")]
+        public IActionResult Validate([FromQuery] ProductPostSave productPostSave)
+        {
+            return Ok("validated !");
         }
 
         [HttpGet]

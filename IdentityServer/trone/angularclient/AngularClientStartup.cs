@@ -21,6 +21,14 @@ using angularclient.Filters;
 using Microsoft.AspNetCore.Authorization;
 using angularclient.Middlewares;
 using angularclient.Services;
+using FluentValidation;
+using FluentValidation.Internal;
+using FluentValidation.Resources;
+using FluentValidation.Results;
+using FluentValidation.TestHelper;
+using FluentValidation.Validators;
+using FluentValidation.AspNetCore;
+using angularclient.Controllers;
 
 namespace angularclient
 {
@@ -166,11 +174,13 @@ namespace angularclient
 
             services.AddControllers(config =>
             {
-                //config.Filters.Add<AuthorizeFilter>();
-                //config.Filters.Add<ValidateAntiForgeryTokenAttribute>();
                 config.Filters.Add<CustomAntiForgeryAttribute>();
+                config.Filters.Add<ModelStateFilter>();
+            })
+            .AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblyContaining<AngularClientStartup>();
             });
-            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
