@@ -10,6 +10,7 @@ import { EditDetailsComponent } from './components/admin/products/editDetails/ed
 import { PagenotfoundComponent } from './components/shared/pagenotfound/pagenotfound.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { HomeComponent } from './components/shared/home/home.component';
+import { CanDeactivateGuard } from './services/can-deactivate-guard-service';
 
 
 const approutes: Routes = [
@@ -25,7 +26,7 @@ const approutes: Routes = [
                 path: ':id', redirectTo: ':id/details'
             },
             {
-                path: ':id/details', component: EditDetailsComponent
+                path: ':id/details', component: EditDetailsComponent, canDeactivate: [CanDeactivateGuard]
             },
             {
                 path: ':id/orders', component: AdminOrdersComponent

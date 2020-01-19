@@ -25,10 +25,9 @@ export class EditDetailsComponent implements OnInit, OnDestroy, CanCompoDeactiva
     routeSub: Subscription;
     previousState: adminProductEdit;
     @ViewChild('f', { static: false }) editFormRef: NgForm;
-    changesSaved: boolean = false;
 
     CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-        if (!this.changesSaved && this.hasChanges()) //&& this.editFormRef.dirty)
+        if (this.hasChanges()) //&& this.editFormRef.dirty) {
             return confirm('Do you want to discard the changes ?');
         else return true;
     }
@@ -64,7 +63,6 @@ export class EditDetailsComponent implements OnInit, OnDestroy, CanCompoDeactiva
         this.routeSub = this.route.url.subscribe((r) => {
             this.productService.getProduct(r[0].path).subscribe((x: adminProductEdit) => {
                 this.editFormRef.reset();
-                this.changesSaved = false;
                 this.editFormRef.form.patchValue(x);
                 this.previousState = x;
             });
@@ -78,7 +76,6 @@ export class EditDetailsComponent implements OnInit, OnDestroy, CanCompoDeactiva
     saveChanges() {
         this.productService.save(this.editFormRef.form.value, this.selectedFile).subscribe((resp: any) => {
             //send changes to list compo
-            this.changesSaved = true;
             this.productEventEmitter.sendSelectedItem(this.editFormRef.form.value as adminProductListItem);
             this.feedService.add(SAVE_PRODUCT);
         });
