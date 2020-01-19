@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Feed } from '../../../models/Feed';
 import { Store } from '@ngrx/store';
@@ -17,7 +17,11 @@ import { AuthService } from '../../../services/auth.service';
     templateUrl: './feed.component.html',
     styleUrls: ['./feed.component.css']
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnDestroy {
+
+    ngOnDestroy(): void {
+        this.signalRService.stopConnection();
+    }
 
     feeds: Feed[] = [];
     @ViewChild(CdkVirtualScrollViewport, { static: false }) viewport: CdkVirtualScrollViewport;
@@ -87,13 +91,5 @@ export class FeedComponent implements OnInit {
         this.signalRService.startConnection();
         this.signalRService.addTransferFeedDataListener();
         //this.signalRService.addBroadcastFeedDataListener();
-        //this.startHttpRequest();
     }
-
-    //private startHttpRequest = () => {
-    //    this.http.get('https://localhost:44301/api/feed/triggerFakeOperation')
-    //        .subscribe(res => {
-    //            console.log(res);
-    //        })
-    //}
 }

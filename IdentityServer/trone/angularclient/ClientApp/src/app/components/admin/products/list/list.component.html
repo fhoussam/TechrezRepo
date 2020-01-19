@@ -2,7 +2,7 @@
   <tr>
     <td>
       <table border="1">
-        <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItem?.code) ? 'grey' : 'inherit' }">
+        <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItem?.code) ? 'grey' : 'inherit' }" style="height:60px;">
           <td>{{ product.code }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.quantity }}</td>
@@ -16,9 +16,8 @@
     </td>
   </tr>
 </table>
-<br />
-<ul *ngIf="currentId">
-  <li><a routerLink="{{currentId}}/details" queryParamsHandling="preserve" routerLinkActive="active">Details</a></li>
-  <li><a routerLink="{{currentId}}/orders" queryParamsHandling="preserve" routerLinkActive="active">Orders</a></li>
-</ul>
+<div class="tab" *ngIf="currentItemId">
+  <a routerLink="{{currentItemId}}/details" queryParamsHandling="preserve" routerLinkActive="active" class="tablinks">Details</a>
+  <a routerLink="{{currentItemId}}/orders" queryParamsHandling="preserve" routerLinkActive="active" class="tablinks">Orders</a>
+</div>
 <router-outlet></router-outlet>

@@ -8,27 +8,32 @@ import { category } from '../../../../models/category';
 import { APP_SETTINGS } from '../../../../models/APP_SETTINGS';
 import { ProductService } from '../../../../services/product.service';
 import { FeedService } from '../../../../services/feed.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { CanCompoDeactivate } from '../../../../services/can-deactivate-guard-service';
 
 @Component({
     selector: 'app-details',
     templateUrl: './editDetails.component.html',
     styleUrls: ['./editDetails.component.css']
 })
-export class EditDetailsComponent implements OnInit, OnDestroy {
+export class EditDetailsComponent implements OnInit, OnDestroy, CanCompoDeactivate {
 
-    ngOnDestroy(): void {
-        this.routeSub.unsubscribe();
-    }
-
-    //product: adminProductEdit;
     categories: category[];
     selectedFile: File = null;
     routeSub: Subscription;
     itemDescription: string;
-    @ViewChild('f', {static : false} ) editFormRef: NgForm; 
+    @ViewChild('f', { static: false }) editFormRef: NgForm;
+
+    CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+        return this.editFormRef.dirty
+            ? confirm('Do you want to discard the changes ?') : true;
+    }
+
+    ngOnDestroy(): void {
+        this.routeSub.unsubscribe();
+    }
 
     fileSelected(event) {
         this.selectedFile = <File>event.target.files[0];
@@ -45,8 +50,10 @@ export class EditDetailsComponent implements OnInit, OnDestroy {
        
         this.routeSub = this.route.url.subscribe((r) => {
             this.productService.getProduct(r[0].path).subscribe((x: adminProductEdit) => {
+                this.editFormRef.reset();
                 this.editFormRef.form.patchValue(x);
                 this.itemDescription = x.description;
+                
             });
         });
     }
@@ -56,15 +63,10 @@ export class EditDetailsComponent implements OnInit, OnDestroy {
     }
 
     saveChanges() {
-        console.log(this.editFormRef.errors);
-        //console.log(this.editFormRef);
-        //console.log(this.editFormRef.errors);
-        //console.log(this.editFormRef.form.errors);
-        //console.log(this.editFormRef.hasError('required','price'));
-        //this.productService.save(this.editFormRef.form.value, this.selectedFile).subscribe((resp: any) => {
-        //    //send changes to list compo
-        //    this.productEventEmitter.sendSelectedItem(this.editFormRef.form.value as adminProductListItem);
-        //    this.feedService.add(SAVE_PRODUCT);
-        //});
+        this.productService.save(this.editFormRef.form.value, this.selectedFile).subscribe((resp: any) => {
+            //send changes to list compo
+            this.productEventEmitter.sendSelectedItem(this.editFormRef.form.value as adminProductListItem);
+            this.feedService.add(SAVE_PRODUCT);
+        });
     }
 }

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent as AdminProductsComponent } from './components/admin/products/products.component';
 import { ProductsComponent as TechrezUserProductsComponent } from './components/techrezuser/products/products.component';
@@ -39,68 +38,12 @@ import { SignalRService } from './services/signalr.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import { AntiforgeryInterceptorService } from './interceptors/antiforgery-interceptor.service';
+import { CanDeactivateGuard } from './services/can-deactivate-guard-service';
+import { MyRoutingModuleRoutingModule } from './my-routing-module/my-routing-module-routing.module';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
 }
-
-const approutes: Routes = [
-    {
-        path: 'home',
-        component: HomeComponent
-    },
-    {
-        path: 'admin/products',
-        component: AdminProductsComponent,
-        children: [
-            {
-                path: ':id', redirectTo: ':id/details'
-            },
-            {
-                path: ':id/details', component: EditDetailsComponent
-            },
-            {
-                path: ':id/orders', component: AdminOrdersComponent
-            },
-        ],
-        canActivate: [AuthGuardService],
-        data: {
-            allowedRoles: ['admin']
-        }
-    },
-    {
-        path: 'admin/users',
-        component: UsersComponent,
-        canActivate: [AuthGuardService],
-        data: {
-            allowedRoles: ['admin']
-        }
-    },
-    {
-        path: 'techrezusers/products',
-        component: TechrezUserProductsComponent,
-        canActivate: [AuthGuardService],
-        data: {
-            allowedRoles: ['techrezuser 03']
-        }
-    },
-    {
-        path: 'techrezusers/orders',
-        component: TechrezuserOrdersComponent,
-        canActivate: [AuthGuardService],
-        data: {
-            allowedRoles: ['techrezuser 03']
-        }
-    },
-    {
-        path: 'notfound',
-        component: PagenotfoundComponent
-    },
-    {
-        path: '**',
-        component: PagenotfoundComponent
-    },
-];
 
 @NgModule({
     declarations: [
@@ -121,8 +64,8 @@ const approutes: Routes = [
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
-        RouterModule.forRoot(approutes),
+        RouterModule.forRoot([]),
+        MyRoutingModuleRoutingModule,
         HttpClientModule,
         FormsModule,
         StoreModule.forRoot({ feeds: feedReducer }),
@@ -141,6 +84,7 @@ const approutes: Routes = [
         DatePipe,
         SignalRService,
         CookieService,
+        CanDeactivateGuard
     ],
     bootstrap: [AppComponent]
 })

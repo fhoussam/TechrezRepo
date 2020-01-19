@@ -40,6 +40,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\app.routing.module.js" />
+    <None Remove="ClientApp\src\app\app.routing.module.js" />
+    <None Remove="ClientApp\src\app\app.routing.module.js.map" />
+    <None Remove="ClientApp\src\app\app.routing.module.js.map" />
+    <None Remove="ClientApp\src\app\app.routing.module.ts" />
     <None Remove="ClientApp\src\app\helpers\custom-url-serializer.ts" />
     <None Remove="ClientApp\src\app\models\adminProductEdit.ts" />
     <None Remove="ClientApp\src\app\models\adminProductListItem.ts" />
@@ -51,6 +56,7 @@
     <None Remove="ClientApp\src\app\models\userContext.ts" />
     <None Remove="ClientApp\src\app\Redux\feed.reducer.ts" />
     <None Remove="ClientApp\src\app\Redux\Feed\feeds.actions.ts" />
+    <None Remove="ClientApp\src\app\services\can-deactivate-guard-service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,6 +71,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\userContext.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Redux\Feed\feed.reducer.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Redux\Feed\feeds.actions.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\can-deactivate-guard-service.ts" />
   </ItemGroup>
 
   <ItemGroup>

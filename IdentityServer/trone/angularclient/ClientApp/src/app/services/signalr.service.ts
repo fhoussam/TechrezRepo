@@ -19,7 +19,7 @@ export class SignalRService {
     private hubConnection: signalR.HubConnection;
     public onDataPush = new BehaviorSubject<Feed>(null);
 
-    public startConnection = () => {
+    public startConnection() {
         this.hubConnection = new signalR.HubConnectionBuilder()
             .withUrl('https://localhost:44301/feedhub')
             .build();
@@ -36,6 +36,10 @@ export class SignalRService {
             this.onDataPush.next(data[0]);
             //console.log(data);
         });
+    }
+
+    public stopConnection() {
+        this.hubConnection.stop();
     }
 
     //public broadcastFeedData = () => {
