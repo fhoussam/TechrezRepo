@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from '../components/shared/home/home.component';
-import { EditDetailsComponent } from '../components/admin/products/editDetails/editDetails.component';
-import { CanDeactivateGuard } from '../services/can-deactivate-guard-service';
-import { AuthGuardService } from '../services/auth-guard.service';
-import { PagenotfoundComponent } from '../components/shared/pagenotfound/pagenotfound.component';
-import { ProductsComponent as AdminProductsComponent } from '../components/admin/products/products.component';
-import { ProductsComponent as TechrezUserProductsComponent } from '../components/admin/products/products.component';
-import { OrdersComponent as AdminOrdersComponent} from '../components/techrezuser/orders/orders.component';
-import { UsersComponent } from '../components/admin/users/users.component';
+
+import { ProductsComponent as AdminProductsComponent } from './components/admin/products/products.component';
+import { ProductsComponent as TechrezUserProductsComponent } from './components/techrezuser/products/products.component';
+import { UsersComponent } from './components/admin/users/users.component';
+import { OrdersComponent as TechrezuserOrdersComponent } from './components/techrezuser/orders/orders.component';
+import { OrdersComponent as AdminOrdersComponent } from './components/admin/products/orders/orders.component';
+import { EditDetailsComponent } from './components/admin/products/editDetails/editDetails.component';
+import { PagenotfoundComponent } from './components/shared/pagenotfound/pagenotfound.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { HomeComponent } from './components/shared/home/home.component';
 
 
 const approutes: Routes = [
@@ -24,7 +25,7 @@ const approutes: Routes = [
                 path: ':id', redirectTo: ':id/details'
             },
             {
-                path: ':id/details', component: EditDetailsComponent, canDeactivate: [CanDeactivateGuard]
+                path: ':id/details', component: EditDetailsComponent
             },
             {
                 path: ':id/orders', component: AdminOrdersComponent
@@ -53,7 +54,7 @@ const approutes: Routes = [
     },
     {
         path: 'techrezusers/orders',
-        component: TechrezUserProductsComponent,
+        component: TechrezuserOrdersComponent,
         canActivate: [AuthGuardService],
         data: {
             allowedRoles: ['techrezuser 03']
@@ -71,6 +72,6 @@ const approutes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forChild(approutes)],
-  exports: [RouterModule]
+    exports: [RouterModule]
 })
-export class MyRoutingModuleRoutingModule { }
+export class MyRoutingModuleModule { }

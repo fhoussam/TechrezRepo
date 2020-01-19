@@ -39,7 +39,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import { AntiforgeryInterceptorService } from './interceptors/antiforgery-interceptor.service';
 import { CanDeactivateGuard } from './services/can-deactivate-guard-service';
-import { MyRoutingModuleRoutingModule } from './my-routing-module/my-routing-module-routing.module';
+import { MyRoutingModuleModule } from './my-routing-module.module';
+import { AlertComponent } from './components/shared/alert/alert.component';
 
 export function get_settings(appLoadService: AppInitService) {
     return () => appLoadService.getSettings();
@@ -60,12 +61,13 @@ export function get_settings(appLoadService: AppInitService) {
         CategoryPipe,
         FeedComponent,
         HomeComponent,
-        MenuComponent
+        MenuComponent,
+        AlertComponent
     ],
     imports: [
         BrowserModule,
         RouterModule.forRoot([]),
-        MyRoutingModuleRoutingModule,
+        MyRoutingModuleModule,
         HttpClientModule,
         FormsModule,
         StoreModule.forRoot({ feeds: feedReducer }),

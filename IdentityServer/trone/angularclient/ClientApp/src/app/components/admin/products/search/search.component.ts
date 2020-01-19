@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, ViewChild } from '@angular/core';
 import { ProductService } from '../../../../services/product.service';
 import { SEARCH_PRODUCT } from '../../../../models/constants';
 import { category } from '../../../../models/category';
@@ -8,6 +8,7 @@ import { urlToProperty } from "query-string-params";
 import { FeedService } from '../../../../services/feed.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'search',
@@ -25,6 +26,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     categories = APP_SETTINGS.categories;
     searchParams = new ProductSearchParams();;
     routeSub: Subscription;
+    searchErrorMessage: string;
+    @ViewChild('f', {static: false}) searchForm: NgForm;
 
     constructor(
         private productService: ProductService,
@@ -38,20 +41,37 @@ export class SearchComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnInit() {}
+    ngOnInit() { }
+
+    hasChanges(): boolean {
+        for (let prop in this.searchForm.form.value) {
+            if (this.searchForm.form.value[prop])
+                return true;
+        }
+
+        return false;
+    }
 
     search() {
-        this.productService.getProducts(this.searchParams).subscribe(data => {
+        if (!this.hasChanges())
+            this.searchErrorMessage = "Please provide at least one search filter";
+        else {
+            this.productService.getProducts(this.searchParams).subscribe(data => {
 
-            this.router.navigate([], {
-                relativeTo: this.route,
-                queryParams: this.searchParams,
-                queryParamsHandling: 'merge',
+                this.router.navigate([], {
+                    relativeTo: this.route,
+                    queryParams: this.searchParams,
+                    queryParamsHandling: 'merge',
+                });
+
+                let x: any = data;
+                this.searchResultEmitter.emit(x);
+                this.feedService.add(SEARCH_PRODUCT);
             });
+        }
+    }
 
-            let x: any = data;
-            this.searchResultEmitter.emit(x);
-            this.feedService.add(SEARCH_PRODUCT);
-        });
+    closeErrorDialog() {
+        this.searchErrorMessage = null;
     }
 }

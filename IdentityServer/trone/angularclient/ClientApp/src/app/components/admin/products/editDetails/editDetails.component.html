@@ -1,5 +1,5 @@
 <div style="background-color:rgb(159, 196, 238)">
-  <p>Editing details of : {{itemDescription}}</p>
+  <p>Editing details of : {{this.previousState?.description}}</p>
 
   <div>
     <form (ngSubmit)="saveChanges(f)" #f="ngForm">
@@ -28,15 +28,16 @@
              maxlength="30"
              >
 
+      <!--Price field-->
       <label for="price">Price</label>
       <ul *ngIf="!pricevalidator.valid">
         <li *ngIf="pricevalidator.errors.required">
           <span class="validation-error">Price is required</span>
         </li>
       </ul>
-
       <input type="number" name="price" required ngModel #pricevalidator="ngModel">
 
+      <!--Quantity-->
       <label for="quantity">Quantity</label>
       <input type="number" name="quantity" required ngModel>
 

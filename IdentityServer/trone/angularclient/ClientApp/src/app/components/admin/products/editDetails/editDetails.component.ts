@@ -23,15 +23,26 @@ export class EditDetailsComponent implements OnInit, OnDestroy, CanCompoDeactiva
     categories: category[];
     selectedFile: File = null;
     routeSub: Subscription;
-    itemDescription: string;
+    previousState: adminProductEdit;
     @ViewChild('f', { static: false }) editFormRef: NgForm;
     changesSaved: boolean = false;
 
     CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-        if (!this.changesSaved && this.editFormRef.dirty)
+        if (!this.changesSaved && this.hasChanges()) //&& this.editFormRef.dirty)
             return confirm('Do you want to discard the changes ?');
         else return true;
     }
+
+    hasChanges(): boolean {
+        for (let prop in this.editFormRef.form.value) {
+            if (this.previousState[prop] !== this.editFormRef.form.value[prop]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     ngOnDestroy(): void {
         this.routeSub.unsubscribe();
@@ -55,8 +66,7 @@ export class EditDetailsComponent implements OnInit, OnDestroy, CanCompoDeactiva
                 this.editFormRef.reset();
                 this.changesSaved = false;
                 this.editFormRef.form.patchValue(x);
-                this.itemDescription = x.description;
-                
+                this.previousState = x;
             });
         });
     }

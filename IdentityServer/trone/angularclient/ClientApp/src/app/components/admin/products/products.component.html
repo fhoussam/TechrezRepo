@@ -1,15 +1,7 @@
-<table style="width:100%;" class="overview">
-  <tr>
-    <td>
-      <search (searchResultEmitter)="displaySearchResult($event)"></search>
-    </td>
-    <td rowspan="3" style="background-color:#5074ab;width:30%;vertical-align: top;">
-      <app-feed></app-feed>
-    </td>
-  </tr>
-  <tr>
-    <td style="vertical-align: top;">
-      <list [products]="searchResult"></list>
-    </td>
-  </tr>
-</table>
+<div style="display:inline-block;width:68%;vertical-align: top;padding:5px;">
+  <search (searchResultEmitter)="displaySearchResult($event)"></search>
+  <list [products]="searchResult"></list>
+</div>
+<div style="display:inline-block;background-color:#5074ab;width:30%;padding:5px;">
+  <app-feed></app-feed>
+</div>
