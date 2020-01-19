@@ -62,9 +62,6 @@ export class ListComponent implements OnInit, OnDestroy {
     }
 
     selectItem(selectedItem: adminProductListItem) {
-        this.selectedItem = selectedItem;
-        this.currentItemId = selectedItem.code;
-
         let selectedTab = this.route.snapshot.firstChild
             ? this.route.snapshot.firstChild.routeConfig.path.split('/')[1]
             : 'details';
@@ -72,8 +69,12 @@ export class ListComponent implements OnInit, OnDestroy {
         this.router.navigate(
             [selectedItem.code + '/' + selectedTab],
             { relativeTo: this.route, queryParamsHandling: "merge" }
-        ).then(() => {
-            this.feedService.add(OPEN_PRODUCT);
+        ).then((navigationSucceded) => {
+            if (navigationSucceded) {
+                this.selectedItem = selectedItem;
+                this.currentItemId = selectedItem.code;
+                this.feedService.add(OPEN_PRODUCT);
+            }
         });
     }
 }

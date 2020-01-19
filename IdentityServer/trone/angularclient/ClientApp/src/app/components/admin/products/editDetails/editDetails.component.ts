@@ -28,8 +28,9 @@ export class EditDetailsComponent implements OnInit, OnDestroy, CanCompoDeactiva
     changesSaved: boolean = false;
 
     CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-        return this.changesSaved || (this.editFormRef.dirty
-            ? confirm('Do you want to discard the changes ?') : true);
+        if (!this.changesSaved && this.editFormRef.dirty)
+            return confirm('Do you want to discard the changes ?');
+        else return true;
     }
 
     ngOnDestroy(): void {
