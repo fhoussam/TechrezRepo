@@ -2,7 +2,7 @@
   <tr>
     <td>
       <table border="1">
-        <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItem?.code) ? 'grey' : 'inherit' }" style="height:60px;">
+        <tr *ngFor="let product of products" (click)="selectItem(product)" [ngStyle]="{ 'background-color' : (product.code == selectedItem?.code) ? '#9fc4ee' : 'inherit' }" style="height:60px;">
           <td>{{ product.code }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.quantity }}</td>

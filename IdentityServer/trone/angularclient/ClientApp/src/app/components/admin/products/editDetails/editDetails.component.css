@@ -1,16 +1,6 @@
-input[type=text], input[type=number], input[type=file], select {
+input[type=submit], button {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
+  background-color: #4171b2;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -19,12 +9,12 @@ input[type=submit] {
   cursor: pointer;
 }
 
-  input[type=submit]:hover {
-    background-color: #45a049;
+  input[type=submit]:hover, button:hover {
+    background-color: #2b4972;
   }
 
-  input[type=submit]:disabled {
-    background-color: #98ca9a;
+  input[type=submit]:disabled, button:disabled {
+    background-color: #7296c7;
     cursor: not-allowed;
   }
 
