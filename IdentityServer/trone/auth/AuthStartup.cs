@@ -31,7 +31,7 @@ namespace auth
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors();
+            services.AddCors();
 
             //services.AddDataProtection().UseCryptographicAlgorithms
             //(
@@ -150,17 +150,17 @@ namespace auth
                 app.UseDatabaseErrorPage();
             }
 
-            //app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
-            ////.AllowAnyOrigin()
-            //    .WithOrigins
-            //    (
-            //        "http://localhost:5003",
-            //        "https://localhost:44301",
-            //        "http://localhost:8100",
-            //        "http://localhost",
-            //        "ioniclient://ioniclient.trone"
-            //    )
-            //);
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+            //.AllowAnyOrigin()
+                .WithOrigins
+                (
+                    "http://localhost:5003"
+                    ,"https://localhost:44301"
+                    //,"http://localhost:8100"
+                    //,"http://localhost"
+                    //,"ioniclient://ioniclient.trone"
+                )
+            );
 
             app.UseStaticFiles();
 

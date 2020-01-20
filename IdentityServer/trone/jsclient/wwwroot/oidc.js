@@ -57,6 +57,16 @@
         url.searchParams.append('code_challenge_method', 'S256');
         window.location.replace(url);
     }
+
+    endsession() {
+        var post_logout_redirect_uri = encodeURI("http://localhost:5003/logout.html");
+        var endsessionurl = Wellknown.endsession_endpoint + '?'
+            + 'id_token=' + this.state.id_token
+            + 'post_logout_redirect_uri=' + post_logout_redirect_uri;
+
+        //console.log(endsessionurl);
+        window.location.replace(endsessionurl);
+    }
     
     get_new_access_token = function () {
         return new Promise((resolve, reject) => {
@@ -96,7 +106,7 @@
             }
             else {
                 var message = 'Access token expires in : ' + oidc.access_token_life_time + ' seconds.';
-                console.log(message);
+                console.warn(message);
             }
         }, Oidc.checkAtltFrequency);
     }
@@ -238,5 +248,6 @@ class Wellknown {
     static redirect_url = 'http://localhost:5003/callback.html';
     static userinfo_endpoint = 'http://localhost:5000/connect/userinfo';
     static authorize_endpoint = 'http://localhost:5000/connect/authorize';
+    static endsession_endpoint = 'http://localhost:5000/connect/endsession';
     static scopes = 'openid profile api1 email complementary_profile offline_access';
 }

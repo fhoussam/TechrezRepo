@@ -96,22 +96,29 @@ namespace angularclient
                 options.Authority = "http://localhost:5000";
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
-                //options.Audience = "api1";
+                options.Audience = "api1";
 
-                //options.Audience = "http://10.0.2.2:5000/resources";
-                options.TokenValidationParameters.ValidAudiences = new List<string>()
+                //options.Audience = "http://localhost:5000/resources";
+                //options.TokenValidationParameters.ValidAudiences = new List<string>()
+                //{
+                //        "http://10.0.2.2:5000/resources",
+                //        "http://localhost:5000/resources"
+                //};
+
+                options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                        "http://10.0.2.2:5000/resources",
-                        "http://localhost:5000/resources"
+                    NameClaimType = "name",
+                    RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
+                    
                 };
 
                 //token validation options
-                options.TokenValidationParameters.ValidateLifetime = true;
-                options.TokenValidationParameters.ClockSkew = TimeSpan.Zero;
+                //options.TokenValidationParameters.ValidateLifetime = true;
+                //options.TokenValidationParameters.ClockSkew = TimeSpan.Zero;
 
-                options.TokenValidationParameters.ValidateAudience = true;
-                options.TokenValidationParameters.RequireExpirationTime = true;
-                options.TokenValidationParameters.ValidateIssuerSigningKey = true;
+                //options.TokenValidationParameters.ValidateAudience = true;
+                //options.TokenValidationParameters.RequireExpirationTime = true;
+                //options.TokenValidationParameters.ValidateIssuerSigningKey = true;
             })
             .AddPolicyScheme("Dynamic", "Dynamic", options =>
             {
@@ -141,7 +148,12 @@ namespace angularclient
                 {
                     builder.AllowAnyHeader()
                             .AllowAnyMethod()
-                            .WithOrigins("http://localhost:4200", "https://localhost:44301")
+                            .WithOrigins
+                            (
+                                "http://localhost:4200", 
+                                "http://localhost:5003",
+                                "https://localhost:44301"
+                            )
                             .AllowCredentials()
                             ;
                 });

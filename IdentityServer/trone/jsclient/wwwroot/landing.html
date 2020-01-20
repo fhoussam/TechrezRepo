@@ -10,7 +10,7 @@
         function get_data() {
             return new Promise((resolve, reject) => {
                 $.ajax({
-                    url: 'http://localhost:5001/api/product/secure',
+                    url: 'https://localhost:44301/api/product/secure',
                     type: 'post',
                     headers: {
                         "Authorization": "Bearer " + oidc.state.access_token
@@ -44,8 +44,10 @@
             });
 
             $("#btn_disconnect").click(function () {
-                localStorage.clear();
-                window.location.replace('home.html');
+                //localStorage.clear();
+                //window.location.replace("https://localhost:44301/api/security/logoutjwt");
+                //window.location.replace('home.html');
+                oidc.endsession();
             });
 
             $("#btn_refreshToken").click(function () {

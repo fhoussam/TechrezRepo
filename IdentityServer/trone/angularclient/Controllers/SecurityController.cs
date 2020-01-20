@@ -102,4 +102,14 @@ public class SecurityController : Controller
             RedirectUri = "https://localhost:44301/home",
         }, "Cookies", "oidc");
     }
+
+    //[Route("logoutjwt")]
+    //[HttpGet]
+    //public IActionResult LogoutJwt()
+    //{
+    //    return SignOut(new AuthenticationProperties()
+    //    {
+    //        RedirectUri = "http://localhost:5003/home",
+    //    }, "Bearer", "oidc");
+    //}
 }

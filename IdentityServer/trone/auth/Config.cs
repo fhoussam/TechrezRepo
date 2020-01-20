@@ -90,12 +90,14 @@ namespace auth
                     AllowOfflineAccess = true,
                     AllowedGrantTypes = GrantTypes.Code,
                     ClientId = "jsclient",
-                    RedirectUris = { "http://localhost:5003/callback.html" },
+                    RedirectUris = { "http://localhost:5003/callback.html", "http://localhost:5003/home.html",  "http://localhost:5003/logout.html" },
+                    PostLogoutRedirectUris = { "http://localhost:5003/logout.html" },
+                    FrontChannelLogoutUri = "http://localhost:5003/logout.html",
                     RequireConsent = false,
-                    ClientUri = "http://localhost:5003",
+                    //ClientUri = "http://localhost:5003",
 
-                    AllowedCorsOrigins = new List<string>(){ "http://localhost", "http://localhost:5003" },
-                    AllowAccessTokensViaBrowser = true,
+                    AllowedCorsOrigins = new List<string>(){ "http://localhost", "http://localhost:5003", "https://localhost:44301" },
+                    //AllowAccessTokensViaBrowser = true,
                     RequirePkce = true,
 
                     //ClientSecrets = { new Secret("mvcclientsecret".Sha256()) },

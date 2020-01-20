@@ -37,7 +37,7 @@ namespace angularclient.Filters
 
             var httpContext = httpContextAccessor.HttpContext;
             var claimsIdentity = (httpContext.User.Identity as System.Security.Claims.ClaimsIdentity);
-            var roles = claimsIdentity.FindAll("role").Select(x => x.Value).ToArray();
+            var roles = claimsIdentity.FindAll(claimsIdentity.RoleClaimType).Select(x => x.Value).ToArray();
 
             if (_webHostEnvironment.IsFrontDevMode() || roles.Contains("admin") || roles.Contains("techrezuser 03"))
             {
