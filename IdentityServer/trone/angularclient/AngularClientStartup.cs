@@ -109,7 +109,6 @@ namespace angularclient
                 {
                     NameClaimType = "name",
                     RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
-                    
                 };
 
                 //token validation options

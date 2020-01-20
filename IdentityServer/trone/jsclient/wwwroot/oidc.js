@@ -59,10 +59,12 @@
     }
 
     endsession() {
-        var post_logout_redirect_uri = encodeURI("http://localhost:5003/logout.html");
+        var post_logout_redirect_uri = encodeURIComponent('http://localhost:5003/logout.html');
+        var state = Date.now() + '' + Math.random() + Math.random();
         var endsessionurl = Wellknown.endsession_endpoint + '?'
-            + 'id_token=' + this.state.id_token
-            + 'post_logout_redirect_uri=' + post_logout_redirect_uri;
+            + 'id_token_hint=' + this.state.id_token
+            + '&post_logout_redirect_uri=' + post_logout_redirect_uri
+            + '&state=' + state;
 
         //console.log(endsessionurl);
         window.location.replace(endsessionurl);

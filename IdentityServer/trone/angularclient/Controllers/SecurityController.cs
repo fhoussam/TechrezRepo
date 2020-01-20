@@ -103,13 +103,12 @@ public class SecurityController : Controller
         }, "Cookies", "oidc");
     }
 
-    //[Route("logoutjwt")]
-    //[HttpGet]
-    //public IActionResult LogoutJwt()
-    //{
-    //    return SignOut(new AuthenticationProperties()
-    //    {
-    //        RedirectUri = "http://localhost:5003/home",
-    //    }, "Bearer", "oidc");
-    //}
+    [Route("jwtlogoutcallback")]
+    [AllowAnonymous]
+    [IgnoreAntiforgeryToken]
+    public IActionResult JwtLogoutCallback()
+    {
+        //blacklist access token
+        return Ok();
+    }
 }

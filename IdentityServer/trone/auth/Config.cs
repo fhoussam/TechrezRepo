@@ -90,9 +90,9 @@ namespace auth
                     AllowOfflineAccess = true,
                     AllowedGrantTypes = GrantTypes.Code,
                     ClientId = "jsclient",
-                    RedirectUris = { "http://localhost:5003/callback.html", "http://localhost:5003/home.html",  "http://localhost:5003/logout.html" },
+                    RedirectUris = { "http://localhost:5003/callback.html" },
                     PostLogoutRedirectUris = { "http://localhost:5003/logout.html" },
-                    FrontChannelLogoutUri = "http://localhost:5003/logout.html",
+                    BackChannelLogoutUri = "https://localhost:44301/api/security/jwtlogoutcallback",
                     RequireConsent = false,
                     //ClientUri = "http://localhost:5003",
 
