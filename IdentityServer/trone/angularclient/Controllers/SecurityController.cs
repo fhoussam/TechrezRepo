@@ -108,7 +108,7 @@ public class SecurityController : Controller
     [IgnoreAntiforgeryToken]
     public IActionResult JwtLogoutCallback()
     {
-        //blacklist access token
+        //blacklist access token, here we have the sid in the request, Request.Form["logout_token"], which contains the sid!
         return Ok();
     }
 }

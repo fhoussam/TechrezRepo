@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using EnvironmentExtensions;
+using Microsoft.AspNetCore.Http;
 
 namespace angularclient.Filters
 {
@@ -16,26 +17,28 @@ namespace angularclient.Filters
         {
             var antiforgery = (IAntiforgery)serviceProvider.GetService(typeof(IAntiforgery));
             var webHostEnvironment = (IWebHostEnvironment)serviceProvider.GetService(typeof(IWebHostEnvironment));
-            return new InternalAddHeaderFilter(antiforgery, webHostEnvironment);
+            var httpContextAccessor = (IHttpContextAccessor)serviceProvider.GetService(typeof(IHttpContextAccessor));
+            return new InternalAddHeaderFilter(antiforgery, webHostEnvironment, httpContextAccessor);
         }
 
         private class InternalAddHeaderFilter : IResourceFilter
         {
             private readonly IAntiforgery _antiforgery;
             private readonly IWebHostEnvironment _webHostEnvironment;
-            public InternalAddHeaderFilter(IAntiforgery antiforgery, IWebHostEnvironment webHostEnvironment)
+            private readonly IHttpContextAccessor _httpContextAccessor;
+            public InternalAddHeaderFilter(IAntiforgery antiforgery, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor)
             {
                 _antiforgery = antiforgery;
                 _webHostEnvironment = webHostEnvironment;
+                _httpContextAccessor = httpContextAccessor;
             }
 
             public void OnResourceExecuted(ResourceExecutedContext context)
             {
-                bool isJwtClient = false;
-                //((HttpRequestHeaders)context.HttpContext.Request.Headers).HeaderAuthorization.ToString().StartsWith("Bearer ");
+                var isJwtClient = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().StartsWith("Bearer ");
                 if (!_webHostEnvironment.IsFrontDevMode() && !isJwtClient)
                 {
-                    bool isRequestValid = _antiforgery.IsRequestValidAsync(context.HttpContext).Result; //to remove later
+                    //bool isRequestValid = _antiforgery.IsRequestValidAsync(context.HttpContext).Result; //just a showing off a trick here, nothing more
                     _antiforgery.ValidateRequestAsync(context.HttpContext);
                 }
             }
