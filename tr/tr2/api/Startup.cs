@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using infra;
+using api.Middlewares;
 
 namespace api
 {
@@ -37,6 +38,8 @@ namespace api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseExceptionMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
