@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using app.Operations.Product.Commands.DeleteProduct;
 using app.Operations.Product.Commands.EditProduct;
+using app.Operations.Product.Queries.GetProductDetails;
 using app.Operations.Product.Queries.SearchProduct;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(EditProductCommand editProductCommand) 
+        public async Task<IActionResult> Post([FromBody] EditProductCommand editProductCommand) 
         {
             return Ok(await Mediator.Send(editProductCommand));
         }
@@ -26,6 +27,13 @@ namespace api.Controllers
         public async Task<IActionResult> Get([FromQuery] SearchProductQuery searchProductQuery) 
         {
             return Ok(await Mediator.Send(searchProductQuery));
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Get(int id) 
+        {
+            return Ok(await Mediator.Send(new GetProductDetailsQuery() { ProductId = id }));
         }
     }
 }
