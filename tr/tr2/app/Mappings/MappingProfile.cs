@@ -1,4 +1,5 @@
-﻿using app.Operations.Product.Queries.GetProductDetails;
+﻿using app.Operations.Product.Commands.EditProduct;
+using app.Operations.Product.Queries.GetProductDetails;
 using app.Operations.Product.Queries.SearchProduct;
 using AutoMapper;
 using domain.Entities;
@@ -14,6 +15,7 @@ namespace app.Mappings
         {
             CreateMap<Products, SearchProductQueryResponse>();
             CreateMap<Products, ProductDetails>();
+            CreateMap<EditProductCommand, Products>();
         }
     }
 }
