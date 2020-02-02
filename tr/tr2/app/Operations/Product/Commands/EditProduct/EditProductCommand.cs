@@ -43,6 +43,7 @@ namespace app.Operations.Product.Commands.EditProduct
                 else 
                 {
                     var toEdit = await _context.Products.SingleOrDefaultAsync(x => x.ProductId == request.ProductId);
+                    _mapper.Map(request, toEdit);
                     toEdit.ProductName = request.ProductName;
                     toEdit.SupplierId = request.SupplierId;
                     toEdit.CategoryId = request.CategoryId;
