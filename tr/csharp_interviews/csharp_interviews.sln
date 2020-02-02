@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "csharp_interviews", "csharp_interviews\csharp_interviews.csproj", "{A765A7AF-3B52-49C8-AC79-868AFEA0A360}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ut", "ut\ut.csproj", "{408C2867-21B5-4D7C-9DDC-E719E24EA6A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A765A7AF-3B52-49C8-AC79-868AFEA0A360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A765A7AF-3B52-49C8-AC79-868AFEA0A360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A765A7AF-3B52-49C8-AC79-868AFEA0A360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{408C2867-21B5-4D7C-9DDC-E719E24EA6A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{408C2867-21B5-4D7C-9DDC-E719E24EA6A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{408C2867-21B5-4D7C-9DDC-E719E24EA6A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{408C2867-21B5-4D7C-9DDC-E719E24EA6A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

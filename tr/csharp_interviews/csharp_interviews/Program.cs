@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Xml.Linq;
 using System.Linq;
+using csharp_interviews.exos;
 
 namespace csharp_interviews
 {
@@ -107,6 +108,10 @@ namespace csharp_interviews
 
             ////outputs "csharp_interviews.Program+Vehicule`1[csharp_interviews.Program+Bicycle]"
             //Console.WriteLine(new Vehicule<Bicycle>().GetType());
+
+            //exos
+            //reshaper
+            Console.WriteLine(new Reshaper().Reshape("142 5 54 963 212 225 190", 2));
 
             //isReadOnly
             //Dynamic polymorphism ?
