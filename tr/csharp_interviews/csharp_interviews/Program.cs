@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Xml.Linq;
 using System.Linq;
 using csharp_interviews.exos;
+using System.IO;
 
 namespace csharp_interviews
 {
@@ -76,7 +77,12 @@ namespace csharp_interviews
             //ClassLevel3 classLevel3 = new ClassLevel3();
             //Console.WriteLine($"Value : {classLevel3?.PropLevel2?.PropLevel1}");
 
-            //Console.WriteLine(2 << 1); //outputs 4, we should know why...
+            //Console.WriteLine(2 >> 1); //outputs 1, we should know why...
+            //Console.WriteLine(1 << 2); //outputs 4, we should know why...
+
+
+            //Console.WriteLine(11 & ~01);//outputs 10, we should know why...
+
 
             //Console.WriteLine(new[] { "aaaa", "bbb" }.Max(x => x.Length));
 
@@ -109,9 +115,8 @@ namespace csharp_interviews
             ////outputs "csharp_interviews.Program+Vehicule`1[csharp_interviews.Program+Bicycle]"
             //Console.WriteLine(new Vehicule<Bicycle>().GetType());
 
-            //exos
-            //reshaper
-            Console.WriteLine(new Reshaper().Reshape("142 5 54 963 212 225 190", 2));
+
+            //string is not a primitive type.
 
             //isReadOnly
             //Dynamic polymorphism ?
@@ -119,8 +124,74 @@ namespace csharp_interviews
             //User-defined exception classes are derived from the ApplicationException class in C# -> true
             //reshape (n, str)
 
+            //var x = new[] { "aa", "bbb" }.Max(c=>c.Length);
+            //Console.WriteLine(x); 
+            ////outputs 3
+
+            //Console.WriteLine(5/2);
+            ////outputs 2
+
+            //Console.WriteLine(10 | 11);
+            ////output 11
+
+            //Check.Main("([(([[(([]))]]))])");
+
+            //var d = new DateTime(0);
+            //d.AddHours(2);
+            //Console.WriteLine(d.Hour);
+            ////outputs 0
+
+            //Shape s = new Square();
+            //Cirle c = s as Cirle;
+            ////c has same value as circle
+
+            //Check.CoreFunction();
+
+            //FindFile.CoreFunction();
+
+            //string[] fruits = { "apple", "orange", "apricot", "kiwi" };
+            //var list = new List<string>(fruits);
+            //IEnumerable<string> query = list.Where(x => x.Length == 4);
+            //list.Remove("kiwi");
+            //Console.WriteLine(query.Count());
+            ////outputs 1 !!
+
+            //Reshaper2.Reshape2("aaa bbbb rr xxxxx", 2);
+
+            //MemoryLeakExo.MainMethod();
+
+            //var game = new Game(playersCount: 4, cardsCount: 52);
+            //game.Start();
+            //Console.WriteLine(game.Deck.CardsCount); // 52
+            //Console.WriteLine(game.PlayersCount); // 4
+            //Console.WriteLine(game.Players[0].CardsCount); // 13
+
+            Change.MainMethod();
+
             Console.WriteLine("\n\nEOP");
             Console.ReadLine();
+        }
+
+        public class Shape 
+        {
+            public Shape()
+            {
+                Console.WriteLine("New Shape : Mother class");
+            }
+        }
+        public class Square : Shape
+        {
+            public Square()
+            {
+                Console.WriteLine("New Square : Child class");
+            } 
+        }
+        public class Cirle : Shape 
+        {
+            public Cirle()
+            {
+
+            }
         }
 
         struct Struct { public int foo; }

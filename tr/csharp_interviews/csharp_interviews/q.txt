@@ -1,0 +1,8 @@
+﻿sometimes, alternative to switch case and if, is polymorphisme
+value types are the ones that dont accept null value
+when using EF, we can disable tracking if the data is only meant to be read
+dividing by variable of type double and a value of 0 would not throw a devided by zero exception, an "if equals zero then throw" statement should be done explicitly
+boolean is not a primitive type
+scopped means per request, transient means per query
+mother class ctor is execusted first, then the child one
+non clustured index max length : 1700 bytes
