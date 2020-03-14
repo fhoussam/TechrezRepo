@@ -13,7 +13,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +28,29 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\GridField.ts" />
+    <None Remove="ClientApp\src\app\models\ICategory.ts" />
+    <None Remove="ClientApp\src\app\models\IProductSearchQuery.ts" />
+    <None Remove="ClientApp\src\app\models\IProductSearchResponse.ts" />
+    <None Remove="ClientApp\src\app\models\ISearchQueryExtension.ts" />
+    <None Remove="ClientApp\src\app\models\ISupplier.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\api\api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\ICategory.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\GridField.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\IProductSearchResponse.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\IProductSearchQuery.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\ISearchQueryExtension.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\ISupplier.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

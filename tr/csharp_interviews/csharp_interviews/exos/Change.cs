@@ -44,7 +44,7 @@ namespace csharp_interviews.exos
 
         public static void MainMethod()
         {
-            long s = 9223372036854775807; // Change this value to perform other tests
+            long s = 6; // Change this value to perform other tests
             Change m = Change.OptimalChange(s);
 
             Console.WriteLine("Coin(s)  2€: " + m.coin2);

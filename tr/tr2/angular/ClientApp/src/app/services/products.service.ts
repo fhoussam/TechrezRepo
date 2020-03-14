@@ -1,0 +1,30 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
+import { Observable } from 'rxjs';
+import { IProductSearchResponse } from '../models/IProductSearchResponse';
+import { SearchProductQuery } from '../models/IProductSearchQuery';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductsService {
+
+  constructor(private http: HttpClient) { }
+
+  public toHttpParams(object: any): HttpParams {
+    var params = new HttpParams()
+    Object.keys(object).forEach(function (item) {
+      if (object[item])
+        params = params.set(item, object[item]);
+    });
+
+    return params
+  } 
+
+  public getProducts(searchProductQuery: SearchProductQuery): Observable<IProductSearchResponse> {
+    return this.http.get<IProductSearchResponse>('api/products', {
+      headers: new HttpHeaders({ 'content-type': 'application/json' }),
+      params: this.toHttpParams(searchProductQuery)
+    });
+  }
+}

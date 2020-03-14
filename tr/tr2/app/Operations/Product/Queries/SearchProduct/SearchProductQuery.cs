@@ -1,18 +1,19 @@
 ﻿using domain.Entities;
 using MediatR;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using System.Linq;
 using AutoMapper.QueryableExtensions;
+using app.Common;
+using System.Linq.Dynamic.Core;
+using System;
 
 namespace app.Operations.Product.Queries.SearchProduct
 {
-    public class SearchProductQuery : IRequest<List<SearchProductQueryResponse>>
+    public class SearchProductQuery : Pager, IRequest<PagedList<SearchProductQueryResponse>>
     {
         public string ProductName { get; set; }
         public int? SupplierId { get; set; }
@@ -21,7 +22,7 @@ namespace app.Operations.Product.Queries.SearchProduct
         public short? MinUnitsInStock { get; set; }
         public bool? Discontinued { get; set; }
 
-        public class SearchProductQueryHandler : IRequestHandler<SearchProductQuery, List<SearchProductQueryResponse>>
+        public class SearchProductQueryHandler : IRequestHandler<SearchProductQuery, PagedList<SearchProductQueryResponse>>
         {
             private readonly INorthwindContext _context;
             private readonly IMapper _mapper;
@@ -30,9 +31,12 @@ namespace app.Operations.Product.Queries.SearchProduct
                 _context = context;
                 _mapper = mapper;
             }
-            public async Task<List<SearchProductQueryResponse>> Handle(SearchProductQuery request, CancellationToken cancellationToken)
+            public async Task<PagedList<SearchProductQueryResponse>> Handle(SearchProductQuery request, CancellationToken cancellationToken)
             {
-                return await _context.Products
+                if (request.PageSize == 0)
+                    request.PageSize = 5;
+
+                var mainQuery = _context.Products
                     .Where(x =>
                         (string.IsNullOrEmpty(request.ProductName) || x.ProductName.Contains(request.ProductName))
                         && (!request.SupplierId.HasValue || request.SupplierId == x.SupplierId)
@@ -40,8 +44,22 @@ namespace app.Operations.Product.Queries.SearchProduct
                         && (!request.Discontinued.HasValue || request.Discontinued == x.Discontinued)
                         && (!request.MaxUnitsInStock.HasValue || request.MaxUnitsInStock >= x.UnitsInStock)
                         && (!request.MinUnitsInStock.HasValue || request.MinUnitsInStock <= x.UnitsInStock)
-                    )
-                    .ProjectTo<SearchProductQueryResponse>(_mapper.ConfigurationProvider).ToListAsync();
+                    );
+
+                var validatedSortField = request.GetValidatedSortField();
+                mainQuery = mainQuery.OrderBy(validatedSortField + (request.IsDesc ? " desc" : string.Empty));
+
+                int totalRows = await mainQuery.CountAsync();
+
+                var rawData = await mainQuery
+                    .Skip(request.PageIndex * request.PageSize)
+                    .Take(request.PageSize)
+                    .ProjectTo<SearchProductQueryResponse>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+                
+                int totalPages = (int)Math.Ceiling(totalRows / (double)request.PageSize);
+                var result = new PagedList<SearchProductQueryResponse>(rawData, totalPages);
+                return result;
             }
         }
     }

@@ -1,10 +1,18 @@
+using api;
+using IdentityModel;
+using infra;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace angular
 {
@@ -20,6 +28,48 @@ namespace angular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDependencyInjection();
+            services.AddInfrastructure(Configuration);
+
+            services.AddAuthentication(options => {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddCookie()
+            .AddOpenIdConnect(options =>
+                {
+                    options.SignInScheme = "Cookies";
+
+                    options.Authority = "https://localhost:44394";
+                    options.RequireHttpsMetadata = false;
+
+                    options.ClientId = "angularclient";
+                    options.ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
+                    options.ResponseType = "code id_token";
+
+                    options.SaveTokens = true;
+                    options.GetClaimsFromUserInfoEndpoint = true; //option is important if we want to retreive claims
+
+                    options.Scope.Add("offline_access");
+                    options.Scope.Add("profile");
+                    options.Scope.Add("email");
+                    options.Scope.Add("openid");
+                    options.Scope.Add("complementary_profile");
+
+                    options.ClaimActions.MapJsonKey("favcolor", "favcolor");
+                    options.ClaimActions.MapJsonKey(JwtClaimTypes.BirthDate, JwtClaimTypes.BirthDate);
+                    options.ClaimActions.MapJsonKey(JwtClaimTypes.Gender, JwtClaimTypes.Gender);
+                    options.ClaimActions.MapJsonKey(JwtClaimTypes.Role, JwtClaimTypes.Role);
+
+                    //teaching openid middleware what claim actually represents the role, so IsInRole method knows what to do
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        NameClaimType = "name",
+                        RoleClaimType = "role",
+                    };
+                }
+            );
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -31,6 +81,23 @@ namespace angular
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.Use(async (context, next) =>
+            {
+                //angular
+                List<string> patternesToIgnore = new List<string>()
+                {
+                    "/favicon.ico",
+                    "css",
+                    "js",
+                };
+                if (!patternesToIgnore.Any(x => context.Request.Path.Value.Contains(x)) && context.Request.Path.Value != "/") 
+                {
+                    var path = context.Request.Path;
+                }
+                
+                await next.Invoke();
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -49,7 +116,11 @@ namespace angular
                 app.UseSpaStaticFiles();
             }
 
+            app.UseAuthentication();
+
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

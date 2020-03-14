@@ -6,3 +6,21 @@ boolean is not a primitive type
 scopped means per request, transient means per query
 mother class ctor is execusted first, then the child one
 non clustured index max length : 1700 bytes
+probability : http://villemin.gerard.free.fr/Wwwgvmm/Compter/Factcomb.htm
+
+
+Consultant Full Stack .NET (7ans EXP)
+
+Monster : https://www.monster.fr/resumes/resume/manageresumes?landedFrom=post-resume2&ResLndg=
+freelance info : https://www.freelance-info.fr/mon-cv.php
+carriere-info : https://www.carriere-info.fr/depot-cv.php
+
+ASP.NET Core/MVC5/Webforms
+SQL SERVER/T-SQL
+Javascript/Jquery/Angular 8
+C#/VB.NET/Linq
+Entity Framework/CORE
+OpenID/Oauth/IdentityServer4
+AzureDevops
+React
+Docker

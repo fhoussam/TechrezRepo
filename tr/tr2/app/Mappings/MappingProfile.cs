@@ -1,6 +1,8 @@
-﻿using app.Operations.Product.Commands.EditProduct;
+﻿using app.Operations.Category.Queries;
+using app.Operations.Product.Commands.EditProduct;
 using app.Operations.Product.Queries.GetProductDetails;
 using app.Operations.Product.Queries.SearchProduct;
+using app.Operations.Supplier.Queries;
 using AutoMapper;
 using domain.Entities;
 using System;
@@ -14,6 +16,8 @@ namespace app.Mappings
         public MappingProfile()
         {
             CreateMap<Products, SearchProductQueryResponse>();
+            CreateMap<Categories, GetAllCategoriesResponse>();
+            CreateMap<Suppliers, GetAllSuppliersResponse>();
             CreateMap<Products, ProductDetails>();
             CreateMap<EditProductCommand, Products>();
         }
