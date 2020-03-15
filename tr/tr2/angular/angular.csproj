@@ -30,6 +30,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\models\GridField.ts" />
     <None Remove="ClientApp\src\app\models\ICategory.ts" />
+    <None Remove="ClientApp\src\app\models\IProductDetails.ts" />
     <None Remove="ClientApp\src\app\models\IProductSearchQuery.ts" />
     <None Remove="ClientApp\src\app\models\IProductSearchResponse.ts" />
     <None Remove="ClientApp\src\app\models\ISearchQueryExtension.ts" />
@@ -47,6 +48,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\models\ICategory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GridField.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\IProductDetails.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductSearchResponse.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductSearchQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISearchQueryExtension.ts" />

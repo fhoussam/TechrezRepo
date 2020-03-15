@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { IProductSearchResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/IProductSearchQuery';
+import { IProductDetails } from '../models/IProductDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,18 @@ export class ProductsService {
     });
 
     return params
-  } 
+  }
 
   public getProducts(searchProductQuery: SearchProductQuery): Observable<IProductSearchResponse> {
     return this.http.get<IProductSearchResponse>('api/products', {
       headers: new HttpHeaders({ 'content-type': 'application/json' }),
       params: this.toHttpParams(searchProductQuery)
+    });
+  }
+
+  public getProduct(productId: number): Observable<IProductDetails> {
+    return this.http.get<IProductDetails>('api/products/' + productId, {
+      headers: new HttpHeaders({ 'content-type': 'application/json' }),
     });
   }
 }

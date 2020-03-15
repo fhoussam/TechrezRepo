@@ -18,7 +18,9 @@ namespace app.Mappings
             CreateMap<Products, SearchProductQueryResponse>();
             CreateMap<Categories, GetAllCategoriesResponse>();
             CreateMap<Suppliers, GetAllSuppliersResponse>();
-            CreateMap<Products, ProductDetails>();
+            CreateMap<Products, ProductDetails>()
+                .ForMember(destination => destination.Supplier, opt => opt.MapFrom(source => source.Supplier.CompanyName))
+                ;
             CreateMap<EditProductCommand, Products>();
         }
     }

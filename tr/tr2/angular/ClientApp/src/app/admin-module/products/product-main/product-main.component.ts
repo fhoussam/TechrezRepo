@@ -6,7 +6,7 @@ import { CategoriesService } from '../../../services/categories.service';
 import { ProductsService } from '../../../services/products.service';
 import { SearchProductQuery } from '../../../models/IProductSearchQuery';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute, NavigationEnd, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({

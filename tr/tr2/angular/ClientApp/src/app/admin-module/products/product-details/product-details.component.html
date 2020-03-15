@@ -1,1 +1,84 @@
-<p>product-details works!</p>
+<div *ngIf="product" class="card" style="padding:20px">
+  <div class="card-body">
+    <h4 class="card-title">Details of {{product.productName}}</h4>
+
+    <div class="form-row">
+      <div class="card-text col-md-3" role="toolbar">
+        <b>Supplier</b>
+      </div>
+      <div class="card-text col-md-9">
+        {{product.supplier}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-3" role="toolbar">
+        <b>Category Id</b>
+      </div>
+      <div class="card-text col-md-9">
+        {{product.categoryId}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-3" role="toolbar">
+        <b>Quantity Per Unit</b>
+      </div>
+      <div class="card-text col-md-9">
+        {{product.quantityPerUnit}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-3" role="toolbar">
+        <b>Unit Price</b>
+      </div>
+      <div class="card-text col-md-9">
+        {{product.unitPrice}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-3" role="toolbar">
+        <b>Units in Stock</b>
+      </div>
+      <div class="card-text col-md-9">
+        {{product.unitsInStock}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-3" role="toolbar">
+        <b>Units On Orders</b>
+      </div>
+      <div class="card-text col-md-9">
+        {{product.unitsOnOrder}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-3" role="toolbar">
+        <b>Reorder Level</b>
+      </div>
+      <div class="card-text col-md-9">
+        {{product.reorderLevel}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-3" role="toolbar">
+        <b>Discontinued</b>
+      </div>
+      <div class="card-text col-md-9">
+        {{product.discontinued ? 'Yes' : 'No'}}
+      </div>
+    </div>
+
+    <a
+       class="btn btn-primary"
+       routerLinkActive="active"
+       [routerLink]="'/admin/products/' + product.productId + '/edit'"
+       style="margin-top:20px;"
+       >Edit</a>
+  </div>
+</div>

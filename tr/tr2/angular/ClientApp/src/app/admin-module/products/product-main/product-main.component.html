@@ -36,8 +36,8 @@
         <label for="discontinued">Discontinued</label>
         <select class="form-control" name="discontinued" [(ngModel)]="searchProductQuery.discontinued">
           <option [ngValue]="null">Select All</option>
-          <option value="true">True</option>
-          <option value="false">False</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
         </select>
       </div>
     </div>
@@ -49,7 +49,11 @@
     </div>
   </form>
 
-  <div *ngIf="searchResult?.source">
+  <div *ngIf="searchResult?.source && searchResult.source.length == 0" class="alert alert-warning" style="margin-top:20px;">
+    <strong>Sorry!</strong> No results has been found, please retry again.
+  </div>
+
+  <div *ngIf="searchResult?.source && searchResult.source.length > 0">
     <div class="grid-header">Page <b>{{searchProductQuery?.pageIndex + 1}}</b>/{{searchResult?.totalPages}}</div>
     <table class="table table-bordered">
       <thead>

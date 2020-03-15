@@ -24,7 +24,7 @@ namespace app.Operations.Product.Queries.GetProductDetails
 
             public async Task<ProductDetails> Handle(GetProductDetailsQuery request, CancellationToken cancellationToken)
             {
-                var data = await _context.Products.SingleOrDefaultAsync(x => x.ProductId == request.ProductId);
+                var data = await _context.Products.Include(x=>x.Supplier).SingleOrDefaultAsync(x => x.ProductId == request.ProductId);
                 return _mapper.Map<ProductDetails>(data);
             }
         }
