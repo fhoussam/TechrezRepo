@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AdminModule } from './admin-module/admin.module';
-import { SearchQueryExtensionEmitterService } from './services/search-query-extension-emitter.service';
+import { SuppliersService } from './services/suppliers.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { SearchQueryExtensionEmitterService } from './services/search-query-exte
   exports: [
     AdminModule,
   ],
-  providers: [SearchQueryExtensionEmitterService],
+  providers: [SuppliersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

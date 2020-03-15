@@ -1,0 +1,16 @@
+.grid-header {
+  float: right;
+  margin-top: 30px;
+}
+
+.selected-grid-item {
+  background-color: #98b9b9;
+}
+
+th {
+  cursor: pointer;
+}
+
+.sorted-field {
+  background-color: aliceblue;
+}
