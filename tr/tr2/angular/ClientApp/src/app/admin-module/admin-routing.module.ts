@@ -10,6 +10,10 @@ const routes: Routes = [
     component: ProductMainComponent,
     children: [
       {
+        path: ':id',
+        redirectTo: ':id/details'
+      },
+      {
         path: ':id/details',
         component: ProductDetailsComponent
       },

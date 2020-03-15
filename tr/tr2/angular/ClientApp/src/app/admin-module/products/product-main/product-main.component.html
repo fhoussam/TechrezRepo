@@ -1,101 +1,114 @@
-<form (ngSubmit)="search(true)" #f="ngForm">
-  <div class="form-group">
-    <label for="name">Product Name</label>
-    <input type="text" class="form-control" name="productName" [(ngModel)]="searchProductQuery.productName">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="supplierId">Supplier</label>
-      <select class="form-control" name="supplierId" [(ngModel)]="searchProductQuery.supplierId">
-        <option [ngValue]="null">Select All</option>
-        <option *ngFor="let supplier of suppliers | async" value="{{supplier.supplierId}}">{{supplier.companyName}}</option>
-      </select>
+<button type="button" class="collapsible" [ngClass]="{'active':!searchPanelCollapsed}" (click)="collapse()">Search products</button>
+<div class="content" [style.display]="searchPanelCollapsed ? 'none' : 'block'">
+  <form (ngSubmit)="search(true)" #f="ngForm">
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input type="text" class="form-control" name="productName" [(ngModel)]="searchProductQuery.productName">
     </div>
-    <div class="form-group col-md-6">
-      <label for="categoryId">Category</label>
-      <select class="form-control" name="categoryId" [(ngModel)]="searchProductQuery.categoryId">
-        <option [ngValue]="null">Select All</option>
-        <option *ngFor="let category of categories | async" value="{{category.categoryId}}">{{category.categoryName}}</option>
-      </select>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="supplierId">Supplier</label>
+        <select class="form-control" name="supplierId" [(ngModel)]="searchProductQuery.supplierId">
+          <option [ngValue]="null">Select All</option>
+          <option *ngFor="let supplier of suppliers | async" value="{{supplier.supplierId}}">{{supplier.companyName}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="categoryId">Category</label>
+        <select class="form-control" name="categoryId" [(ngModel)]="searchProductQuery.categoryId">
+          <option [ngValue]="null">Select All</option>
+          <option *ngFor="let category of categories | async" value="{{category.categoryId}}">{{category.categoryName}}</option>
+        </select>
+      </div>
     </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="minUnitsInStock">Min Units In Stock</label>
-      <input type="number" class="form-control" name="MinUnitsInStock" [(ngModel)]="searchProductQuery.MinUnitsInStock" />
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="minUnitsInStock">Min Units In Stock</label>
+        <input type="number" class="form-control" name="MinUnitsInStock" [(ngModel)]="searchProductQuery.MinUnitsInStock" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="maxUnitsInStock">Max Units In Stock</label>
+        <input type="number" class="form-control" name="MaxUnitsInStock" [(ngModel)]="searchProductQuery.MaxUnitsInStock" />
+      </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="maxUnitsInStock">Max Units In Stock</label>
-      <input type="number" class="form-control" name="MaxUnitsInStock" [(ngModel)]="searchProductQuery.MaxUnitsInStock" />
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="discontinued">Discontinued</label>
+        <select class="form-control" name="discontinued" [(ngModel)]="searchProductQuery.discontinued">
+          <option [ngValue]="null">Select All</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+      </div>
     </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="discontinued">Discontinued</label>
-      <select class="form-control" name="discontinued" [(ngModel)]="searchProductQuery.discontinued">
-        <option [ngValue]="null">Select All</option>
-        <option value="true">True</option>
-        <option value="false">False</option>
-      </select>
+    <div class="btn-group">
+      <input type="submit" class="btn btn-primary" value="Search">
     </div>
-  </div>
-  <div class="btn-group">
-    <input type="submit" class="btn btn-primary" value="Search">
-  </div>
-  <div class="btn-group">
-    <input type="button" class="btn btn-default" value="Reset" (click)="f.reset()" />
-  </div>
-</form>
+    <div class="btn-group">
+      <input type="button" class="btn btn-default" value="Reset" (click)="f.reset()" />
+    </div>
+  </form>
 
-<div *ngIf="searchResult?.source">
-  <div class="grid-header">Page {{searchProductQuery?.pageIndex + 1}} out of {{searchResult?.totalPages}}</div>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th *ngFor="let gridField of gridFields"
-            scope="col"
-            [hidden]="gridField.hidden"
-            [ngClass]="{'sorted-field': gridField.fieldName == searchProductQuery.sortField}"
-            [attr.id]="gridField.hidden ? null : gridField.fieldName"
-            (click)="emitSortField($event, gridField.hidden)">
-          {{gridField.fieldDescription}}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of searchResult?.source"
-          (click)="selectItem(product)"
-          [ngClass]="{'selected-grid-item': selectedItem && product.productId == selectedItem.productId}"
-          style="cursor:pointer">
-        <td hidden>{{product.productId}}</td>
-        <td>{{product.productName}}</td>
-        <td>{{product.supplierId}}</td>
-        <td>{{product.categoryId}}</td>
-        <td>{{product.quantityPerUnit}}</td>
-        <td>{{product.unitPrice}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngIf="searchResult?.source">
+    <div class="grid-header">Page <b>{{searchProductQuery?.pageIndex + 1}}</b>/{{searchResult?.totalPages}}</div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th *ngFor="let gridField of gridFields"
+              scope="col"
+              [hidden]="gridField.hidden"
+              [ngClass]="{'sorted-field': gridField.fieldName == searchProductQuery.sortField}"
+              [attr.id]="gridField.hidden ? null : gridField.fieldName"
+              (click)="emitSortField($event, gridField.hidden)">
+            {{gridField.fieldDescription}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of searchResult?.source"
+            (click)="selectItem(product)"
+            [ngClass]="{'selected-grid-item': product.productId == selectedItemId}"
+            style="cursor:pointer">
+          <td hidden>{{product.productId}}</td>
+          <td>{{product.productName}}</td>
+          <td>{{product.supplierId}}</td>
+          <td>{{product.categoryId}}</td>
+          <td>{{product.quantityPerUnit}}</td>
+          <td>{{product.unitPrice}}</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <div class="btn-toolbar" role="toolbar">
-    <div class="btn-group mr-2" role="group">
-      <button type="button"
-              class="btn btn-secondary"
-              *ngFor="let item of [].constructor(searchResult?.totalPages); let i = index"
-              (click)="emitPageIndex(i)">
-        {{i + 1}}
-      </button>
+    <div class="form-row">
+      <div class="btn-toolbar col-md-9" role="toolbar">
+        <div class="btn-group mr-2" role="group">
+          <button type="button"
+                  class="btn btn-secondary"
+                  *ngFor="let item of [].constructor(searchResult?.totalPages); let i = index"
+                  (click)="emitPageIndex(i)">
+            {{i + 1}}
+          </button>
+        </div>
+      </div>
+      <div class="form-check col-md-3">
+        <div style="float:right">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="autoCollapse">
+          <label class="form-check-label" for="exampleCheck1">Auto Collapse</label>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 
-<ul>
-  <li>
-    <a routerLink="1/details">Details</a>
-  </li>
-  <li>
-    <a routerLink="1/supplier">Supplier</a>
-  </li>
-</ul>
-
-<router-outlet></router-outlet>
+<div *ngIf="selectedItemId">
+  <ul class="nav nav-tabs" style="margin-top:15px;">
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/details">Details</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/supplier">Supplier</a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>
