@@ -6,7 +6,7 @@ import { SuppliersService } from '../../../services/suppliers.service';
 import { Observable } from 'rxjs';
 import { ISupplier } from '../../../models/ISupplier';
 import { ICategory } from '../../../models/ICategory';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-edit',
@@ -24,6 +24,7 @@ export class ProductEditComponent implements OnInit {
     private categoriesService: CategoriesService,
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -32,20 +33,25 @@ export class ProductEditComponent implements OnInit {
 
     this.activatedRoute.paramMap.subscribe(x => {
       let id = +x.get('id');
-      this.productsService.getProduct(id).subscribe(y => {
-        //we needed to add supplier id to source as the destination needs it
-        this.editProductQuery = y as EditProductQuery;
-      });
+      this.getProduct(id);
     });
   }
 
   resetValues() {
-
+    let id: number = +this.activatedRoute.snapshot.params.id;
+    this.getProduct(id);
   }
 
-  editProduct() {
-    this.productsService.editProduct(this.editProductQuery).subscribe(x => {
+  getProduct(id: number) {
+    this.productsService.getProduct(id).subscribe(y => {
+      //we needed to add supplier id to source as the destination needs it
+      this.editProductQuery = y as EditProductQuery;
+    });
+  }
 
+  saveChanges() {
+    this.productsService.editProduct(this.editProductQuery).subscribe(x => {
+      this.router.navigate(['../details'], { relativeTo: this.activatedRoute });
     });
   }
 }
