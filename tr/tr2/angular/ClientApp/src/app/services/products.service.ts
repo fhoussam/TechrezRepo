@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { IProductSearchResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/IProductSearchQuery';
 import { IProductDetails } from '../models/IProductDetails';
+import { EditProductQuery } from './IEditProductQuery';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,9 @@ export class ProductsService {
     return this.http.get<IProductDetails>('api/products/' + productId, {
       headers: new HttpHeaders({ 'content-type': 'application/json' }),
     });
+  }
+
+  public editProduct(editProductQuery: EditProductQuery) {
+    return this.http.post('api/products', editProductQuery);
   }
 }

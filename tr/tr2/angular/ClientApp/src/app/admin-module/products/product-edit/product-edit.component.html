@@ -1,1 +1,48 @@
-<p>product-edit works!</p>
+<form (submit)="editProduct()" style="padding:10px">
+  <div class="form-group col-md-6">
+    <label for="productName">Product Name</label>
+    <input type="text" class="form-control" name="productName" [(ngModel)]="editProductQuery.productName" />
+  </div>
+  <div class="form-group col-md-6">
+    <label for="supplierId">Supplier</label>
+    <select class="form-control" name="supplierId" [(ngModel)]="editProductQuery.supplierId">
+      <option *ngFor="let supplier of suppliers | async" [ngValue]="supplier.supplierId">{{supplier.companyName}}</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="categoryId">Category</label>
+    <select class="form-control" name="categoryId" [(ngModel)]="editProductQuery.categoryId">
+      <option *ngFor="let category of categories | async" [ngValue]="category.categoryId">{{category.categoryName}}</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="quantityPerUnit">Quentity Per Unit</label>
+    <input type="text" class="form-control" name="quantityPerUnit" [(ngModel)]="editProductQuery.quantityPerUnit" />
+  </div>
+  <div class="form-group col-md-6">
+    <label for="unitPrice">Unit Price</label>
+    <input type="number" class="form-control" name="unitPrice" [(ngModel)]="editProductQuery.unitPrice" />
+  </div>
+  <div class="form-group col-md-6">
+    <label for="unitsInStock">Units In Stock</label>
+    <input type="number" class="form-control" name="unitsInStock" [(ngModel)]="editProductQuery.unitsInStock" />
+  </div>
+  <div class="form-group col-md-6">
+    <label for="unitsOnOrder">Units On Order</label>
+    <input type="number" class="form-control" name="unitsOnOrder" [(ngModel)]="editProductQuery.unitsOnOrder" />
+  </div>
+  <div class="form-group col-md-6">
+    <label for="reorderLevel">Re-Order Level</label>
+    <input type="number" class="form-control" name="reorderLevel" [(ngModel)]="editProductQuery.reorderLevel" />
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" name="discontinued" [(ngModel)]="editProductQuery.discontinued">
+    <label class="form-check-label" for="discontinued">Discontinued</label>
+  </div>
+  <div class="form-group col-md-6">
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+    <input type="button" value="Reset Values" class="btn btn-primary" (click)="resetValues()" />
+    <a routerLink="/admin/products/22/details" class="btn btn-secondary">Go To Details Page</a>
+  </div>
+</form>
+

@@ -1,7 +1,6 @@
-export interface IProductDetails {
+export class EditProductQuery {
   productId: number;
   productName: string;
-  supplier: string;
   supplierId: number;
   categoryId: number;
   quantityPerUnit: string;

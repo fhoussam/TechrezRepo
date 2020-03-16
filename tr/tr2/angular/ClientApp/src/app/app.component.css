@@ -1,0 +1,8 @@
+:host ::ng-deep .btn {
+  margin: 2px;
+  margin-top:20px;
+}
+
+:host ::ng-deep .form-check {
+  padding-left: 2.25rem;
+}
