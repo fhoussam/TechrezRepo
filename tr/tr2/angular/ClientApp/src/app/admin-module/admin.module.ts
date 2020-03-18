@@ -10,7 +10,7 @@ import { ProductMainComponent } from './products/product-main/product-main.compo
 import { ProductsService } from '../services/products.service';
 import { CategoriesService } from '../services/categories.service';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   exports: [
@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ProductsService,

@@ -31,10 +31,10 @@
     <None Remove="ClientApp\src\app\models\GridField.ts" />
     <None Remove="ClientApp\src\app\models\ICategory.ts" />
     <None Remove="ClientApp\src\app\models\IProductDetails.ts" />
-    <None Remove="ClientApp\src\app\models\IProductSearchQuery.ts" />
     <None Remove="ClientApp\src\app\models\IProductSearchResponse.ts" />
     <None Remove="ClientApp\src\app\models\ISearchQueryExtension.ts" />
     <None Remove="ClientApp\src\app\models\ISupplier.ts" />
+    <None Remove="ClientApp\src\app\models\SearchProductQuery.ts" />
     <None Remove="ClientApp\src\app\services\IEditProductQuery.ts" />
   </ItemGroup>
 
@@ -51,7 +51,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\GridField.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductDetails.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductSearchResponse.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\IProductSearchQuery.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\SearchProductQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISearchQueryExtension.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISupplier.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\IEditProductQuery.ts" />

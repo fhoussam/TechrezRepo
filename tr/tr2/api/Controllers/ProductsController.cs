@@ -2,6 +2,7 @@
 using app.Operations.Product.Commands.DeleteProduct;
 using app.Operations.Product.Commands.EditProduct;
 using app.Operations.Product.Queries.GetProductDetails;
+using app.Operations.Product.Queries.IsProductNameUnique;
 using app.Operations.Product.Queries.SearchProduct;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,9 +32,16 @@ namespace api.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<IActionResult> Get(int id) 
+        public async Task<IActionResult> Get(int id)
         {
             return Ok(await Mediator.Send(new GetProductDetailsQuery() { ProductId = id }));
+        }
+
+        [HttpGet]
+        [Route("IsExistingProductName")]
+        public async Task<IActionResult> IsExistingProductName([FromQuery] string productName)
+        {
+            return Ok(await Mediator.Send(new IsProductNameUniqueQuery() { ProductName = productName }));
         }
     }
 }

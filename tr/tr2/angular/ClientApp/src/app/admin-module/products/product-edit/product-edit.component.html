@@ -1,48 +1,148 @@
-<form (submit)="saveChanges()" style="padding:10px">
-  <div class="form-group col-md-6">
-    <label for="productName">Product Name</label>
-    <input type="text" class="form-control" name="productName" [(ngModel)]="editProductQuery.productName" />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="supplierId">Supplier</label>
-    <select class="form-control" name="supplierId" [(ngModel)]="editProductQuery.supplierId">
-      <option *ngFor="let supplier of suppliers | async" [ngValue]="supplier.supplierId">{{supplier.companyName}}</option>
-    </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="categoryId">Category</label>
-    <select class="form-control" name="categoryId" [(ngModel)]="editProductQuery.categoryId">
-      <option *ngFor="let category of categories | async" [ngValue]="category.categoryId">{{category.categoryName}}</option>
-    </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="quantityPerUnit">Quentity Per Unit</label>
-    <input type="text" class="form-control" name="quantityPerUnit" [(ngModel)]="editProductQuery.quantityPerUnit" />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="unitPrice">Unit Price</label>
-    <input type="number" class="form-control" name="unitPrice" [(ngModel)]="editProductQuery.unitPrice" />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="unitsInStock">Units In Stock</label>
-    <input type="number" class="form-control" name="unitsInStock" [(ngModel)]="editProductQuery.unitsInStock" />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="unitsOnOrder">Units On Order</label>
-    <input type="number" class="form-control" name="unitsOnOrder" [(ngModel)]="editProductQuery.unitsOnOrder" />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="reorderLevel">Re-Order Level</label>
-    <input type="number" class="form-control" name="reorderLevel" [(ngModel)]="editProductQuery.reorderLevel" />
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" name="discontinued" [(ngModel)]="editProductQuery.discontinued">
-    <label class="form-check-label" for="discontinued">Discontinued</label>
-  </div>
-  <div class="form-group col-md-6">
-    <input type="submit" value="Save Changes" class="btn btn-primary" />
-    <input type="button" value="Reset Values" class="btn btn-primary" (click)="resetValues()" />
-    <a routerLink="/admin/products/22/details" class="btn btn-secondary">Go To Details Page</a>
+<form (submit)="saveChanges()" [formGroup]="editForm" style="padding:10px">
+
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text"
+               class="form-control"
+               name="productName"
+               id="productName"
+               formControlName="productName" />
+      </div>
+      <div class="form-group">
+        <label for="supplierId">Supplier</label>
+        <select class="form-control" name="supplierId" id="supplierId" formControlName="supplierId">
+          <option *ngFor="let supplier of suppliers | async" [ngValue]="supplier.supplierId">{{supplier.companyName}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="categoryId">Category</label>
+        <select class="form-control" name="categoryId" id="categoryId" formControlName="categoryId">
+          <option *ngFor="let category of categories | async" [ngValue]="category.categoryId">{{category.categoryName}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantityPerUnit">Quentity Per Unit</label>
+        <input type="text" class="form-control" name="quantityPerUnit" id="quantityPerUnit" formControlName="quantityPerUnit" />
+      </div>
+      <div class="form-group">
+        <label for="unitPrice">Unit Price</label>
+        <input type="number" class="form-control" name="unitPrice" id="unitPrice" formControlName="unitPrice" />
+      </div>
+      <div class="form-group">
+        <label for="unitsInStock">Units In Stock</label>
+        <input type="number" class="form-control" name="unitsInStock" id="unitsInStock" formControlName="unitsInStock" />
+      </div>
+      <div class="form-group">
+        <label for="unitsOnOrder">Units On Order</label>
+        <input type="number" class="form-control" name="unitsOnOrder" id="unitsOnOrder" formControlName="unitsOnOrder" />
+      </div>
+      <div class="form-group">
+        <label for="reorderLevel">Re-Order Level</label>
+        <input type="number" class="form-control" name="reorderLevel" id="reorderLevel" formControlName="reorderLevel" />
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="discontinued" id="discontinued" formControlName="discontinued">
+        <label class="form-check-label" for="discontinued">Discontinued</label>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Save Changes" class="btn btn-primary" />
+        <input type="button" value="Reset Values" class="btn btn-primary" (click)="resetValues()" />
+        <a routerLink="/admin/products/22/details" class="btn btn-secondary">Go To Details Page</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+
+      <div *ngIf="editForm.get('productName').errors && editForm.get('productName').touched">
+        <div *ngIf="editForm.get('productName').errors.required" class="alert alert-danger" role="alert">
+          Product Name Is Mandatory!
+        </div>
+        <div *ngIf="editForm.get('productName').errors.maxlength" class="alert alert-danger" role="alert">
+          Product Name Should Be No Bigger Than {{editForm.get('productName').errors.maxlength.requiredLength}}
+        </div>
+        <div *ngIf="editForm.get('productName').errors.minlength" class="alert alert-danger" role="alert">
+          Product Name Should Be No Less Than {{editForm.get('productName').errors.minlength.requiredLength}}
+        </div>
+        <div *ngIf="editForm.get('productName').errors.pattern" class="alert alert-danger" role="alert">
+          Product Name Should Be Alphanumeric
+        </div>
+        <div *ngIf="editForm.get('productName').errors.productNameAlreadyExists" class="alert alert-danger" role="alert">
+          Product Name Already Exists!
+        </div>
+      </div>
+
+      <div *ngIf="!editForm.get('supplierId').valid && editForm.get('supplierId').touched">
+        <div *ngIf="editForm.get('supplierId').errors.required">
+          <div class="alert alert-danger" role="alert">
+            Supplier Is Mandatory!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!editForm.get('categoryId').valid && editForm.get('categoryId').touched">
+        <div *ngIf="editForm.get('categoryId').errors.required">
+          <div class="alert alert-danger" role="alert">
+            Category Is Mandatory!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!editForm.get('quantityPerUnit').valid && editForm.get('quantityPerUnit').touched">
+        <div *ngIf="editForm.get('quantityPerUnit').errors.required">
+          <div class="alert alert-danger" role="alert">
+            Quantity Per Unit Is Mandatory!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="editForm.get('unitPrice').errors && editForm.get('unitPrice').touched">
+        <div *ngIf="editForm.get('unitPrice').errors.required" class="alert alert-danger" role="alert">
+          Unit Price Per Unit Is Mandatory!
+        </div>
+      </div>
+
+      <!--seperated this way as 'touched' property is not set to true when you click the step buttons to set a numeric value-->
+      <div *ngIf="editForm.get('unitPrice').errors">
+        <div *ngIf="editForm.get('unitPrice').errors.dividableBy10" class="alert alert-danger" role="alert">
+          Unit Price Should Be Devidable By 10 and greater than 0!
+        </div>
+      </div>
+
+      <div *ngIf="!editForm.get('unitsInStock').valid && editForm.get('unitsInStock').touched">
+        <div *ngIf="editForm.get('unitsInStock').errors.required">
+          <div class="alert alert-danger" role="alert">
+            Units In Stock Is Mandatory!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!editForm.get('unitsOnOrder').valid && editForm.get('unitsOnOrder').touched">
+        <div *ngIf="editForm.get('unitsOnOrder').errors.required">
+          <div class="alert alert-danger" role="alert">
+            Units On Order Is Mandatory!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!editForm.get('reorderLevel').valid && editForm.get('reorderLevel').touched">
+        <div *ngIf="editForm.get('reorderLevel').errors.required">
+          <div class="alert alert-danger" role="alert">
+            Reorder Level Is Mandatory!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!editForm.get('discontinued').valid && editForm.get('discontinued').touched">
+        <div *ngIf="editForm.get('discontinued').errors.required">
+          <div class="alert alert-danger" role="alert">
+            Discontinued Is Mandatory!
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </form>
-

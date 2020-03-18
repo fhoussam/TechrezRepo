@@ -4,7 +4,7 @@ import { GridField } from '../../../models/GridField';
 import { SuppliersService } from '../../../services/suppliers.service';
 import { CategoriesService } from '../../../services/categories.service';
 import { ProductsService } from '../../../services/products.service';
-import { SearchProductQuery } from '../../../models/IProductSearchQuery';
+import { SearchProductQuery } from '../../../models/SearchProductQuery';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
