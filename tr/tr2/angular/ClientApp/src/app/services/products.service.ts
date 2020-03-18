@@ -42,10 +42,13 @@ export class ProductsService {
     return this.http.post(this.baseUrl, editProductQuery);
   }
 
-  public isExistingProductName(productName: string): Observable<boolean> {
+  public isExistingProductName(productName: string, productId: number): Observable<boolean> {
     return this.http.get<boolean>(this.baseUrl + '/IsExistingProductName', {
       headers: new HttpHeaders({ 'content-type': 'application/json' }),
-      params: this.toHttpParams({ productName: productName})
+      params: this.toHttpParams({
+        productName: productName,
+        productId: productId
+      })
     });
   }
 }

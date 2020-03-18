@@ -9,6 +9,7 @@ namespace app.Operations.Product.Queries.IsProductNameUnique
     public class IsProductNameUniqueQuery : IRequest<bool>
     {
         public string ProductName { get; set; }
+        public int ProductId { get; set; }
 
         public class IsProductNameUniqueQueryHandler : IRequestHandler<IsProductNameUniqueQuery, bool>
         {
@@ -21,7 +22,8 @@ namespace app.Operations.Product.Queries.IsProductNameUnique
 
             public async Task<bool> Handle(IsProductNameUniqueQuery request, CancellationToken cancellationToken)
             {
-                return await _context.Products.AnyAsync(x=>x.ProductName.ToLower() == request.ProductName.ToLower());
+                return await _context.Products.
+                    AnyAsync(x=>x.ProductName.ToLower() == request.ProductName.ToLower() && x.ProductId != request.ProductId);
             }
         }
     }

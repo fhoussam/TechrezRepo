@@ -39,9 +39,9 @@ namespace api.Controllers
 
         [HttpGet]
         [Route("IsExistingProductName")]
-        public async Task<IActionResult> IsExistingProductName([FromQuery] string productName)
+        public async Task<IActionResult> IsExistingProductName([FromQuery] string productName, [FromQuery] int productId)
         {
-            return Ok(await Mediator.Send(new IsProductNameUniqueQuery() { ProductName = productName }));
+            return Ok(await Mediator.Send(new IsProductNameUniqueQuery() { ProductName = productName, ProductId = productId }));
         }
     }
 }

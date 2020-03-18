@@ -3,12 +3,14 @@ import { EditProductQuery } from '../../../services/IEditProductQuery';
 import { ProductsService } from '../../../services/products.service';
 import { CategoriesService } from '../../../services/categories.service';
 import { SuppliersService } from '../../../services/suppliers.service';
-import { Observable } from 'rxjs';
+import { Observable, timer } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 import { ISupplier } from '../../../models/ISupplier';
 import { ICategory } from '../../../models/ICategory';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SearchProductQuery } from '../../../models/SearchProductQuery';
+import { firstValueMustBeGreaterThanSecondValueValidator } from '../../../custom-validators/firstValueMustBeGreaterThanSecondValueValidator';
+import { shouldBeLessThanValidator } from '../../../custom-validators/shouldBeLessThanValidator';
 
 @Component({
   selector: 'app-product-edit',
@@ -34,11 +36,10 @@ export class ProductEditComponent implements OnInit {
     this.suppliers = this.suppliersService.getSuppliers();
     this.categories = this.categoriesService.getCategories();
 
-    //this.activatedRoute.paramMap.subscribe(x => {
-    //  let id = +x.get('id');
-    //  this.getProduct(id);
-    //});
-    this.setFormValue(new EditProductQuery());
+    this.activatedRoute.paramMap.subscribe(x => {
+      let id = +x.get('id');
+      this.getProduct(id);
+    });
   }
 
   getProduct(id: number) {
@@ -50,30 +51,40 @@ export class ProductEditComponent implements OnInit {
   }
 
   private setFormValue(editProductQuery: EditProductQuery) {
+
+    let productId = +this.activatedRoute.snapshot.params.id
+
     this.editForm = new FormGroup({
       'productName': new FormControl
         (
           editProductQuery.productName
           , [
             Validators.required,
-            Validators.minLength(5),
+            Validators.minLength(4),
             Validators.maxLength(100),
-            Validators.pattern("^[A-Za-z_ öä]*$")
+            Validators.pattern("^[A-Za-z'_ öä]*$")
           ]
-          ,this.isExistingProductName.bind(this)
+          , this.isExistingProductName(productId).bind(this)
         ),
       'supplierId': new FormControl(editProductQuery.supplierId, [Validators.required]),
       'categoryId': new FormControl(editProductQuery.categoryId, [Validators.required]),
       'quantityPerUnit': new FormControl(editProductQuery.quantityPerUnit, [Validators.required]),
-      'unitPrice': new FormControl(editProductQuery.unitPrice, [Validators.required, this.isDividableByTenAndGreaterThanZero.bind(this)]),
+      'unitPrice': new FormControl(editProductQuery.unitPrice, [Validators.required, this.isDividableByTenAndGreaterThanZero]),
       'unitsInStock': new FormControl(editProductQuery.unitsInStock, [Validators.required]),
       'unitsOnOrder': new FormControl(editProductQuery.unitsOnOrder, [Validators.required]),
-      'reorderLevel': new FormControl(editProductQuery.reorderLevel, [Validators.required]),
+      'reorderLevel': new FormControl(editProductQuery.reorderLevel, [Validators.required, shouldBeLessThanValidator(5)]),
       'discontinued': new FormControl(editProductQuery.discontinued, [Validators.required]),
-    });
+    }
+      , { validators: firstValueMustBeGreaterThanSecondValueValidator('unitsInStock', 'unitsOnOrder') }
+    );
   }
 
   isDividableByTenAndGreaterThanZero(c: FormControl) {
+
+    //letting 'Required' take charge from here!
+    if (c.value === null)
+      return null;
+
     let result: boolean = +c.value % 10 == 0 && +c.value > 0;
     return result ? null : {
       dividableBy10: {
@@ -82,21 +93,40 @@ export class ProductEditComponent implements OnInit {
     }
   }
 
-  isExistingProductName(control: FormControl): Promise<any> | Observable<any> {
-    const promise = new Promise<any>((resolve, reject) => {
-      this.productsService.isExistingProductName(control.value).subscribe(x => {
-        if (x) resolve({ 'productNameAlreadyExists': true });
-        else resolve(null);
-      });
-    });
-    return promise;
-  }
+  //async validator with no input param, we dont need that here for now
+  //isExistingProductName(control: FormControl): Promise<any> | Observable<any> {
+  //  const promise = new Promise<any>((resolve, reject) => {
+  //    this.productsService.isExistingProductName(control.value).subscribe(x => {
+  //      if (x) resolve({ 'productNameAlreadyExists': true });
+  //      else resolve(null);
+  //    });
+  //  });
+  //  return promise;
+  //}
+
+  isExistingProductName =
+    (productId: number, time: number = 500) => {
+      return (input: FormControl) => {
+        return timer(time).pipe(
+          switchMap(() => this.productsService.isExistingProductName(input.value, productId)),
+          map(result => {
+            console.log(result);
+            return !result ? null : { productNameAlreadyExists: true }
+          })
+        );
+      };
+    };
 
   saveChanges() {
-    console.log(this.editForm.get('unitPrice').errors);
-    //this.productsService.editProduct(this.editProductQuery).subscribe(x => {
-    //  this.router.navigate(['../details'], { relativeTo: this.activatedRoute });
-    //});
+
+    if (!this.editForm.valid)
+      this.editForm.markAllAsTouched();
+
+    else {
+      this.productsService.editProduct(this.editProductQuery).subscribe(x => {
+        this.router.navigate(['../details'], { relativeTo: this.activatedRoute });
+      });
+    }
   }
 
   resetValues() {
