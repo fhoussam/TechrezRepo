@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using app.Common.Exceptions;
 
 namespace app.Operations.Product.Commands.EditProduct
 {
@@ -21,7 +22,7 @@ namespace app.Operations.Product.Commands.EditProduct
         public short? UnitsInStock { get; set; }
         public short? UnitsOnOrder { get; set; }
         public short? ReorderLevel { get; set; }
-        public bool Discontinued { get; set; }
+        public bool? Discontinued { get; set; }
 
         public class EditProductCommandHandler : IRequestHandler<EditProductCommand, int>
         {
@@ -43,6 +44,10 @@ namespace app.Operations.Product.Commands.EditProduct
                 else 
                 {
                     var toEdit = await _context.Products.SingleOrDefaultAsync(x => x.ProductId == request.ProductId);
+
+                    if (toEdit == null)
+                        throw new ValidationException();
+
                     _mapper.Map(request, toEdit);
                     toEdit.ProductName = request.ProductName;
                     toEdit.SupplierId = request.SupplierId;
@@ -52,7 +57,7 @@ namespace app.Operations.Product.Commands.EditProduct
                     toEdit.UnitsInStock = request.UnitsInStock;
                     toEdit.UnitsOnOrder = request.UnitsOnOrder;
                     toEdit.ReorderLevel = request.ReorderLevel;
-                    toEdit.Discontinued = request.Discontinued;
+                    toEdit.Discontinued = request.Discontinued == true;
                 }
 
                 return await _context.SaveChangeAsyc();

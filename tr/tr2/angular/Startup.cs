@@ -1,4 +1,6 @@
+using angular.Common;
 using api;
+using domain.Entities;
 using IdentityModel;
 using infra;
 using Microsoft.AspNetCore.Authentication;
@@ -11,8 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using System.Collections.Generic;
-using System.Linq;
+using FluentValidation;
 
 namespace angular
 {
@@ -70,6 +71,9 @@ namespace angular
                 }
             );
 
+            //adding fluent validation
+            services.AddValidatorsFromAssemblyContaining<INorthwindContext>();
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -81,23 +85,6 @@ namespace angular
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.Use(async (context, next) =>
-            {
-                //angular
-                List<string> patternesToIgnore = new List<string>()
-                {
-                    "/favicon.ico",
-                    "css",
-                    "js",
-                };
-                if (!patternesToIgnore.Any(x => context.Request.Path.Value.Contains(x)) && context.Request.Path.Value != "/") 
-                {
-                    var path = context.Request.Path;
-                }
-                
-                await next.Invoke();
-            });
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -109,8 +96,10 @@ namespace angular
                 app.UseHsts();
             }
 
+            app.UseCustomExceptionHandler();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();

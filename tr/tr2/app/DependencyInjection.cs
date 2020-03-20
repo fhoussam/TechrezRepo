@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using AutoMapper;
+using app.Common.Behaviours;
 
 namespace api
 {
@@ -11,6 +12,7 @@ namespace api
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             return services;
         }
     }
