@@ -1,3 +1,5 @@
+<app-alert-message [message]="searchErrorMessage" (close)="closeErrorDialog()" *ngIf="searchErrorMessage"></app-alert-message>
+
 <button type="button" class="collapsible" [ngClass]="{'active':!searchPanelCollapsed}" (click)="collapse()">Search products</button>
 <div class="content" [style.display]="searchPanelCollapsed ? 'none' : 'block'">
   <form (ngSubmit)="search(true)" #f="ngForm">

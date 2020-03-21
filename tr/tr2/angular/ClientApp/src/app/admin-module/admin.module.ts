@@ -9,9 +9,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ProductSearchComponent } from './products/product-search/product-search.component';
 import { ProductsService } from '../services/products.service';
 import { CategoriesService } from '../services/categories.service';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductListComponent } from './products/product-list/product-list.component';
+
+import { SuppliersService } from '../services/suppliers.service';
+import { SharedModule } from '../shared-module/shared.module';
 
 @NgModule({
   exports: [
@@ -23,15 +24,15 @@ import { ProductListComponent } from './products/product-list/product-list.compo
     SupplierDetailsComponent,
     SupplierEditComponent,
     ProductSearchComponent,
-    ProductListComponent
+    ProductListComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [
+    SuppliersService,
     ProductsService,
     CategoriesService,
   ]

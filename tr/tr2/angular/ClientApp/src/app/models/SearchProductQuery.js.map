@@ -1,1 +1,1 @@
-{"version":3,"file":"IProductSearchQuery.js","sourceRoot":"","sources":["IProductSearchQuery.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;AAAA,iEAA+D;AAE/D;IAAwC,sCAAoB;IAA5D;;IAOA,CAAC;IAAD,yBAAC;AAAD,CAAC,AAPD,CAAwC,4CAAoB,GAO3D;AAPY,gDAAkB"}
+{"version":3,"file":"SearchProductQuery.js","sourceRoot":"","sources":["SearchProductQuery.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;AAAA,iEAA+D;AAE/D;IAAwC,sCAAoB;IAA5D;;IAOA,CAAC;IAAD,yBAAC;AAAD,CAAC,AAPD,CAAwC,4CAAoB,GAO3D;AAPY,gDAAkB"}

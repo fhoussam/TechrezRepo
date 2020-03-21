@@ -22,4 +22,4 @@ var SearchProductQuery = /** @class */ (function (_super) {
     return SearchProductQuery;
 }(ISearchQueryExtension_1.SearchQueryExtension));
 exports.SearchProductQuery = SearchProductQuery;
-//# sourceMappingURL=IProductSearchQuery.js.map
+//# sourceMappingURL=SearchProductQuery.js.map

@@ -19,14 +19,19 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   routeSubscription: Subscription;
   categories: any;
   suppliers: any;
-  searchProductQuery = new SearchProductQuery();
+  searchProductQuery : SearchProductQuery;
   @ViewChild('f', { static: false }) searchForm: NgForm;
   searchPanelCollapsed: boolean;
   autoCollapse: boolean;
   selectedItemId: number;
+  searchErrorMessage: string;
 
   collapse() {
     this.searchPanelCollapsed = !this.searchPanelCollapsed;
+  }
+
+  closeErrorDialog() {
+    this.searchErrorMessage = null;
   }
 
   constructor(
@@ -36,10 +41,12 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
   ) {
-    this.searchProductQuery.isDesc = false;
-    this.searchProductQuery.pageIndex = 0;
-    this.searchProductQuery.sortField = 'ProductName';
     this.searchPanelCollapsed = false;
+    this.searchProductQuery = this.getNewSearchQuery();
+  }
+
+  getNewSearchQuery() {
+    return new SearchProductQuery('ProductName');
   }
 
   ngOnInit() {
@@ -86,10 +93,17 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   }
 
   reset() {
-    this.searchProductQuery = new SearchProductQuery();
+    this.searchProductQuery = this.getNewSearchQuery();
   }
 
   search(isFromUi: boolean) {
+
+    let isEmpty = this.searchProductQuery.isEmptyQuery();
+    if (isEmpty) {
+      this.searchErrorMessage = "Please provide at least one search criteria.";
+      return;
+    }
+
     if (isFromUi)
       this.searchProductQuery.pageIndex = 0;
     this.productsService.getProducts(this.searchProductQuery).subscribe(x => {
