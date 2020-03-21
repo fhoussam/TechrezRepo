@@ -3,7 +3,7 @@ import { EditProductQuery } from '../../../services/IEditProductQuery';
 import { ProductsService } from '../../../services/products.service';
 import { CategoriesService } from '../../../services/categories.service';
 import { SuppliersService } from '../../../services/suppliers.service';
-import { Observable, timer } from 'rxjs';
+import { Observable, timer, BehaviorSubject } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { ISupplier } from '../../../models/ISupplier';
 import { ICategory } from '../../../models/ICategory';
@@ -19,7 +19,7 @@ import { shouldBeLessThanValidator } from '../../../custom-validators/shouldBeLe
 })
 export class ProductEditComponent implements OnInit {
 
-  editProductQuery : EditProductQuery;
+  editProductQuery: EditProductQuery;
   suppliers: Observable<ISupplier[]>;
   categories: Observable<ICategory[]>;
   editForm: FormGroup;
@@ -121,7 +121,9 @@ export class ProductEditComponent implements OnInit {
       this.editProductQuery.discontinued = this.editForm.get('discontinued').value;
 
       this.productsService.editProduct(this.editProductQuery).subscribe(x => {
-        this.router.navigate(['../details'], { relativeTo: this.activatedRoute });
+        this.router.navigate(['../details'], { relativeTo: this.activatedRoute }).then(x => {
+          this.productsService.editedProductbehaviorSubject.next(this.editProductQuery);
+        });
       });
     }
   }

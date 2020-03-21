@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { IProductSearchResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/SearchProductQuery';
 import { IProductDetails } from '../models/IProductDetails';
@@ -10,6 +10,8 @@ import { EditProductQuery } from './IEditProductQuery';
   providedIn: 'root'
 })
 export class ProductsService {
+
+  editedProductbehaviorSubject = new BehaviorSubject(new EditProductQuery());
 
   constructor(private http: HttpClient) { }
 

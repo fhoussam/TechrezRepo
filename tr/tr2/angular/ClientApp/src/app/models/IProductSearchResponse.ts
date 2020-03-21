@@ -8,6 +8,6 @@ export interface IProductListItem {
   productName: string;
   supplierId: number;
   categoryId: number;
-  quantityPerUnit: number;
+  quantityPerUnit: string;
   unitPrice: number;
 }

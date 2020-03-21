@@ -3,6 +3,8 @@ import { IProductListItem } from '../../../models/IProductSearchResponse';
 import { GridField } from '../../../models/GridField';
 import { EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductsService } from '../../../services/products.service';
+import { EditProductQuery } from '../../../services/IEditProductQuery';
 
 @Component({
   selector: 'app-product-list',
@@ -21,6 +23,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private productsService: ProductsService,
   ) { }
 
   ngOnInit() {
@@ -34,6 +37,13 @@ export class ProductListComponent implements OnInit {
     ];
 
     this.sortField = this.gridFields[1].fieldName;
+    this.productsService.editedProductbehaviorSubject.asObservable().subscribe((editedProduct: EditProductQuery) => {
+      let editedProductInGrid = this.products.find(x => x.productId === editedProduct.productId);
+      if (editedProductInGrid !== null) {
+        let index = this.products.indexOf(editedProductInGrid);
+        this.products[index] = editedProduct as IProductListItem;
+      }
+    });
   }
 
   emitSortField(event, isHidden) {
