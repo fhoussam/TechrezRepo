@@ -19,7 +19,7 @@ import { shouldBeLessThanValidator } from '../../../custom-validators/shouldBeLe
 })
 export class ProductEditComponent implements OnInit {
 
-  editProductQuery = new EditProductQuery();
+  editProductQuery : EditProductQuery;
   suppliers: Observable<ISupplier[]>;
   categories: Observable<ICategory[]>;
   editForm: FormGroup;
@@ -93,24 +93,12 @@ export class ProductEditComponent implements OnInit {
     }
   }
 
-  //async validator with no input param, we dont need that here for now
-  //isExistingProductName(control: FormControl): Promise<any> | Observable<any> {
-  //  const promise = new Promise<any>((resolve, reject) => {
-  //    this.productsService.isExistingProductName(control.value).subscribe(x => {
-  //      if (x) resolve({ 'productNameAlreadyExists': true });
-  //      else resolve(null);
-  //    });
-  //  });
-  //  return promise;
-  //}
-
   isExistingProductName =
     (productId: number, time: number = 500) => {
       return (input: FormControl) => {
         return timer(time).pipe(
           switchMap(() => this.productsService.isExistingProductName(input.value, productId)),
           map(result => {
-            console.log(result);
             return !result ? null : { productNameAlreadyExists: true }
           })
         );
@@ -118,11 +106,20 @@ export class ProductEditComponent implements OnInit {
     };
 
   saveChanges() {
-
     if (!this.editForm.valid)
       this.editForm.markAllAsTouched();
-
     else {
+
+      this.editProductQuery.productName = this.editForm.get('productName').value;
+      this.editProductQuery.supplierId = +this.editForm.get('supplierId').value;
+      this.editProductQuery.categoryId = +this.editForm.get('categoryId').value;
+      this.editProductQuery.quantityPerUnit = this.editForm.get('quantityPerUnit').value;
+      this.editProductQuery.unitPrice = +this.editForm.get('unitPrice').value;
+      this.editProductQuery.unitsInStock = +this.editForm.get('unitsInStock').value;
+      this.editProductQuery.unitsOnOrder = +this.editForm.get('unitsOnOrder').value;
+      this.editProductQuery.reorderLevel = +this.editForm.get('reorderLevel').value;
+      this.editProductQuery.discontinued = this.editForm.get('discontinued').value;
+
       this.productsService.editProduct(this.editProductQuery).subscribe(x => {
         this.router.navigate(['../details'], { relativeTo: this.activatedRoute });
       });
@@ -134,3 +131,14 @@ export class ProductEditComponent implements OnInit {
     this.getProduct(id);
   }
 }
+
+//async validator with no input param, we dont need that here for now
+//isExistingProductName(control: FormControl): Promise<any> | Observable<any> {
+//  const promise = new Promise<any>((resolve, reject) => {
+//    this.productsService.isExistingProductName(control.value).subscribe(x => {
+//      if (x) resolve({ 'productNameAlreadyExists': true });
+//      else resolve(null);
+//    });
+//  });
+//  return promise;
+//}

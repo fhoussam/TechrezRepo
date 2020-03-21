@@ -1,4 +1,4 @@
-export class EditProductQuery {
+export interface EditProductQuery {
   productId: number;
   productName: string;
   supplierId: number;
