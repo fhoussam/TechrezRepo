@@ -9,7 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { AdminModule } from './admin-module/admin.module';
 import { SuppliersService } from './services/suppliers.service';
-import { ProductMainComponent } from './admin-module/products/product-main/product-main.component';
+import { ProductSearchComponent } from './admin-module/products/product-search/product-search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { ProductMainComponent } from './admin-module/products/product-main/produ
     AdminModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'products', component: ProductMainComponent },
+      { path: 'products', component: ProductSearchComponent },
     ])
   ],
   exports: [

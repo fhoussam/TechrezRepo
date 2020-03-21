@@ -3,18 +3,6 @@
   margin-top: 10px;
 }
 
-.selected-grid-item {
-  background-color: #98b9b9;
-}
-
-th {
-  cursor: pointer;
-}
-
-.sorted-field {
-  background-color: aliceblue;
-}
-
 .collapsible {
   background-color: #777;
   color: white;

@@ -5,10 +5,10 @@ function shouldBeLessThanValidator(maxValue) {
         //letting 'Required' take charge from here!
         if (c.value === null)
             return null;
-        var result = +c.value <= maxValue;
+        var result = +c.value < maxValue;
         return result ? null : {
             shouldBeLessThan: {
-                maxValue: maxValue,
+                maxValue: maxValue - 1,
                 valid: false
             }
         };

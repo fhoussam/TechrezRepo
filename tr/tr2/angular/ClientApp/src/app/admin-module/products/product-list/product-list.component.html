@@ -1,0 +1,27 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th *ngFor="let gridField of gridFields"
+          scope="col"
+          [hidden]="gridField.hidden"
+          [ngClass]="{'sorted-field': gridField.fieldName == sortField}"
+          [attr.id]="gridField.hidden ? null : gridField.fieldName"
+          (click)="emitSortField($event, gridField.hidden)">
+        {{gridField.fieldDescription}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products"
+        (click)="selectItem(product)"
+        [ngClass]="{'selected-grid-item': product.productId == selectedItemId}"
+        style="cursor:pointer">
+      <td hidden>{{product.productId}}</td>
+      <td>{{product.productName}}</td>
+      <td>{{product.supplierId}}</td>
+      <td>{{product.categoryId}}</td>
+      <td>{{product.quantityPerUnit}}</td>
+      <td>{{product.unitPrice}}</td>
+    </tr>
+  </tbody>
+</table>

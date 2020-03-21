@@ -6,22 +6,24 @@ import { SupplierDetailsComponent } from './suppliers/supplier-details/supplier-
 import { SupplierEditComponent } from './suppliers/supplier-edit/supplier-edit.component';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { ProductMainComponent } from './products/product-main/product-main.component';
+import { ProductSearchComponent } from './products/product-search/product-search.component';
 import { ProductsService } from '../services/products.service';
 import { CategoriesService } from '../services/categories.service';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductListComponent } from './products/product-list/product-list.component';
 
 @NgModule({
   exports: [
-    ProductMainComponent,
+    ProductSearchComponent,
   ],
   declarations: [
     ProductDetailsComponent,
     ProductEditComponent,
     SupplierDetailsComponent,
     SupplierEditComponent,
-    ProductMainComponent
+    ProductSearchComponent,
+    ProductListComponent
   ],
   imports: [
     CommonModule,

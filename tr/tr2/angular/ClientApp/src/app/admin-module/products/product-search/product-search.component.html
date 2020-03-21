@@ -55,33 +55,13 @@
 
   <div *ngIf="searchResult?.source && searchResult.source.length > 0">
     <div class="grid-header">Page <b>{{searchProductQuery?.pageIndex + 1}}</b>/{{searchResult?.totalPages}}</div>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th *ngFor="let gridField of gridFields"
-              scope="col"
-              [hidden]="gridField.hidden"
-              [ngClass]="{'sorted-field': gridField.fieldName == searchProductQuery.sortField}"
-              [attr.id]="gridField.hidden ? null : gridField.fieldName"
-              (click)="emitSortField($event, gridField.hidden)">
-            {{gridField.fieldDescription}}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let product of searchResult?.source"
-            (click)="selectItem(product)"
-            [ngClass]="{'selected-grid-item': product.productId == selectedItemId}"
-            style="cursor:pointer">
-          <td hidden>{{product.productId}}</td>
-          <td>{{product.productName}}</td>
-          <td>{{product.supplierId}}</td>
-          <td>{{product.categoryId}}</td>
-          <td>{{product.quantityPerUnit}}</td>
-          <td>{{product.unitPrice}}</td>
-        </tr>
-      </tbody>
-    </table>
+
+    <!--list-->
+    <app-product-list
+      [products]="searchResult?.source"
+      (sortFieldChange)="onSortFieldChange($event)"
+      (selectedIndexChange)="onSelectedIndexChange($event)"
+    ></app-product-list>
 
     <div class="form-row">
       <div class="btn-toolbar col-md-9" role="toolbar">
@@ -89,7 +69,7 @@
           <button type="button"
                   class="btn btn-secondary"
                   *ngFor="let item of [].constructor(searchResult?.totalPages); let i = index"
-                  (click)="emitPageIndex(i)">
+                  (click)="goToPage(i)">
             {{i + 1}}
           </button>
         </div>

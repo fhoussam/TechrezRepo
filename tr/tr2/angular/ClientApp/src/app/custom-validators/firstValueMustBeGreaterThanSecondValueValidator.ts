@@ -6,10 +6,12 @@ export function firstValueMustBeGreaterThanSecondValueValidator(firstValueKey: s
     let unitsOnOrder = +f.get(secondValueKey).value;
 
     //letting 'Required take charge from here!
-    if (isNaN(unitsInStock) || isNaN(unitsOnOrder) || unitsInStock === 0 || unitsOnOrder === 0)
+    if (isNaN(unitsInStock) || isNaN(unitsOnOrder)
+      //|| unitsInStock === 0 || unitsOnOrder === 0
+    )
       return null;
 
-    let result = unitsInStock >= unitsOnOrder;
+    let result = unitsInStock >= unitsOnOrder && unitsOnOrder > 0 && unitsInStock > 0;
     return result ? null : {
       firstValueMustBeGreaterThanSecondValue: {
         valid: false,

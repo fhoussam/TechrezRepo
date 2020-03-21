@@ -7,10 +7,10 @@ export function shouldBeLessThanValidator(maxValue: number): ValidatorFn /*we go
     if (c.value === null)
       return null;
 
-    let result: boolean = +c.value <= maxValue;
+    let result: boolean = +c.value < maxValue;
     return result ? null : {
       shouldBeLessThan: {
-        maxValue: maxValue,
+        maxValue: maxValue  - 1,
         valid: false
       }
     }

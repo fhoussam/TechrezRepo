@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductMainComponent } from './products/product-main/product-main.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { SupplierDetailsComponent } from './suppliers/supplier-details/supplier-details.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
+import { ProductSearchComponent } from './products/product-search/product-search.component';
 
 const routes: Routes = [
   {
     path: 'admin/products',
-    component: ProductMainComponent,
+    component: ProductSearchComponent,
     children: [
       {
         path: ':id',

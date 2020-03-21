@@ -151,7 +151,7 @@
       <div *ngIf="editForm.errors">
         <div class="alert alert-danger" role="alert"
              *ngIf="editForm.errors.firstValueMustBeGreaterThanSecondValue && editForm.get('unitsInStock').touched && editForm.get('unitsOnOrder').touched">
-          Units In Stock Must Be Greater Or Equal To Units On Order!
+          Units In Stock Must Be Greater (Or Equal) Than Units On Order! Both Should Be Positive!
         </div>
       </div>
 
