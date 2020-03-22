@@ -11,30 +11,34 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { firstValueMustBeGreaterThanSecondValueValidator } from '../../../custom-validators/firstValueMustBeGreaterThanSecondValueValidator';
 import { shouldBeLessThanValidator } from '../../../custom-validators/shouldBeLessThanValidator';
+import { CanCompoDeactivate } from '../../../guards/can-deactivate';
 
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css']
 })
-export class ProductEditComponent implements OnInit {
+export class ProductEditComponent implements OnInit, CanCompoDeactivate {
 
   editProductQuery: EditProductQuery;
+  editProductQueryPreviousState: any;
   suppliers: Observable<ISupplier[]>;
   categories: Observable<ICategory[]>;
   editForm: FormGroup;
+  saved: boolean;
 
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
+    private router: Router,  
   ) { }
 
   ngOnInit() {
     this.suppliers = this.suppliersService.getSuppliers();
     this.categories = this.categoriesService.getCategories();
+    this.saved = false;
 
     this.activatedRoute.paramMap.subscribe(x => {
       let id = +x.get('id');
@@ -42,19 +46,32 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
+  CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+    if (this.saved)
+      return true;
+    else {
+      let jsonPreviousState = JSON.stringify(this.editProductQueryPreviousState);
+      let jsonFormState = JSON.stringify(this.editForm.value);
+      let isDirty = jsonPreviousState !== jsonFormState;
+      if (isDirty)
+        return confirm('Do you want to discard the changes ?');
+      else return true;
+    }
+  }
+
   getProduct(id: number) {
     this.productsService.getProduct(id).subscribe(y => {
       //we needed to add supplier id to source as the destination needs it
       this.editProductQuery = y as EditProductQuery;
-      this.setFormValue(this.editProductQuery);
+      this.editForm = this.getNewFormGroupValue(this.editProductQuery);
+      this.editProductQueryPreviousState = { ...this.editForm.value };
     });
   }
 
-  private setFormValue(editProductQuery: EditProductQuery) {
+  private getNewFormGroupValue(editProductQuery: EditProductQuery) {
 
-    let productId = +this.activatedRoute.snapshot.params.id
-
-    this.editForm = new FormGroup({
+    let editForm = new FormGroup({
+      'productId': new FormControl(editProductQuery.productId),
       'productName': new FormControl
         (
           editProductQuery.productName
@@ -64,7 +81,7 @@ export class ProductEditComponent implements OnInit {
             Validators.maxLength(100),
             Validators.pattern("^[A-Za-z'_ öä]*$")
           ]
-          , this.isExistingProductName(productId).bind(this)
+          , this.isExistingProductName(editProductQuery.productId).bind(this)
         ),
       'supplierId': new FormControl(editProductQuery.supplierId, [Validators.required]),
       'categoryId': new FormControl(editProductQuery.categoryId, [Validators.required]),
@@ -77,6 +94,8 @@ export class ProductEditComponent implements OnInit {
     }
       , { validators: firstValueMustBeGreaterThanSecondValueValidator('unitsInStock', 'unitsOnOrder') }
     );
+
+    return editForm;
   }
 
   isDividableByTenAndGreaterThanZero(c: FormControl) {
@@ -105,22 +124,30 @@ export class ProductEditComponent implements OnInit {
       };
     };
 
+  getDeserializedFormGroupValue(): EditProductQuery {
+    let formValue = new EditProductQuery();
+
+    formValue.productId = this.editForm.get('productId').value;
+    formValue.productName = this.editForm.get('productName').value;
+    formValue.supplierId = +this.editForm.get('supplierId').value;
+    formValue.categoryId = +this.editForm.get('categoryId').value;
+    formValue.quantityPerUnit = this.editForm.get('quantityPerUnit').value;
+    formValue.unitPrice = +this.editForm.get('unitPrice').value;
+    formValue.unitsInStock = +this.editForm.get('unitsInStock').value;
+    formValue.unitsOnOrder = +this.editForm.get('unitsOnOrder').value;
+    formValue.reorderLevel = +this.editForm.get('reorderLevel').value;
+    formValue.discontinued = this.editForm.get('discontinued').value;
+
+    return formValue;
+  } 
+
   saveChanges() {
     if (!this.editForm.valid)
       this.editForm.markAllAsTouched();
     else {
-
-      this.editProductQuery.productName = this.editForm.get('productName').value;
-      this.editProductQuery.supplierId = +this.editForm.get('supplierId').value;
-      this.editProductQuery.categoryId = +this.editForm.get('categoryId').value;
-      this.editProductQuery.quantityPerUnit = this.editForm.get('quantityPerUnit').value;
-      this.editProductQuery.unitPrice = +this.editForm.get('unitPrice').value;
-      this.editProductQuery.unitsInStock = +this.editForm.get('unitsInStock').value;
-      this.editProductQuery.unitsOnOrder = +this.editForm.get('unitsOnOrder').value;
-      this.editProductQuery.reorderLevel = +this.editForm.get('reorderLevel').value;
-      this.editProductQuery.discontinued = this.editForm.get('discontinued').value;
-
+      this.editProductQuery = this.getDeserializedFormGroupValue();
       this.productsService.editProduct(this.editProductQuery).subscribe(x => {
+        this.saved = true;
         this.router.navigate(['../details'], { relativeTo: this.activatedRoute }).then(x => {
           this.productsService.editedProductbehaviorSubject.next(this.editProductQuery);
         });

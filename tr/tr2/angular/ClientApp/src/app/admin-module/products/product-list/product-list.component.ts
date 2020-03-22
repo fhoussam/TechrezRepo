@@ -15,10 +15,25 @@ export class ProductListComponent implements OnInit {
 
   gridFields: GridField[];
   selectedItemId: number;
-  @Input() products: IProductListItem[] = [];
   @Output() sortFieldChange = new EventEmitter();
   @Output() selectedIndexChange = new EventEmitter();
   sortField: string;
+
+  _products: IProductListItem[];
+  @Input()
+  set products(products: IProductListItem[]) {
+    if (products) {
+      this._products = products;
+      try {
+        //if the user gains direct access to an element and perform a search afterwards,
+        //that elemnt should be highlighted on the result 
+        this.selectedItemId = +this.activatedRoute.firstChild.snapshot.paramMap.get('id');
+      } catch (e) {}
+    }
+  }
+  get products() {
+    return this._products;
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -37,6 +52,8 @@ export class ProductListComponent implements OnInit {
     ];
 
     this.sortField = this.gridFields[1].fieldName;
+    
+    //listen when an update is performed on a displayed entity
     this.productsService.editedProductbehaviorSubject.asObservable().subscribe((editedProduct: EditProductQuery) => {
       let editedProductInGrid = this.products.find(x => x.productId === editedProduct.productId);
       if (editedProductInGrid !== null) {

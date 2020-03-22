@@ -31,6 +31,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\custom-validators\firstValueMustBeGreaterThanSecondValueValidator.ts" />
     <None Remove="ClientApp\src\app\custom-validators\shouldBeLessThanValidator.ts" />
+    <None Remove="ClientApp\src\app\guards\can-deactivate.ts" />
     <None Remove="ClientApp\src\app\models\GridField.ts" />
     <None Remove="ClientApp\src\app\models\ICategory.ts" />
     <None Remove="ClientApp\src\app\models\IProductDetails.ts" />
@@ -52,6 +53,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\custom-validators\firstValueMustBeGreaterThanSecondValueValidator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\custom-validators\shouldBeLessThanValidator.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\guards\can-deactivate.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ICategory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GridField.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductDetails.ts" />

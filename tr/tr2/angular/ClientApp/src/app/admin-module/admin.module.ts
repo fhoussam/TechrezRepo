@@ -13,6 +13,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 
 import { SuppliersService } from '../services/suppliers.service';
 import { SharedModule } from '../shared-module/shared.module';
+import { CanDeactivateGuard } from '../guards/can-deactivate';
 
 @NgModule({
   exports: [
@@ -35,6 +36,7 @@ import { SharedModule } from '../shared-module/shared.module';
     SuppliersService,
     ProductsService,
     CategoriesService,
+    CanDeactivateGuard,
   ]
 })
 export class AdminModule { }

@@ -4,6 +4,7 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
 import { SupplierDetailsComponent } from './suppliers/supplier-details/supplier-details.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { ProductSearchComponent } from './products/product-search/product-search.component';
+import { CanDeactivateGuard } from '../guards/can-deactivate';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
       },
       {
         path: ':id/details',
-        component: ProductDetailsComponent
+        component: ProductDetailsComponent,
       },
       {
         path: ':id/supplier',
@@ -24,7 +25,8 @@ const routes: Routes = [
       },
       {
         path: ':id/edit',
-        component: ProductEditComponent
+        component: ProductEditComponent,
+        canDeactivate: [CanDeactivateGuard],
       },
     ]
   }

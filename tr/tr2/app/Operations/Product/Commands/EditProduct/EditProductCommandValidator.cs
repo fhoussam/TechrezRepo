@@ -15,6 +15,8 @@ namespace app.Operations.Product.Commands.EditProduct
             _context = context;
             string isRequiredMessage = "{PropertyName} Is Mandatory";
 
+            RuleFor(x => x.ProductId).NotNull().WithMessage("Product Id Should Be Provided, 0 for new, other than 0 for edit");
+
             RuleFor(x => x.ProductName).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(isRequiredMessage)
                 .MinimumLength(4).WithMessage("Product Name Wrong Size")
