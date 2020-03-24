@@ -10860,3 +10860,214 @@ System.Exception: A user with this login already exists.
 2020-03-24 15:53:57.436 +01:00 [INF] AuthenticationScheme: Google was challenged.
 2020-03-24 15:53:57.749 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
 2020-03-24 15:54:01.582 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 17:07:46.142 +01:00 [INF] Starting host...
+2020-03-24 17:07:47.382 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-24 17:07:47.392 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-24 17:07:47.394 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-24 17:07:47.395 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-24 17:07:47.395 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-24 17:07:47.395 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-24 17:07:47.395 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-24 17:07:47.395 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-24 17:07:47.679 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-24 17:07:47.679 +01:00 [INF] Hosting environment: Development
+2020-03-24 17:07:47.679 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-24 17:07:47.772 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-24 17:07:47.773 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-24 17:07:47.773 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-24 17:07:47.773 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-24 17:07:47.773 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-24 17:07:47.773 +01:00 [DBG] Error Url: /home/error
+2020-03-24 17:07:47.773 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-24 17:07:50.628 +01:00 [INF] Identity.External was not authenticated. Failure message: Ticket expired
+2020-03-24 17:07:50.673 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: External authentication error
+   at auth.Controllers.ExternalController.Callback() in E:\fhoussam\TechrezRepo\tr\tr2\auth\Controllers\ExternalController.cs:line 100
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|8_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-24 17:08:04.400 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 17:08:04.900 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 17:08:09.221 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 17:15:54.330 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 17:15:54.331 +01:00 [DBG] Adding amr claim with value: external
+2020-03-24 17:15:54.334 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 17:15:54.337 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 17:15:54.347 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"3df38a82-b2f2-43c2-958e-172c86851226","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000001f-0008-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:15:54.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 17:16:00.614 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 17:16:00.939 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 17:16:05.387 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 17:16:05.443 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 17:16:05.444 +01:00 [DBG] Adding amr claim with value: external
+2020-03-24 17:16:05.444 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 17:16:37.602 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 17:16:37.603 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"3df38a82-b2f2-43c2-958e-172c86851226","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000000e-000a-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:16:37.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 17:16:45.415 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 17:16:45.710 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 17:16:51.646 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 17:17:14.362 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 17:17:14.364 +01:00 [DBG] Adding amr claim with value: external
+2020-03-24 17:17:14.365 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 17:18:41.135 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 17:18:51.159 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"3df38a82-b2f2-43c2-958e-172c86851226","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000010-000a-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:18:51.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 17:19:23.584 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 17:19:23.890 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 17:19:23.897 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 17:19:23.920 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 17:19:23.920 +01:00 [DBG] Adding amr claim with value: external
+2020-03-24 17:19:23.921 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 17:19:23.921 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 17:19:23.922 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"3df38a82-b2f2-43c2-958e-172c86851226","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000004-0000-fa00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:19:23.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 17:25:45.565 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-24 17:25:45.566 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 17:25:45.566 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-24 17:25:45.567 +01:00 [INF] {"SubjectId":"3df38a82-b2f2-43c2-958e-172c86851226","DisplayName":"Houssam FERTAQ","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"8000002c-0006-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:25:45.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-24 17:25:54.294 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 17:25:54.344 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"80000016-0004-fe00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:25:54.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-24 17:26:16.887 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 17:26:16.895 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"80000004-0005-fe00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:26:16.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-24 17:26:23.066 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 17:26:23.420 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 17:26:23.424 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 17:26:23.453 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 17:26:23.453 +01:00 [DBG] Adding amr claim with value: external
+2020-03-24 17:26:23.453 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 17:26:37.881 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Cannot return null from an action method with a return type of 'Microsoft.AspNetCore.Mvc.IActionResult'.
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.EnsureActionResultNotNull(ObjectMethodExecutor executor, IActionResult actionResult)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-24 17:26:53.173 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 17:26:53.449 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 17:26:53.454 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 17:26:53.466 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 17:26:53.467 +01:00 [DBG] Adding amr claim with value: external
+2020-03-24 17:26:53.467 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 17:26:53.467 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 17:26:53.467 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"2889c5ed-d0c8-4685-8b7f-83bdacc5ea29","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000014-000a-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:26:53.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 17:26:55.641 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-24 17:26:55.641 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 17:26:55.641 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-24 17:26:55.642 +01:00 [INF] {"SubjectId":"2889c5ed-d0c8-4685-8b7f-83bdacc5ea29","DisplayName":"Houssam FERTAQ","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"8000001c-000b-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:26:55.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-24 17:27:03.320 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 17:27:03.629 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 17:27:03.633 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 17:27:03.650 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 17:27:03.652 +01:00 [DBG] Adding amr claim with value: external
+2020-03-24 17:27:03.653 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 17:27:03.653 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 17:27:03.653 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"2889c5ed-d0c8-4685-8b7f-83bdacc5ea29","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000001b-0002-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-24T16:27:03.0000000Z","ProcessId":17148,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 19:18:49.610 +01:00 [INF] Starting host...
+2020-03-24 19:18:50.881 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-24 19:18:50.890 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-24 19:18:50.893 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-24 19:18:50.893 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-24 19:18:50.893 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-24 19:18:50.893 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-24 19:18:50.893 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-24 19:18:50.893 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-24 19:18:51.154 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-24 19:18:51.154 +01:00 [INF] Hosting environment: Development
+2020-03-24 19:18:51.154 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-24 19:18:51.221 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-24 19:18:51.222 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-24 19:18:51.222 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-24 19:18:51.222 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-24 19:18:51.222 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-24 19:18:51.222 +01:00 [DBG] Error Url: /home/error
+2020-03-24 19:18:51.222 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-24 19:18:56.553 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 19:18:57.498 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"8000001c-0000-fc00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:18:57.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-24 19:18:59.502 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 19:19:00.009 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 19:19:00.022 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 19:19:00.403 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 19:19:00.404 +01:00 [DBG] Adding amr claim with value: external
+2020-03-24 19:19:00.407 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 19:19:00.409 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 19:19:00.410 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"14dc93a6-9f0c-4ef4-abb3-ba55fb7ef765","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000001b-000a-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:19:00.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 19:19:03.482 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-24 19:19:03.482 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 19:19:03.482 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-24 19:19:03.483 +01:00 [INF] {"SubjectId":"14dc93a6-9f0c-4ef4-abb3-ba55fb7ef765","DisplayName":"Houssam FERTAQ","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"80000002-0002-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:19:03.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-24 19:19:54.824 +01:00 [DBG] CORS request made for path: /Account/Register from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 19:19:54.875 +01:00 [INF] User created a new account with password.
+2020-03-24 19:19:55.474 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 19:19:55.474 +01:00 [DBG] Adding idp claim with value: local
+2020-03-24 19:19:55.474 +01:00 [DBG] Adding amr claim with value: pwd
+2020-03-24 19:19:55.474 +01:00 [DBG] Adding auth_time claim with value: 1585073995
+2020-03-24 19:19:55.475 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 19:19:55.475 +01:00 [INF] User created a new account with password.
+2020-03-24 19:19:59.916 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-24 19:19:59.917 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 19:19:59.918 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-24 19:19:59.918 +01:00 [INF] {"SubjectId":"e9d5fccd-f876-4db5-8a84-f60b21296c4b","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"80000021-000a-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:19:59.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-24 19:20:11.577 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 19:20:54.733 +01:00 [DBG] CORS request made for path: /Account/ForgotPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 19:21:24.293 +01:00 [DBG] CORS request made for path: /Account/ResetPassword from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 19:21:32.844 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 19:21:32.873 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 19:21:32.873 +01:00 [DBG] Adding idp claim with value: local
+2020-03-24 19:21:32.873 +01:00 [DBG] Adding auth_time claim with value: 1585074092
+2020-03-24 19:21:32.874 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 19:21:32.877 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"e9d5fccd-f876-4db5-8a84-f60b21296c4b","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000044-0006-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:21:32.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 19:21:38.983 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-24 19:21:38.984 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 19:21:38.984 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-24 19:21:38.985 +01:00 [INF] {"SubjectId":"e9d5fccd-f876-4db5-8a84-f60b21296c4b","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"8000002f-0008-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:21:38.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-24 19:21:53.251 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 19:21:53.275 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 19:21:53.275 +01:00 [DBG] Adding idp claim with value: local
+2020-03-24 19:21:53.276 +01:00 [DBG] Adding auth_time claim with value: 1585074113
+2020-03-24 19:21:53.276 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 19:21:53.278 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"e9d5fccd-f876-4db5-8a84-f60b21296c4b","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000031-0008-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:21:53.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-24 19:22:37.428 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-24 19:22:37.429 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-24 19:22:37.429 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-24 19:22:37.430 +01:00 [INF] {"SubjectId":"e9d5fccd-f876-4db5-8a84-f60b21296c4b","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"80000016-0007-fe00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:22:37.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-24 19:22:51.679 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-24 19:22:51.703 +01:00 [DBG] Augmenting SignInContext
+2020-03-24 19:22:51.704 +01:00 [DBG] Adding idp claim with value: local
+2020-03-24 19:22:51.704 +01:00 [DBG] Adding auth_time claim with value: 1585074171
+2020-03-24 19:22:51.704 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-24 19:22:51.707 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"e9d5fccd-f876-4db5-8a84-f60b21296c4b","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000029-000a-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-24T18:22:51.0000000Z","ProcessId":9816,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
