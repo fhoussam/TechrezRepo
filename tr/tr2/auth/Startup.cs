@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using IdentityServer4.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using auth.Services;
 
 namespace auth
 {
@@ -32,8 +34,9 @@ namespace auth
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddIdentityServer(options =>
             {
@@ -49,20 +52,26 @@ namespace auth
             .AddAspNetIdentity<IdentityUser>()
             .AddDeveloperSigningCredential();
 
-            services.AddControllersWithViews();
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    // register your IdentityServer with Google at https://console.developers.google.com
+                    // enable the Google+ API
+                    // set the redirect URI to http://localhost:44394/signin-google
+                    options.ClientId = "67483393858-9br5jsr4be05dmbcdtmjkv217b2cog8p.apps.googleusercontent.com";
+                    options.ClientSecret = "K5QBNVzsIahSBrfKAeWm8w8b";
+                });
+
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.Use(async (context, next) => 
-            {
-                //auth
-                var path = context.Request.Path;
-                await next.Invoke(); 
-            });
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

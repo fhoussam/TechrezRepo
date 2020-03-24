@@ -10081,3 +10081,782 @@
 2020-03-12 17:35:51.587 +01:00 [DBG] Scopes in access token: openid profile email complementary_profile offline_access
 2020-03-12 17:35:51.591 +01:00 [INF] Profile service returned the following claim types: sub birthdate email favcolor gender name preferred_username email email_verified
 2020-03-12 17:35:51.592 +01:00 [DBG] End userinfo request
+2020-03-22 20:44:33.372 +01:00 [INF] Starting host...
+2020-03-22 20:44:35.085 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-22 20:44:35.096 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-22 20:44:35.098 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-22 20:44:35.098 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-22 20:44:35.098 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-22 20:44:35.098 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-22 20:44:35.098 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-22 20:44:35.098 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-22 20:44:35.256 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-22 20:44:35.257 +01:00 [INF] Hosting environment: Development
+2020-03-22 20:44:35.257 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-22 20:44:35.310 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-22 20:44:35.311 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-22 20:44:35.312 +01:00 [DBG] Logout Url: /Identity/Account/Logout
+2020-03-22 20:44:35.312 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-22 20:44:35.312 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-22 20:44:35.312 +01:00 [DBG] Error Url: /home/error
+2020-03-22 20:44:35.312 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-22 20:44:50.593 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 20:44:53.476 +01:00 [DBG] Augmenting SignInContext
+2020-03-22 20:44:53.477 +01:00 [DBG] Adding idp claim with value: local
+2020-03-22 20:44:53.477 +01:00 [DBG] Adding auth_time claim with value: 1584906293
+2020-03-22 20:44:53.482 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-22 20:44:55.647 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-22 20:44:55.647 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 20:44:55.647 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-22 20:44:57.553 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 20:45:00.330 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 20:45:01.656 +01:00 [DBG] Augmenting SignInContext
+2020-03-22 20:45:01.656 +01:00 [DBG] Adding idp claim with value: local
+2020-03-22 20:45:01.656 +01:00 [DBG] Adding auth_time claim with value: 1584906301
+2020-03-22 20:45:01.657 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-22 21:04:29.922 +01:00 [INF] Starting host...
+2020-03-22 21:04:31.080 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-22 21:04:31.089 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-22 21:04:31.091 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-22 21:04:31.092 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-22 21:04:31.092 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-22 21:04:31.092 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-22 21:04:31.092 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-22 21:04:31.092 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-22 21:04:31.200 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-22 21:04:31.200 +01:00 [INF] Hosting environment: Development
+2020-03-22 21:04:31.200 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-22 21:04:31.251 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-22 21:04:31.252 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-22 21:04:31.252 +01:00 [DBG] Logout Url: /Identity/Account/Logout
+2020-03-22 21:04:31.252 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-22 21:04:31.252 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-22 21:04:31.252 +01:00 [DBG] Error Url: /home/error
+2020-03-22 21:04:31.252 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-22 21:04:33.164 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-22 21:04:33.165 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:04:33.166 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-22 21:04:35.248 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:26:03.020 +01:00 [INF] Starting host...
+2020-03-22 21:26:04.192 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-22 21:26:04.201 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-22 21:26:04.203 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-22 21:26:04.203 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-22 21:26:04.203 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-22 21:26:04.203 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-22 21:26:04.204 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-22 21:26:04.204 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-22 21:26:04.311 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-22 21:26:04.312 +01:00 [INF] Hosting environment: Development
+2020-03-22 21:26:04.312 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-22 21:26:04.362 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-22 21:26:04.363 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-22 21:26:04.363 +01:00 [DBG] Logout Url: /Identity/Account/Logout
+2020-03-22 21:26:04.363 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-22 21:26:04.363 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-22 21:26:04.363 +01:00 [DBG] Error Url: /home/error
+2020-03-22 21:26:04.363 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-22 21:26:04.565 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:26:15.531 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:26:30.091 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:27:00.207 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:31:15.737 +01:00 [INF] Starting host...
+2020-03-22 21:31:16.940 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-22 21:31:16.949 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-22 21:31:16.952 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-22 21:31:16.952 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-22 21:31:16.952 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-22 21:31:16.952 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-22 21:31:16.952 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-22 21:31:16.952 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-22 21:31:17.060 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-22 21:31:17.060 +01:00 [INF] Hosting environment: Development
+2020-03-22 21:31:17.060 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-22 21:31:17.110 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-22 21:31:17.111 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-22 21:31:17.111 +01:00 [DBG] Logout Url: /Identity/Account/Logout
+2020-03-22 21:31:17.111 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-22 21:31:17.111 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-22 21:31:17.111 +01:00 [DBG] Error Url: /home/error
+2020-03-22 21:31:17.111 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-22 21:31:17.324 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:55:33.434 +01:00 [INF] Starting host...
+2020-03-22 21:55:34.697 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-22 21:55:34.706 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-22 21:55:34.709 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-22 21:55:34.709 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-22 21:55:34.709 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-22 21:55:34.709 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-22 21:55:34.709 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-22 21:55:34.709 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-22 21:55:34.818 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-22 21:55:34.818 +01:00 [INF] Hosting environment: Development
+2020-03-22 21:55:34.818 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-22 21:55:34.886 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-22 21:55:34.888 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-22 21:55:34.888 +01:00 [DBG] Logout Url: /Identity/Account/Logout
+2020-03-22 21:55:34.888 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-22 21:55:34.888 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-22 21:55:34.888 +01:00 [DBG] Error Url: /home/error
+2020-03-22 21:55:34.888 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-22 21:55:36.894 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:55:38.848 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-22 21:55:42.184 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-22 21:55:49.758 +01:00 [WRN] User 9eccd22c-8260-41f6-8937-1929122d8386 validation failed: DuplicateUserName.
+2020-03-22 21:56:27.190 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:56:28.425 +01:00 [DBG] Augmenting SignInContext
+2020-03-22 21:56:28.426 +01:00 [DBG] Adding idp claim with value: local
+2020-03-22 21:56:28.426 +01:00 [DBG] Adding auth_time claim with value: 1584910588
+2020-03-22 21:56:28.429 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-22 21:56:28.430 +01:00 [INF] User logged in.
+2020-03-22 21:56:30.435 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-22 21:56:30.436 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:56:30.436 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-22 21:56:30.436 +01:00 [INF] User logged out.
+2020-03-22 21:56:32.007 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 21:56:33.880 +01:00 [DBG] Augmenting SignInContext
+2020-03-22 21:56:33.880 +01:00 [DBG] Adding idp claim with value: local
+2020-03-22 21:56:33.880 +01:00 [DBG] Adding auth_time claim with value: 1584910593
+2020-03-22 21:56:33.880 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-22 21:56:33.881 +01:00 [INF] User logged in.
+2020-03-22 22:46:58.334 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-22 22:46:58.334 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 22:46:58.334 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-22 22:46:58.334 +01:00 [INF] User logged out.
+2020-03-22 22:53:18.176 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 22:53:19.700 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-22 22:53:20.599 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-22 22:53:22.432 +01:00 [WRN] User a52c78c0-2084-4c33-b2d5-b1d2e85bb2f5 validation failed: DuplicateUserName.
+2020-03-22 22:53:35.877 +01:00 [WRN] User 745a9178-7862-4288-b943-3c4bf3a560fe validation failed: DuplicateUserName.
+2020-03-22 22:53:36.369 +01:00 [WRN] User 9a66335e-8d0f-4a5d-abd2-a7b930d6f02e validation failed: DuplicateUserName.
+2020-03-22 22:53:36.608 +01:00 [WRN] User 86613e8c-0bf0-4f61-bc58-621fcaf525e2 validation failed: DuplicateUserName.
+2020-03-22 22:53:36.848 +01:00 [WRN] User 92fc4e97-f892-4001-9b95-b9a0528479fd validation failed: DuplicateUserName.
+2020-03-22 22:53:37.199 +01:00 [WRN] User 760927b9-770f-4fdc-b9d6-12efa32be676 validation failed: DuplicateUserName.
+2020-03-22 22:53:37.424 +01:00 [WRN] User f1a4895b-f18b-4c74-8751-001fc933bfe5 validation failed: DuplicateUserName.
+2020-03-22 22:53:37.710 +01:00 [WRN] User 6a8f92d7-f23d-4556-b0c9-d3f8907b777f validation failed: DuplicateUserName.
+2020-03-22 22:54:25.285 +01:00 [INF] Starting host...
+2020-03-22 22:54:26.510 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-22 22:54:26.519 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-22 22:54:26.521 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-22 22:54:26.521 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-22 22:54:26.521 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-22 22:54:26.521 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-22 22:54:26.521 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-22 22:54:26.521 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-22 22:54:26.629 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-22 22:54:26.629 +01:00 [INF] Hosting environment: Development
+2020-03-22 22:54:26.629 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-22 22:54:34.134 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-22 22:54:34.136 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-22 22:54:34.136 +01:00 [DBG] Logout Url: /Identity/Account/Logout
+2020-03-22 22:54:34.136 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-22 22:54:34.136 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-22 22:54:34.136 +01:00 [DBG] Error Url: /home/error
+2020-03-22 22:54:34.136 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-22 22:55:01.657 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 22:55:05.332 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-22 22:55:06.132 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-22 22:55:08.477 +01:00 [WRN] User fc74b1ee-bc59-48fe-a508-14598115d91c validation failed: DuplicateUserName.
+2020-03-22 22:56:35.482 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-22 22:56:36.089 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-22 23:05:24.334 +01:00 [INF] Starting host...
+2020-03-22 23:05:25.549 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-22 23:05:25.559 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-22 23:05:25.561 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-22 23:05:25.561 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-22 23:05:25.561 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-22 23:05:25.561 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-22 23:05:25.561 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-22 23:05:25.561 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-22 23:05:25.667 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-22 23:05:25.667 +01:00 [INF] Hosting environment: Development
+2020-03-22 23:05:25.668 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-22 23:05:25.733 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-22 23:05:25.734 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-22 23:05:25.734 +01:00 [DBG] Logout Url: /Identity/Account/Logout
+2020-03-22 23:05:25.734 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-22 23:05:25.734 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-22 23:05:25.734 +01:00 [DBG] Error Url: /home/error
+2020-03-22 23:05:25.734 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-22 23:05:25.952 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 23:05:30.796 +01:00 [WRN] User 4f701144-8d48-41be-8f57-614b4de96530 cannot sign in without a confirmed account.
+2020-03-22 23:05:35.060 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 23:05:35.983 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-22 23:05:36.545 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-22 23:05:36.620 +01:00 [WRN] User 4f701144-8d48-41be-8f57-614b4de96530 cannot sign in without a confirmed account.
+2020-03-22 23:06:24.422 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 23:06:32.236 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-22 23:06:32.585 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-22 23:11:05.005 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-22 23:11:09.616 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-22 23:11:09.959 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-23 12:11:44.023 +01:00 [INF] Starting host...
+2020-03-23 12:11:45.873 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 12:11:45.884 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 12:11:45.886 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 12:11:45.886 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 12:11:45.886 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 12:11:45.886 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 12:11:45.886 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 12:11:45.886 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 12:11:46.060 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 12:11:46.060 +01:00 [INF] Hosting environment: Development
+2020-03-23 12:11:46.060 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 12:11:46.142 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 12:11:46.143 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 12:11:46.143 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 12:11:46.143 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 12:11:46.143 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 12:11:46.143 +01:00 [DBG] Error Url: /home/error
+2020-03-23 12:11:46.143 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 12:28:34.670 +01:00 [INF] Starting host...
+2020-03-23 12:28:35.853 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 12:28:35.862 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 12:28:35.864 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 12:28:35.864 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 12:28:35.864 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 12:28:35.864 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 12:28:35.864 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 12:28:35.864 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 12:28:35.975 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 12:28:35.975 +01:00 [INF] Hosting environment: Development
+2020-03-23 12:28:35.975 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 12:28:36.042 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 12:28:36.043 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 12:28:36.043 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 12:28:36.043 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 12:28:36.043 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 12:28:36.043 +01:00 [DBG] Error Url: /home/error
+2020-03-23 12:28:36.043 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 12:37:39.781 +01:00 [INF] Starting host...
+2020-03-23 12:37:41.085 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 12:37:41.094 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 12:37:41.097 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 12:37:41.097 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 12:37:41.097 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 12:37:41.097 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 12:37:41.097 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 12:37:41.097 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 12:37:41.586 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 12:37:41.586 +01:00 [INF] Hosting environment: Development
+2020-03-23 12:37:41.586 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 12:37:41.652 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 12:37:41.653 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 12:37:41.653 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 12:37:41.653 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 12:37:41.653 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 12:37:41.653 +01:00 [DBG] Error Url: /home/error
+2020-03-23 12:37:41.653 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 12:38:29.542 +01:00 [ERR] The view 'Login' was not found. Searched locations: ["/Views/Account/Login.cshtml","/Views/Shared/Login.cshtml","/Pages/Shared/Login.cshtml"]
+2020-03-23 12:38:29.556 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Login' was not found. The following locations were searched:
+/Views/Account/Login.cshtml
+/Views/Shared/Login.cshtml
+/Pages/Shared/Login.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-23 13:00:17.365 +01:00 [INF] Starting host...
+2020-03-23 13:00:19.122 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 13:00:19.131 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 13:00:19.133 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 13:00:19.133 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 13:00:19.134 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 13:00:19.134 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 13:00:19.134 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 13:00:19.134 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 13:00:19.638 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 13:00:19.638 +01:00 [INF] Hosting environment: Development
+2020-03-23 13:00:19.638 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 13:00:19.704 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 13:00:19.705 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 13:00:19.705 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 13:00:19.705 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 13:00:19.705 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 13:00:19.705 +01:00 [DBG] Error Url: /home/error
+2020-03-23 13:00:19.705 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 13:00:20.084 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The partial view '_ValidationSummary' was not found. The following locations were searched:
+/Views/Account/_ValidationSummary.cshtml
+/Views/Shared/_ValidationSummary.cshtml
+/Pages/Shared/_ValidationSummary.cshtml
+   at Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper.ProcessAsync(TagHelperContext context, TagHelperOutput output)
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.<RunAsync>g__Awaited|0_0(Task task, TagHelperExecutionContext executionContext, Int32 i, Int32 count)
+   at AspNetCore.Views_Account_Login.ExecuteAsync()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-23 13:01:45.346 +01:00 [INF] Starting host...
+2020-03-23 13:01:46.506 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 13:01:46.515 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 13:01:46.518 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 13:01:46.518 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 13:01:46.518 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 13:01:46.518 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 13:01:46.518 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 13:01:46.518 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 13:01:46.768 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 13:01:46.768 +01:00 [INF] Hosting environment: Development
+2020-03-23 13:01:46.768 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 13:01:46.832 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 13:01:46.833 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 13:01:46.833 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 13:01:46.833 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 13:01:46.833 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 13:01:46.833 +01:00 [DBG] Error Url: /home/error
+2020-03-23 13:01:46.833 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 13:01:58.764 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:02:00.063 +01:00 [WRN] User bcbf9a1f-fe69-4bfd-8682-43ecd0b0fb30 cannot sign in without a confirmed account.
+2020-03-23 13:02:00.071 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"80000314-0006-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:02:00.0000000Z","ProcessId":56196,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-23 13:02:03.286 +01:00 [ERR] The view 'Register' was not found. Searched locations: ["/Views/Account/Register.cshtml","/Views/Shared/Register.cshtml","/Pages/Shared/Register.cshtml"]
+2020-03-23 13:02:03.297 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Register' was not found. The following locations were searched:
+/Views/Account/Register.cshtml
+/Views/Shared/Register.cshtml
+/Pages/Shared/Register.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-23 13:03:56.257 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:03:56.331 +01:00 [WRN] User bcbf9a1f-fe69-4bfd-8682-43ecd0b0fb30 cannot sign in without a confirmed account.
+2020-03-23 13:03:56.332 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"800002d3-0008-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:03:56.0000000Z","ProcessId":56196,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-23 13:04:17.404 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:04:24.894 +01:00 [WRN] User bcbf9a1f-fe69-4bfd-8682-43ecd0b0fb30 cannot sign in without a confirmed account.
+2020-03-23 13:04:30.673 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"800002d5-0008-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:04:30.0000000Z","ProcessId":56196,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-23 13:06:03.307 +01:00 [ERR] The view 'Register' was not found. Searched locations: ["/Views/Account/Register.cshtml","/Views/Shared/Register.cshtml","/Pages/Shared/Register.cshtml"]
+2020-03-23 13:06:03.316 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Register' was not found. The following locations were searched:
+/Views/Account/Register.cshtml
+/Views/Shared/Register.cshtml
+/Pages/Shared/Register.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-23 13:07:37.526 +01:00 [INF] Starting host...
+2020-03-23 13:07:38.732 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 13:07:38.741 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 13:07:38.743 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 13:07:38.744 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 13:07:38.744 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 13:07:38.744 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 13:07:38.744 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 13:07:38.744 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 13:07:38.998 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 13:07:38.998 +01:00 [INF] Hosting environment: Development
+2020-03-23 13:07:38.998 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 13:07:39.066 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 13:07:39.067 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 13:07:39.067 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 13:07:39.067 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 13:07:39.067 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 13:07:39.067 +01:00 [DBG] Error Url: /home/error
+2020-03-23 13:07:39.067 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 13:08:10.784 +01:00 [DBG] CORS request made for path: /Account/Register from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:08:11.942 +01:00 [INF] User created a new account with password.
+2020-03-23 13:08:21.241 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 13:08:21.242 +01:00 [DBG] Adding idp claim with value: local
+2020-03-23 13:08:21.242 +01:00 [DBG] Adding amr claim with value: pwd
+2020-03-23 13:08:21.242 +01:00 [DBG] Adding auth_time claim with value: 1584965301
+2020-03-23 13:08:21.253 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 13:08:21.253 +01:00 [INF] User created a new account with password.
+2020-03-23 13:08:52.801 +01:00 [ERR] The view 'ConfirmEmail' was not found. Searched locations: ["/Views/Account/ConfirmEmail.cshtml","/Views/Shared/ConfirmEmail.cshtml","/Pages/Shared/ConfirmEmail.cshtml"]
+2020-03-23 13:08:52.829 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'ConfirmEmail' was not found. The following locations were searched:
+/Views/Account/ConfirmEmail.cshtml
+/Views/Shared/ConfirmEmail.cshtml
+/Pages/Shared/ConfirmEmail.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-23 13:09:40.969 +01:00 [INF] Starting host...
+2020-03-23 13:09:42.179 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 13:09:42.189 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 13:09:42.192 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 13:09:42.192 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 13:09:42.192 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 13:09:42.192 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 13:09:42.192 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 13:09:42.193 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 13:09:42.449 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 13:09:42.449 +01:00 [INF] Hosting environment: Development
+2020-03-23 13:09:42.449 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 13:09:42.517 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 13:09:42.518 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 13:09:42.518 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 13:09:42.518 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 13:09:42.518 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 13:09:42.518 +01:00 [DBG] Error Url: /home/error
+2020-03-23 13:09:42.518 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 13:11:35.001 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:11:37.479 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"80000127-0001-fb00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:11:37.0000000Z","ProcessId":24892,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-23 13:12:06.452 +01:00 [DBG] CORS request made for path: /Account/Register from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:12:06.710 +01:00 [INF] User created a new account with password.
+2020-03-23 13:12:11.369 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 13:12:11.369 +01:00 [DBG] Adding idp claim with value: local
+2020-03-23 13:12:11.370 +01:00 [DBG] Adding amr claim with value: pwd
+2020-03-23 13:12:11.370 +01:00 [DBG] Adding auth_time claim with value: 1584965531
+2020-03-23 13:12:11.377 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 13:12:11.378 +01:00 [INF] User created a new account with password.
+2020-03-23 13:12:54.675 +01:00 [DBG] CORS request made for path: /Account/ConfirmEmail from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:19:29.071 +01:00 [INF] Starting host...
+2020-03-23 13:19:30.296 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 13:19:30.305 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 13:19:30.307 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 13:19:30.307 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 13:19:30.307 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 13:19:30.308 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 13:19:30.308 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 13:19:30.308 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 13:19:30.569 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 13:19:30.570 +01:00 [INF] Hosting environment: Development
+2020-03-23 13:19:30.570 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 13:19:30.637 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 13:19:30.638 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 13:19:30.638 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 13:19:30.638 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 13:19:30.638 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 13:19:30.638 +01:00 [DBG] Error Url: /home/error
+2020-03-23 13:19:30.638 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 13:37:32.138 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-23 13:37:32.140 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 13:37:32.140 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-23 13:37:32.160 +01:00 [INF] {"SubjectId":"d7ebf767-c67a-4a63-a857-0b30109955f0","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"8000021b-0000-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:37:32.0000000Z","ProcessId":14312,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-23 13:37:32.170 +01:00 [ERR] The view 'LoggedOut' was not found. Searched locations: ["/Views/Account/LoggedOut.cshtml","/Views/Shared/LoggedOut.cshtml","/Pages/Shared/LoggedOut.cshtml"]
+2020-03-23 13:37:32.180 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'LoggedOut' was not found. The following locations were searched:
+/Views/Account/LoggedOut.cshtml
+/Views/Shared/LoggedOut.cshtml
+/Pages/Shared/LoggedOut.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-23 13:38:14.893 +01:00 [INF] Starting host...
+2020-03-23 13:38:16.157 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 13:38:16.167 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 13:38:16.169 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 13:38:16.169 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 13:38:16.169 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 13:38:16.169 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 13:38:16.169 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 13:38:16.169 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 13:38:16.423 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 13:38:16.423 +01:00 [INF] Hosting environment: Development
+2020-03-23 13:38:16.423 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 13:38:16.489 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 13:38:16.491 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 13:38:16.491 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 13:38:16.491 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 13:38:16.491 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 13:38:16.491 +01:00 [DBG] Error Url: /home/error
+2020-03-23 13:38:16.491 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 13:38:18.876 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-23 13:38:18.878 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 13:38:18.879 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-23 13:38:18.897 +01:00 [INF] {"SubjectId":"d7ebf767-c67a-4a63-a857-0b30109955f0","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"800002e1-0008-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:38:18.0000000Z","ProcessId":4548,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-23 13:38:46.191 +01:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:39:34.916 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:39:35.974 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 13:39:35.974 +01:00 [DBG] Adding idp claim with value: local
+2020-03-23 13:39:35.974 +01:00 [DBG] Adding auth_time claim with value: 1584967175
+2020-03-23 13:39:35.977 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 13:39:35.984 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"d7ebf767-c67a-4a63-a857-0b30109955f0","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000170-0002-fc00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:39:35.0000000Z","ProcessId":4548,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-23 13:40:50.696 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-23 13:40:50.697 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 13:40:50.697 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-23 13:40:50.697 +01:00 [INF] {"SubjectId":"d7ebf767-c67a-4a63-a857-0b30109955f0","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"80000324-0006-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:40:50.0000000Z","ProcessId":4548,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-23 13:41:29.860 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 13:41:29.907 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 13:41:29.907 +01:00 [DBG] Adding idp claim with value: local
+2020-03-23 13:41:29.907 +01:00 [DBG] Adding auth_time claim with value: 1584967289
+2020-03-23 13:41:29.908 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 13:41:29.909 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"d7ebf767-c67a-4a63-a857-0b30109955f0","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"80000248-000a-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:41:29.0000000Z","ProcessId":4548,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-23 13:41:31.913 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-23 13:41:31.914 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 13:41:31.914 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-23 13:41:31.915 +01:00 [INF] {"SubjectId":"d7ebf767-c67a-4a63-a857-0b30109955f0","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"8000024a-000a-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:41:31.0000000Z","ProcessId":4548,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-23 13:53:32.211 +01:00 [INF] Starting host...
+2020-03-23 13:53:33.446 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 13:53:33.456 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 13:53:33.458 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 13:53:33.458 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 13:53:33.458 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 13:53:33.458 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 13:53:33.458 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 13:53:33.458 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 13:53:33.718 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 13:53:33.718 +01:00 [INF] Hosting environment: Development
+2020-03-23 13:53:33.718 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 13:53:33.783 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 13:53:33.784 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 13:53:33.784 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 13:53:33.784 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 13:53:33.784 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 13:53:33.784 +01:00 [DBG] Error Url: /home/error
+2020-03-23 13:53:33.784 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 13:53:38.269 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-23 13:53:38.821 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-23 13:53:38.841 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-23 13:53:40.134 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 13:53:40.135 +01:00 [DBG] Adding amr claim with value: external
+2020-03-23 13:53:40.138 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 13:53:40.140 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 13:53:40.148 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"660681fc-8f8a-4243-80f0-644fb1ea305a","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"800000ea-0003-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:53:40.0000000Z","ProcessId":16956,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-23 13:53:45.458 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-23 13:53:45.720 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-23 13:53:45.726 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-23 13:53:45.772 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 13:53:45.772 +01:00 [DBG] Adding amr claim with value: external
+2020-03-23 13:53:45.772 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 13:53:45.772 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 13:53:45.773 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"660681fc-8f8a-4243-80f0-644fb1ea305a","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000032c-0006-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:53:45.0000000Z","ProcessId":16956,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-23 13:54:07.963 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-23 13:54:15.249 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-23 13:54:15.253 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-23 13:54:15.269 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 13:54:15.269 +01:00 [DBG] Adding amr claim with value: external
+2020-03-23 13:54:15.270 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 13:54:15.270 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 13:54:15.270 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"660681fc-8f8a-4243-80f0-644fb1ea305a","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"800001c3-0004-fe00-b63f-84710c7967bb","TimeStamp":"2020-03-23T12:54:15.0000000Z","ProcessId":16956,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-23 14:02:11.334 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-23 14:02:11.681 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-23 14:02:11.686 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-23 14:02:11.714 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 14:02:11.714 +01:00 [DBG] Adding amr claim with value: external
+2020-03-23 14:02:11.715 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 14:02:11.715 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 14:02:11.715 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"660681fc-8f8a-4243-80f0-644fb1ea305a","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"800002f3-0008-fd00-b63f-84710c7967bb","TimeStamp":"2020-03-23T13:02:11.0000000Z","ProcessId":16956,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-23 14:04:09.519 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-23 14:04:09.798 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-23 14:04:39.959 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-23 14:05:44.872 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 14:05:44.872 +01:00 [DBG] Adding amr claim with value: external
+2020-03-23 14:05:44.873 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 14:05:45.755 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 14:05:48.822 +01:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"100420900939237655211","SubjectId":"660681fc-8f8a-4243-80f0-644fb1ea305a","DisplayName":"Houssam FERTAQ","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"800001c7-0004-fe00-b63f-84710c7967bb","TimeStamp":"2020-03-23T13:05:48.0000000Z","ProcessId":16956,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-23 19:23:19.314 +01:00 [INF] Starting host...
+2020-03-23 19:23:21.373 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-23 19:23:21.384 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-23 19:23:21.386 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-23 19:23:21.386 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-23 19:23:21.386 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-23 19:23:21.386 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-23 19:23:21.386 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-23 19:23:21.387 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-23 19:23:21.965 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-23 19:23:21.965 +01:00 [INF] Hosting environment: Development
+2020-03-23 19:23:21.965 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-23 19:23:22.048 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-23 19:23:22.049 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-23 19:23:22.049 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-23 19:23:22.049 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-23 19:23:22.050 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-23 19:23:22.050 +01:00 [DBG] Error Url: /home/error
+2020-03-23 19:23:22.050 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-23 19:23:36.572 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 19:23:37.696 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"80000004-000a-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T18:23:37.0000000Z","ProcessId":3704,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-23 19:25:09.579 +01:00 [DBG] CORS request made for path: /Account/Register from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 19:25:09.819 +01:00 [INF] User created a new account with password.
+2020-03-23 19:25:10.855 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 19:25:10.856 +01:00 [DBG] Adding idp claim with value: local
+2020-03-23 19:25:10.856 +01:00 [DBG] Adding amr claim with value: pwd
+2020-03-23 19:25:10.856 +01:00 [DBG] Adding auth_time claim with value: 1584987910
+2020-03-23 19:25:10.865 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 19:25:10.865 +01:00 [INF] User created a new account with password.
+2020-03-23 19:25:19.513 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-23 19:25:19.514 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 19:25:19.514 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-23 19:25:19.515 +01:00 [INF] {"SubjectId":"8c36acf4-51b0-4741-82bc-536faaba0b9b","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"80000002-000b-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T18:25:19.0000000Z","ProcessId":3704,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-23 19:25:30.222 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 19:25:30.249 +01:00 [WRN] User 8c36acf4-51b0-4741-82bc-536faaba0b9b cannot sign in without a confirmed account.
+2020-03-23 19:25:30.250 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"80000006-0006-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T18:25:30.0000000Z","ProcessId":3704,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2020-03-23 19:26:33.426 +01:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-03-23 19:26:33.455 +01:00 [DBG] Augmenting SignInContext
+2020-03-23 19:26:33.456 +01:00 [DBG] Adding idp claim with value: local
+2020-03-23 19:26:33.456 +01:00 [DBG] Adding auth_time claim with value: 1584987993
+2020-03-23 19:26:33.456 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-03-23 19:26:33.460 +01:00 [INF] {"Username":"houssamfertaq@gmail.com","Provider":null,"ProviderUserId":null,"SubjectId":"8c36acf4-51b0-4741-82bc-536faaba0b9b","DisplayName":"houssamfertaq@gmail.com","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"8000000a-0006-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T18:26:33.0000000Z","ProcessId":3704,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-03-23 19:35:40.108 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2020-03-23 19:35:40.109 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-03-23 19:35:40.109 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2020-03-23 19:35:40.109 +01:00 [INF] {"SubjectId":"8c36acf4-51b0-4741-82bc-536faaba0b9b","DisplayName":"houssamfertaq@gmail.com","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"8000000c-0006-ff00-b63f-84710c7967bb","TimeStamp":"2020-03-23T18:35:40.0000000Z","ProcessId":3704,"LocalIpAddress":"::1:44394","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2020-03-24 15:48:22.170 +01:00 [INF] Starting host...
+2020-03-24 15:48:23.371 +01:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-03-24 15:48:23.380 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-03-24 15:48:23.383 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-03-24 15:48:23.383 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-03-24 15:48:23.383 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-03-24 15:48:23.383 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-03-24 15:48:23.383 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-03-24 15:48:23.384 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-03-24 15:48:23.646 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-03-24 15:48:23.647 +01:00 [INF] Hosting environment: Development
+2020-03-24 15:48:23.647 +01:00 [INF] Content root path: E:\fhoussam\TechrezRepo\tr\tr2\auth
+2020-03-24 15:48:23.712 +01:00 [DBG] Login Url: /Identity/Account/Login
+2020-03-24 15:48:23.713 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-03-24 15:48:23.713 +01:00 [DBG] Logout Url: /Account/Logout
+2020-03-24 15:48:23.713 +01:00 [DBG] ConsentUrl Url: /consent
+2020-03-24 15:48:23.713 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-03-24 15:48:23.713 +01:00 [DBG] Error Url: /home/error
+2020-03-24 15:48:23.713 +01:00 [DBG] Error Id Parameter: errorId
+2020-03-24 15:48:29.487 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 15:48:29.983 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 15:48:39.385 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
+2020-03-24 15:52:19.195 +01:00 [WRN] AddLogin for user 1010ba2d-1934-4563-84f4-98b19daf3c76 failed because it was already associated with another user.
+2020-03-24 15:52:39.120 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: A user with this login already exists.
+   at auth.Controllers.ExternalController.AutoProvisionUserAsync(String provider, String providerUserId, IEnumerable`1 claims) in E:\fhoussam\TechrezRepo\tr\tr2\auth\Controllers\ExternalController.cs:line 284
+   at auth.Controllers.ExternalController.Callback() in E:\fhoussam\TechrezRepo\tr\tr2\auth\Controllers\ExternalController.cs:line 113
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events)
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-03-24 15:53:57.436 +01:00 [INF] AuthenticationScheme: Google was challenged.
+2020-03-24 15:53:57.749 +01:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-03-24 15:54:01.582 +01:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 100420900939237655211","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Houssam FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Houssam","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: FERTAQ","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: houssamfertaq@gmail.com"]
