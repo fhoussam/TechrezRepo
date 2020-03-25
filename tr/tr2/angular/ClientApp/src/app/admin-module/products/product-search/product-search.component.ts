@@ -29,10 +29,6 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   selectedItemId: number;
   searchErrorMessage: string;
 
-  isProcessing: boolean;
-  loadingMessage: string;
-  remoteCallStatusObs: Observable<RemoteCallStatus>;
-
   collapse() {
     this.searchPanelCollapsed = !this.searchPanelCollapsed;
   }
@@ -47,9 +43,8 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store<{ remoteCallStatusStoreKey: { messageType: string, messageValue: string }}>,
+    private store: Store<{ remoteCallStatusStoreKey: RemoteCallStatus}>,
   ) {
-    this.isProcessing = false;
     this.searchPanelCollapsed = false;
     this.searchProductQuery = this.getNewSearchQuery();
   }
@@ -59,11 +54,6 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
-    this.store.select('remoteCallStatusStoreKey').subscribe(x => {
-      this.isProcessing = x.messageType == PENDING;
-      this.loadingMessage = x.messageValue;
-    });
 
     this.categories = this.categoriesService.getCategories();
     this.suppliers = this.suppliersService.getSuppliers();
@@ -118,9 +108,11 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     }
     else {
 
+      let pendingMessage = isFromUi ? "Searching for products, please wait ..." : "Loading data, please wait ...";
+
       this.store.dispatch(new RemoteCallAction({
         messageType: PENDING,
-        messageValue: "Searching for products, please wait ...",
+        messageValue: pendingMessage,
       }));
 
       if (isFromUi)

@@ -9,12 +9,14 @@ import { ProductSearchComponent } from '../admin-module/products/product-search/
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { remoteCallStatusReducer } from './remote-call-reducer/remote-call-reducer';
+import { SpinerComponent } from './spiner/spiner.component';
 
 @NgModule({
   declarations: [
     AlertMessageComponent,
     NavMenuComponent,
     HomeComponent,
+    SpinerComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { remoteCallStatusReducer } from './remote-call-reducer/remote-call-reduc
     AlertMessageComponent,
     NavMenuComponent,
     HomeComponent,
+    SpinerComponent,
   ]
 })
 export class SharedModule { }

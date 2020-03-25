@@ -1,4 +1,5 @@
 <body>
+  <app-spiner *ngIf="isProcessing" [messageValue]="messageValue"></app-spiner>
   <app-nav-menu></app-nav-menu>
   <div class="container">
     <router-outlet></router-outlet>
