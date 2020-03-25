@@ -20,17 +20,25 @@
         [ngClass]="{ show: isExpanded }"
       >
         <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/admin/products']"
-              >Products</a
-            >
+            <a class="nav-link text-dark" [routerLink]="['/admin/products']">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" (click)="login()" href="javascript:;">Sign In</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/register']">Sign Up</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/account']">Hello Houssam!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" (click)="logout()" href="javascript:;">Logout</a>
           </li>
         </ul>
       </div>

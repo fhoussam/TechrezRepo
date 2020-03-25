@@ -19,12 +19,13 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   routeSubscription: Subscription;
   categories: any;
   suppliers: any;
-  searchProductQuery : SearchProductQuery;
+  searchProductQuery: SearchProductQuery;
   @ViewChild('f', { static: false }) searchForm: NgForm;
   searchPanelCollapsed: boolean;
   autoCollapse: boolean;
   selectedItemId: number;
   searchErrorMessage: string;
+  isProcessing: boolean;
 
   collapse() {
     this.searchPanelCollapsed = !this.searchPanelCollapsed;
@@ -41,6 +42,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
   ) {
+    this.isProcessing = false;
     this.searchPanelCollapsed = false;
     this.searchProductQuery = this.getNewSearchQuery();
   }
@@ -56,7 +58,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     try {
       this.selectedItemId = +this.activatedRoute.firstChild.snapshot.paramMap.get('id');
       this.searchPanelCollapsed = true;
-    } catch (e) {}
+    } catch (e) { }
 
     //if we click on the Products in nav bar after a product has been opened
     this.routeSubscription = this.router.events.subscribe((event: any) => {
@@ -97,17 +99,20 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   }
 
   search(isFromUi: boolean) {
-
     let isEmpty = this.searchProductQuery.isEmptyQuery();
     if (isEmpty) {
       this.searchErrorMessage = "Please provide at least one search criteria.";
-      return;
     }
+    else {
+      this.isProcessing = true;
 
-    if (isFromUi)
-      this.searchProductQuery.pageIndex = 0;
-    this.productsService.getProducts(this.searchProductQuery).subscribe(x => {
-      this.searchResult = x;
-    });
+      if (isFromUi)
+        this.searchProductQuery.pageIndex = 0;
+
+      this.productsService.getProducts(this.searchProductQuery).subscribe(x => {
+        this.searchResult = x;
+        this.isProcessing = false;
+      });
+    }
   }
 }

@@ -1,100 +1,104 @@
-<app-alert-message [message]="searchErrorMessage" (close)="closeErrorDialog()" *ngIf="searchErrorMessage"></app-alert-message>
-
-<button type="button" class="collapsible" [ngClass]="{'active':!searchPanelCollapsed}" (click)="collapse()">Search products</button>
-<div class="content" [style.display]="searchPanelCollapsed ? 'none' : 'block'">
-  <form (ngSubmit)="search(true)" #f="ngForm">
-    <div class="form-group">
-      <label for="name">Product Name</label>
-      <input type="text" class="form-control" name="productName" [(ngModel)]="searchProductQuery.productName">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="supplierId">Supplier</label>
-        <select class="form-control" name="supplierId" [(ngModel)]="searchProductQuery.supplierId">
-          <option [ngValue]="null">Select All</option>
-          <option *ngFor="let supplier of suppliers | async" value="{{supplier.supplierId}}">{{supplier.companyName}}</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="categoryId">Category</label>
-        <select class="form-control" name="categoryId" [(ngModel)]="searchProductQuery.categoryId">
-          <option [ngValue]="null">Select All</option>
-          <option *ngFor="let category of categories | async" value="{{category.categoryId}}">{{category.categoryName}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="minUnitsInStock">Min Units In Stock</label>
-        <input type="number" class="form-control" name="MinUnitsInStock" [(ngModel)]="searchProductQuery.MinUnitsInStock" />
-      </div>
-      <div class="form-group col-md-6">
-        <label for="maxUnitsInStock">Max Units In Stock</label>
-        <input type="number" class="form-control" name="MaxUnitsInStock" [(ngModel)]="searchProductQuery.MaxUnitsInStock" />
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="discontinued">Discontinued</label>
-        <select class="form-control" name="discontinued" [(ngModel)]="searchProductQuery.discontinued">
-          <option [ngValue]="null">Select All</option>
-          <option value="true">Yes</option>
-          <option value="false">No</option>
-        </select>
-      </div>
-    </div>
-    <div class="btn-group">
-      <input type="submit" class="btn btn-primary" value="Search">
-    </div>
-    <div class="btn-group">
-      <input type="button" class="btn btn-secondary" value="Reset" (click)="f.reset()" />
-    </div>
-  </form>
-
-  <div *ngIf="searchResult?.source && searchResult.source.length == 0" class="alert alert-warning" style="margin-top:20px;">
-    <strong>Sorry!</strong> No results has been found, please retry again.
-  </div>
-
-  <div *ngIf="searchResult?.source && searchResult.source.length > 0">
-    <div class="grid-header">Page <b>{{searchProductQuery?.pageIndex + 1}}</b>/{{searchResult?.totalPages}}</div>
-
-    <!--list-->
-    <app-product-list
-      [products]="searchResult?.source"
-      (sortFieldChange)="onSortFieldChange($event)"
-      (selectedIndexChange)="onSelectedIndexChange($event)"
-    ></app-product-list>
-
-    <div class="form-row">
-      <div class="btn-toolbar col-md-9" role="toolbar">
-        <div class="btn-group mr-2" role="group">
-          <button type="button"
-                  class="btn btn-secondary"
-                  *ngFor="let item of [].constructor(searchResult?.totalPages); let i = index"
-                  (click)="goToPage(i)">
-            {{i + 1}}
-          </button>
-        </div>
-      </div>
-      <div class="form-check col-md-3">
-        <div style="float:right">
-          <input type="checkbox" class="form-check-input" [(ngModel)]="autoCollapse">
-          <label class="form-check-label" for="exampleCheck1">Auto Collapse</label>
-        </div>
-      </div>
-    </div>
-
-  </div>
+<div class="spinner-border text-primary" role="status" *ngIf="isProcessing">
+  <span class="sr-only">Loading...</span>
 </div>
 
-<div *ngIf="selectedItemId">
-  <ul class="nav nav-tabs" style="margin-top:15px;">
-    <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/details">Details</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/supplier">Supplier</a>
-    </li>
-  </ul>
-  <router-outlet></router-outlet>
+<div *ngIf="!isProcessing">
+  <app-alert-message [message]="searchErrorMessage" (close)="closeErrorDialog()" *ngIf="searchErrorMessage"></app-alert-message>
+
+  <button type="button" class="collapsible" [ngClass]="{'active':!searchPanelCollapsed}" (click)="collapse()">Search products</button>
+  <div class="content" [style.display]="searchPanelCollapsed ? 'none' : 'block'">
+    <form (ngSubmit)="search(true)" #f="ngForm">
+      <div class="form-group">
+        <label for="name">Product Name</label>
+        <input type="text" class="form-control" name="productName" [(ngModel)]="searchProductQuery.productName">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="supplierId">Supplier</label>
+          <select class="form-control" name="supplierId" [(ngModel)]="searchProductQuery.supplierId">
+            <option [ngValue]="null">Select All</option>
+            <option *ngFor="let supplier of suppliers | async" value="{{supplier.supplierId}}">{{supplier.companyName}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="categoryId">Category</label>
+          <select class="form-control" name="categoryId" [(ngModel)]="searchProductQuery.categoryId">
+            <option [ngValue]="null">Select All</option>
+            <option *ngFor="let category of categories | async" value="{{category.categoryId}}">{{category.categoryName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="minUnitsInStock">Min Units In Stock</label>
+          <input type="number" class="form-control" name="MinUnitsInStock" [(ngModel)]="searchProductQuery.MinUnitsInStock" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="maxUnitsInStock">Max Units In Stock</label>
+          <input type="number" class="form-control" name="MaxUnitsInStock" [(ngModel)]="searchProductQuery.MaxUnitsInStock" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="discontinued">Discontinued</label>
+          <select class="form-control" name="discontinued" [(ngModel)]="searchProductQuery.discontinued">
+            <option [ngValue]="null">Select All</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-group">
+        <input type="submit" class="btn btn-primary" value="Search">
+      </div>
+      <div class="btn-group">
+        <input type="button" class="btn btn-secondary" value="Reset" (click)="f.reset()" />
+      </div>
+    </form>
+
+    <div *ngIf="searchResult?.source && searchResult.source.length == 0" class="alert alert-warning" style="margin-top:20px;">
+      <strong>Sorry!</strong> No results has been found, please retry again.
+    </div>
+
+    <div *ngIf="searchResult?.source && searchResult.source.length > 0">
+      <div class="grid-header">Page <b>{{searchProductQuery?.pageIndex + 1}}</b>/{{searchResult?.totalPages}}</div>
+
+      <!--list-->
+      <app-product-list [products]="searchResult?.source"
+                        (sortFieldChange)="onSortFieldChange($event)"
+                        (selectedIndexChange)="onSelectedIndexChange($event)"></app-product-list>
+
+      <div class="form-row">
+        <div class="btn-toolbar col-md-9" role="toolbar">
+          <div class="btn-group mr-2" role="group">
+            <button type="button"
+                    class="btn btn-secondary"
+                    *ngFor="let item of [].constructor(searchResult?.totalPages); let i = index"
+                    (click)="goToPage(i)">
+              {{i + 1}}
+            </button>
+          </div>
+        </div>
+        <div class="form-check col-md-3">
+          <div style="float:right">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="autoCollapse">
+            <label class="form-check-label" for="exampleCheck1">Auto Collapse</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="selectedItemId">
+    <ul class="nav nav-tabs" style="margin-top:15px;">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/details">Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/supplier">Supplier</a>
+      </li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
 </div>
