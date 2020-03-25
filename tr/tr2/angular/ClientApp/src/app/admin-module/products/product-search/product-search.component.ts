@@ -6,7 +6,10 @@ import { ProductsService } from '../../../services/products.service';
 import { SearchProductQuery } from '../../../models/SearchProductQuery';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { RemoteCallAction, PENDING, SUCCESS } from '../../../shared-module/remote-call-reducer/remote-call-actions';
+import { RemoteCallStatus } from '../../../shared-module/remote-call-reducer/remote-call-reducer';
 
 @Component({
   selector: 'app-product-search',
@@ -25,7 +28,10 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   autoCollapse: boolean;
   selectedItemId: number;
   searchErrorMessage: string;
+
   isProcessing: boolean;
+  loadingMessage: string;
+  remoteCallStatusObs: Observable<RemoteCallStatus>;
 
   collapse() {
     this.searchPanelCollapsed = !this.searchPanelCollapsed;
@@ -41,6 +47,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private store: Store<{ remoteCallStatusStoreKey: { messageType: string, messageValue: string }}>,
   ) {
     this.isProcessing = false;
     this.searchPanelCollapsed = false;
@@ -52,6 +59,12 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+    this.store.select('remoteCallStatusStoreKey').subscribe(x => {
+      this.isProcessing = x.messageType == PENDING;
+      this.loadingMessage = x.messageValue;
+    });
+
     this.categories = this.categoriesService.getCategories();
     this.suppliers = this.suppliersService.getSuppliers();
 
@@ -104,14 +117,23 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
       this.searchErrorMessage = "Please provide at least one search criteria.";
     }
     else {
-      this.isProcessing = true;
+
+      this.store.dispatch(new RemoteCallAction({
+        messageType: PENDING,
+        messageValue: "Searching for products, please wait ...",
+      }));
 
       if (isFromUi)
         this.searchProductQuery.pageIndex = 0;
 
       this.productsService.getProducts(this.searchProductQuery).subscribe(x => {
         this.searchResult = x;
-        this.isProcessing = false;
+
+        this.store.dispatch(new RemoteCallAction({
+          messageType: SUCCESS,
+          messageValue: null,
+        }));
+
       });
     }
   }

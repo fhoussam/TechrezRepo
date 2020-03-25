@@ -40,6 +40,8 @@
     <None Remove="ClientApp\src\app\models\ISupplier.ts" />
     <None Remove="ClientApp\src\app\models\SearchProductQuery.ts" />
     <None Remove="ClientApp\src\app\services\IEditProductQuery.ts" />
+    <None Remove="ClientApp\src\app\shared-module\remote-call-reducer\remote-call-actions.ts" />
+    <None Remove="ClientApp\src\app\shared-module\remote-call-reducer\remote-call-reducer.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,6 +64,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\ISearchQueryExtension.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISupplier.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\IEditProductQuery.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared-module\remote-call-reducer\remote-call-reducer.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared-module\remote-call-reducer\remote-call-actions.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProductSearchComponent } from '../admin-module/products/product-search/product-search.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { remoteCallStatusReducer } from './remote-call-reducer/remote-call-reducer';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'products', component: ProductSearchComponent },
     ]),
+    StoreModule.forRoot({ remoteCallStatusStoreKey: remoteCallStatusReducer }),
   ],
   exports: [
     HttpClientModule,
