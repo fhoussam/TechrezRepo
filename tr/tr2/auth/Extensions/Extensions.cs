@@ -5,7 +5,7 @@ using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace auth
+namespace auth.Extensions
 {
     public static class Extensions
     {

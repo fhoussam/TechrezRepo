@@ -1,6 +1,4 @@
-using System;
-
-namespace auth.Models
+namespace auth.ViewModels.Home
 {
     public class ErrorViewModel
     {

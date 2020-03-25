@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace auth.ViewModels
+namespace auth.ViewModels.Account
 {
     public class LoginViewModel : LoginInputModel
     {

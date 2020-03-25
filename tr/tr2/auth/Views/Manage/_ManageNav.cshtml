@@ -1,0 +1,18 @@
+﻿@using auth.Models
+
+@inject Microsoft.AspNetCore.Identity.SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" asp-action="Index" role="tab">Home</a>
+    <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" asp-action="ChangePassword" role="tab">Profile</a>
+    @if (hasExternalLogins)
+    {
+        <a class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-action="ExternalLogins" role="tab">External logins</a>
+    }
+    @*<li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)">
+            <a asp-action="TwoFactorAuthentication">Two-factor authentication</a>
+    </li>*@
+</div>

@@ -1,4 +1,4 @@
-﻿namespace auth.ViewModels
+﻿namespace auth.ViewModels.Account
 {
     public class LoggedOutViewModel
     {

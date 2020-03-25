@@ -1,6 +1,6 @@
 ﻿using auth.Models;
 
-namespace auth.ViewModels
+namespace auth.ViewModels.Account
 {
     public class LogoutViewModel : LogoutInputModel
     {

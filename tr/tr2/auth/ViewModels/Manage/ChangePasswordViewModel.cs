@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace trone.ViewModels.ManageViewModels
+namespace auth.ViewModels.Manage
 {
     public class ChangePasswordViewModel
     {

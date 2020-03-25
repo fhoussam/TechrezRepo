@@ -15,8 +15,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Logging;
-using auth.ViewModels;
 using auth.CustomAttributes;
+using auth.Extensions;
+using auth.Shared.ViewModels;
+using auth.ViewModels.Account;
 
 namespace auth.Controllers
 {

@@ -1,4 +1,4 @@
-﻿namespace auth.ViewModels
+﻿namespace auth.Models
 {
     public class ExternalProvider
     {

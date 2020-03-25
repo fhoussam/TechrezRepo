@@ -16,7 +16,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using auth.CustomAttributes;
-using auth.ViewModels;
+using auth.Extensions;
+using auth.Shared.ViewModels;
 
 namespace auth.Controllers
 {

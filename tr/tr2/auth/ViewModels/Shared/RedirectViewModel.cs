@@ -1,4 +1,4 @@
-namespace auth.ViewModels
+namespace auth.Shared.ViewModels
 {
     public class RedirectViewModel
     {
