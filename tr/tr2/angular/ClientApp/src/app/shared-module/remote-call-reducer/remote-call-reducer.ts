@@ -19,10 +19,10 @@ export const appReducer: ActionReducerMap<IAppState> = {
   remoteCallStatus: remoteCallStatusReducer,
 };
 
-export function remoteCallStatusReducer(state = initialState, action: RemoteCallAction): IRemoteCallStatus {
-  try {
-    return action.payload as IRemoteCallStatus;
-  } catch (e) {
+export function remoteCallStatusReducer(state: IRemoteCallStatus = initialState, action: RemoteCallAction): IRemoteCallStatus {
+  if (action.type === "@ngrx/store/init") { //hacky, but it seems like "@ngrx/store/init" is actually the first action made by redux
     return initialState;
   }
+  else
+    return action.payload as IRemoteCallStatus;
 }

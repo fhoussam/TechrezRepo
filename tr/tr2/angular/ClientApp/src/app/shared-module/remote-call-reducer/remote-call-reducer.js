@@ -10,12 +10,11 @@ exports.appReducer = {
 };
 function remoteCallStatusReducer(state, action) {
     if (state === void 0) { state = initialState; }
-    try {
-        return action.payload;
-    }
-    catch (e) {
+    if (action.type === "@ngrx/store/init") { //hacky, but it seems like "@ngrx/store/init" is actually the first action made by redux
         return initialState;
     }
+    else
+        return action.payload;
 }
 exports.remoteCallStatusReducer = remoteCallStatusReducer;
 //# sourceMappingURL=remote-call-reducer.js.map
