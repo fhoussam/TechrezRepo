@@ -1,5 +1,5 @@
 import { RemoteCallAction, SUCCESS } from "./remote-call-actions";
-import { ActionReducerMap, Action } from "@ngrx/store";
+import { ActionReducerMap } from "@ngrx/store";
 
 export interface IAppState {
   remoteCallStatus: IRemoteCallStatus;

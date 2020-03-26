@@ -1,7 +1,7 @@
 import { Component, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from './shared-module/remote-call-reducer/remote-call-reducer';
-import { PENDING } from './shared-module/remote-call-reducer/remote-call-actions';
+import { PENDING, ALERT } from './shared-module/remote-call-reducer/remote-call-actions';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,8 @@ export class AppComponent implements AfterViewChecked{
 
   title = 'app';
 
-  isProcessing: boolean;
+  isPending: boolean;
+  isAlert: boolean;
   messageValue: string;
 
   constructor(
@@ -28,8 +29,8 @@ export class AppComponent implements AfterViewChecked{
   ngOnInit() {
     //remoteCallStatus represents one of the props in IAppState structure
     this.store.select('remoteCallStatus').subscribe(x => {
-      //a switch case is needed here!
-      this.isProcessing = x.messageType == PENDING;
+      this.isAlert = x.messageType == ALERT;
+      this.isPending = x.messageType == PENDING;
       this.messageValue = x.messageValue;
     });
   }

@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IAppState } from '../remote-call-reducer/remote-call-reducer';
+import { Store } from '@ngrx/store';
+import { RemoteCallAction, SUCCESS } from '../remote-call-reducer/remote-call-actions';
 
 @Component({
   selector: 'app-alert-message',
@@ -8,10 +11,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class AlertMessageComponent {
 
   @Input() message: string;
-  @Output() close = new EventEmitter<void>();
+
+  constructor(private store:Store<IAppState>) { }
 
   onClose() {
-    this.close.emit();
+    this.store.dispatch(new RemoteCallAction({ messageType: SUCCESS, messageValue: null }));
   }
 
 }

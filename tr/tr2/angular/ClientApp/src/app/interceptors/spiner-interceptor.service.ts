@@ -36,7 +36,7 @@ export class SpinerInterceptorService implements HttpInterceptor {
     if (loadingMessage) {
       this.store.dispatch(new RemoteCallAction({
         messageType: PENDING,
-        messageValue: "Loading, please wait ...",
+        messageValue: (req.method === "GET" ? "Loading" : "Saving") + ", please wait ...",
       }));
     }
 

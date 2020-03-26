@@ -21,6 +21,7 @@ namespace api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] EditProductCommand editProductCommand) 
         {
+            System.Threading.Thread.Sleep(500);
             return Ok(await Mediator.Send(editProductCommand));
         }
 

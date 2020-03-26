@@ -1,5 +1,8 @@
 <body>
-  <app-spiner *ngIf="isProcessing" [messageValue]="messageValue"></app-spiner>
+  <div *ngIf="messageValue">
+    <app-spiner *ngIf="isPending" [messageValue]="messageValue"></app-spiner>
+    <app-alert-message *ngIf="isAlert" [message]="messageValue"></app-alert-message>
+  </div>
   <app-nav-menu></app-nav-menu>
   <div class="container">
     <router-outlet></router-outlet>
