@@ -1,23 +1,28 @@
 import { RemoteCallAction, SUCCESS } from "./remote-call-actions";
+import { ActionReducerMap, Action } from "@ngrx/store";
 
-export class RemoteCallStatus {
+export interface IAppState {
+  remoteCallStatus: IRemoteCallStatus;
+}
+
+export interface IRemoteCallStatus {
   messageType: string;
   messageValue: string;
 }
 
-const initialState = {
+const initialState: IRemoteCallStatus = {
   messageType: SUCCESS,
   messageValue: null,
 };
 
-export function remoteCallStatusReducer(state = initialState, action: RemoteCallAction) {
+export const appReducer: ActionReducerMap<IAppState> = {
+  remoteCallStatus: remoteCallStatusReducer,
+};
+
+export function remoteCallStatusReducer(state = initialState, action: RemoteCallAction): IRemoteCallStatus {
   try {
-    let data = action.payload as RemoteCallStatus;
-    return {
-      messageType: data.messageType,
-      messageValue: data.messageValue,
-    }
+    return action.payload as IRemoteCallStatus;
   } catch (e) {
-    return state;
+    return initialState;
   }
 }

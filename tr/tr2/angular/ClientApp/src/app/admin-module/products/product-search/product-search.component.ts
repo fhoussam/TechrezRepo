@@ -9,7 +9,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RemoteCallAction, PENDING, SUCCESS } from '../../../shared-module/remote-call-reducer/remote-call-actions';
-import { RemoteCallStatus } from '../../../shared-module/remote-call-reducer/remote-call-reducer';
+import { IAppState } from '../../../shared-module/remote-call-reducer/remote-call-reducer';
 
 @Component({
   selector: 'app-product-search',
@@ -43,10 +43,11 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store<{ remoteCallStatusStoreKey: RemoteCallStatus}>,
+    private store: Store<IAppState>,
   ) {
     this.searchPanelCollapsed = false;
     this.searchProductQuery = this.getNewSearchQuery();
+    this.searchProductQuery.discontinued = false;
   }
 
   getNewSearchQuery() {

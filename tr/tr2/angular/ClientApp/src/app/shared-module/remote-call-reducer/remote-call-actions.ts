@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { RemoteCallStatus } from "./remote-call-reducer";
+import { IRemoteCallStatus } from "./remote-call-reducer";
 
 export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
@@ -8,7 +8,7 @@ export const PENDING = 'PENDING';
 
 export class RemoteCallAction implements Action {
   readonly type;
-  constructor(public payload: RemoteCallStatus) {
+  constructor(public payload: IRemoteCallStatus) {
     this.type = payload.messageType;
   }
 }

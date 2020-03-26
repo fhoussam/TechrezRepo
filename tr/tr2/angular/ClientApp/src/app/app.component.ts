@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { RemoteCallStatus } from './shared-module/remote-call-reducer/remote-call-reducer';
+import { IRemoteCallStatus, IAppState } from './shared-module/remote-call-reducer/remote-call-reducer';
 import { PENDING } from './shared-module/remote-call-reducer/remote-call-actions';
 
 @Component({
@@ -15,13 +15,17 @@ export class AppComponent {
   messageValue: string;
 
   constructor(
-    private store: Store<{ remoteCallStatusStoreKey: RemoteCallStatus }>
+    private store: Store<IAppState>
   ) { }
 
   ngOnInit() {
-    this.store.select('remoteCallStatusStoreKey').subscribe(x => {
-      this.isProcessing = x.messageType == PENDING;
-      this.messageValue = x.messageValue;
+    //remoteCallStatus represents one of the props in IAppState structure
+    this.store.select('remoteCallStatus').subscribe(x => {
+      //a switch case is needed here
+      if (x) {
+        this.isProcessing = x.messageType == PENDING;
+        this.messageValue = x.messageValue;
+      }
     });
   }
 }

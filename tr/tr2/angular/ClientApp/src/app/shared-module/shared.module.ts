@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductSearchComponent } from '../admin-module/products/product-search/product-search.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { remoteCallStatusReducer } from './remote-call-reducer/remote-call-reducer';
+import { appReducer } from './remote-call-reducer/remote-call-reducer';
 import { SpinerComponent } from './spiner/spiner.component';
 
 @NgModule({
@@ -29,7 +29,7 @@ import { SpinerComponent } from './spiner/spiner.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'products', component: ProductSearchComponent },
     ]),
-    StoreModule.forRoot({ remoteCallStatusStoreKey: remoteCallStatusReducer }),
+    StoreModule.forRoot(appReducer),
   ],
   exports: [
     HttpClientModule,
