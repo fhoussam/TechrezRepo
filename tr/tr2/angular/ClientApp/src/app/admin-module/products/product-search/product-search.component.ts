@@ -7,9 +7,6 @@ import { SearchProductQuery } from '../../../models/SearchProductQuery';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { RemoteCallAction, PENDING, SUCCESS } from '../../../shared-module/remote-call-reducer/remote-call-actions';
-import { IAppState } from '../../../shared-module/remote-call-reducer/remote-call-reducer';
 
 @Component({
   selector: 'app-product-search',
@@ -43,7 +40,6 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store<IAppState>,
   ) {
     this.searchPanelCollapsed = false;
     this.searchProductQuery = this.getNewSearchQuery();
@@ -69,6 +65,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
       if (event instanceof NavigationEnd) {
         if (event.urlAfterRedirects.split('/').length === 3) {
           this.searchPanelCollapsed = false;
+          this.selectedItemId = null;
         }
       }
     });
@@ -108,25 +105,11 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
       this.searchErrorMessage = "Please provide at least one search criteria.";
     }
     else {
-
-      let pendingMessage = isFromUi ? "Searching for products, please wait ..." : "Loading data, please wait ...";
-
-      this.store.dispatch(new RemoteCallAction({
-        messageType: PENDING,
-        messageValue: pendingMessage,
-      }));
-
       if (isFromUi)
         this.searchProductQuery.pageIndex = 0;
 
       this.productsService.getProducts(this.searchProductQuery).subscribe(x => {
         this.searchResult = x;
-
-        this.store.dispatch(new RemoteCallAction({
-          messageType: SUCCESS,
-          messageValue: null,
-        }));
-
       });
     }
   }

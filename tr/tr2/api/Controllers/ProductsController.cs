@@ -27,7 +27,7 @@ namespace api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] SearchProductQuery searchProductQuery) 
         {
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
             return Ok(await Mediator.Send(searchProductQuery));
         }
 
