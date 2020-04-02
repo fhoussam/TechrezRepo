@@ -3,8 +3,8 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEventType, HttpHeaders }
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
-import { IAppState } from '../shared-module/reducers/shared-reducer-selector';
-import { RemoteCallAction, PENDING, SUCCESS } from '../shared-module/reducers/spiner-reducer/spiner-actions';
+import { RemoteCallAction, PENDING, SUCCESS } from '../reducers/spiner-reducer/spiner-actions';
+import { IAppState } from '../reducers/shared-reducer-selector';
 
 class UrlForSpinner {
   value: string;
@@ -47,7 +47,6 @@ export class SpinerInterceptorService implements HttpInterceptor {
           messageType: SUCCESS,
           messageValue: null,
         }));
-
       }
     }));
   }

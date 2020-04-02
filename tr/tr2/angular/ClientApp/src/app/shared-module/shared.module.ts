@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StoreModule, Store } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { HomeComponent } from './components/home/home.component';
 import { ProductSearchComponent } from '../admin-module/products/product-search/product-search.component';
-import { appReducer } from './reducers/shared-reducer-selector';
+import { appReducer, get_settings } from './reducers/shared-reducer-selector';
 import { InitAppEffects } from './reducers/app-init-reducer/app-init-effects';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
@@ -16,6 +16,9 @@ import { SpinerComponent } from './components/spiner/spiner.component';
 import { CategoryPipe } from './pipes/category.pipe';
 import { CategoriesService } from './services/categories.service';
 import { SecurityService } from './services/security.service';
+import { CookieService } from 'ngx-cookie-service';
+import { SpinerInterceptorService } from './interceptors/spiner-interceptor.service';
+import { AntiForgeryInterceptorService } from './interceptors/antiforgery-interceptor.service';
 @NgModule({
   declarations: [
     AlertMessageComponent,
@@ -55,7 +58,27 @@ export class SharedModule {
   static ForRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [SecurityService, CategoriesService]
+      providers: [
+        CategoriesService,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: SpinerInterceptorService,
+          multi: true,
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AntiForgeryInterceptorService,
+          multi: true,
+        },
+        {
+          provide: APP_INITIALIZER,
+          useFactory: get_settings,
+          deps: [Store],
+          multi: true
+        },
+        CookieService,
+        SecurityService,
+      ]
     }
   }
 }
