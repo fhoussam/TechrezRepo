@@ -1,4 +1,4 @@
-import { RemoteCallAction, SUCCESS } from "./remote-call-actions";
+import { SUCCESS, RemoteCallAction } from "./spiner-actions";
 
 export interface IRemoteCallStatus {
   messageType: string;

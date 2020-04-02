@@ -12,4 +12,4 @@ var RemoteCallAction = /** @class */ (function () {
     return RemoteCallAction;
 }());
 exports.RemoteCallAction = RemoteCallAction;
-//# sourceMappingURL=remote-call-actions.js.map
+//# sourceMappingURL=spiner-actions.js.map

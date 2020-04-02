@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var remote_call_actions_1 = require("./remote-call-actions");
+var spiner_actions_1 = require("./spiner-actions");
 var initialState = {
-    messageType: remote_call_actions_1.SUCCESS,
+    messageType: spiner_actions_1.SUCCESS,
     messageValue: null,
 };
 function remoteCallStatusReducer(state, action) {
@@ -14,4 +14,4 @@ function remoteCallStatusReducer(state, action) {
         return action.payload;
 }
 exports.remoteCallStatusReducer = remoteCallStatusReducer;
-//# sourceMappingURL=remote-call-reducer.js.map
+//# sourceMappingURL=spiner-reducer.js.map

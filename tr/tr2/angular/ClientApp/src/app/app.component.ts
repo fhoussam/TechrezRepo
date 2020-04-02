@@ -1,8 +1,7 @@
 import { Component, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PENDING, ALERT } from './shared-module/remote-call-reducer/remote-call-actions';
-import { InitCategoriesBegin } from './shared-module/app-init-reducer/app-init-actions';
-import { IAppState } from './shared-module/shared-reducer-selector';
+import { IAppState } from './shared-module/reducers/shared-reducer-selector';
+import { PENDING, ALERT } from './shared-module/reducers/spiner-reducer/spiner-actions';
 
 @Component({
   selector: 'app-root',

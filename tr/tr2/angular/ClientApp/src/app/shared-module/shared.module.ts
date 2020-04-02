@@ -10,9 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { SpinerComponent } from './spiner/spiner.component';
 import { EffectsModule } from '@ngrx/effects';
-import { InitAppEffects } from './app-init-reducer/app-init-effects';
-import { appReducer } from './shared-reducer-selector';
 import { CategoryPipe } from './pipes/category.pipe';
+import { InitAppEffects } from './reducers/app-init-reducer/app-init-effects';
+import { appReducer } from './reducers/shared-reducer-selector';
 
 @NgModule({
   declarations: [

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { RemoteCallAction, PENDING, SUCCESS } from '../shared-module/remote-call-reducer/remote-call-actions';
-import { IAppState } from '../shared-module/shared-reducer-selector';
 import { CookieService } from 'ngx-cookie-service';
+import { IAppState } from '../shared-module/reducers/shared-reducer-selector';
+import { RemoteCallAction, PENDING, SUCCESS } from '../shared-module/reducers/spiner-reducer/spiner-actions';
 
 class UrlForSpinner {
   value: string;

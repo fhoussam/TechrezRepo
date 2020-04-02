@@ -1,10 +1,9 @@
-import { IRemoteCallStatus, remoteCallStatusReducer } from "./remote-call-reducer/remote-call-reducer";
 import { IAppInitState, appInitReducer } from "./app-init-reducer/app-init-reducer";
 import { ActionReducerMap, Store } from "@ngrx/store";
 import { InitAppBegin, InitCategoriesBegin, InitAppEnd, InitAntiForgeryBegin } from "./app-init-reducer/app-init-actions";
-import { CategoriesService } from "../services/categories.service";
 import { filter, take, tap } from "rxjs/operators";
-import { APP_SETTINGS } from "./models/APP_SETTINGS";
+import { APP_SETTINGS } from "../models/APP_SETTINGS";
+import { IRemoteCallStatus, remoteCallStatusReducer } from "./spiner-reducer/spiner-reducer";
 
 export interface IAppState {
   remoteCallStatus: IRemoteCallStatus;

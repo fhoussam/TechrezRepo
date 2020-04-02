@@ -6,10 +6,10 @@ import { SharedModule } from './shared-module/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinerInterceptorService } from './interceptors/spiner-interceptor.service';
 import { EffectsModule } from '@ngrx/effects';
-import { get_settings } from './shared-module/shared-reducer-selector';
 import { Store } from '@ngrx/store';
 import { SecurityService } from './services/security.service';
 import { CookieService } from 'ngx-cookie-service'
+import { get_settings } from './shared-module/reducers/shared-reducer-selector';
 
 @NgModule({
   declarations: [

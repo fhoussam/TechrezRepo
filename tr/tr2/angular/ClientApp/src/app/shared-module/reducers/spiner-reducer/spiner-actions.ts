@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { IRemoteCallStatus } from "./remote-call-reducer";
+import { IRemoteCallStatus } from "./spiner-reducer";
 
 export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';

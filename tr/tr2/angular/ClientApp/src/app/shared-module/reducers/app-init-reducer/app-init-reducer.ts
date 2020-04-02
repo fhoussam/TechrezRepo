@@ -1,5 +1,5 @@
-import { ICategory } from "../../models/ICategory";
 import { InitAppAction, INIT_CATEGORIES_END, InitCategoriesEnd, INIT_ANTIFORGERY_END } from "./app-init-actions";
+import { ICategory } from "../../../models/ICategory";
 
 export interface IAppInitState {
   categories: ICategory[],

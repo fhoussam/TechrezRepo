@@ -7,11 +7,11 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { RemoteCallAction, ALERT } from '../../../shared-module/remote-call-reducer/remote-call-actions';
-import { IAppState } from '../../../shared-module/shared-reducer-selector';
 import { map } from 'rxjs/operators';
 import { ICategory } from '../../../models/ICategory';
 import { APP_SETTINGS } from '../../../shared-module/models/APP_SETTINGS';
+import { IAppState } from '../../../shared-module/reducers/shared-reducer-selector';
+import { RemoteCallAction, ALERT } from '../../../shared-module/reducers/spiner-reducer/spiner-actions';
 
 @Component({
   selector: 'app-product-search',

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var remote_call_reducer_1 = require("./remote-call-reducer/remote-call-reducer");
+var remote_call_reducer_1 = require("./spiner-reducer/remote-call-reducer");
 var app_init_reducer_1 = require("./app-init-reducer/app-init-reducer");
 exports.appReducer = {
     remoteCallStatus: remote_call_reducer_1.remoteCallStatusReducer,
