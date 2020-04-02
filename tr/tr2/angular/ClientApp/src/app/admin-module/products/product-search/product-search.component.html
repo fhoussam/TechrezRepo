@@ -18,7 +18,7 @@
           <label for="categoryId">Category</label>
           <select class="form-control" name="categoryId" [(ngModel)]="searchProductQuery.categoryId">
             <option [ngValue]="null">Select All</option>
-            <option *ngFor="let category of categories | async" value="{{category.categoryId}}">{{category.categoryName}}</option>
+            <option *ngFor="let category of categories" value="{{category.categoryId}}">{{category.categoryName}}</option>
           </select>
         </div>
       </div>

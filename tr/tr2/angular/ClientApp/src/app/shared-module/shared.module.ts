@@ -12,6 +12,7 @@ import { SpinerComponent } from './spiner/spiner.component';
 import { EffectsModule } from '@ngrx/effects';
 import { InitAppEffects } from './app-init-reducer/app-init-effects';
 import { appReducer } from './shared-reducer-selector';
+import { CategoryPipe } from './pipes/category.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { appReducer } from './shared-reducer-selector';
     NavMenuComponent,
     HomeComponent,
     SpinerComponent,
+    CategoryPipe,
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { appReducer } from './shared-reducer-selector';
     NavMenuComponent,
     HomeComponent,
     SpinerComponent,
+    CategoryPipe,
   ]
 })
 export class SharedModule { }

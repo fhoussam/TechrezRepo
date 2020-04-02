@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CategoriesService } from './services/categories.service';
 import { get_settings } from './shared-module/shared-reducer-selector';
 import { Store } from '@ngrx/store';
+import { CategoryPipe } from './shared-module/pipes/category.pipe';
 
 @NgModule({
   declarations: [

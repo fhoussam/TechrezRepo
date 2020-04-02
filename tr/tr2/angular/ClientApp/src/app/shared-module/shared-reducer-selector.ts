@@ -3,7 +3,8 @@ import { IAppInitState, appInitReducer } from "./app-init-reducer/app-init-reduc
 import { ActionReducerMap, Store } from "@ngrx/store";
 import { InitAppBegin, InitCategoriesBegin, InitAppEnd } from "./app-init-reducer/app-init-actions";
 import { CategoriesService } from "../services/categories.service";
-import { filter, take } from "rxjs/operators";
+import { filter, take, tap } from "rxjs/operators";
+import { APP_SETTINGS } from "./models/APP_SETTINGS";
 
 export interface IAppState {
   remoteCallStatus: IRemoteCallStatus;
@@ -23,6 +24,7 @@ export function get_settings(store: Store<IAppState>) {
     store.select((state: IAppState) => state.appInitState.categories)
       .pipe(
         filter(categories => categories !== null && categories !== undefined && categories.length > 0),
+        tap(categories => APP_SETTINGS.categories = categories),
         take(1)
       )
       .subscribe((categories) => {

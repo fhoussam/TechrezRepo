@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { IProductSearchResponse } from '../../../models/IProductSearchResponse';
 import { SuppliersService } from '../../../services/suppliers.service';
-import { CategoriesService } from '../../../services/categories.service';
 import { ProductsService } from '../../../services/products.service';
 import { SearchProductQuery } from '../../../models/SearchProductQuery';
 import { NgForm } from '@angular/forms';
@@ -10,6 +9,9 @@ import { Subscription, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RemoteCallAction, ALERT } from '../../../shared-module/remote-call-reducer/remote-call-actions';
 import { IAppState } from '../../../shared-module/shared-reducer-selector';
+import { map } from 'rxjs/operators';
+import { ICategory } from '../../../models/ICategory';
+import { APP_SETTINGS } from '../../../shared-module/models/APP_SETTINGS';
 
 @Component({
   selector: 'app-product-search',
@@ -20,7 +22,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
 
   searchResult: IProductSearchResponse;
   routeSubscription: Subscription;
-  categories: any;
+  categories: ICategory[];
   suppliers: any;
   searchProductQuery: SearchProductQuery;
   @ViewChild('f', { static: false }) searchForm: NgForm;
@@ -34,7 +36,6 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
 
   constructor(
     private productsService: ProductsService,
-    private categoriesService: CategoriesService,
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -51,7 +52,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.categories = this.categoriesService.getCategories();
+    this.categories = APP_SETTINGS.categories;
     this.suppliers = this.suppliersService.getSuppliers();
 
     try {
