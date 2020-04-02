@@ -11,8 +11,8 @@ import { ProductsService } from '../services/products.service';
 import { ProductListComponent } from './products/product-list/product-list.component';
 
 import { SuppliersService } from '../services/suppliers.service';
-import { SharedModule } from '../shared-module/shared.module';
 import { CanDeactivateGuard } from '../guards/can-deactivate';
+import { SharedModule } from '../shared-module/shared.module';
 
 @NgModule({
   exports: [
@@ -29,7 +29,7 @@ import { CanDeactivateGuard } from '../guards/can-deactivate';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule,
+    SharedModule.ForRoot(),
   ],
   providers: [
     SuppliersService,

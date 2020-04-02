@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ProductSearchComponent } from '../admin-module/products/product-search/product-search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { SpinerComponent } from './spiner/spiner.component';
 import { EffectsModule } from '@ngrx/effects';
-import { CategoryPipe } from './pipes/category.pipe';
-import { InitAppEffects } from './reducers/app-init-reducer/app-init-effects';
-import { appReducer } from './reducers/shared-reducer-selector';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
-import { SecurityService } from './services/security.service';
+import { HomeComponent } from './components/home/home.component';
+import { ProductSearchComponent } from '../admin-module/products/product-search/product-search.component';
+import { appReducer } from './reducers/shared-reducer-selector';
+import { InitAppEffects } from './reducers/app-init-reducer/app-init-effects';
+import { AlertMessageComponent } from './components/alert-message/alert-message.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { SpinerComponent } from './components/spiner/spiner.component';
+import { CategoryPipe } from './pipes/category.pipe';
 import { CategoriesService } from './services/categories.service';
-
+import { SecurityService } from './services/security.service';
 @NgModule({
   declarations: [
     AlertMessageComponent,
