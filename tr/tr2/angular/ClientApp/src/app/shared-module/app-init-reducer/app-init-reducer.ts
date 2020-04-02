@@ -1,19 +1,25 @@
 import { ICategory } from "../../models/ICategory";
-import { InitAppAction, INIT_CATEGORIES_END, InitCategoriesEnd } from "./app-init-actions";
+import { InitAppAction, INIT_CATEGORIES_END, InitCategoriesEnd, INIT_ANTIFORGERY_END } from "./app-init-actions";
 
 export interface IAppInitState {
-  categories: ICategory[]
+  categories: ICategory[],
+  antiforgery: boolean,
 }
 
 const appInitInitalState: IAppInitState = {
-  categories : [],
+  categories: [],
+  antiforgery: false,
 }
 
 export function appInitReducer(state: IAppInitState = appInitInitalState, action: InitAppAction): IAppInitState {
   switch (action.type) {
 
+    case INIT_ANTIFORGERY_END:
+      console.log('app settings - antiforgery initialized ');
+      return { ...state, antiforgery: true };
+
     case INIT_CATEGORIES_END:
-      console.log('app settings initialized ', (action as InitCategoriesEnd).payload);
+      console.log('app settings - categories initialized ', (action as InitCategoriesEnd).payload);
       return { ...state, categories: (action as InitCategoriesEnd).payload };
 
     default:

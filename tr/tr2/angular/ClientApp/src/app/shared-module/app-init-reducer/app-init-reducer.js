@@ -14,12 +14,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app_init_actions_1 = require("./app-init-actions");
 var appInitInitalState = {
     categories: [],
+    antiforgery: false,
 };
 function appInitReducer(state, action) {
     if (state === void 0) { state = appInitInitalState; }
     switch (action.type) {
+        case app_init_actions_1.INIT_ANTIFORGERY_END:
+            console.log('app settings - antiforgery initialized ');
+            return __assign(__assign({}, state), { antiforgery: true });
         case app_init_actions_1.INIT_CATEGORIES_END:
-            console.log('app settings initialized ', action.payload);
+            console.log('app settings - categories initialized ', action.payload);
             return __assign(__assign({}, state), { categories: action.payload });
         default:
             return state;

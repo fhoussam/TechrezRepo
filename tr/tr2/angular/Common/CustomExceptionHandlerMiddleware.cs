@@ -1,4 +1,5 @@
 ﻿using app.Common.Exceptions;
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,12 @@ namespace angular.Common
                     code = HttpStatusCode.BadRequest;
                     result = JsonConvert.SerializeObject(validationException.Failures);
                     break;
+
+                case AntiforgeryValidationException _:
+                    code = HttpStatusCode.BadRequest;
+                    result = "An error occurred while processing your request";
+                    break;
+
                 case DbUpdateException _:
                     code = HttpStatusCode.BadRequest;
                     var errorObject = new 
@@ -50,6 +57,7 @@ namespace angular.Common
                     };
                     result = JsonConvert.SerializeObject(errorObject);
                     break;
+
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;
                     break;

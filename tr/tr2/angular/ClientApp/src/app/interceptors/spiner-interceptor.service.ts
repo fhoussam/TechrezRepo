@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEventType } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { RemoteCallAction, PENDING, SUCCESS } from '../shared-module/remote-call-reducer/remote-call-actions';
 import { IAppState } from '../shared-module/shared-reducer-selector';
+import { CookieService } from 'ngx-cookie-service';
 
 class UrlForSpinner {
   value: string;
@@ -22,7 +23,7 @@ export class SpinerInterceptorService implements HttpInterceptor {
 
   loadingMessages: UrlForSpinner[] = [];
 
-  constructor(private store: Store<IAppState>, ) {
+  constructor(private store: Store<IAppState>, private cookieService: CookieService) {
     this.loadingMessages.push(
       new UrlForSpinner('api/products', 'GET'),
       new UrlForSpinner('api/products', 'POST'),
@@ -40,7 +41,12 @@ export class SpinerInterceptorService implements HttpInterceptor {
       }));
     }
 
-    return next.handle(req).pipe(tap(event => {
+    let antiForgeryCookieValue = this.cookieService.get('XSRF-REQUEST-TOKEN');
+    const cloneReq = req.clone({
+      headers: new HttpHeaders({ 'X-XSRF-TOKEN': antiForgeryCookieValue })
+    });
+
+    return next.handle(cloneReq).pipe(tap(event => {
       if (event.type === HttpEventType.Response && loadingMessage) {
         this.store.dispatch(new RemoteCallAction({
           messageType: SUCCESS,

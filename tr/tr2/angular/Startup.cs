@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 
 namespace angular
 {
@@ -71,10 +72,11 @@ namespace angular
                 }
             );
 
-            //adding fluent validation
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
             services.AddValidatorsFromAssemblyContaining<INorthwindContext>();
+            services.AddControllersWithViews(mvcConfig => mvcConfig.Filters.Add<CustomAntiForgeryAttribute>());
 
-            services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

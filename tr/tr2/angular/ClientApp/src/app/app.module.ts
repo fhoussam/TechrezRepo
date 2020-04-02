@@ -6,10 +6,10 @@ import { SharedModule } from './shared-module/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinerInterceptorService } from './interceptors/spiner-interceptor.service';
 import { EffectsModule } from '@ngrx/effects';
-import { CategoriesService } from './services/categories.service';
 import { get_settings } from './shared-module/shared-reducer-selector';
 import { Store } from '@ngrx/store';
-import { CategoryPipe } from './shared-module/pipes/category.pipe';
+import { SecurityService } from './services/security.service';
+import { CookieService } from 'ngx-cookie-service'
 
 @NgModule({
   declarations: [
@@ -36,6 +36,8 @@ import { CategoryPipe } from './shared-module/pipes/category.pipe';
       deps: [Store],
       multi: true
     },
+    SecurityService,
+    CookieService,
   ],
   bootstrap: [AppComponent]
 })
