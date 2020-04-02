@@ -1,9 +1,4 @@
 import { RemoteCallAction, SUCCESS } from "./remote-call-actions";
-import { ActionReducerMap } from "@ngrx/store";
-
-export interface IAppState {
-  remoteCallStatus: IRemoteCallStatus;
-}
 
 export interface IRemoteCallStatus {
   messageType: string;
@@ -13,10 +8,6 @@ export interface IRemoteCallStatus {
 const initialState: IRemoteCallStatus = {
   messageType: SUCCESS,
   messageValue: null,
-};
-
-export const appReducer: ActionReducerMap<IAppState> = {
-  remoteCallStatus: remoteCallStatusReducer,
 };
 
 export function remoteCallStatusReducer(state: IRemoteCallStatus = initialState, action: RemoteCallAction): IRemoteCallStatus {

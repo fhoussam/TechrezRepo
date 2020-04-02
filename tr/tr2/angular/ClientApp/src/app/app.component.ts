@@ -1,7 +1,8 @@
 import { Component, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IAppState } from './shared-module/remote-call-reducer/remote-call-reducer';
 import { PENDING, ALERT } from './shared-module/remote-call-reducer/remote-call-actions';
+import { InitCategoriesBegin } from './shared-module/app-init-reducer/app-init-actions';
+import { IAppState } from './shared-module/shared-reducer-selector';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements AfterViewChecked{
 
   constructor(
     private store: Store<IAppState>,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
   ) { }
 
   //still no idea how code below works
@@ -29,9 +30,11 @@ export class AppComponent implements AfterViewChecked{
   ngOnInit() {
     //remoteCallStatus represents one of the props in IAppState structure
     this.store.select('remoteCallStatus').subscribe(x => {
-      this.isAlert = x.messageType == ALERT;
-      this.isPending = x.messageType == PENDING;
-      this.messageValue = x.messageValue;
+      if (x) {
+        this.isAlert = x.messageType == ALERT;
+        this.isPending = x.messageType == PENDING;
+        this.messageValue = x.messageValue;
+      }
     });
   }
 }

@@ -6,10 +6,12 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProductSearchComponent } from '../admin-module/products/product-search/product-search.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { appReducer } from './remote-call-reducer/remote-call-reducer';
 import { SpinerComponent } from './spiner/spiner.component';
+import { EffectsModule } from '@ngrx/effects';
+import { InitAppEffects } from './app-init-reducer/app-init-effects';
+import { appReducer } from './shared-reducer-selector';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { SpinerComponent } from './spiner/spiner.component';
       { path: 'products', component: ProductSearchComponent },
     ]),
     StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([InitAppEffects]),
   ],
   exports: [
     HttpClientModule,

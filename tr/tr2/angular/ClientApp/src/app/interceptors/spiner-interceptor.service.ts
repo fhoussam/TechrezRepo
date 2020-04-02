@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEventType } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { IAppState } from '../shared-module/remote-call-reducer/remote-call-reducer';
 import { Store } from '@ngrx/store';
 import { RemoteCallAction, PENDING, SUCCESS } from '../shared-module/remote-call-reducer/remote-call-actions';
+import { IAppState } from '../shared-module/shared-reducer-selector';
 
 class UrlForSpinner {
   value: string;

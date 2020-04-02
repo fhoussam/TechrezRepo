@@ -5,9 +5,6 @@ var initialState = {
     messageType: remote_call_actions_1.SUCCESS,
     messageValue: null,
 };
-exports.appReducer = {
-    remoteCallStatus: remoteCallStatusReducer,
-};
 function remoteCallStatusReducer(state, action) {
     if (state === void 0) { state = initialState; }
     if (action.type === "@ngrx/store/init") { //hacky, but it seems like "@ngrx/store/init" is actually the first action made by redux

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IAppState } from '../remote-call-reducer/remote-call-reducer';
+import { Component, Input, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RemoteCallAction, SUCCESS } from '../remote-call-reducer/remote-call-actions';
+import { IAppState } from '../shared-reducer-selector';
 
 @Component({
   selector: 'app-alert-message',

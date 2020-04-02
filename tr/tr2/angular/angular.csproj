@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,6 +10,7 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+	<TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,8 +41,12 @@
     <None Remove="ClientApp\src\app\models\ISupplier.ts" />
     <None Remove="ClientApp\src\app\models\SearchProductQuery.ts" />
     <None Remove="ClientApp\src\app\services\IEditProductQuery.ts" />
+    <None Remove="ClientApp\src\app\shared-module\app-init-reducer\app-init-actions.ts" />
+    <None Remove="ClientApp\src\app\shared-module\app-init-reducer\app-init-effects.ts" />
+    <None Remove="ClientApp\src\app\shared-module\app-init-reducer\app-init-reducer.ts" />
     <None Remove="ClientApp\src\app\shared-module\remote-call-reducer\remote-call-actions.ts" />
     <None Remove="ClientApp\src\app\shared-module\remote-call-reducer\remote-call-reducer.ts" />
+    <None Remove="ClientApp\src\app\shared-module\shared-reducer-selector.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,8 +69,12 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\ISearchQueryExtension.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISupplier.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\IEditProductQuery.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared-module\app-init-reducer\app-init-actions.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared-module\app-init-reducer\app-init-effects.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared-module\app-init-reducer\app-init-reducer.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\remote-call-reducer\remote-call-reducer.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\remote-call-reducer\remote-call-actions.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared-module\shared-reducer-selector.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
