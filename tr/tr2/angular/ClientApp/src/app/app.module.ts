@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service'
 import { get_settings } from './shared-module/reducers/shared-reducer-selector';
+import { AntiForgeryInterceptorService } from './interceptors/antiforgery-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,11 @@ import { get_settings } from './shared-module/reducers/shared-reducer-selector';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SpinerInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AntiForgeryInterceptorService,
       multi: true,
     },
     {

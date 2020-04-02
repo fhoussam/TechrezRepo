@@ -41,12 +41,7 @@ export class SpinerInterceptorService implements HttpInterceptor {
       }));
     }
 
-    let antiForgeryCookieValue = this.cookieService.get('XSRF-REQUEST-TOKEN');
-    const cloneReq = req.clone({
-      headers: new HttpHeaders({ 'X-XSRF-TOKEN': antiForgeryCookieValue })
-    });
-
-    return next.handle(cloneReq).pipe(tap(event => {
+    return next.handle(req).pipe(tap(event => {
       if (event.type === HttpEventType.Response && loadingMessage) {
         this.store.dispatch(new RemoteCallAction({
           messageType: SUCCESS,
