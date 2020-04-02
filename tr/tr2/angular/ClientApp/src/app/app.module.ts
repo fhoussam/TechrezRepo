@@ -7,7 +7,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinerInterceptorService } from './interceptors/spiner-interceptor.service';
 import { EffectsModule } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { SecurityService } from './services/security.service';
 import { CookieService } from 'ngx-cookie-service'
 import { get_settings } from './shared-module/reducers/shared-reducer-selector';
 
@@ -18,7 +17,7 @@ import { get_settings } from './shared-module/reducers/shared-reducer-selector';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     AdminModule,
-    SharedModule,
+    SharedModule.ForRoot(),
     EffectsModule.forFeature([])
   ],
   exports: [
@@ -36,7 +35,6 @@ import { get_settings } from './shared-module/reducers/shared-reducer-selector';
       deps: [Store],
       multi: true
     },
-    SecurityService,
     CookieService,
   ],
   bootstrap: [AppComponent]

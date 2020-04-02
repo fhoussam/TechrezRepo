@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EditProductQuery } from '../../../services/IEditProductQuery';
 import { ProductsService } from '../../../services/products.service';
-import { CategoriesService } from '../../../services/categories.service';
 import { SuppliersService } from '../../../services/suppliers.service';
-import { Observable, timer, BehaviorSubject } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { ISupplier } from '../../../models/ISupplier';
 import { ICategory } from '../../../models/ICategory';
@@ -12,6 +10,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { firstValueMustBeGreaterThanSecondValueValidator } from '../../../custom-validators/firstValueMustBeGreaterThanSecondValueValidator';
 import { shouldBeLessThanValidator } from '../../../custom-validators/shouldBeLessThanValidator';
 import { CanCompoDeactivate } from '../../../guards/can-deactivate';
+import { CategoriesService } from '../../../shared-module/services/categories.service';
+import { EditProductQuery } from '../../../models/IEditProductQuery';
 
 @Component({
   selector: 'app-product-edit',

@@ -13,6 +13,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { CategoryPipe } from './pipes/category.pipe';
 import { InitAppEffects } from './reducers/app-init-reducer/app-init-effects';
 import { appReducer } from './reducers/shared-reducer-selector';
+import { ModuleWithProviders } from '@angular/compiler/src/core';
+import { SecurityService } from './services/security.service';
+import { CategoriesService } from './services/categories.service';
 
 @NgModule({
   declarations: [
@@ -49,4 +52,11 @@ import { appReducer } from './reducers/shared-reducer-selector';
     CategoryPipe,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  static ForRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [SecurityService, CategoriesService]
+    }
+  }
+}

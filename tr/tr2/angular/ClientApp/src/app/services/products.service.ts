@@ -4,7 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { IProductSearchResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/SearchProductQuery';
 import { IProductDetails } from '../models/IProductDetails';
-import { EditProductQuery } from './IEditProductQuery';
+import { EditProductQuery } from '../models/IEditProductQuery';
 
 @Injectable({
   providedIn: 'root'

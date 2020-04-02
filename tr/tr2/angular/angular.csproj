@@ -69,7 +69,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\SearchProductQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISearchQueryExtension.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISupplier.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\services\IEditProductQuery.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\IEditProductQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-actions.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-effects.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-reducer.ts" />

@@ -4,7 +4,7 @@ import { GridField } from '../../../models/GridField';
 import { EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
-import { EditProductQuery } from '../../../services/IEditProductQuery';
+import { EditProductQuery } from '../../../models/IEditProductQuery';
 
 @Component({
   selector: 'app-product-list',

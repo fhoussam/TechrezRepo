@@ -8,7 +8,6 @@ import { SupplierEditComponent } from './suppliers/supplier-edit/supplier-edit.c
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProductSearchComponent } from './products/product-search/product-search.component';
 import { ProductsService } from '../services/products.service';
-import { CategoriesService } from '../services/categories.service';
 import { ProductListComponent } from './products/product-list/product-list.component';
 
 import { SuppliersService } from '../services/suppliers.service';
@@ -35,7 +34,6 @@ import { CanDeactivateGuard } from '../guards/can-deactivate';
   providers: [
     SuppliersService,
     ProductsService,
-    CategoriesService,
     CanDeactivateGuard,
   ]
 })
