@@ -5,9 +5,8 @@ import { ProductsService } from '../../../services/products.service';
 import { SearchProductQuery } from '../../../models/SearchProductQuery';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs/operators';
 import { ICategory } from '../../../models/ICategory';
 import { APP_SETTINGS } from '../../../shared-module/models/APP_SETTINGS';
 import { IAppState } from '../../../shared-module/reducers/shared-reducer-selector';
@@ -29,6 +28,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   searchPanelCollapsed: boolean;
   autoCollapse: boolean;
   selectedItemId: number;
+  isAddMode: boolean;
 
   collapse() {
     this.searchPanelCollapsed = !this.searchPanelCollapsed;
@@ -44,6 +44,15 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.searchPanelCollapsed = false;
     this.searchProductQuery = this.getNewSearchQuery();
     this.searchProductQuery.discontinued = false;
+    this.isAddMode = false;
+  }
+
+  showAddForm(event, isAddMode: boolean) {
+
+    if (event)
+      event.stopPropagation();
+
+    this.isAddMode = isAddMode;
   }
 
   getNewSearchQuery() {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { IProductSearchResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/SearchProductQuery';
 import { IProductDetails } from '../models/IProductDetails';
@@ -35,9 +35,13 @@ export class ProductsService {
   }
 
   public getProduct(productId: number): Observable<IProductDetails> {
-    return this.http.get<IProductDetails>(this.baseUrl + '/' + productId, {
-      headers: new HttpHeaders({ 'content-type': 'application/json' }),
-    });
+    if (productId > 0) {
+      return this.http.get<IProductDetails>(this.baseUrl + '/' + productId, {
+        headers: new HttpHeaders({ 'content-type': 'application/json' }),
+      });
+    }
+    else
+      return of({} as IProductDetails);
   }
 
   public editProduct(editProductQuery: EditProductQuery) {

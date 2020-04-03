@@ -1,11 +1,30 @@
+<div *ngIf="isAddMode">
+  <div class="backdrop"></div>
+  <div class="alert-box">
+    <div class="trz-header">
+      <div class="trz-title">
+        <span>Search product</span>
+      </div>
+      <div class="trz-title-action">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showAddForm($event, false)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <div style="padding: 16px;">
+      <app-product-edit></app-product-edit>
+    </div>
+  </div>
+</div>
+
 <div *ngIf="!isProcessing">
 
-  <div class="search-header" (click)="collapse()" [ngClass]="{'active':!searchPanelCollapsed}">
-    <div class="search-title">
+  <div class="trz-header" style="cursor:pointer" (click)="collapse()" [ngClass]="{'active':!searchPanelCollapsed}">
+    <div class="trz-title">
       <span>Search product</span>
     </div>
-    <div class="search-add-action">
-      <button class="btn btn-info">Add</button>
+    <div class="trz-title-action">
+      <button class="btn btn-info" (click)="showAddForm($event, true)">Add</button>
     </div>
   </div>
 

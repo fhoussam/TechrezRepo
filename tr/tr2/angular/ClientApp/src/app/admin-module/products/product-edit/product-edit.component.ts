@@ -26,6 +26,7 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
   categories: Observable<ICategory[]>;
   editForm: FormGroup;
   saved: boolean;
+  isAddMode: boolean;
 
   constructor(
     private productsService: ProductsService,
@@ -42,6 +43,7 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
 
     this.activatedRoute.paramMap.subscribe(x => {
       let id = +x.get('id');
+      this.isAddMode = id === 0;
       this.getProduct(id);
     });
   }
@@ -156,7 +158,7 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
   }
 
   resetValues() {
-    let id: number = +this.activatedRoute.snapshot.params.id;
+    let id: number = this.isAddMode ? +this.activatedRoute.snapshot.params.id : 0;
     this.getProduct(id);
   }
 }
