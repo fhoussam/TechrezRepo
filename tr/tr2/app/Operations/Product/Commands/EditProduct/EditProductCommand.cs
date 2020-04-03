@@ -36,7 +36,7 @@ namespace app.Operations.Product.Commands.EditProduct
 
             public async Task<int> Handle(EditProductCommand request, CancellationToken cancellationToken)
             {
-                if (!request.ProductId.HasValue)
+                if (!request.ProductId.HasValue || request.ProductId == 0)
                 {
                     var ToAdd = _mapper.Map<Products>(request);
                     await _context.Products.AddAsync(ToAdd);

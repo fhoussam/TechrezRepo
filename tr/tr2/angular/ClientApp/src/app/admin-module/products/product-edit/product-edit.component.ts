@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
 import { SuppliersService } from '../../../services/suppliers.service';
-import { Observable, timer } from 'rxjs';
+import { Observable, timer, BehaviorSubject } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { ISupplier } from '../../../models/ISupplier';
 import { ICategory } from '../../../models/ICategory';
@@ -12,6 +12,9 @@ import { shouldBeLessThanValidator } from '../../../custom-validators/shouldBeLe
 import { CanCompoDeactivate } from '../../../guards/can-deactivate';
 import { CategoriesService } from '../../../shared-module/services/categories.service';
 import { EditProductQuery } from '../../../models/IEditProductQuery';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../../../shared-module/reducers/shared-reducer-selector';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-product-edit',
@@ -28,12 +31,15 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
   saved: boolean;
   isAddMode: boolean;
 
+  @Output() itemSaved = new EventEmitter();
+
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,  
+    private router: Router,
+    private store: Store<IAppState>,
   ) { }
 
   ngOnInit() {
@@ -141,7 +147,7 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
     formValue.discontinued = this.editForm.get('discontinued').value;
 
     return formValue;
-  } 
+  }
 
   saveChanges() {
     if (!this.editForm.valid)
@@ -150,9 +156,17 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
       this.editProductQuery = this.getDeserializedFormGroupValue();
       this.productsService.editProduct(this.editProductQuery).subscribe(x => {
         this.saved = true;
-        this.router.navigate(['../details'], { relativeTo: this.activatedRoute }).then(x => {
-          this.productsService.editedProductbehaviorSubject.next(this.editProductQuery);
-        });
+        if (this.isAddMode) {
+          let url = '/admin/products/' + x + '/details';
+          this.router.navigateByUrl(url).then(() => {
+            this.itemSaved.emit(x);
+          });
+        }
+        else {
+          this.router.navigate(['../details'], { relativeTo: this.activatedRoute }).then(x => {
+            this.productsService.editedProductbehaviorSubject.next(this.editProductQuery);
+          });
+        }
       });
     }
   }

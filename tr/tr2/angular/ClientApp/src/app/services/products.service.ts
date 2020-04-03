@@ -40,8 +40,23 @@ export class ProductsService {
         headers: new HttpHeaders({ 'content-type': 'application/json' }),
       });
     }
-    else
-      return of({} as IProductDetails);
+    else {
+      let fakeObject: IProductDetails = {
+        productName: "Random Product one",
+        supplierId: 4,
+        categoryId: 4,
+        quantityPerUnit: "10 - 500 g pkgs.",
+        unitPrice: 40,
+        unitsInStock: 40,
+        unitsOnOrder: 4,
+        discontinued: false,
+        productId: 0,
+        reorderLevel: 4,
+        supplier: null,
+      };
+      //fakeObject = {} as IProductDetails;
+      return of(fakeObject);
+    }
   }
 
   public editProduct(editProductQuery: EditProductQuery) {

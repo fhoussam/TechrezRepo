@@ -47,6 +47,11 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.isAddMode = false;
   }
 
+  onItemSaved(event) {
+    this.selectedItemId = +event;
+    this.isAddMode = false;
+  }
+
   showAddForm(event, isAddMode: boolean) {
 
     if (event)
@@ -64,17 +69,22 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.categories = APP_SETTINGS.categories;
     this.suppliers = this.suppliersService.getSuppliers();
 
-    try {
-      this.selectedItemId = +this.activatedRoute.firstChild.snapshot.paramMap.get('id');
-      this.searchPanelCollapsed = true;
-    } catch (e) { }
+    //try {
+    //  this.selectedItemId = +this.activatedRoute.firstChild.snapshot.paramMap.get('id');
+    //  this.searchPanelCollapsed = true;
+    //} catch (e) { }
 
-    //if we click on the Products in nav bar after a product has been opened
+    
     this.routeSubscription = this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
+        //if we click on the Products in nav bar after a product has been opened
         if (event.urlAfterRedirects.split('/').length === 3) {
           this.searchPanelCollapsed = false;
           this.selectedItemId = null;
+        }
+        //if user validates changes from modal
+        else {
+
         }
       }
     });
