@@ -3,21 +3,29 @@
   margin-top: 10px;
 }
 
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
+.search-header {
   width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
+  background-color: #99a8a9;
+  height: 60px;
+  padding: 11px;
+  cursor: pointer;
+  font-size:22px;
 }
 
-  .active, .collapsible:hover {
-    background-color: #555;
+  .search-header.active, .search-header:hover {
+    background-color: #808b8c;
   }
+
+.search-title {
+  display: inline-block;
+  width: 80%;
+  vertical-align: middle
+}
+
+.search-add-action {
+  display: inline-block;
+  float: right;
+}
 
 .content {
   padding: 20px 20px;

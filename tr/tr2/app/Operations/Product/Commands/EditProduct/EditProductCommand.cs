@@ -36,10 +36,12 @@ namespace app.Operations.Product.Commands.EditProduct
 
             public async Task<int> Handle(EditProductCommand request, CancellationToken cancellationToken)
             {
-                if (request.ProductId == null)
+                if (!request.ProductId.HasValue)
                 {
                     var ToAdd = _mapper.Map<Products>(request);
                     await _context.Products.AddAsync(ToAdd);
+                    await _context.SaveChangeAsyc();
+                    return ToAdd.ProductId;
                 }
                 else 
                 {
@@ -58,9 +60,9 @@ namespace app.Operations.Product.Commands.EditProduct
                     toEdit.UnitsOnOrder = request.UnitsOnOrder;
                     toEdit.ReorderLevel = request.ReorderLevel;
                     toEdit.Discontinued = request.Discontinued == true;
+                    await _context.SaveChangeAsyc();
+                    return toEdit.ProductId;
                 }
-
-                return await _context.SaveChangeAsyc();
             }
         }
     }

@@ -1,5 +1,15 @@
 <div *ngIf="!isProcessing">
-  <button type="button" class="collapsible" [ngClass]="{'active':!searchPanelCollapsed}" (click)="collapse()">Search products</button>
+
+  <div class="search-header" (click)="collapse()" [ngClass]="{'active':!searchPanelCollapsed}">
+    <div class="search-title">
+      <span>Search product</span>
+    </div>
+    <div class="search-add-action">
+      <button class="btn btn-info">Add</button>
+    </div>
+  </div>
+
+  <!--<button class="btn btn-info">Add new product</button>-->
   <div class="content" [style.display]="searchPanelCollapsed ? 'none' : 'block'">
     <form (ngSubmit)="search(true)" #f="ngForm">
       <div class="form-group">
@@ -42,10 +52,8 @@
           </select>
         </div>
       </div>
-      <div class="btn-group">
+      <div class="btn-set">
         <input type="submit" class="btn btn-primary" value="Search">
-      </div>
-      <div class="btn-group">
         <input type="button" class="btn btn-secondary" value="Reset" (click)="f.reset()" />
       </div>
     </form>
@@ -74,7 +82,7 @@
           </div>
         </div>
         <div class="form-check col-md-3">
-          <div style="float:right">
+          <div style=" float: right ">
             <input type="checkbox" class="form-check-input" [(ngModel)]="autoCollapse">
             <label class="form-check-label" for="exampleCheck1">Auto Collapse</label>
           </div>
@@ -85,7 +93,8 @@
   </div>
 
   <div *ngIf="selectedItemId">
-    <ul class="nav nav-tabs" style="margin-top:15px;">
+    <ul class="nav nav-tabs" style="    margin-top: 15px;
+">
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/details">Details</a>
       </li>
