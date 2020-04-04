@@ -55,11 +55,15 @@ export class ProductListComponent implements OnInit {
     
     //listen when an update is performed on a displayed entity
     this.productsService.editedProductbehaviorSubject.asObservable().subscribe((editedProduct: EditProductQuery) => {
-      let editedProductInGrid = this.products.find(x => x.productId === editedProduct.productId);
-      if (editedProductInGrid !== null) {
-        let index = this.products.indexOf(editedProductInGrid);
-        this.products[index] = editedProduct as IProductListItem;
+      if (editedProduct) {
+        let editedProductInGrid = this.products.find(x => x.productId === editedProduct.productId);
+        if (editedProductInGrid !== null) {
+          let index = this.products.indexOf(editedProductInGrid);
+          this.products[index] = editedProduct as IProductListItem;
+        }
       }
+      else
+        this.selectedItemId = null;
     });
   }
 

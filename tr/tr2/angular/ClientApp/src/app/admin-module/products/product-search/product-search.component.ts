@@ -48,7 +48,11 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
 
   showAddForm(event) {
     event.stopPropagation();
-    this.router.navigateByUrl('/admin/products/new');
+    this.router.navigateByUrl('/admin/products/new').then(x => {
+      this.isAddMode = true;
+      this.searchPanelCollapsed = false;
+      this.selectedItemId = null;
+    });
   }
 
   getNewSearchQuery() {
@@ -72,10 +76,14 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     
     this.routeSubscription = this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
+        let urlParts = event.urlAfterRedirects.split('/');
         //if we click on the Products in nav bar after a product has been opened
-        if (event.urlAfterRedirects.split('/').length === 3) {
+        if (urlParts.length === 3) {
           this.searchPanelCollapsed = false;
           this.selectedItemId = null;
+        }
+        else if (urlParts.length > 3 && urlParts[3] !== 'new') {
+          this.selectedItemId = +urlParts[3];
         }
       }
     });
