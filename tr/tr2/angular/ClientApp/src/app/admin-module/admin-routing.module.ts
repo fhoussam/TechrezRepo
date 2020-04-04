@@ -5,7 +5,6 @@ import { SupplierDetailsComponent } from './suppliers/supplier-details/supplier-
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { ProductSearchComponent } from './products/product-search/product-search.component';
 import { CanDeactivateGuard } from '../guards/can-deactivate';
-import { ProductNewComponent } from './products/product-new/product-new.component';
 
 const routes: Routes = [
   {
@@ -13,9 +12,14 @@ const routes: Routes = [
     component: ProductSearchComponent,
     children: [
       {
+        path: ':id/edit',
+        component: ProductEditComponent,
+        canDeactivate: [CanDeactivateGuard],
+      },
+      {
         path: 'new',
-        component: ProductNewComponent,
-        //canDeactivate: [CanDeactivateGuard],
+        component: ProductEditComponent,
+        canDeactivate: [CanDeactivateGuard],
       },
       {
         path: ':id',

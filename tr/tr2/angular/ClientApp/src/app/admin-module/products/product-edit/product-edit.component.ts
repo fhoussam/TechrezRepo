@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Renderer2, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
 import { SuppliersService } from '../../../services/suppliers.service';
 import { Observable, timer, BehaviorSubject } from 'rxjs';
@@ -12,16 +12,13 @@ import { shouldBeLessThanValidator } from '../../../custom-validators/shouldBeLe
 import { CanCompoDeactivate } from '../../../guards/can-deactivate';
 import { CategoriesService } from '../../../shared-module/services/categories.service';
 import { EditProductQuery } from '../../../models/IEditProductQuery';
-import { Store } from '@ngrx/store';
-import { IAppState } from '../../../shared-module/reducers/shared-reducer-selector';
-import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css']
 })
-export class ProductEditComponent implements OnInit, CanCompoDeactivate {
+export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterViewInit, OnDestroy {
 
   editProductQuery: EditProductQuery;
   editProductQueryPreviousState: any;
@@ -30,8 +27,11 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
   editForm: FormGroup;
   saved: boolean;
   isAddMode: boolean;
+  title = "Add New Product";
+  exitUrl = '..';
 
-  @Output() itemSaved = new EventEmitter();
+  @ViewChild('addFormPlaceHolderDom', { static: false }) addFormPlaceHolderDom: ElementRef;
+  @ViewChild('editFormDom', { static: false }) editFormDom: ElementRef;
 
   constructor(
     private productsService: ProductsService,
@@ -39,7 +39,7 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
     private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store<IAppState>,
+    private renderer2: Renderer2
   ) { }
 
   ngOnInit() {
@@ -49,9 +49,25 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
 
     this.activatedRoute.paramMap.subscribe(x => {
       let id = +x.get('id');
-      this.isAddMode = id === 0;
+      this.isAddMode = !id;
       this.getProduct(id);
     });
+  }
+
+  ngAfterViewInit(): void {
+    if (this.isAddMode)
+      this.renderer2.appendChild(this.addFormPlaceHolderDom.nativeElement, this.editFormDom.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    // still not sure if this should be uncommented
+    //if (this.isAddMode)
+    //  this.renderer2.removeChild(this.addFormPlaceHolderDom.nativeElement, this.editFormDom.nativeElement);
+  }
+
+  hideModalAfterCancel() {
+    this.isAddMode = false;
+    this.router.navigate([this.exitUrl], { relativeTo: this.activatedRoute });
   }
 
   CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
@@ -158,9 +174,10 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
         this.saved = true;
         if (this.isAddMode) {
           let url = '/admin/products/' + x + '/details';
-          this.itemSaved.emit(url);
-          this.productsService.editedProductbehaviorSubject.next(null);
-          //this.router.navigateByUrl(url).then(() => {});
+          this.router.navigateByUrl(url).then(() => {
+            //clear selection after succesful navigation
+            this.productsService.editedProductbehaviorSubject.next(null);
+          });
         }
         else {
           this.router.navigate(['../details'], { relativeTo: this.activatedRoute }).then(x => {
@@ -172,7 +189,7 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
   }
 
   resetValues() {
-    let id: number = this.isAddMode ? +this.activatedRoute.snapshot.params.id : 0;
+    let id: number = !this.isAddMode ? +this.activatedRoute.snapshot.paramMap.get('id') : 0;
     this.getProduct(id);
   }
 }
