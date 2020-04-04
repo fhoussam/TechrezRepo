@@ -28,7 +28,7 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterVi
   saved: boolean;
   isAddMode: boolean;
   title = "Add New Product";
-  exitUrl = '..';
+  cancelUrl = '/admin/products';
 
   @ViewChild('addFormPlaceHolderDom', { static: false }) addFormPlaceHolderDom: ElementRef;
   @ViewChild('editFormDom', { static: false }) editFormDom: ElementRef;
@@ -168,10 +168,6 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterVi
         }
       });
     }
-  }
-
-  hideModalAfterCancel() {
-    this.router.navigate([this.exitUrl], { relativeTo: this.activatedRoute });
   }
 
   CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {

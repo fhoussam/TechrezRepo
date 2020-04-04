@@ -19,6 +19,7 @@ import { SecurityService } from './services/security.service';
 import { CookieService } from 'ngx-cookie-service';
 import { SpinerInterceptorService } from './interceptors/spiner-interceptor.service';
 import { AntiForgeryInterceptorService } from './interceptors/antiforgery-interceptor.service';
+import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   declarations: [
     AlertMessageComponent,
@@ -26,6 +27,7 @@ import { AntiForgeryInterceptorService } from './interceptors/antiforgery-interc
     HomeComponent,
     SpinerComponent,
     CategoryPipe,
+    ModalComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,7 @@ import { AntiForgeryInterceptorService } from './interceptors/antiforgery-interc
     HomeComponent,
     SpinerComponent,
     CategoryPipe,
+    ModalComponent,
   ]
 })
 export class SharedModule {
