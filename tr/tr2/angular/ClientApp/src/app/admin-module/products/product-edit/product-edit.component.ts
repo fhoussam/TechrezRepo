@@ -158,9 +158,10 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate {
         this.saved = true;
         if (this.isAddMode) {
           let url = '/admin/products/' + x + '/details';
-          this.router.navigateByUrl(url).then(() => {
-            this.itemSaved.emit(x);
-          });
+          this.itemSaved.emit(url);
+          //this.router.navigateByUrl(url).then(() => {
+            
+          //});
         }
         else {
           this.router.navigate(['../details'], { relativeTo: this.activatedRoute }).then(x => {

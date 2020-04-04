@@ -13,6 +13,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { SuppliersService } from '../services/suppliers.service';
 import { CanDeactivateGuard } from '../guards/can-deactivate';
 import { SharedModule } from '../shared-module/shared.module';
+import { ProductNewComponent } from './products/product-new/product-new.component';
 
 @NgModule({
   exports: [
@@ -25,6 +26,7 @@ import { SharedModule } from '../shared-module/shared.module';
     SupplierEditComponent,
     ProductSearchComponent,
     ProductListComponent,
+    ProductNewComponent,
   ],
   imports: [
     CommonModule,

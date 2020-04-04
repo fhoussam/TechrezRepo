@@ -1,22 +1,3 @@
-<div *ngIf="isAddMode">
-  <div class="backdrop" (click)="showAddForm(null, false)"></div>
-  <div class="alert-box">
-    <div class="trz-header">
-      <div class="trz-title">
-        <span>Search product</span>
-      </div>
-      <div class="trz-title-action">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showAddForm($event, false)">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    </div>
-    <div style="padding: 16px;">
-      <app-product-edit (itemSaved)="onItemSaved($event)"></app-product-edit>
-    </div>
-  </div>
-</div>
-
 <div *ngIf="!isProcessing">
 
   <div class="trz-header" style="cursor:pointer" (click)="collapse()" [ngClass]="{'active':!searchPanelCollapsed}">
@@ -24,7 +5,7 @@
       <span>Search product</span>
     </div>
     <div class="trz-title-action">
-      <button class="btn btn-info" (click)="showAddForm($event, true)">Add</button>
+      <button class="btn btn-info" (click)="showAddForm($event)">Add</button>
     </div>
   </div>
 
@@ -111,9 +92,8 @@
     </div>
   </div>
 
-  <div *ngIf="selectedItemId">
-    <ul class="nav nav-tabs" style="    margin-top: 15px;
-">
+  <div>
+    <ul *ngIf="selectedItemId" class="nav nav-tabs" style="margin-top: 15px;">
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/details">Details</a>
       </li>
@@ -121,6 +101,8 @@
         <a class="nav-link" routerLinkActive="active" routerLink="{{selectedItemId}}/supplier">Supplier</a>
       </li>
     </ul>
-    <router-outlet></router-outlet>
+    <div *ngIf="selectedItemId || isAddMode">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

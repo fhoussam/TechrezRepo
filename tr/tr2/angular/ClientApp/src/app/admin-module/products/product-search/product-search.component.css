@@ -1,49 +1,26 @@
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 50;
-}
-
-.alert-box {
-  position: fixed;
-  top: 5vh;
-  left: 15vw;
-  width: 70vw;
-  z-index: 100;
-  background: white;
-  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
-}
-
-.alert-box-actions {
-  text-align: right;
-}
-
-.trz-modal-header {
-  height: 80px;
-  width: 100%;
-  background-color: #99a8a9;
-  font-size: 22px;
-  padding: 22px;
-  font-weight: 600;
-}
-
-
-
 .grid-header {
   float: right;
   margin-top: 10px;
 }
+
+.content {
+  padding: 20px 20px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+  .content table {
+    background-color: white;
+  }
+
 
 .trz-header {
   width: 100%;
   background-color: #99a8a9;
   height: 60px;
   padding: 11px;
-  font-size:22px;
+  font-size: 22px;
 }
 
   .trz-header.active, .trz-header:hover {
@@ -60,14 +37,3 @@
   display: inline-block;
   float: right;
 }
-
-.content {
-  padding: 20px 20px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-
-  .content table {
-    background-color: white;
-  }

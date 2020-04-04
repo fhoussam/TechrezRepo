@@ -44,20 +44,11 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.searchPanelCollapsed = false;
     this.searchProductQuery = this.getNewSearchQuery();
     this.searchProductQuery.discontinued = false;
-    this.isAddMode = false;
   }
 
-  onItemSaved(event) {
-    this.selectedItemId = +event;
-    this.isAddMode = false;
-  }
-
-  showAddForm(event, isAddMode: boolean) {
-
-    if (event)
-      event.stopPropagation();
-
-    this.isAddMode = isAddMode;
+  showAddForm(event) {
+    event.stopPropagation();
+    this.router.navigateByUrl('/admin/products/new');
   }
 
   getNewSearchQuery() {
@@ -69,11 +60,15 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.categories = APP_SETTINGS.categories;
     this.suppliers = this.suppliersService.getSuppliers();
 
-    //try {
-    //  this.selectedItemId = +this.activatedRoute.firstChild.snapshot.paramMap.get('id');
-    //  this.searchPanelCollapsed = true;
-    //} catch (e) { }
-
+    try {
+      let childRoute = this.activatedRoute.firstChild;
+      if (childRoute.snapshot.url[0].path === 'new')
+        this.isAddMode = true;
+      else {
+        this.selectedItemId = +childRoute.snapshot.paramMap.get('id');
+        this.searchPanelCollapsed = true;
+      }
+    } catch (e) { }
     
     this.routeSubscription = this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
@@ -81,10 +76,6 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
         if (event.urlAfterRedirects.split('/').length === 3) {
           this.searchPanelCollapsed = false;
           this.selectedItemId = null;
-        }
-        //if user validates changes from modal
-        else {
-
         }
       }
     });
