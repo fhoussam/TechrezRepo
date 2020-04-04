@@ -65,24 +65,6 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterVi
     //  this.renderer2.removeChild(this.addFormPlaceHolderDom.nativeElement, this.editFormDom.nativeElement);
   }
 
-  hideModalAfterCancel() {
-    this.isAddMode = false;
-    this.router.navigate([this.exitUrl], { relativeTo: this.activatedRoute });
-  }
-
-  CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if (this.saved)
-      return true;
-    else {
-      let jsonPreviousState = JSON.stringify(this.editProductQueryPreviousState);
-      let jsonFormState = JSON.stringify(this.editForm.value);
-      let isDirty = jsonPreviousState !== jsonFormState;
-      if (isDirty)
-        return confirm('Do you want to discard the changes ?');
-      else return true;
-    }
-  }
-
   getProduct(id: number) {
     this.productsService.getProduct(id).subscribe(y => {
       //we needed to add supplier id to source as the destination needs it
@@ -185,6 +167,32 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterVi
           });
         }
       });
+    }
+  }
+
+  hideModalAfterCancel() {
+    this.router.navigate([this.exitUrl], { relativeTo: this.activatedRoute });
+  }
+
+  CanDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+    if (this.saved)
+      return true;
+    else {
+      let jsonPreviousState = JSON.stringify(this.editProductQueryPreviousState);
+      let jsonFormState = JSON.stringify(this.editForm.value);
+      let isDirty = jsonPreviousState !== jsonFormState;
+
+      if (isDirty) {
+        let userConfirmation = confirm('Do you want to discard the changes ?');
+
+        //if we dont this, we'll end up with a 'new' url but with no form is the user choses NOT to cancel his changes in Add mode"
+        if (userConfirmation && this.isAddMode)
+          this.isAddMode = false;
+
+        return userConfirmation;
+      }
+         
+      else return true;
     }
   }
 
