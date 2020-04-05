@@ -2,7 +2,7 @@
   <div *ngIf="message">
     <app-spiner *ngIf="isPending" [message]="message"></app-spiner>
     <app-alert-message *ngIf="isAlert" [message]="message"></app-alert-message>
-    <app-error-message *ngIf="isError" [message]="message"></app-error-message>
+    <app-error-message *ngIf="isError" (close)="onClose()" [message]="message"></app-error-message>
   </div>
   <app-nav-menu></app-nav-menu>
   <div class="container">

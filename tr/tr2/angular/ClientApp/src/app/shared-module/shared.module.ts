@@ -1,7 +1,7 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule, Store } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -73,6 +73,12 @@ export class SharedModule {
         CategoriesService,
         {
           provide: HTTP_INTERCEPTORS,
+          useClass: ErrorInterceptorService,
+          multi: true,
+          deps: [Store, Router]
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
           useClass: SpinerInterceptorService,
           multi: true,
         },
@@ -80,12 +86,6 @@ export class SharedModule {
           provide: HTTP_INTERCEPTORS,
           useClass: AntiForgeryInterceptorService,
           multi: true,
-        },
-        {
-          provide: HTTP_INTERCEPTORS,
-          useClass: ErrorInterceptorService,
-          multi: true,
-          deps: [Store]
         },
         {
           provide: APP_INITIALIZER,

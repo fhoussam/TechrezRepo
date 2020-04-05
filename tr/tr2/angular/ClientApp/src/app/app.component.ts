@@ -27,11 +27,14 @@ export class AppComponent implements AfterViewChecked {
     this.cdRef.detectChanges();
   }
 
+  onClose() {
+    this.isError = false;
+  }
+
   ngOnInit() {
     //remoteCallStatus represents one of the props in IAppState structure
     this.store.select('remoteCallStatus').subscribe(x => {
       if (x) {
-        console.log('aaaaaaaa',x.messageValue);
         this.isAlert = x.messageType == ALERT;
         this.isPending = x.messageType == PENDING;
         this.isError = x.messageType == ERROR;

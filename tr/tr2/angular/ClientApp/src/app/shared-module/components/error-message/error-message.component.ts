@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-error-message',
@@ -8,10 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ErrorMessageComponent implements OnInit {
 
   @Input() message: string;
+  @Output() close = new EventEmitter();
+
+  closeErrorMessage() {
+    this.close.emit(null);
+  }
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }
