@@ -7,6 +7,7 @@ var initialState = {
 };
 function remoteCallStatusReducer(state, action) {
     if (state === void 0) { state = initialState; }
+    console.log(action);
     if (action.type === "@ngrx/store/init") { //hacky, but it seems like "@ngrx/store/init" is actually the first action made by redux
         return initialState;
     }

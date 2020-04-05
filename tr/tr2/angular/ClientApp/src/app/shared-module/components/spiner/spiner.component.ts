@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SpinerComponent implements OnInit {
 
-  @Input() messageValue: string;
+  @Input() message: string;
 
   constructor() { }
 

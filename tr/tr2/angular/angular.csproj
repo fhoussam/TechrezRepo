@@ -45,6 +45,7 @@
     <None Remove="ClientApp\src\app\models\ISupplier.ts" />
     <None Remove="ClientApp\src\app\models\SearchProductQuery.ts" />
     <None Remove="ClientApp\src\app\services\IEditProductQuery.ts" />
+	<None Remove="ClientApp\src\app\shared-module\interceptors\error-interceptor.service.ts" />
     <None Remove="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-actions.ts" />
     <None Remove="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-effects.ts" />
     <None Remove="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-reducer.ts" />
@@ -70,6 +71,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\ISearchQueryExtension.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISupplier.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IEditProductQuery.ts" />
+	<TypeScriptCompile Include="ClientApp\src\app\shared-module\interceptors\error-interceptor.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-actions.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-effects.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\reducers\app-init-reducer\app-init-reducer.ts" />

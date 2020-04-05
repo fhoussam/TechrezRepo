@@ -20,6 +20,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { SpinerInterceptorService } from './interceptors/spiner-interceptor.service';
 import { AntiForgeryInterceptorService } from './interceptors/antiforgery-interceptor.service';
 import { ModalComponent } from './components/modal/modal.component';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
+
 @NgModule({
   declarations: [
     AlertMessageComponent,
@@ -28,6 +32,8 @@ import { ModalComponent } from './components/modal/modal.component';
     SpinerComponent,
     CategoryPipe,
     ModalComponent,
+    ErrorMessageComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +61,8 @@ import { ModalComponent } from './components/modal/modal.component';
     SpinerComponent,
     CategoryPipe,
     ModalComponent,
+    ErrorMessageComponent,
+    NotFoundComponent,
   ]
 })
 export class SharedModule {
@@ -72,6 +80,12 @@ export class SharedModule {
           provide: HTTP_INTERCEPTORS,
           useClass: AntiForgeryInterceptorService,
           multi: true,
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: ErrorInterceptorService,
+          multi: true,
+          deps: [Store]
         },
         {
           provide: APP_INITIALIZER,

@@ -1,3 +1,21 @@
+.error-message {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 98%;
+  background-color: #de8a92;
+  color: black;
+  margin-left: 10px;
+  text-align: center;
+  border-color: #f5c6cb;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  opacity: 0.85;
+  z-index: 100;
+}
+
 .grid-header {
   float: right;
   margin-top: 10px;
@@ -14,7 +32,7 @@
     background-color: white;
   }
 
-
+/*duplicated*/
 .trz-header {
   width: 100%;
   background-color: #99a8a9;

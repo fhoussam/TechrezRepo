@@ -1,7 +1,8 @@
 <body>
-  <div *ngIf="messageValue">
-    <app-spiner *ngIf="isPending" [messageValue]="messageValue"></app-spiner>
-    <app-alert-message *ngIf="isAlert" [message]="messageValue"></app-alert-message>
+  <div *ngIf="message">
+    <app-spiner *ngIf="isPending" [message]="message"></app-spiner>
+    <app-alert-message *ngIf="isAlert" [message]="message"></app-alert-message>
+    <app-error-message *ngIf="isError" [message]="message"></app-error-message>
   </div>
   <app-nav-menu></app-nav-menu>
   <div class="container">
