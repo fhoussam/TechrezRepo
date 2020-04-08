@@ -34,7 +34,7 @@ namespace app.Operations.Product.Queries.SearchProduct
             public async Task<PagedList<SearchProductQueryResponse>> Handle(SearchProductQuery request, CancellationToken cancellationToken)
             {
                 if (request.PageSize == 0)
-                    request.PageSize = 5;
+                    request.PageSize = PagerParams.PageSize;
 
                 var mainQuery = _context.Products
                     .Where(x =>

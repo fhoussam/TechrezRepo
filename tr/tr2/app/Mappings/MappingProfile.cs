@@ -5,9 +5,6 @@ using app.Operations.Product.Queries.SearchProduct;
 using app.Operations.Supplier.Queries;
 using AutoMapper;
 using domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace app.Mappings
 {

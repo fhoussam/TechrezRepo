@@ -45,6 +45,7 @@ namespace angular.Common
                     break;
 
                 case AntiforgeryValidationException _:
+                case DomainBadRequestException _:
                     code = HttpStatusCode.BadRequest;
                     result = "An error occurred while processing your request";
                     break;

@@ -3,6 +3,8 @@ using FluentValidation;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
+using app.Common;
+using app.Common.Constants;
 
 namespace app.Operations.Product.Commands.EditProduct
 {
@@ -13,55 +15,52 @@ namespace app.Operations.Product.Commands.EditProduct
         public EditProductCommandValidator(INorthwindContext context)
         {
             _context = context;
-            string isRequiredMessage = "{PropertyName} Is Mandatory";
-
-            RuleFor(x => x.ProductId).NotNull().WithMessage("Product Id Should Be Provided, 0 for new, other than 0 for edit");
 
             RuleFor(x => x.ProductName).Cascade(CascadeMode.StopOnFirstFailure)
-                .NotEmpty().WithMessage(isRequiredMessage)
-                .MinimumLength(4).WithMessage("Product Name Wrong Size")
-                .Matches("^[A-Za-z'_ öä]*$").WithMessage("Product Name Has Wrong Format")
-                .MustAsync(BeUnique).WithMessage("Product Name Already Exists")
+                .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
+                .MinimumLength(4).WithMessage(ValidationErrorMessages.WrongSize)
+                .Matches("^[A-Za-z'_ öä]*$").WithMessage(ValidationErrorMessages.WrongFormat)
+                .MustAsync(BeUnique).WithMessage(ValidationErrorMessages.AlreadyExists)
                 ;
 
             RuleFor(x => x.SupplierId)
-                .NotNull().WithMessage(isRequiredMessage)
+                .NotNull().WithMessage(ValidationErrorMessages.RequiredMessage)
                 ;
 
             RuleFor(x => x.CategoryId)
-                .NotNull().WithMessage(isRequiredMessage)
+                .NotNull().WithMessage(ValidationErrorMessages.RequiredMessage)
                 ;
 
             RuleFor(x => x.QuantityPerUnit)
-                .NotNull().WithMessage(isRequiredMessage)
+                .NotNull().WithMessage(ValidationErrorMessages.RequiredMessage)
                 ;
 
             RuleFor(x => x.UnitPrice).Cascade(CascadeMode.StopOnFirstFailure)
-                .NotNull().WithMessage(isRequiredMessage)
-                .Must(x => x.Value % 10 == 0 && x.Value > 0).WithMessage("Must Be Dividable By 10 And Greater Than 0")
+                .NotNull().WithMessage(ValidationErrorMessages.RequiredMessage)
+                .Must(x => x.Value % 10 == 0 && x.Value > 0).WithMessage(ValidationErrorMessages.MustBeDevidableBy10AndGreaterThan0)
                 ;
 
             RuleFor(x => x.UnitsInStock).Cascade(CascadeMode.StopOnFirstFailure)
-                .NotNull().WithMessage(isRequiredMessage)
-                .Must((cmd, x) => !cmd.UnitsOnOrder.HasValue || (x > 0 && x >= cmd.UnitsOnOrder)).WithMessage("Units In Stock Should Be Positive And Greater (Or Equal) Than Units On Order")
+                .NotNull().WithMessage(ValidationErrorMessages.RequiredMessage)
+                .Must((cmd, x) => !cmd.UnitsOnOrder.HasValue || (x > 0 && x >= cmd.UnitsOnOrder)).WithMessage(ValidationErrorMessages.UnitsInStockShouldBePositiveAndGreaterOrEqualUnitsOnOrder)
                 ;
 
             RuleFor(x => x.UnitsOnOrder).Cascade(CascadeMode.StopOnFirstFailure)
-                .NotNull().WithMessage(isRequiredMessage)
-                .Must((cmd, x) => !cmd.UnitsInStock.HasValue || (x > 0 && x <= cmd.UnitsInStock)).WithMessage("Units On Order Should Be Positive And Less (Or Equal) Than Units On Order")
+                .NotNull().WithMessage(ValidationErrorMessages.RequiredMessage)
+                .Must((cmd, x) => !cmd.UnitsInStock.HasValue || (x > 0 && x <= cmd.UnitsInStock)).WithMessage(ValidationErrorMessages.UnitsInStockShouldBePositiveAndGreaterOrEqualUnitsOnOrder)
                 ;
 
             RuleFor(x => x.ReorderLevel)
-                .NotNull().WithMessage(isRequiredMessage)
+                .NotNull().WithMessage(ValidationErrorMessages.RequiredMessage)
                 ;
 
             RuleFor(x => (int)x.ReorderLevel)
-                .LessThan(5).WithMessage("ReorderLevel Must Be Less Than 5 {ComparisonProperty}")
+                .LessThan(5).WithMessage(ValidationErrorMessages.LesserThan)
                 .When(x => x.ReorderLevel.HasValue)
                 ;
 
             RuleFor(x => x.Discontinued)
-                .NotNull().WithMessage(isRequiredMessage)
+                .NotNull().WithMessage(ValidationErrorMessages.RequiredMessage)
                 ;
         }
 
