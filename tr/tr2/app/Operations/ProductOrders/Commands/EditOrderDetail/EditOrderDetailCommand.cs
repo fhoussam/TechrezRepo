@@ -11,7 +11,7 @@ namespace app.Operations.ProductOrders.Commands.EditOrderDetail
     public class EditOrderDetailCommand : IRequest<int>
     {
 		public int? OrderId { get; set; }
-		public int? ProductID { get; set; }
+		public int? ProductId { get; set; }
 		public string CustomerID { get; set; }
 		public int? EmployeeID { get; set; }
 		public short? Quantity { get; set; }
@@ -33,7 +33,7 @@ namespace app.Operations.ProductOrders.Commands.EditOrderDetail
 			public async Task<int> Handle(EditOrderDetailCommand request, CancellationToken cancellationToken)
 			{
 				var toEdit = await _context.OrderDetails.Include(x=>x.Order).SingleOrDefaultAsync
-					(x => x.ProductId == request.ProductID && x.OrderId == request.OrderId);
+					(x => x.ProductId == request.ProductId && x.OrderId == request.OrderId);
 
 				if (toEdit == null)
 					throw new DomainBadRequestException();

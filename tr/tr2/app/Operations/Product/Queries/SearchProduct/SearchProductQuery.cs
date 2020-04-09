@@ -1,15 +1,12 @@
 ﻿using domain.Entities;
 using MediatR;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using System.Linq;
 using AutoMapper.QueryableExtensions;
 using app.Common;
 using System.Linq.Dynamic.Core;
-using System;
 
 namespace app.Operations.Product.Queries.SearchProduct
 {
@@ -33,9 +30,6 @@ namespace app.Operations.Product.Queries.SearchProduct
             }
             public async Task<PagedList<SearchProductQueryResponse>> Handle(SearchProductQuery request, CancellationToken cancellationToken)
             {
-                if (request.PageSize == 0)
-                    request.PageSize = PagerParams.PageSize;
-
                 var mainQuery = _context.Products
                     .Where(x =>
                         (string.IsNullOrEmpty(request.ProductName) || x.ProductName.Contains(request.ProductName))
@@ -44,22 +38,9 @@ namespace app.Operations.Product.Queries.SearchProduct
                         && (!request.Discontinued.HasValue || request.Discontinued == x.Discontinued)
                         && (!request.MaxUnitsInStock.HasValue || request.MaxUnitsInStock >= x.UnitsInStock)
                         && (!request.MinUnitsInStock.HasValue || request.MinUnitsInStock <= x.UnitsInStock)
-                    );
+                    ).ProjectTo<SearchProductQueryResponse>(_mapper.ConfigurationProvider);
 
-                var validatedSortField = request.GetValidatedSortField();
-                mainQuery = mainQuery.OrderBy(validatedSortField + (request.IsDesc ? " desc" : string.Empty));
-
-                int totalRows = await mainQuery.CountAsync();
-
-                var rawData = await mainQuery
-                    .Skip(request.PageIndex * request.PageSize)
-                    .Take(request.PageSize)
-                    .ProjectTo<SearchProductQueryResponse>(_mapper.ConfigurationProvider)
-                    .ToListAsync();
-                
-                int totalPages = (int)Math.Ceiling(totalRows / (double)request.PageSize);
-                var result = new PagedList<SearchProductQueryResponse>(rawData, totalPages);
-                return result;
+                return await request.CreatePagedList(mainQuery, _context.Products);
             }
         }
     }

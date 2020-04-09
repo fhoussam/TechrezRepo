@@ -11,8 +11,8 @@ namespace app.Operations.ProductOrders.Queries.IsQuantityValidQuery
     {
         public IsQuantityValidQueryValidator()
         {
-            RuleFor(x => x.OrderID).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
-            RuleFor(x => x.ProductID).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
+            RuleFor(x => x.OrderId).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
+            RuleFor(x => x.ProductId).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
             RuleFor(x => x.Quantity).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
         }
     }

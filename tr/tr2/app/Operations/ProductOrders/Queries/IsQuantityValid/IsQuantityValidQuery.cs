@@ -7,14 +7,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace app.Operations.ProductOrders.Queries.IsQuantityValidQuery
 {
     public class IsQuantityValidQuery : IRequest<bool>
     {
-        public int OrderID { get; set; }
-        public int ProductID { get; set; }
-        public int Quantity { get; set; }
+        public int? OrderId { get; set; }
+        public int? ProductId { get; set; }
+        public short? Quantity { get; set; }
 
         public class IsQuantityValidQueryHandler : IRequestHandler<IsQuantityValidQuery, bool>
         {
@@ -27,21 +28,30 @@ namespace app.Operations.ProductOrders.Queries.IsQuantityValidQuery
 
             public async Task<bool> Handle(IsQuantityValidQuery request, CancellationToken cancellationToken)
             {
-                var query = await(
+                var mainQueryTask = (
                     from od in _context.OrderDetails
                     join p in _context.Products
                     on od.ProductId equals p.ProductId
-                    where od.OrderId == request.OrderID && p.ProductId == request.ProductID
+                    where od.OrderId == request.OrderId && p.ProductId == request.ProductId
                     select new
                     {
                         OldQuanity = od.Quantity,
                         UnitsInStock = p.UnitsInStock,
                     }).ToListAsync();
 
-                if (query.Count != 1)
-                    throw new Exception();
+                var sumQuantityPerProductTsk = _context.OrderDetails.Where(x => x.ProductId == request.ProductId).SumAsync(x => x.Quantity);
 
-                return request.Quantity < query[0].OldQuanity || request.Quantity - query[0].OldQuanity <= query[0].UnitsInStock;
+                await Task.WhenAll(mainQueryTask, sumQuantityPerProductTsk);
+
+                var queryResult = mainQueryTask.Result;
+                var sumQuantityPerProduct = sumQuantityPerProductTsk.Result;
+
+                //as we dont have any creation mode for this use case
+                if (queryResult.Count != 1)
+                    throw new ValidationException();
+
+                return request.Quantity <= queryResult[0].OldQuanity
+                    || queryResult[0].UnitsInStock - sumQuantityPerProduct - request.Quantity + queryResult[0].OldQuanity > 0;
             }
         }
     }

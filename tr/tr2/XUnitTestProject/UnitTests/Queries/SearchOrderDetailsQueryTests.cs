@@ -1,3 +1,4 @@
+using app.Common;
 using app.Operations.ProductOrders.Commands.EditOrderDetail;
 using app.Operations.ProductOrders.Queries.SearchOrderDetails;
 using AutoMapper;
@@ -7,6 +8,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using System.Linq;
 
 namespace XUnitTestProject
 {
@@ -32,7 +34,7 @@ namespace XUnitTestProject
             };
 
             var queryhandlerResult = await new SearchOrderDetailsQuery.SearchOrderDetailsQueryHandler(_context).Handle(searchOrderDetailsQuery, CancellationToken.None);
-            Assert.Equal(10, queryhandlerResult.Count);
+            Assert.Equal(PagerParams.PageSize, queryhandlerResult.Source.Count());
         }
     }
 }

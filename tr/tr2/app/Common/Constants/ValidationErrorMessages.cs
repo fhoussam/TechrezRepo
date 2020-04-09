@@ -17,6 +17,7 @@ namespace app.Common.Constants
         public static readonly string DateShouldLessThanAWeek = "{PropertyName} should not be older than a week";
         public static readonly string DateBeNewerThanCurrent = "{PropertyName} should not be older than a week";
 
+        public static readonly string QuantityNotSufficient = "Quantity not sufficient";
         public static readonly string MustBeDevidableBy10AndGreaterThan0 = "Must be dividable by 10 and greater than 0";
         public static readonly string UnitsInStockShouldBePositiveAndGreaterOrEqualUnitsOnOrder = "Units in stock should be positive and greater (Or Equal) than units on order";
     }

@@ -1,26 +1,32 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace app.Common
 {
     public class Pager
     {
-        public string SortField { get; set; }
+        public int SortFieldIndex { get; set; }
         public bool IsDesc { get; set; }
         public int PageIndex { get; set; }
-        public int PageSize { get; set; }
-        public int TotalCount { get; set; }
-        public string GetValidatedSortField()
+        public async Task<PagedList<T>> CreatePagedList<T, R>(IQueryable<T> mainQuery, IQueryable<R> countQuery)
         {
-            var props = GetType().GetProperties();
+            var totalRowsTsk = countQuery.CountAsync();
 
-            if (!string.IsNullOrEmpty(SortField))
-            {
-                var prop = props.FirstOrDefault(x => string.Equals(SortField, x.Name, System.StringComparison.OrdinalIgnoreCase));
-                if (prop != null)
-                    return prop.Name;
-            }
+            mainQuery = mainQuery.OrderBy(SortFieldIndex + (IsDesc ? " desc" : string.Empty));
+           
+            var rawDataTsk = mainQuery
+                .Skip(PageIndex * PagerParams.PageSize)
+                .Take(PagerParams.PageSize).ToListAsync();
 
-            return props.First().Name;
+            await Task.WhenAll(totalRowsTsk, rawDataTsk);
+
+            int totalPages = (int)Math.Ceiling(totalRowsTsk.Result / (double)PagerParams.PageSize);
+
+            return new PagedList<T>(rawDataTsk.Result, totalPages);
         }
     }
 }

@@ -27,9 +27,9 @@ namespace XUnitTestProject
                 CustomerID = "",
                 EmployeeID = 2,
                 OrderDate = DateTime.Now,
-                OrderId = 2,
-                ProductID = 2,
-                Quantity = 100,
+                OrderId = 11030,
+                ProductId = 59,
+                Quantity = 300,
                 RequiredDate = DateTime.Now,
                 ShipAddress = "",
                 ShippedDate = DateTime.Now,
@@ -38,7 +38,7 @@ namespace XUnitTestProject
 
             EditOrderDetailCommandValidator validator = new EditOrderDetailCommandValidator(_context);
             var validationResult = validator.Validate(editOrderDetailCommand);
-            Assert.Equal(4, validationResult.Errors.Count);
+            Assert.Equal(5, validationResult.Errors.Count);
         }
     }
 }

@@ -702,7 +702,7 @@
     "CategoryId": 4,
     "QuantityPerUnit": "5 kg pkg.",
     "UnitPrice": 55.0000,
-    "UnitsInStock": 79,
+    "UnitsInStock": 1600,
     "UnitsOnOrder": 0,
     "ReorderLevel": 0,
     "Discontinued": false

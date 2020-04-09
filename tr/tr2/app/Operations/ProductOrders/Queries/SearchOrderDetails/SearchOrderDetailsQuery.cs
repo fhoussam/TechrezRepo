@@ -7,17 +7,17 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using app.Common;
 using System.Collections.Generic;
+using System.Linq.Dynamic.Core;
 
 namespace app.Operations.ProductOrders.Queries.SearchOrderDetails
 {
-    public class SearchOrderDetailsQuery : IRequest<List<SearchOrderDetailsResponse>>
+    public class SearchOrderDetailsQuery : Pager, IRequest<PagedList<SearchOrderDetailsResponse>>
     {
         public int ProductId { get; set; }
         public DateTime OrderDateFrom { get; set; }
         public DateTime OrderDateTo { get; set; }
-        public int PageIndex { get; set; }
 
-        public class SearchOrderDetailsQueryHandler : IRequestHandler<SearchOrderDetailsQuery, List<SearchOrderDetailsResponse>>
+        public class SearchOrderDetailsQueryHandler : IRequestHandler<SearchOrderDetailsQuery, PagedList<SearchOrderDetailsResponse>>
         {
             private readonly INorthwindContext _context;
 
@@ -26,9 +26,9 @@ namespace app.Operations.ProductOrders.Queries.SearchOrderDetails
                 _context = context;
             }
 
-            public async Task<List<SearchOrderDetailsResponse>> Handle(SearchOrderDetailsQuery request, CancellationToken cancellationToken)
+            public async Task<PagedList<SearchOrderDetailsResponse>> Handle(SearchOrderDetailsQuery request, CancellationToken cancellationToken)
             {
-                return await (
+                var mainQuery = (
                     from od in _context.OrderDetails
                     join o in _context.Orders on od.OrderId equals o.OrderId
                     join c in _context.Customers on o.CustomerId equals c.CustomerId
@@ -47,7 +47,9 @@ namespace app.Operations.ProductOrders.Queries.SearchOrderDetails
                         OrderDate = o.OrderDate,
                         ShipCountry = o.ShipCountry,
                     }
-                    ).Skip(request.PageIndex * PagerParams.PageSize).Take(PagerParams.PageSize).ToListAsync();
+                    );
+
+                return await request.CreatePagedList(mainQuery, _context.OrderDetails);
             }
         }
     }
