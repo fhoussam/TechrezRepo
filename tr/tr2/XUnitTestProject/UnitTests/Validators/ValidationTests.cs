@@ -44,9 +44,10 @@ namespace XUnitTestProject.UnitTests.Validators
 
         [Theory]
         [MemberData(nameof(Data))]
-        public void EditOrderDetailCommandValidator_Ok(IValidationTester<IBaseRequest> o)
+        public void EditOrderDetailCommandValidator_Ok(IValidationTester<IBaseRequest> commandTest)
         {
-            o.ValidationResultOk();
+            var commandTestResult = commandTest.ValidationResultOk();
+            Assert.Equal(commandTestResult.Expected, commandTestResult.Actual);
         }
     }
 }

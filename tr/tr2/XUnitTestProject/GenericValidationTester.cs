@@ -16,7 +16,7 @@ namespace XUnitTestProject
     //to enable polymorphisme at TheoryData level, 'out' must be used here
     public interface IValidationTester<out T> where T : IBaseRequest
     {
-        void ValidationResultOk();
+        ValidationResult ValidationResultOk();
     }
 
     public class GenericValidationTester<T> : IValidationTester<T> where T : IBaseRequest
@@ -32,8 +32,11 @@ namespace XUnitTestProject
             ExpectedValidationErrorTypes = expressions;
         }
 
-        public void ValidationResultOk()
+        public ValidationResult ValidationResultOk()
         {
+            var actual = Validator.Validate(Command).Errors
+                .ToDictionary(x => x.PropertyName, x => (ValidationErrorTypes)Enum.Parse(typeof(ValidationErrorTypes), x.ErrorCode));
+
             foreach (var item in ExpectedValidationErrorTypes)
             {
                 string memberName = string.Empty;
@@ -56,11 +59,21 @@ namespace XUnitTestProject
             
             var expected = ExpectedValidationErrorTypes.ToDictionary(x => GetMemberNameFromExpression(x), x => x.Value);
 
-            var actual = Validator.Validate(Command).Errors
-                .ToDictionary(x => x.PropertyName, x => (ValidationErrorTypes)Enum.Parse(typeof(ValidationErrorTypes), x.ErrorCode));
-
-            Assert.Equal(expected, actual);
+            return new ValidationResult(expected, actual);
         }
+    }
+
+    public class ValidationResult
+    {
+        public ValidationResult(Dictionary<string, ValidationErrorTypes> expected, Dictionary<string, ValidationErrorTypes> actual)
+        {
+            Expected = expected;
+            Actual = actual;
+        }
+
+        public Dictionary<string, ValidationErrorTypes> Actual { get; set; }
+        public Dictionary<string, ValidationErrorTypes> Expected { get; set; }
+
     }
 
     public enum ValidationErrorTypes
