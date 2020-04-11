@@ -5,7 +5,6 @@ using NUnitTestProject;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using Xunit;
 
 namespace XUnitTestProject.UnitTests.Validators
@@ -15,7 +14,8 @@ namespace XUnitTestProject.UnitTests.Validators
         public static TheoryData<IValidationTester<IBaseRequest>> Data
             => new TheoryData<IValidationTester<IBaseRequest>>
         {
-            new GenericValidationTester<EditOrderDetailCommand>(
+            new GenericValidationTester<EditOrderDetailCommand>
+            (
                 new EditOrderDetailCommand()
                 {
                     CustomerId = "aaaa",
@@ -37,7 +37,26 @@ namespace XUnitTestProject.UnitTests.Validators
                     { x=>x.ShipAddress, ValidationErrorTypes.NotEmptyValidator },
                     { x=>x.Quantity, ValidationErrorTypes.AsyncPredicateValidator },
                     { x=>x.CustomerId, ValidationErrorTypes.LengthValidator },
-                })
+                }
+            ),
+            //the 'Ok' test case
+            new GenericValidationTester<EditOrderDetailCommand>
+            (
+                new EditOrderDetailCommand()
+                {
+                    CustomerId = "aaaaaaaavs",
+                    EmployeeId = 2,
+                    OrderDate = DateTime.Now,
+                    OrderId = 11030,
+                    ProductId = 59,
+                    Quantity = 100,
+                    RequiredDate = DateTime.Now.AddDays(7),
+                    ShipAddress = "scsdcsdfsscsdcsdfsz sdcsdfsscsdcsdfsscsdcsdfsa dcsdfssc",
+                    ShippedDate = DateTime.Now,
+                    ShipPostalCode = "54559-3216",
+                },
+                new EditOrderDetailCommandValidator(_context)
+            ),
         };
 
         public static readonly NorthwindContext _context = NorthwindContextFactory.Create();

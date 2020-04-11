@@ -1,15 +1,9 @@
-﻿using app.Operations.ProductOrders.Commands.EditOrderDetail;
-using AutoMapper;
-using domain.Entities;
-using NUnitTestProject;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Xunit;
 using System.Linq;
 using MediatR;
 using FluentValidation;
 using System.Linq.Expressions;
-using System.Collections.Specialized;
 
 namespace XUnitTestProject
 {
@@ -25,7 +19,7 @@ namespace XUnitTestProject
         public IValidator<T> Validator { get; }
         public IDictionary<Expression<Func<T, object>>, ValidationErrorTypes> ExpectedValidationErrorTypes { get; }
 
-        public GenericValidationTester(T command, IValidator<T> validator, IDictionary<Expression<Func<T, object>>, ValidationErrorTypes> expressions)
+        public GenericValidationTester(T command, IValidator<T> validator, IDictionary<Expression<Func<T, object>>, ValidationErrorTypes> expressions = null)
         {
             Command = command;
             Validator = validator;
@@ -34,30 +28,37 @@ namespace XUnitTestProject
 
         public ValidationResult ValidationResultOk()
         {
-            var actual = Validator.Validate(Command).Errors
-                .ToDictionary(x => x.PropertyName, x => (ValidationErrorTypes)Enum.Parse(typeof(ValidationErrorTypes), x.ErrorCode));
+            Dictionary<string, ValidationErrorTypes> expected = null;
+            Dictionary<string, ValidationErrorTypes> actual = null;
 
-            foreach (var item in ExpectedValidationErrorTypes)
+            if(Validator.Validate(Command).Errors.Count > 0)
+                actual = Validator.Validate(Command).Errors
+                    .ToDictionary(x => x.PropertyName, x => (ValidationErrorTypes)Enum.Parse(typeof(ValidationErrorTypes), x.ErrorCode));
+
+            if (ExpectedValidationErrorTypes != null) 
             {
-                string memberName = string.Empty;
-                if (item.Key.Body is MemberExpression)
+                foreach (var item in ExpectedValidationErrorTypes)
                 {
-                    memberName = ((MemberExpression)item.Key.Body).Member.Name;
+                    string memberName = string.Empty;
+                    if (item.Key.Body is MemberExpression)
+                    {
+                        memberName = ((MemberExpression)item.Key.Body).Member.Name;
+                    }
                 }
+
+                Func<KeyValuePair<Expression<Func<T, object>>, ValidationErrorTypes>, string> GetMemberNameFromExpression = x =>
+                {
+                    MemberExpression body = x.Key.Body as MemberExpression;
+                    if (body == null)
+                    {
+                        UnaryExpression ubody = (UnaryExpression)x.Key.Body;
+                        body = ubody.Operand as MemberExpression;
+                    }
+                    return body.Member.Name;
+                };
+
+                expected = ExpectedValidationErrorTypes.ToDictionary(x => GetMemberNameFromExpression(x), x => x.Value);
             }
-
-            Func<KeyValuePair<Expression<Func<T, object>>, ValidationErrorTypes>, string> GetMemberNameFromExpression = x =>
-            {
-                MemberExpression body = x.Key.Body as MemberExpression;
-                if (body == null)
-                {
-                    UnaryExpression ubody = (UnaryExpression)x.Key.Body;
-                    body = ubody.Operand as MemberExpression;
-                }
-                return body.Member.Name;
-            };
-            
-            var expected = ExpectedValidationErrorTypes.ToDictionary(x => GetMemberNameFromExpression(x), x => x.Value);
 
             return new ValidationResult(expected, actual);
         }

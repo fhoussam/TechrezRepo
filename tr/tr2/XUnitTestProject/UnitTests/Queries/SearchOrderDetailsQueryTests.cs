@@ -1,7 +1,5 @@
 using app.Common;
-using app.Operations.ProductOrders.Commands.EditOrderDetail;
 using app.Operations.ProductOrders.Queries.SearchOrderDetails;
-using AutoMapper;
 using domain.Entities;
 using NUnitTestProject;
 using System;

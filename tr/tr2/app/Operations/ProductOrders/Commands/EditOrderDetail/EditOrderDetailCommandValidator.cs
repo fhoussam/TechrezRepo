@@ -41,14 +41,12 @@ namespace app.Operations.ProductOrders.Commands.EditOrderDetail
             RuleFor(x => x.OrderDate).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
                 .Must(x => (DateTime.Now - x.Value).TotalDays <= 7).WithMessage(ValidationErrorMessages.DateShouldLessThanAWeek)
-                //.Must((cmd, x)=> x.Value < cmd.RequiredDate).WithMessage("Order date should be greater than required date")
                 .LessThan(x => x.RequiredDate).WithMessage(ValidationErrorMessages.LesserThan)
                 ;
 
             RuleFor(x => x.RequiredDate).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
                 .Must(x => DateTime.Now < x.Value).WithMessage(ValidationErrorMessages.DateBeNewerThanCurrent)
-                //.Must((cmd, x) => cmd.OrderDate < x.Value).WithMessage("Order date should be greater than required date")
                 .GreaterThan(x => x.OrderDate).WithMessage(ValidationErrorMessages.GreaterThan)
                 ;
 
