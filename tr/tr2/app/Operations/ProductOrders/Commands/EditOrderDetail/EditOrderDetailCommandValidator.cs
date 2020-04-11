@@ -25,9 +25,18 @@ namespace app.Operations.ProductOrders.Commands.EditOrderDetail
 
             RuleFor(x => x.OrderId).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
             RuleFor(x => x.ProductId).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
-            RuleFor(x => x.CustomerID).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
-            RuleFor(x => x.EmployeeID).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
-            RuleFor(x => x.Quantity).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
+            RuleFor(x => x.EmployeeId).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
+            RuleFor(x => x.ShippedDate).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
+
+            RuleFor(x => x.CustomerId).Cascade(CascadeMode.StopOnFirstFailure)
+                .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
+                .Length(8, 100).WithMessage(ValidationErrorMessages.LengthError)
+                ;
+
+            RuleFor(x => x.ShipAddress).Cascade(CascadeMode.StopOnFirstFailure)
+                .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
+                .Length(50, 300).WithMessage(ValidationErrorMessages.LengthError)
+                ;
 
             RuleFor(x => x.OrderDate).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
@@ -42,9 +51,6 @@ namespace app.Operations.ProductOrders.Commands.EditOrderDetail
                 //.Must((cmd, x) => cmd.OrderDate < x.Value).WithMessage("Order date should be greater than required date")
                 .GreaterThan(x => x.OrderDate).WithMessage(ValidationErrorMessages.GreaterThan)
                 ;
-
-            RuleFor(x => x.ShippedDate).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
-            RuleFor(x => x.ShipAddress).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
 
             RuleFor(x => x.ShipPostalCode).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)

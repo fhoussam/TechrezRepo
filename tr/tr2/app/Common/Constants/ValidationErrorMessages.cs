@@ -13,6 +13,7 @@ namespace app.Common.Constants
         public static readonly string AlreadyExists = "Already Exists";
         public static readonly string LesserThan = "{PropertyName} Must Be Less Than {ComparisonProperty}";
         public static readonly string GreaterThan = "{PropertyName} Must Be Less Than {ComparisonProperty}";
+        public static readonly string LengthError = "{PropertyName} length should be between {MinLength} and {MaxLength}";
 
         public static readonly string DateShouldLessThanAWeek = "{PropertyName} should not be older than a week";
         public static readonly string DateBeNewerThanCurrent = "{PropertyName} should not be older than a week";

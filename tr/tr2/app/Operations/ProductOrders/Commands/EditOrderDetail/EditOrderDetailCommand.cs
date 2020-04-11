@@ -12,8 +12,8 @@ namespace app.Operations.ProductOrders.Commands.EditOrderDetail
     {
 		public int? OrderId { get; set; }
 		public int? ProductId { get; set; }
-		public string CustomerID { get; set; }
-		public int? EmployeeID { get; set; }
+		public string CustomerId { get; set; }
+		public int? EmployeeId { get; set; }
 		public short? Quantity { get; set; }
 		public DateTime? OrderDate { get; set; }
 		public DateTime? RequiredDate { get; set; }
@@ -35,13 +35,14 @@ namespace app.Operations.ProductOrders.Commands.EditOrderDetail
 				var toEdit = await _context.OrderDetails.Include(x=>x.Order).SingleOrDefaultAsync
 					(x => x.ProductId == request.ProductId && x.OrderId == request.OrderId);
 
+				//better than doing it  at validator level, which would require multiple db requests
 				if (toEdit == null)
 					throw new DomainBadRequestException();
 
 				else
 				{
-					toEdit.Order.CustomerId = request.CustomerID;
-					toEdit.Order.EmployeeId = request.EmployeeID.Value;
+					toEdit.Order.CustomerId = request.CustomerId;
+					toEdit.Order.EmployeeId = request.EmployeeId.Value;
 					toEdit.Order.OrderDate = request.OrderDate.Value;
 					toEdit.Order.RequiredDate = request.RequiredDate.Value;
 					toEdit.Order.ShippedDate = request.ShippedDate.Value;
