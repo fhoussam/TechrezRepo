@@ -84,5 +84,6 @@ namespace XUnitTestProject
         , NotEmptyValidator
         , PredicateValidator
         , RegularExpressionValidator
+        , GreaterThanValidator
     }
 }

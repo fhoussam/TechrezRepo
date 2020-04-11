@@ -12,9 +12,12 @@ namespace app.Operations.ProductOrders.Queries.SearchOrderDetails
         public SearchOrderDetailsQueryValidator()
         {
             RuleFor(x => x.OrderDateFrom).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
-            RuleFor(x => x.OrderDateTo).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
-            RuleFor(x => x.PageIndex).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
             RuleFor(x => x.ProductId).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
+
+            RuleFor(x => x.OrderDateTo).Cascade(CascadeMode.StopOnFirstFailure)
+                .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
+                .GreaterThan(x=>x.OrderDateFrom).WithMessage(ValidationErrorMessages.GreaterThan)
+                ;
         }
     }
 }

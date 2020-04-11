@@ -1,4 +1,5 @@
 ﻿using app.Operations.ProductOrders.Commands.EditOrderDetail;
+using app.Operations.ProductOrders.Queries.SearchOrderDetails;
 using domain.Entities;
 using MediatR;
 using NUnitTestProject;
@@ -14,8 +15,7 @@ namespace XUnitTestProject.UnitTests.Validators
         public static TheoryData<IValidationTester<IBaseRequest>> Data
             => new TheoryData<IValidationTester<IBaseRequest>>
         {
-            new GenericValidationTester<EditOrderDetailCommand>
-            (
+            new GenericValidationTester<EditOrderDetailCommand>(
                 new EditOrderDetailCommand()
                 {
                     CustomerId = "aaaa",
@@ -56,6 +56,38 @@ namespace XUnitTestProject.UnitTests.Validators
                     ShipPostalCode = "54559-3216",
                 },
                 new EditOrderDetailCommandValidator(_context)
+            ),
+            new GenericValidationTester<SearchOrderDetailsQuery>(
+                new SearchOrderDetailsQuery(){ },
+                new SearchOrderDetailsQueryValidator(),
+                new Dictionary<Expression<Func<SearchOrderDetailsQuery, object>>, ValidationErrorTypes>()
+                {
+                    { x=>x.OrderDateFrom, ValidationErrorTypes.NotEmptyValidator },
+                    { x=>x.OrderDateTo, ValidationErrorTypes.NotEmptyValidator },
+                    { x=>x.ProductId, ValidationErrorTypes.NotEmptyValidator },
+                }
+            ),
+            new GenericValidationTester<SearchOrderDetailsQuery>(
+                new SearchOrderDetailsQuery()
+                {
+                    OrderDateFrom = DateTime.Now,
+                    OrderDateTo = DateTime.Now.AddDays(-2),
+                    ProductId = 59,
+                },
+                new SearchOrderDetailsQueryValidator(),
+                new Dictionary<Expression<Func<SearchOrderDetailsQuery, object>>, ValidationErrorTypes>()
+                {
+                    { x=>x.OrderDateTo, ValidationErrorTypes.GreaterThanValidator },
+                }
+            ),
+            new GenericValidationTester<SearchOrderDetailsQuery>(
+                new SearchOrderDetailsQuery()
+                {
+                    OrderDateFrom = DateTime.Now,
+                    OrderDateTo = DateTime.Now.AddDays(7),
+                    ProductId = 59,
+                },
+                new SearchOrderDetailsQueryValidator()
             ),
         };
 
