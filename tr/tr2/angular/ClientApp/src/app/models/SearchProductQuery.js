@@ -13,13 +13,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var ISearchQueryExtension_1 = require("./ISearchQueryExtension");
+var Pager_1 = require("./Pager");
 var SearchProductQuery = /** @class */ (function (_super) {
     __extends(SearchProductQuery, _super);
     function SearchProductQuery() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return SearchProductQuery;
-}(ISearchQueryExtension_1.SearchQueryExtension));
+}(Pager_1.Pager));
 exports.SearchProductQuery = SearchProductQuery;
 //# sourceMappingURL=SearchProductQuery.js.map

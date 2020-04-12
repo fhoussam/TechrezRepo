@@ -1,9 +1,4 @@
-export interface IProductSearchResponse {
-  totalPages: number;
-  source: IProductListItem[];
-}
-
-export interface IProductListItem {
+export interface SearchProductQueryResponse {
   productId: number;
   productName: string;
   supplierId: number;

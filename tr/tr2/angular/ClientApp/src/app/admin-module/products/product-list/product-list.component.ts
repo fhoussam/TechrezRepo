@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, OnDestroy } from '@angular/core';
-import { IProductListItem } from '../../../models/IProductSearchResponse';
+import { SearchProductQueryResponse } from '../../../models/IProductSearchResponse';
 import { GridField } from '../../../models/GridField';
 import { EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,11 +17,11 @@ export class ProductListComponent implements OnInit {
   selectedItemId: number;
   @Output() sortFieldChange = new EventEmitter();
   @Output() selectedIndexChange = new EventEmitter();
-  sortField: string;
+  sortFieldIndex: number;
 
-  _products: IProductListItem[];
+  _products: SearchProductQueryResponse[];
   @Input()
-  set products(products: IProductListItem[]) {
+  set products(products: SearchProductQueryResponse[]) {
     if (products) {
       this._products = products;
       try {
@@ -43,23 +43,23 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.gridFields = [
-      new GridField("ProductId", "Product Id", true),
-      new GridField("ProductName", "Product Name", false),
-      new GridField("SupplierId", "Supplier", false),
-      new GridField("CategoryId", "Category", false),
-      new GridField("QuantityPerUnit", "Quantity Per Unit", false),
-      new GridField("UnitPrice", "Unit Price", false),
+      new GridField("ProductId", "Product Id", 0, true),
+      new GridField("ProductName", "Product Name", 1, false),
+      new GridField("SupplierId", "Supplier", 2, false),
+      new GridField("CategoryId", "Category", 3, false),
+      new GridField("QuantityPerUnit", "Quantity Per Unit", 4, false),
+      new GridField("UnitPrice", "Unit Price", 5, false),
     ];
 
-    this.sortField = this.gridFields[1].fieldName;
+    this.sortFieldIndex = 1;
     
     //listen when an update is performed on a displayed entity
     this.productsService.editedProductbehaviorSubject.asObservable().subscribe((editedProduct: EditProductQuery) => {
       if (editedProduct) {
-        let editedProductInGrid = this.products.find(x => x.productId === editedProduct.productId);
+        const editedProductInGrid = this.products.find(x => x.productId === editedProduct.productId);
         if (editedProductInGrid !== null) {
-          let index = this.products.indexOf(editedProductInGrid);
-          this.products[index] = editedProduct as IProductListItem;
+          const index = this.products.indexOf(editedProductInGrid);
+          this.products[index] = editedProduct as SearchProductQueryResponse;
         }
       }
       else
@@ -72,12 +72,12 @@ export class ProductListComponent implements OnInit {
     if (isHidden)
       return;
 
-    var target = event.target || event.srcElement || event.currentTarget;
-    this.sortField = target.attributes.id.value;
-    this.sortFieldChange.emit(this.sortField);
+    const target = event.target || event.srcElement || event.currentTarget;
+    this.sortFieldIndex = +target.getAttribute('data-sortfieldIndex');
+    this.sortFieldChange.emit(this.sortFieldIndex);
   }
 
-  selectItem(item: IProductListItem) {
+  selectItem(item: SearchProductQueryResponse) {
 
     this.selectedItemId = item.productId;
 

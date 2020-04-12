@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { IProductSearchResponse } from '../../../models/IProductSearchResponse';
+import { SearchProductQueryResponse } from '../../../models/IProductSearchResponse';
 import { SuppliersService } from '../../../services/suppliers.service';
 import { ProductsService } from '../../../services/products.service';
 import { SearchProductQuery } from '../../../models/SearchProductQuery';
@@ -11,6 +11,7 @@ import { ICategory } from '../../../models/ICategory';
 import { APP_SETTINGS } from '../../../shared-module/models/APP_SETTINGS';
 import { IAppState } from '../../../shared-module/reducers/shared-reducer-selector';
 import { RemoteCallAction, ALERT } from '../../../shared-module/reducers/spiner-reducer/spiner-actions';
+import { PagedList } from '../../../models/PagedList';
 
 @Component({
   selector: 'app-product-search',
@@ -19,7 +20,7 @@ import { RemoteCallAction, ALERT } from '../../../shared-module/reducers/spiner-
 })
 export class ProductSearchComponent implements OnInit, OnDestroy {
 
-  searchResult: IProductSearchResponse;
+  searchResult: PagedList<SearchProductQueryResponse>;
   routeSubscription: Subscription;
   categories: ICategory[];
   suppliers: any;
@@ -56,7 +57,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   }
 
   getNewSearchQuery() {
-    return new SearchProductQuery('ProductName');
+    return new SearchProductQuery();
   }
 
   ngOnInit() {
@@ -65,7 +66,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.suppliers = this.suppliersService.getSuppliers();
 
     try {
-      let childRoute = this.activatedRoute.firstChild;
+      const childRoute = this.activatedRoute.firstChild;
       if (childRoute.snapshot.url[0].path === 'new')
         this.isAddMode = true;
       else {
@@ -100,10 +101,10 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   }
 
   onSortFieldChange(event) {
-    if (this.searchProductQuery.sortField === event)
+    if (this.searchProductQuery.sortFieldIndex === event)
       this.searchProductQuery.isDesc = !this.searchProductQuery.isDesc;
     else
-      this.searchProductQuery.sortField = event;
+      this.searchProductQuery.sortFieldIndex = event;
 
     this.search(false);
   }

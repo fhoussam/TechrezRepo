@@ -1,47 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { IProductSearchResponse } from '../models/IProductSearchResponse';
+import { SearchProductQueryResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/SearchProductQuery';
 import { IProductDetails } from '../models/IProductDetails';
 import { EditProductQuery } from '../models/IEditProductQuery';
+import { PagedList } from '../models/PagedList';
+import { HttpHelperService } from '../shared-module/services/http-helper';
+import { APP_SETTINGS } from '../shared-module/models/APP_SETTINGS';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
+  readonly baseUrl = APP_SETTINGS.baseUrl + "products";
   editedProductbehaviorSubject = new BehaviorSubject(new EditProductQuery());
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private httpHelper: HttpHelperService) { }
 
-  readonly baseUrl = "api/products";
-
-  public toHttpParams(object: any): HttpParams {
-    var params = new HttpParams()
-    Object.keys(object).forEach(function (item) {
-      if (object[item])
-        params = params.set(item, object[item]);
-    });
-
-    return params
-  }
-
-  public getProducts(searchProductQuery: SearchProductQuery): Observable<IProductSearchResponse> {
-    return this.http.get<IProductSearchResponse>(this.baseUrl, {
-      headers: new HttpHeaders({ 'content-type': 'application/json' }),
-      params: this.toHttpParams(searchProductQuery)
+  public getProducts(searchProductQuery: SearchProductQuery): Observable<PagedList<SearchProductQueryResponse>> {
+    return this.http.get<PagedList<SearchProductQueryResponse>>(this.baseUrl, {
+      params: this.httpHelper.toHttpParams(searchProductQuery)
     });
   }
 
   public getProduct(productId: number): Observable<IProductDetails> {
     if (productId > 0) {
-      return this.http.get<IProductDetails>(this.baseUrl + '/' + productId, {
-        headers: new HttpHeaders({ 'content-type': 'application/json' }),
-      });
+      return this.http.get<IProductDetails>(this.baseUrl + '/' + productId);
     }
     else {
-      let fakeObject: IProductDetails = {
+      const fakeObject: IProductDetails = {
         productName: "Random Product one",
         supplierId: 4,
         categoryId: 4,
@@ -65,8 +54,7 @@ export class ProductsService {
 
   public isExistingProductName(productName: string, productId: number): Observable<boolean> {
     return this.http.get<boolean>(this.baseUrl + '/IsExistingProductName', {
-      headers: new HttpHeaders({ 'content-type': 'application/json' }),
-      params: this.toHttpParams({
+      params: this.httpHelper.toHttpParams({
         productName: productName,
         productId: productId
       })

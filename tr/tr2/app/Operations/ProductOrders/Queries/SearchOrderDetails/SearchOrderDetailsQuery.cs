@@ -49,7 +49,7 @@ namespace app.Operations.ProductOrders.Queries.SearchOrderDetails
                     }
                     );
 
-                return await request.CreatePagedList(mainQuery, _context.OrderDetails);
+                return await request.CreatePagedList(mainQuery);
             }
         }
     }

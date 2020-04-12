@@ -18,11 +18,12 @@ import { CategoriesService } from './services/categories.service';
 import { SecurityService } from './services/security.service';
 import { CookieService } from 'ngx-cookie-service';
 import { SpinerInterceptorService } from './interceptors/spiner-interceptor.service';
-import { AntiForgeryInterceptorService } from './interceptors/antiforgery-interceptor.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
+import { HttpHelperService } from './services/http-helper';
+import { HttpHeaderAppenderInterceptorService } from './interceptors/http-header-appender-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,7 @@ export class SharedModule {
         },
         {
           provide: HTTP_INTERCEPTORS,
-          useClass: AntiForgeryInterceptorService,
+          useClass: HttpHeaderAppenderInterceptorService,
           multi: true,
         },
         {
@@ -95,6 +96,7 @@ export class SharedModule {
         },
         CookieService,
         SecurityService,
+        HttpHelperService,
       ]
     }
   }

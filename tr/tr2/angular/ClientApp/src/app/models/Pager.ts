@@ -1,21 +1,21 @@
-export class SearchQueryExtension {
-  sortField: string;
+export class Pager {
+  sortFieldIndex: number;
   pageIndex: number;
   isDesc: boolean;
 
-  constructor(defaultSortField: string) {
+  constructor() {
     this.isDesc = false;
     this.pageIndex = 0;
-    this.sortField = defaultSortField;
+    this.sortFieldIndex = 0;
   }
 
   isEmptyQuery() {
-    let tmp = { ...this };
+    const tmp = { ...this };
     delete tmp['isDesc'];
     delete tmp['pageIndex'];
-    delete tmp['sortField'];
+    delete tmp['sortFieldIndex'];
 
-    var emptyObject = JSON.parse(JSON.stringify(tmp, (key, value) => {
+    const emptyObject = JSON.parse(JSON.stringify(tmp, (key, value) => {
       if (value !== null) return value;
     }));
 

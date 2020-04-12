@@ -11,24 +11,24 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var SearchQueryExtension = /** @class */ (function () {
-    function SearchQueryExtension(defaultSortField) {
+var Pager = /** @class */ (function () {
+    function Pager() {
         this.isDesc = false;
         this.pageIndex = 0;
-        this.sortField = defaultSortField;
+        this.sortFieldIndex = 0;
     }
-    SearchQueryExtension.prototype.isEmptyQuery = function () {
+    Pager.prototype.isEmptyQuery = function () {
         var tmp = __assign({}, this);
         delete tmp['isDesc'];
         delete tmp['pageIndex'];
-        delete tmp['sortField'];
+        delete tmp['sortFieldIndex'];
         var emptyObject = JSON.parse(JSON.stringify(tmp, function (key, value) {
             if (value !== null)
                 return value;
         }));
         return Object.keys(emptyObject).length === 0;
     };
-    return SearchQueryExtension;
+    return Pager;
 }());
-exports.SearchQueryExtension = SearchQueryExtension;
+exports.Pager = Pager;
 //# sourceMappingURL=ISearchQueryExtension.js.map

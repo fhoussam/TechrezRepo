@@ -1,6 +1,6 @@
-import { SearchQueryExtension } from "./ISearchQueryExtension";
+import { Pager } from "./Pager";
 
-export class SearchProductQuery extends SearchQueryExtension {
+export class SearchProductQuery extends Pager {
   productName: string;
   supplierId: number;
   categoryId: number;

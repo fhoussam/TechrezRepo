@@ -12,9 +12,9 @@ namespace app.Common
         public int SortFieldIndex { get; set; }
         public bool IsDesc { get; set; }
         public int PageIndex { get; set; }
-        public async Task<PagedList<T>> CreatePagedList<T, R>(IQueryable<T> mainQuery, IQueryable<R> countQuery)
+        public async Task<PagedList<T>> CreatePagedList<T>(IQueryable<T> mainQuery)
         {
-            var totalRowsTsk = countQuery.CountAsync();
+            var totalRowsTsk = mainQuery.CountAsync();
 
             var propIndex = typeof(T).GetProperties().Count() > SortFieldIndex && SortFieldIndex >= 0 ? SortFieldIndex : 0;
             string propertyName = typeof(T).GetProperties()[propIndex].Name;

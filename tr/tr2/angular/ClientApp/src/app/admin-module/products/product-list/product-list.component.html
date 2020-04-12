@@ -4,8 +4,8 @@
       <th *ngFor="let gridField of gridFields"
           scope="col"
           [hidden]="gridField.hidden"
-          [ngClass]="{'sorted-field': gridField.fieldName == sortField}"
-          [attr.id]="gridField.hidden ? null : gridField.fieldName"
+          [ngClass]="{'sorted-field': gridField.sortfieldIndex == sortFieldIndex}"
+          [attr.data-sortfieldIndex]="gridField.hidden ? null : gridField.sortfieldIndex"
           (click)="emitSortField($event, gridField.hidden)">
         {{gridField.fieldDescription}}
       </th>

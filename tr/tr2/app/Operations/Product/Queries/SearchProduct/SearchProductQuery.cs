@@ -40,7 +40,7 @@ namespace app.Operations.Product.Queries.SearchProduct
                         && (!request.MinUnitsInStock.HasValue || request.MinUnitsInStock <= x.UnitsInStock)
                     ).ProjectTo<SearchProductQueryResponse>(_mapper.ConfigurationProvider);
 
-                return await request.CreatePagedList(mainQuery, _context.Products);
+                return await request.CreatePagedList(mainQuery);
             }
         }
     }
