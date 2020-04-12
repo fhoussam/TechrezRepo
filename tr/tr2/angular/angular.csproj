@@ -17,6 +17,7 @@
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
     <PackageReference Include="IdentityModel" Version="4.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
@@ -37,6 +38,9 @@
     <None Remove="ClientApp\src\app\custom-validators\firstValueMustBeGreaterThanSecondValueValidator.ts" />
     <None Remove="ClientApp\src\app\custom-validators\shouldBeLessThanValidator.ts" />
     <None Remove="ClientApp\src\app\guards\can-deactivate.ts" />
+    <None Remove="ClientApp\src\app\models\GetOrderDetailsForDisplayResponse.ts" />
+    <None Remove="ClientApp\src\app\models\GetOrderDetailsForEditResponse.ts" />
+    <None Remove="ClientApp\src\app\models\GetOrderDetailsQuery.ts" />
     <None Remove="ClientApp\src\app\models\GridField.ts" />
     <None Remove="ClientApp\src\app\models\ICategory.ts" />
     <None Remove="ClientApp\src\app\models\IProductDetails.ts" />
@@ -65,6 +69,9 @@
     <TypeScriptCompile Include="ClientApp\src\app\custom-validators\firstValueMustBeGreaterThanSecondValueValidator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\custom-validators\shouldBeLessThanValidator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\guards\can-deactivate.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\GetOrderDetailsForDisplayResponse.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\GetOrderDetailsForEditResponse.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\GetOrderDetailsQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ICategory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GridField.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductDetails.ts" />

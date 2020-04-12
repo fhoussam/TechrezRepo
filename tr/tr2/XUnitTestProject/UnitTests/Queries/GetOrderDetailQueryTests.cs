@@ -6,9 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using System.Linq;
 using static app.Operations.ProductOrders.Queries.GetOrderDetails.GetOrderDetailQuery;
-using Newtonsoft.Json.Linq;
 
 namespace XUnitTestProject.UnitTests.Queries
 {
@@ -64,9 +62,6 @@ namespace XUnitTestProject.UnitTests.Queries
                 .Handle(new GetOrderDetailQuery(11036, 59, true), CancellationToken.None)
                 .Result;
 
-            var companies = _context.Customers.Select(x => new { x.CustomerId, x.CompanyName }).ToDictionary(x=>x.CustomerId, x=>x.CompanyName);
-            var employees = _context.Employees.Select(x => new { x.EmployeeId, FullName = x.FirstName + " " + x.LastName }).ToDictionary(x => x.EmployeeId, x => x.FullName);
-
             var expected = new GetOrderDetailsForEditResponse()
             {
                 OrderDate = new DateTime(1998, 4, 20),
@@ -80,8 +75,6 @@ namespace XUnitTestProject.UnitTests.Queries
                 ShipRegion = null,
                 CustomerId = "DRACD",
                 EmployeeId = 8,
-                Companies = companies,
-                Employees = employees,
             };
 
             Assert.IsType<GetOrderDetailsForEditResponse>(actual);

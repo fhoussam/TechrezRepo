@@ -42,7 +42,7 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 
             private async Task<GetOrderDetailsForEditResponse> HandleEditMode(GetOrderDetailQuery request, CancellationToken cancellationToken)
             {
-                var mainTask = (from od in _context.OrderDetails
+                var result = await (from od in _context.OrderDetails
                                 join o in _context.Orders on od.OrderId equals o.OrderId
                                 join c in _context.Customers on o.CustomerId equals c.CustomerId
                                 join e in _context.Employees on o.EmployeeId equals e.EmployeeId
@@ -62,18 +62,8 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
                                     Quantity = od.Quantity,
                                 }).SingleOrDefaultAsync();
 
-                var companiesTask = _context.Customers.Select(x => new { x.CustomerId, x.CompanyName }).ToListAsync();
-                var employeesTask = _context.Employees.Select(x => new { x.EmployeeId, FullName = x.FirstName + " " + x.LastName }).ToListAsync();
-
-                await Task.WhenAll(mainTask, companiesTask, employeesTask);
-
-                var result = mainTask.Result;
-
                 if (result == null)
                     throw new DomainBadRequestException();
-
-                result.Companies = companiesTask.Result.ToDictionary(x => x.CustomerId, x => x.CompanyName);
-                result.Employees = employeesTask.Result.ToDictionary(x => x.EmployeeId, x => x.FullName);
 
                 return result;
             }

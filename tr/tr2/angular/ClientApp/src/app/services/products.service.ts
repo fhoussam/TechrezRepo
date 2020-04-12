@@ -20,9 +20,8 @@ export class ProductsService {
   constructor(private http: HttpClient, private httpHelper: HttpHelperService) { }
 
   public getProducts(searchProductQuery: SearchProductQuery): Observable<PagedList<SearchProductQueryResponse>> {
-    return this.http.get<PagedList<SearchProductQueryResponse>>(this.baseUrl, {
-      params: this.httpHelper.toHttpParams(searchProductQuery)
-    });
+    return this.http.get<PagedList<SearchProductQueryResponse>>
+      (this.baseUrl, { params: this.httpHelper.toHttpParams(searchProductQuery) });
   }
 
   public getProduct(productId: number): Observable<IProductDetails> {
