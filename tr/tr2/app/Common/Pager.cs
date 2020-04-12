@@ -16,11 +16,15 @@ namespace app.Common
         {
             var totalRowsTsk = countQuery.CountAsync();
 
-            mainQuery = mainQuery.OrderBy(SortFieldIndex + (IsDesc ? " desc" : string.Empty));
-           
+            var propIndex = typeof(T).GetProperties().Count() > SortFieldIndex && SortFieldIndex >= 0 ? SortFieldIndex : 0;
+            string propertyName = typeof(T).GetProperties()[propIndex].Name;
+
             var rawDataTsk = mainQuery
+                .OrderBy($"{propertyName} {(IsDesc ? "desc" : string.Empty)}")
                 .Skip(PageIndex * PagerParams.PageSize)
-                .Take(PagerParams.PageSize).ToListAsync();
+                .Take(PagerParams.PageSize)
+                .ToListAsync()
+                ;
 
             await Task.WhenAll(totalRowsTsk, rawDataTsk);
 

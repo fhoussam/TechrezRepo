@@ -69,11 +69,11 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 
                 var result = mainTask.Result;
 
-                if (mainTask == null)
+                if (result == null)
                     throw new DomainBadRequestException();
 
                 result.Companies = companiesTask.Result.ToDictionary(x => x.CustomerId, x => x.CompanyName);
-                result.Empployees = employeesTask.Result.ToDictionary(x => x.EmployeeId, x => x.FullName);
+                result.Employees = employeesTask.Result.ToDictionary(x => x.EmployeeId, x => x.FullName);
 
                 return result;
             }
@@ -89,7 +89,7 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
                                        {
                                            CompanyName = c.CompanyName,
                                            EmployeeFirstName = e.FirstName,
-                                           EmployeeFirstNameLastName = e.LastName,
+                                           EmployeeLastName = e.LastName,
                                            OrderDate = o.OrderDate,
                                            RequiredDate = o.RequiredDate,
                                            Quantity = od.Quantity,

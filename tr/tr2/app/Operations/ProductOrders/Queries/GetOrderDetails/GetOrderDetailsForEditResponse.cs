@@ -18,6 +18,6 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 		public string ShipCountry { get; set; }
 		public int Quantity { get; set; }
 		public Dictionary<string, string> Companies { get; set; }
-		public Dictionary<int, string> Empployees { get; set; }
+		public Dictionary<int, string> Employees { get; set; }
 	}
 }

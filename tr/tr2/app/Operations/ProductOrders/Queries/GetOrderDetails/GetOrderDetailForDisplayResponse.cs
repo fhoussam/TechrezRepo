@@ -8,7 +8,7 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 		public int Quantity { get; set; }
 		public string CompanyName { get; set; }
 		public string EmployeeFirstName { get; set; }
-		public string EmployeeFirstNameLastName { get; set; }
+		public string EmployeeLastName { get; set; }
 		public DateTime? OrderDate { get; set; }
 		public DateTime? RequiredDate { get; set; }
 		public DateTime? ShippedDate { get; set; }
