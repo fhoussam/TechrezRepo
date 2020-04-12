@@ -20,8 +20,4 @@
     <ProjectReference Include="..\infra\infra.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UnitTests\Commands\" />
-  </ItemGroup>
-
 </Project>
