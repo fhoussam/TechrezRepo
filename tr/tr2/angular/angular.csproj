@@ -35,11 +35,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\admin-module\order-details\order-details-reducer\order-details-actions.ts" />
+    <None Remove="ClientApp\src\app\admin-module\order-details\order-details-reducer\order-details-effects.ts" />
+    <None Remove="ClientApp\src\app\admin-module\order-details\order-details-reducer\order-details-reducer.ts" />
     <None Remove="ClientApp\src\app\custom-validators\firstValueMustBeGreaterThanSecondValueValidator.ts" />
     <None Remove="ClientApp\src\app\custom-validators\shouldBeLessThanValidator.ts" />
     <None Remove="ClientApp\src\app\guards\can-deactivate.ts" />
     <None Remove="ClientApp\src\app\models\GetOrderDetailsForDisplayResponse.ts" />
-    <None Remove="ClientApp\src\app\models\GetOrderDetailsForEditResponse.ts" />
     <None Remove="ClientApp\src\app\models\GetOrderDetailsQuery.ts" />
     <None Remove="ClientApp\src\app\models\GridField.ts" />
     <None Remove="ClientApp\src\app\models\ICategory.ts" />
@@ -66,18 +68,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\admin-module\order-details\order-details-reducer\order-details-actions.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin-module\order-details\order-details-reducer\order-details-effects.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin-module\order-details\order-details-reducer\order-details-reducer.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\custom-validators\firstValueMustBeGreaterThanSecondValueValidator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\custom-validators\shouldBeLessThanValidator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\guards\can-deactivate.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GetOrderDetailsForDisplayResponse.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\GetOrderDetailsForEditResponse.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GetOrderDetailsQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ICategory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GridField.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductDetails.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductSearchResponse.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\PagedList.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\SearchOrderDetails.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\order-details-models.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\SearchProductQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\Pager.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ISupplier.ts" />

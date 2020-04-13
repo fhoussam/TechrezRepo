@@ -13,6 +13,13 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { SuppliersService } from '../services/suppliers.service';
 import { CanDeactivateGuard } from '../guards/can-deactivate';
 import { SharedModule } from '../shared-module/shared.module';
+import { OrderDetailsService } from '../services/order-details.service';
+import { OrderDetailsInfoComponent } from './order-details/order-details-info/order-details-info.component';
+import { OrderDetailsEditComponent } from './order-details/order-details-edit/order-details-edit.component';
+import { OrderDetailsSearchComponent } from './order-details/order-details-search/order-details-search.component';
+import { OrderDetailsListComponent } from './order-details/order-details-list/order-details-list.component';
+import { EffectsModule } from '@ngrx/effects';
+import { OrderDetailsEffects } from './order-details/order-details-reducer/order-details-effects';
 
 @NgModule({
   exports: [
@@ -25,15 +32,21 @@ import { SharedModule } from '../shared-module/shared.module';
     SupplierEditComponent,
     ProductSearchComponent,
     ProductListComponent,
+    OrderDetailsInfoComponent,
+    OrderDetailsEditComponent,
+    OrderDetailsSearchComponent,
+    OrderDetailsListComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule.ForRoot(),
+    EffectsModule.forFeature([OrderDetailsEffects]),
   ],
   providers: [
     SuppliersService,
     ProductsService,
+    OrderDetailsService,
     CanDeactivateGuard,
   ]
 })

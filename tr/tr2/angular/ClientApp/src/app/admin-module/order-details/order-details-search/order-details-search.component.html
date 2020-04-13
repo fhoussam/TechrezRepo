@@ -1,0 +1,23 @@
+<div class="container" style="padding:20px;">
+  <div class="row">
+    <div class="col-sm">
+      <form (ngSubmit)="submit()" #f>
+        <div class="form-row">
+          <div class="col-md-5">
+            <input type="text" class="form-control" placeholder="From">
+          </div>
+          <div class="col-md-5">
+            <input type="text" class="form-control" placeholder="To">
+          </div>
+          <div class="col-md-2">
+            <input type="submit" value="Search" class="btn btn-info" />
+          </div>
+        </div>
+      </form>
+      <app-order-details-list></app-order-details-list>
+    </div>
+    <div class="col-sm">
+      <app-order-details-info></app-order-details-info>
+    </div>
+  </div>
+</div>

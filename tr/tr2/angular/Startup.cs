@@ -75,7 +75,12 @@ namespace angular
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
             services.AddValidatorsFromAssemblyContaining<INorthwindContext>();
-            services.AddControllersWithViews(mvcConfig => mvcConfig.Filters.Add<CustomAntiForgeryAttribute>()).AddNewtonsoftJson();
+            services
+                .AddControllersWithViews(mvcConfig => mvcConfig.Filters.Add<CustomAntiForgeryAttribute>())
+                .AddNewtonsoftJson((options) => 
+                {
+                    //options.SerializerSettings.DateFormatString = "ddMMyyyy";
+                });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

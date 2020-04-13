@@ -1,4 +1,4 @@
-﻿using app.Operations.ProductOrders.Queries.GetOrderDetails;
+﻿using app.Common.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -17,5 +17,6 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 		public string ShipPostalCode { get; set; }
 		public string ShipCountry { get; set; }
 		public int Quantity { get; set; }
+		public Dictionary<DropDownListIdentifier, Dictionary<object, string>> DropDownListData { get; set; }
 	}
 }

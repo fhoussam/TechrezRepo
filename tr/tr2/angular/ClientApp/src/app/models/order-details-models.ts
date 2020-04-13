@@ -34,6 +34,7 @@ export class GetOrderDetailsForEditResponse {
   ShipRegion: string;
   ShipPostalCode: string;
   ShipCountry: string;
+  DropDownListData: any;
 }
 
 export class SearchOrderDetailsResponse {
@@ -59,4 +60,11 @@ export class EditOrderDetailCommand
   ShippedDate: Date;
   ShipAddress: string;
   ShipPostalCode: string;
+}
+
+export enum DropDownListIdentifier {
+  Employees = 0,
+  Suppliers = 1,
+  Categories = 2,
+  Customers = 3,
 }

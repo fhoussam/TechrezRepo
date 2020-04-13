@@ -13,9 +13,9 @@ namespace app.Operations.ProductOrders.Queries.SearchOrderDetails
 {
     public class SearchOrderDetailsQuery : Pager, IRequest<PagedList<SearchOrderDetailsResponse>>
     {
-        public int ProductId { get; set; }
-        public DateTime OrderDateFrom { get; set; }
-        public DateTime OrderDateTo { get; set; }
+        public int? ProductId { get; set; }
+        public DateTime? OrderDateFrom { get; set; }
+        public DateTime? OrderDateTo { get; set; }
 
         public class SearchOrderDetailsQueryHandler : IRequestHandler<SearchOrderDetailsQuery, PagedList<SearchOrderDetailsResponse>>
         {
@@ -47,7 +47,7 @@ namespace app.Operations.ProductOrders.Queries.SearchOrderDetails
                         OrderDate = o.OrderDate,
                         ShipCountry = o.ShipCountry,
                     }
-                    );
+                );
 
                 return await request.CreatePagedList(mainQuery);
             }

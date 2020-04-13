@@ -12,7 +12,12 @@ namespace app.Operations.Config.Commands
 {
     public class GetDropDownListsQuery : IRequest<Dictionary<DropDownListIdentifier, Dictionary<object, string>>>
     {
-        public IEnumerable<DropDownListIdentifier> requestedDropDownListData { get; set; }
+        private readonly IEnumerable<DropDownListIdentifier> _requestedDropDownListData;
+        public GetDropDownListsQuery(IEnumerable<DropDownListIdentifier> requestedDropDownListData)
+        {
+            _requestedDropDownListData = requestedDropDownListData;
+        }
+
         public class GetDropDownListDataQueryhandler : IRequestHandler<GetDropDownListsQuery, Dictionary<DropDownListIdentifier, Dictionary<object, string>>>
         {
             private readonly INorthwindContext _context;
@@ -47,7 +52,7 @@ namespace app.Operations.Config.Commands
             public async Task<Dictionary<DropDownListIdentifier, Dictionary<object, string>>> Handle(GetDropDownListsQuery request, CancellationToken cancellationToken)
             {
                 var result = new Dictionary<DropDownListIdentifier, Dictionary<object, string>>();
-                foreach (var item in _configData(_context).Where(x => request.requestedDropDownListData.Contains(x.Key)))
+                foreach (var item in _configData(_context).Where(x => request._requestedDropDownListData.Contains(x.Key)))
                 {
                     var data = await item.Value.ToDictionaryAsync(x=>x.Key, x=>x.Value);
                     result.Add(item.Key, data);

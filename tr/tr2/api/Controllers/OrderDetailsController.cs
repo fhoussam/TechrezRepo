@@ -13,7 +13,7 @@ namespace api.Controllers
     public class OrderDetailsController : AppBaseController
     {
         [HttpGet]
-        public async Task<IActionResult> Get([FromBody] SearchOrderDetailsQuery searchOrderDetailsQuery)
+        public async Task<IActionResult> Get([FromQuery] SearchOrderDetailsQuery searchOrderDetailsQuery)
         {
             return Ok(await Mediator.Send(searchOrderDetailsQuery));
         }

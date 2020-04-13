@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -14,23 +15,23 @@ namespace app.Common
         public int PageIndex { get; set; }
         public async Task<PagedList<T>> CreatePagedList<T>(IQueryable<T> mainQuery)
         {
-            var totalRowsTsk = mainQuery.CountAsync();
+            var totalCount = await mainQuery.CountAsync();
 
-            var propIndex = typeof(T).GetProperties().Count() > SortFieldIndex && SortFieldIndex >= 0 ? SortFieldIndex : 0;
-            string propertyName = typeof(T).GetProperties()[propIndex].Name;
+            if (totalCount == 0)
+                return new PagedList<T>(new List<T>().AsQueryable(), 0);
 
-            var rawDataTsk = mainQuery
-                .OrderBy($"{propertyName} {(IsDesc ? "desc" : string.Empty)}")
-                .Skip(PageIndex * PagerParams.PageSize)
-                .Take(PagerParams.PageSize)
-                .ToListAsync()
-                ;
-
-            await Task.WhenAll(totalRowsTsk, rawDataTsk);
-
-            int totalPages = (int)Math.Ceiling(totalRowsTsk.Result / (double)PagerParams.PageSize);
-
-            return new PagedList<T>(rawDataTsk.Result, totalPages);
+            else 
+            {
+                var propIndex = typeof(T).GetProperties().Count() > SortFieldIndex && SortFieldIndex >= 0 ? SortFieldIndex : 0;
+                string propertyName = typeof(T).GetProperties()[propIndex].Name;
+                var list = await mainQuery
+                    .OrderBy($"{propertyName} {(IsDesc ? "desc" : string.Empty)}")
+                    .Skip(PageIndex * PagerParams.PageSize)
+                    .Take(PagerParams.PageSize)
+                    .ToListAsync();
+                int totalPages = (int)Math.Ceiling(totalCount / (double)PagerParams.PageSize);
+                return new PagedList<T>(list, totalPages);
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -8,7 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { HomeComponent } from './components/home/home.component';
 import { ProductSearchComponent } from '../admin-module/products/product-search/product-search.component';
-import { appReducer, get_settings } from './reducers/shared-reducer-selector';
+import { appReducer, getSettings } from './reducers/shared-reducer-selector';
 import { InitAppEffects } from './reducers/app-init-reducer/app-init-effects';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
@@ -24,6 +24,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
 import { HttpHelperService } from './services/http-helper';
 import { HttpHeaderAppenderInterceptorService } from './interceptors/http-header-appender-interceptor.service';
+import { ConfirmationMessageComponent } from './components/confirmation-message/confirmation-message.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HttpHeaderAppenderInterceptorService } from './interceptors/http-header
     ModalComponent,
     ErrorMessageComponent,
     NotFoundComponent,
+    ConfirmationMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -64,6 +66,7 @@ import { HttpHeaderAppenderInterceptorService } from './interceptors/http-header
     ModalComponent,
     ErrorMessageComponent,
     NotFoundComponent,
+    ConfirmationMessageComponent,
   ]
 })
 export class SharedModule {
@@ -90,13 +93,14 @@ export class SharedModule {
         },
         {
           provide: APP_INITIALIZER,
-          useFactory: get_settings,
+          useFactory: getSettings,
           deps: [Store],
           multi: true
         },
         CookieService,
         SecurityService,
         HttpHelperService,
+        DatePipe,
       ]
     }
   }

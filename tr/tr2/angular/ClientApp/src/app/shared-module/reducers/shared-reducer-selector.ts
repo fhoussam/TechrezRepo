@@ -4,18 +4,21 @@ import { InitAppBegin, InitCategoriesBegin, InitAppEnd, InitAntiForgeryBegin } f
 import { filter, take, tap } from "rxjs/operators";
 import { APP_SETTINGS } from "../models/APP_SETTINGS";
 import { IRemoteCallStatus, remoteCallStatusReducer } from "./spiner-reducer/spiner-reducer";
+import { OrderDetailsState, OrderDetailsReducer } from "../../admin-module/order-details/order-details-reducer/order-details-reducer";
 
 export interface IAppState {
   remoteCallStatus: IRemoteCallStatus;
   appInitState: IAppInitState;
+  orderDetailsState: OrderDetailsState;
 }
 
 export const appReducer: ActionReducerMap<IAppState> = {
   remoteCallStatus: remoteCallStatusReducer,
   appInitState: appInitReducer,
+  orderDetailsState: OrderDetailsReducer,
 };
 
-export function get_settings(store: Store<IAppState>) {
+export function getSettings(store: Store<IAppState>) {
   
   let result = () => new Promise(resolve => {
     store.dispatch(new InitAppBegin());

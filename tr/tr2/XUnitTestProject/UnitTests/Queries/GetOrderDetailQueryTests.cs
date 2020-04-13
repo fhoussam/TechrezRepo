@@ -1,8 +1,11 @@
-﻿using app.Common.Exceptions;
+﻿using app.Common.Enums;
+using app.Common.Exceptions;
 using app.Operations.ProductOrders.Queries.GetOrderDetails;
 using domain.Entities;
 using NUnitTestProject;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -75,6 +78,11 @@ namespace XUnitTestProject.UnitTests.Queries
                 ShipRegion = null,
                 CustomerId = "DRACD",
                 EmployeeId = 8,
+                DropDownListData = new Dictionary<DropDownListIdentifier, Dictionary<object, string>>()
+                {
+                    { DropDownListIdentifier.Customers, _context.Customers.ToDictionary(x=> (object)x.CustomerId, x=> x.CompanyName) },
+                    { DropDownListIdentifier.Employees, _context.Employees.ToDictionary(x=> (object)x.EmployeeId, x=> $"{x.FirstName} {x.LastName}") },
+                }
             };
 
             Assert.IsType<GetOrderDetailsForEditResponse>(actual);

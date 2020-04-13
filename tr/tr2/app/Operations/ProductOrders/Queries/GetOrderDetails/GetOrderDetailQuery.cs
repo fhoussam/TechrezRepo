@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using app.Common.Exceptions;
+using System.Collections.Generic;
+using app.Common.Enums;
+using static app.Operations.Config.Commands.GetDropDownListsQuery;
 
 namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 {
@@ -14,6 +17,12 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public bool ForEdit { get; set; }
+
+        private static readonly HashSet<DropDownListIdentifier> _requiredDropDownLists = new HashSet<DropDownListIdentifier>() 
+        {
+            DropDownListIdentifier.Customers,
+            DropDownListIdentifier.Employees,
+        };
 
         public GetOrderDetailQuery(int orderID, int productID, bool forEdit)
         {
@@ -42,7 +51,7 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 
             private async Task<GetOrderDetailsForEditResponse> HandleEditMode(GetOrderDetailQuery request, CancellationToken cancellationToken)
             {
-                var result = await (from od in _context.OrderDetails
+                var mainQueryTask = (from od in _context.OrderDetails
                                 join o in _context.Orders on od.OrderId equals o.OrderId
                                 join c in _context.Customers on o.CustomerId equals c.CustomerId
                                 join e in _context.Employees on o.EmployeeId equals e.EmployeeId
@@ -62,10 +71,18 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
                                     Quantity = od.Quantity,
                                 }).SingleOrDefaultAsync();
 
-                if (result == null)
-                    throw new DomainBadRequestException();
+                await mainQueryTask;
 
-                return result;
+                if (mainQueryTask.Result == null)
+                    throw new DomainBadRequestException();
+                else 
+                {
+                    var dropDownListDataTask = new GetDropDownListDataQueryhandler(_context)
+                        .Handle(new Config.Commands.GetDropDownListsQuery(_requiredDropDownLists), cancellationToken);
+
+                    mainQueryTask.Result.DropDownListData = dropDownListDataTask.Result;
+                    return mainQueryTask.Result;
+                }
             }
 
             private async Task<GetOrderDetailForDisplayResponse> HandleDisplayMode(GetOrderDetailQuery request, CancellationToken cancellationToken)

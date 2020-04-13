@@ -31,6 +31,7 @@
     "ngx-cookie-service": "^3.0.4",
     "oidc-client": "^1.10.1",
     "popper.js": "^1.16.1",
+    "query-string-params": "^1.7.5",
     "rxjs": "^6.5.5",
     "tslib": "^1.11.1",
     "zone.js": "0.10.3"
