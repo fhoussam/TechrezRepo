@@ -8,19 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
-var APP_SETTINGS_1 = require("../shared-module/models/APP_SETTINGS");
 var OrderDetailsService = /** @class */ (function () {
-    function OrderDetailsService(http, httpHelper, datepipe) {
+    function OrderDetailsService(http, httpHelper) {
         this.http = http;
         this.httpHelper = httpHelper;
-        this.datepipe = datepipe;
     }
     OrderDetailsService.prototype.searchOrderDetails = function (searchOrderDetailsQuery) {
-        var Params = new http_1.HttpParams();
-        Params = Params.append('orderDateFrom', this.datepipe.transform(searchOrderDetailsQuery.orderDateFrom, APP_SETTINGS_1.APP_SETTINGS.queryStringDateFormat));
-        Params = Params.append('orderDateTo', this.datepipe.transform(searchOrderDetailsQuery.orderDateTo, APP_SETTINGS_1.APP_SETTINGS.queryStringDateFormat));
-        Params = Params.append('productId', searchOrderDetailsQuery.productId.toString());
-        return this.http.get('/api/orderDetails?', { params: Params });
+        return this.http.get('/api/orderDetails?', { params: this.httpHelper.toHttpParams(searchOrderDetailsQuery) });
     };
     OrderDetailsService.prototype.getOrderDetails = function (orderId, productId, forEdit) {
         var params = new http_1.HttpParams();

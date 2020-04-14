@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PagedList } from '../models/PagedList';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHelperService } from '../shared-module/services/http-helper';
-import { EditOrderDetailCommand, OrderDetails, SearchOrderDetailsResponse, SearchOrderDetailsQuery } from '../models/order-details-models';
-import { propertyToUrl, urlToProperty, urlToList } from "query-string-params";
-import { DatePipe } from '@angular/common';
-import { APP_SETTINGS } from '../shared-module/models/APP_SETTINGS';
+import { EditOrderDetailCommand, OrderDetails, SearchOrderDetailsQuery, SearchOrderDetailsResponse } from '../models/order-details-models';
+import { PagedList } from '../models/PagedList';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +15,11 @@ export class OrderDetailsService {
   constructor(
     private http: HttpClient,
     private httpHelper: HttpHelperService,
-    public datepipe: DatePipe,
   ) { }
 
-  searchOrderDetails(searchOrderDetailsQuery: SearchOrderDetailsQuery) {
-    let Params = new HttpParams();
-    Params = Params.append('orderDateFrom', this.datepipe.transform(searchOrderDetailsQuery.orderDateFrom, APP_SETTINGS.queryStringDateFormat));
-    Params = Params.append('orderDateTo', this.datepipe.transform(searchOrderDetailsQuery.orderDateTo, APP_SETTINGS.queryStringDateFormat));
-    Params = Params.append('productId', searchOrderDetailsQuery.productId.toString());
-    return this.http.get('/api/orderDetails?', { params: Params });
+  searchOrderDetails(searchOrderDetailsQuery: SearchOrderDetailsQuery): Observable<PagedList<SearchOrderDetailsResponse>> {
+    return this.http.get<PagedList<SearchOrderDetailsResponse>>('/api/orderDetails?',
+      { params: this.httpHelper.toHttpParams(searchOrderDetailsQuery) });
   }
 
   getOrderDetails(orderId: number, productId: number, forEdit: boolean): Observable<OrderDetails> {

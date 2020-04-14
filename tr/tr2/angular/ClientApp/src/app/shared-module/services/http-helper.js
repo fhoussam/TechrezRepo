@@ -8,14 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
+var APP_SETTINGS_1 = require("../models/APP_SETTINGS");
 var HttpHelperService = /** @class */ (function () {
-    function HttpHelperService() {
+    function HttpHelperService(datepipe) {
+        this.datepipe = datepipe;
     }
     HttpHelperService.prototype.toHttpParams = function (object) {
+        var _this = this;
         var params = new http_1.HttpParams();
         Object.keys(object).forEach(function (item) {
-            if (object[item])
-                params = params.set(item, object[item]);
+            if (object[item]) {
+                //is date, we can use typeof operator for other keys if we want later
+                if (object[item].getMonth) {
+                    params = params.set(item, _this.datepipe.transform(object[item], APP_SETTINGS_1.APP_SETTINGS.queryStringDateFormat));
+                }
+                else {
+                    params = params.set(item, object[item]);
+                }
+            }
         });
         return params;
     };

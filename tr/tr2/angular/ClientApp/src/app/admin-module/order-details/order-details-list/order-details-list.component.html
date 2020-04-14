@@ -1,1 +1,24 @@
-<p>order-details-list works!</p>
+<table class="table table-bordered" *ngIf="list && list.source">
+  <thead>
+    <tr>
+      <th *ngFor="let gridField of gridFields"
+          scope="col"
+          [hidden]="gridField.hidden"
+          [ngClass]="{'sorted-field': gridField.sortfieldIndex == sortFieldIndex}"
+          [attr.data-sortfieldIndex]="gridField.hidden ? null : gridField.sortfieldIndex"
+          (click)="emitSortField($event, gridField.hidden)">
+        {{gridField.fieldDescription}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let orderDetails of list.source"
+        style="cursor:pointer">
+      <td hidden>{{orderDetails.orderId}}</td>
+      <td>{{orderDetails.companyName}}</td>
+      <td>{{orderDetails.employeeFirstName}} {{orderDetails.employeeLastName}}</td>
+      <td>{{orderDetails.orderDate}}</td>
+      <td>{{orderDetails.shipCountry}}</td>
+    </tr>
+  </tbody>
+</table>

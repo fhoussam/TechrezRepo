@@ -3,7 +3,6 @@ import { IAppState } from '../../../shared-module/reducers/shared-reducer-select
 import { Store } from '@ngrx/store';
 import { SearchOrderDetailsBegin } from '../order-details-reducer/order-details-actions';
 import { SearchOrderDetailsQuery } from '../../../models/order-details-models';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-order-details-search',
@@ -14,10 +13,10 @@ export class OrderDetailsSearchComponent implements OnInit {
 
   constructor(
     private store: Store<IAppState>,
-    public datepipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
+    this.submit();
   }
 
   submit() {

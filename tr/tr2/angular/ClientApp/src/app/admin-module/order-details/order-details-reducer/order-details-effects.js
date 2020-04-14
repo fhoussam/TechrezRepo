@@ -18,7 +18,6 @@ var OrderDetailsEffects = /** @class */ (function () {
         this.searchOrderDetails = this.actions$.pipe(effects_1.ofType(order_details_actions_1.SEARCH_ORDER_DETAILS_BEGIN), operators_1.switchMap(function (x) {
             return _this.orderDetailsService.searchOrderDetails(x.payload).pipe(operators_1.map(function (y) {
                 var response = y;
-                console.log(response);
                 return new order_details_actions_1.SearchOrderDetailsEnd(response);
             }));
         }));

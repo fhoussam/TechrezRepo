@@ -21,7 +21,6 @@ export class OrderDetailsEffects
       return this.orderDetailsService.searchOrderDetails(x.payload).pipe(
         map(y => {
           const response = y as PagedList<SearchOrderDetailsResponse>;
-          console.log(response);
           return new SearchOrderDetailsEnd(response);
         })
       );
