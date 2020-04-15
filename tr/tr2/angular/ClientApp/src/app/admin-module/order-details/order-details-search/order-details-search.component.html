@@ -16,8 +16,9 @@
       </form>
       <app-order-details-list></app-order-details-list>
     </div>
-    <div class="col-sm">
-      <app-order-details-info></app-order-details-info>
+    <div class="col-sm" style="padding-top:20px;">
+      <app-order-details-info *ngIf="!isEditMode"></app-order-details-info>
+      <app-order-details-edit *ngIf="isEditMode"></app-order-details-edit>
     </div>
   </div>
 </div>

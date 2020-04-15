@@ -11,12 +11,15 @@ import { SearchOrderDetailsQuery } from '../../../models/order-details-models';
 })
 export class OrderDetailsSearchComponent implements OnInit {
 
+  isEditMode: boolean;
+
   constructor(
     private store: Store<IAppState>,
   ) { }
 
   ngOnInit(): void {
     this.submit();
+    this.store.select('orderDetailsState').subscribe(x => this.isEditMode = x && x.isEditMode);
   }
 
   submit() {

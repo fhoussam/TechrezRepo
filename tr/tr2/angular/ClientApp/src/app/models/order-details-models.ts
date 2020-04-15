@@ -7,7 +7,8 @@ export class SearchOrderDetailsQuery extends Pager
   orderDateTo: Date;
 }
 
-export class GetOrderDetailForDisplayResponse {
+export class GetOrderDetailsForDisplayResponse {
+  orderId: number;
   quantity: number;
   companyName: string;
   employeeFirstName: string;
@@ -23,22 +24,23 @@ export class GetOrderDetailForDisplayResponse {
 }
 
 export class GetOrderDetailsForEditResponse {
-  Quantity: number;
-  CustomerId: string;
-  EmployeeId: string;
-  OrderDate: Date;
-  RequiredDate: Date;
-  ShippedDate: Date;
-  ShipAddress: string;
-  ShipCity: string;
-  ShipRegion: string;
-  ShipPostalCode: string;
-  ShipCountry: string;
-  DropDownListData: any;
+  orderId: number;
+  quantity: number;
+  customerId: string;
+  employeeId: string;
+  orderDate: Date;
+  requiredDate: Date;
+  shippedDate: Date;
+  shipAddress: string;
+  shipCity: string;
+  shipRegion: string;
+  shipPostalCode: string;
+  shipCountry: string;
+  dropDownListData: any;
 }
 
 export class SearchOrderDetailsResponse {
-  OrderId: number;
+  orderId: number;
   CompanyName: string;
   EmployeeFirstName: string;
   EmployeeLastName: string;
@@ -46,20 +48,20 @@ export class SearchOrderDetailsResponse {
   ShipCountry: string;
 }
 
-export type OrderDetails = GetOrderDetailForDisplayResponse | GetOrderDetailsForEditResponse;
+export type OrderDetails = GetOrderDetailsForDisplayResponse | GetOrderDetailsForEditResponse;
 
 export class EditOrderDetailCommand
 {
-  OrderId: number;
-  ProductId: number;
-  CustomerId: string;
-  EmployeeId: number;
-  Quantity: number;
-  OrderDate: Date;
-  RequiredDate: Date;
-  ShippedDate: Date;
-  ShipAddress: string;
-  ShipPostalCode: string;
+  orderId: number;
+  productId: number;
+  customerId: string;
+  employeeId: number;
+  quantity: number;
+  orderDate: Date;
+  requiredDate: Date;
+  shippedDate: Date;
+  shipAddress: string;
+  shipPostalCode: string;
 }
 
 export enum DropDownListIdentifier {

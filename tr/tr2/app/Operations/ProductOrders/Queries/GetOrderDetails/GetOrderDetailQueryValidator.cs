@@ -7,8 +7,8 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
     {
         public GetOrderDetailQueryValidator()
         {
-            RuleFor(x => x.OrderID).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
-            RuleFor(x => x.ProductID).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
+            RuleFor(x => x.OrderId).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
+            RuleFor(x => x.ProductId).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
             RuleFor(x => x.ForEdit).NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage);
         }
     }

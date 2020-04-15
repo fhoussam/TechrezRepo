@@ -28,7 +28,7 @@ namespace app.Operations.ProductOrders.Queries.IsQuantityValidQuery
 
             public async Task<bool> Handle(IsQuantityValidQuery request, CancellationToken cancellationToken)
             {
-                var mainQueryTask = (
+                var queryResult = await (
                     from od in _context.OrderDetails
                     join p in _context.Products
                     on od.ProductId equals p.ProductId
@@ -39,19 +39,14 @@ namespace app.Operations.ProductOrders.Queries.IsQuantityValidQuery
                         UnitsInStock = p.UnitsInStock,
                     }).ToListAsync();
 
-                var sumQuantityPerProductTsk = _context.OrderDetails.Where(x => x.ProductId == request.ProductId).SumAsync(x => x.Quantity);
-
-                await Task.WhenAll(mainQueryTask, sumQuantityPerProductTsk);
-
-                var queryResult = mainQueryTask.Result;
-                var sumQuantityPerProduct = sumQuantityPerProductTsk.Result;
-
                 //as we dont have any creation mode for this use case
                 if (queryResult.Count != 1)
                     throw new ValidationException();
-
-                return request.Quantity <= queryResult[0].OldQuanity
-                    || queryResult[0].UnitsInStock - sumQuantityPerProduct - request.Quantity + queryResult[0].OldQuanity > 0;
+                else {
+                    var sumQuantityPerProduct = await _context.OrderDetails.Where(x => x.ProductId == request.ProductId).SumAsync(x => x.Quantity);
+                    return request.Quantity <= queryResult[0].OldQuanity
+                        || queryResult[0].UnitsInStock - sumQuantityPerProduct - request.Quantity + queryResult[0].OldQuanity > 0;
+                }
             }
         }
     }

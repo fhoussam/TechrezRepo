@@ -5,6 +5,8 @@ import { IAppState } from '../../../shared-module/reducers/shared-reducer-select
 import { Store } from '@ngrx/store';
 import { PagedList } from '../../../models/PagedList';
 import { GridField } from '../../../models/GridField';
+import { SelectOrderDetailsBegin } from '../order-details-reducer/order-details-actions';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-details-list',
@@ -20,6 +22,7 @@ export class OrderDetailsListComponent implements OnInit {
 
   constructor(
     private store: Store<IAppState>,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -29,15 +32,20 @@ export class OrderDetailsListComponent implements OnInit {
       new GridField("companyName", "Company Name", 1, false),
       new GridField("employeeFullName", "Employee", 2, false),
       new GridField("orderDate", "Order Date", 4, false),
-      new GridField("ShipCountry", "Quantity Per Unit", 5, false),
+      new GridField("ShipCountry", "Ship Country", 5, false),
     ];
 
     this.store.select('orderDetailsState').subscribe((x: OrderDetailsState) => {
       if (x) {
         this.list = x.list;
-        if (x.selectedItem)
-          this.selectedItem = x.selectedItem;
+        if (x.selectedItemId)
+          this.selectedItemId = x.selectedItemId;
       }
     });
+  }
+
+  selectItem(item: SearchOrderDetailsResponse) {
+    this.store.dispatch(
+      new SelectOrderDetailsBegin(item.orderId, +this.activatedRoute.snapshot.paramMap.get('id'), false));
   }
 }

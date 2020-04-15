@@ -1,1 +1,67 @@
-<p>order-details-edit works!</p>
+<form (submit)="submit()" [formGroup]="form" style="padding:10px">
+
+  <div class="form-row">
+    <div class="col-md-6">
+      <input type="hidden" formControlName="orderId" />
+      <input type="hidden" formControlName="productId" />
+      <div class="form-group">
+        <label for="quantityPerUnit">Quantity</label>
+        <input type="text" class="form-control" name="quantity" id="quantity" formControlName="quantity" />
+      </div>
+      <div class="form-group">
+        <label for="customerId">Customer</label>
+        <select class="form-control" name="customerId" id="customerId" formControlName="customerId">
+          <option *ngFor="let customer of customers" [ngValue]="customer.key">{{customer.value}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="employeeId">Employee</label>
+        <select class="form-control" name="employeeId" id="employeeId" formControlName="employeeId">
+          <option *ngFor="let employee of employees" [ngValue]="employee.key">{{employee.value}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="orderDate">Order Date</label>
+        <input type="text" class="form-control" name="orderDate" id="orderDate" formControlName="orderDate" />
+      </div>
+      <div class="form-group">
+        <label for="requiredDate">Required Date</label>
+        <input type="text" class="form-control" name="requiredDate" id="requiredDate" formControlName="requiredDate" />
+      </div>
+      <div class="form-group">
+        <label for="shippedDate">Shipped Date</label>
+        <input type="text" class="form-control" name="shippedDate" id="shippedDate" formControlName="shippedDate" />
+      </div>
+      <div class="form-group">
+        <label for="shipAddress">Ship Address</label>
+        <input type="text" class="form-control" name="shipAddress" id="shipAddress" formControlName="shipAddress" />
+      </div>
+      <div class="form-group">
+        <label for="shipCity">Ship City</label>
+        <input type="text" class="form-control" name="shipCity" id="shipCity" formControlName="shipCity" />
+      </div>
+      <div class="form-group">
+        <label for="shipRegion">Ship Region</label>
+        <input type="text" class="form-control" name="shipRegion" id="shipRegion" formControlName="shipRegion" />
+      </div>
+      <div class="form-group">
+        <label for="shipPostalCode">Ship Postal Code</label>
+        <input type="text" class="form-control" name="shipPostalCode" id="shipPostalCode" formControlName="shipPostalCode" />
+      </div>
+      <div class="form-group">
+        <label for="shipCountry">Ship Country</label>
+        <select class="form-control" name="shipCountry" id="shipCountry" formControlName="shipCountry">
+          <option *ngFor="let country of countries" [ngValue]="country.key">{{country.value}}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="form-group btn-set">
+      <input type="submit" value="Save" class="btn btn-primary" />
+      <input type="button" value="Reset" class="btn btn-primary" (click)="reset()" />
+    </div>
+  </div>
+</form>

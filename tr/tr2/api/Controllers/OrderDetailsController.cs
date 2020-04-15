@@ -19,10 +19,10 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        [Route("{productID:int}/{orderID:int}")]
-        public async Task<IActionResult> Find([FromRoute] int productID, [FromRoute] int orderID, [FromQuery] bool isEdit) 
+        [Route("{productId:int}/{orderId:int}")]
+        public async Task<IActionResult> Find([FromRoute] int productId, [FromRoute] int orderId, [FromQuery] bool isEdit) 
         {
-            return Ok(await Mediator.Send(new GetOrderDetailQuery(productID, orderID, isEdit)));
+            return Ok(await Mediator.Send(new GetOrderDetailQuery(productId, orderId, isEdit)));
         }
 
         [HttpGet]

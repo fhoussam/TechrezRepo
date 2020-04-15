@@ -14,13 +14,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var order_details_actions_1 = require("./order-details-actions");
 var OrderDetailsStateInitalState = {
     list: null,
-    selectedItem: null,
+    selectedItemId: null,
+    selectedItemForDisplay: null,
+    selectedItemForEdit: null,
+    isEditMode: false,
 };
 function OrderDetailsReducer(state, action) {
     if (state === void 0) { state = OrderDetailsStateInitalState; }
     switch (action.type) {
         case order_details_actions_1.SEARCH_ORDER_DETAILS_END:
             return __assign(__assign({}, state), { list: action.payload });
+        case order_details_actions_1.SELECT_ORDER_DETAILS_BEGIN:
+            return __assign({}, state);
+        case order_details_actions_1.SELECT_ORDER_DETAILS_END_FOR_DISPLAY:
+            return __assign(__assign({}, state), { selectedItemForDisplay: action.payload, selectedItemId: action.payload.orderId, isEditMode: false });
+        case order_details_actions_1.SELECT_ORDER_DETAILS_END_FOR_EDIT:
+            return __assign(__assign({}, state), { selectedItemForEdit: action.payload, selectedItemId: action.payload.orderId, isEditMode: true });
         default:
             state;
     }

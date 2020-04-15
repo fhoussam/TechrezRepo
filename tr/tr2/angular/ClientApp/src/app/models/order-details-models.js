@@ -22,12 +22,12 @@ var SearchOrderDetailsQuery = /** @class */ (function (_super) {
     return SearchOrderDetailsQuery;
 }(Pager_1.Pager));
 exports.SearchOrderDetailsQuery = SearchOrderDetailsQuery;
-var GetOrderDetailForDisplayResponse = /** @class */ (function () {
-    function GetOrderDetailForDisplayResponse() {
+var GetOrderDetailsForDisplayResponse = /** @class */ (function () {
+    function GetOrderDetailsForDisplayResponse() {
     }
-    return GetOrderDetailForDisplayResponse;
+    return GetOrderDetailsForDisplayResponse;
 }());
-exports.GetOrderDetailForDisplayResponse = GetOrderDetailForDisplayResponse;
+exports.GetOrderDetailsForDisplayResponse = GetOrderDetailsForDisplayResponse;
 var GetOrderDetailsForEditResponse = /** @class */ (function () {
     function GetOrderDetailsForEditResponse() {
     }

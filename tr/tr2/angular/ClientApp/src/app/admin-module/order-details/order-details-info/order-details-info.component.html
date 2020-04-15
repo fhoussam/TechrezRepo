@@ -1,1 +1,108 @@
-<p>order-details-info works!</p>
+<div *ngIf="item" class="card" style="padding:20px">
+  <div class="card-body">
+    <h4 class="card-title">Details of #{{item.orderId}}</h4>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Quantity</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.quantity}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Company</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.companyName}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Order Date</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.orderDate | date : 'dd/MM/yyyy'}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Required Date</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.requiredDate | date : 'dd/MM/yyyy'}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Shipped Date</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.shippedDate | date : 'dd/MM/yyyy'}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Ship Address</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.shipAddress}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Ship City</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.shipCity}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Ship Region</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.shipRegion}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Ship Postal Code</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.shipPostalCode}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Ship Country</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.shipCountry}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="card-text col-md-4" role="toolbar">
+        <b>Employee</b>
+      </div>
+      <div class="card-text col-md-8">
+        {{item.employeeFirstName}} {{item.employeeLastName}}
+      </div>
+    </div>
+
+    <div class="form-group btn-set">
+      <button class="btn btn-primary" (click)="edit()">Edit</button>
+    </div>
+  </div>
+</div>

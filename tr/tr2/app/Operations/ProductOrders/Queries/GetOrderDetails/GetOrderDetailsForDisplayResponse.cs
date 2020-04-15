@@ -3,8 +3,9 @@ using System;
 
 namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 {
-    public class GetOrderDetailForDisplayResponse : IGetOrderDetailResponse
+    public class GetOrderDetailsForDisplayResponse : IGetOrderDetailResponse
 	{
+		public int OrderId { get; set; }
 		public int Quantity { get; set; }
 		public string CompanyName { get; set; }
 		public string EmployeeFirstName { get; set; }

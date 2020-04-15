@@ -12,16 +12,14 @@ var OrderDetailsService = /** @class */ (function () {
     function OrderDetailsService(http, httpHelper) {
         this.http = http;
         this.httpHelper = httpHelper;
+        this.baseUrl = '/api/orderDetails';
     }
     OrderDetailsService.prototype.searchOrderDetails = function (searchOrderDetailsQuery) {
         return this.http.get('/api/orderDetails?', { params: this.httpHelper.toHttpParams(searchOrderDetailsQuery) });
     };
     OrderDetailsService.prototype.getOrderDetails = function (orderId, productId, forEdit) {
-        var params = new http_1.HttpParams();
-        params.append('orderId', orderId.toString());
-        params.append('productId', productId.toString());
-        params.append('forEdit', forEdit.toString());
-        return this.http.get(this.baseUrl, { params: params });
+        var url = this.baseUrl + '/' + productId + '/' + orderId + '?isEdit=' + forEdit;
+        return this.http.get(url);
     };
     OrderDetailsService.prototype.deleteOrderDetails = function (orderId, productId) {
         var params = new http_1.HttpParams();

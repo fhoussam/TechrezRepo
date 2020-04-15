@@ -21,10 +21,28 @@ var OrderDetailsEffects = /** @class */ (function () {
                 return new order_details_actions_1.SearchOrderDetailsEnd(response);
             }));
         }));
+        this.selectOrderDetails = this.actions$.pipe(effects_1.ofType(order_details_actions_1.SELECT_ORDER_DETAILS_BEGIN), operators_1.switchMap(function (x) {
+            return _this.orderDetailsService.getOrderDetails(x.orderId, x.productId, x.forEdit).pipe(operators_1.map(function (resp) {
+                if (x.forEdit) {
+                    return new order_details_actions_1.SelectOrderDetailsEndForEdit(resp);
+                }
+                else
+                    return new order_details_actions_1.SelectOrderDetailsEndForDisplay(resp);
+            }));
+        }));
+        this.editOrderDetails = this.actions$.pipe(effects_1.ofType(order_details_actions_1.EDIT_ORDER_DETAILS_BEGIN), operators_1.switchMap(function (x) {
+            return _this.orderDetailsService.editOrderDetails(x.payload).pipe(operators_1.map(function () { return new order_details_actions_1.SelectOrderDetailsBegin(x.payload.orderId, x.payload.productId, false); }));
+        }));
     }
     __decorate([
         effects_1.Effect()
     ], OrderDetailsEffects.prototype, "searchOrderDetails", void 0);
+    __decorate([
+        effects_1.Effect()
+    ], OrderDetailsEffects.prototype, "selectOrderDetails", void 0);
+    __decorate([
+        effects_1.Effect()
+    ], OrderDetailsEffects.prototype, "editOrderDetails", void 0);
     OrderDetailsEffects = __decorate([
         core_1.Injectable()
     ], OrderDetailsEffects);

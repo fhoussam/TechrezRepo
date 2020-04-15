@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SEARCH_ORDER_DETAILS_BEGIN = "SEARCH_ORDER_DETAILS_BEGIN";
 exports.SEARCH_ORDER_DETAILS_END = "SEARCH_ORDER_DETAILS_END";
 exports.SELECT_ORDER_DETAILS_BEGIN = "SELECT_ORDER_DETAILS_BEGIN";
-exports.SELECT_ORDER_DETAILS_END = "SELECT_ORDER_DETAILS_END";
+exports.SELECT_ORDER_DETAILS_END_FOR_DISPLAY = "SELECT_ORDER_DETAILS_END_FOR_DISPLAY";
+exports.SELECT_ORDER_DETAILS_END_FOR_EDIT = "SELECT_ORDER_DETAILS_END_FOR_EDIT";
 exports.SHOWINFO_ORDER_DETAILS_BEGIN = "SHOWINFO_ORDER_DETAILS_BEGIN";
 exports.SHOWINFO_ORDER_DETAILS_END = "SHOWINFO_ORDER_DETAILS_END";
 exports.EDIT_ORDER_DETAILS_BEGIN = "EDIT_ORDER_DETAILS_BEGIN";
-exports.EDIT_ORDER_DETAILS_END = "EDIT_ORDER_DETAILS_END";
 exports.DELETE_ORDER_DETAILS_BEGIN = "DELETE_ORDER_DETAILS_BEGIN";
 exports.DELETE_ORDER_DETAILS_END = "DELETE_ORDER_DETAILS_END";
 var SearchOrderDetailsBegin = /** @class */ (function () {
@@ -27,20 +27,31 @@ var SearchOrderDetailsEnd = /** @class */ (function () {
 }());
 exports.SearchOrderDetailsEnd = SearchOrderDetailsEnd;
 var SelectOrderDetailsBegin = /** @class */ (function () {
-    function SelectOrderDetailsBegin() {
+    function SelectOrderDetailsBegin(orderId, productId, forEdit) {
+        this.orderId = orderId;
+        this.productId = productId;
+        this.forEdit = forEdit;
         this.type = exports.SELECT_ORDER_DETAILS_BEGIN;
     }
     return SelectOrderDetailsBegin;
 }());
 exports.SelectOrderDetailsBegin = SelectOrderDetailsBegin;
-var SelectOrderDetailsEnd = /** @class */ (function () {
-    function SelectOrderDetailsEnd(payload) {
+var SelectOrderDetailsEndForDisplay = /** @class */ (function () {
+    function SelectOrderDetailsEndForDisplay(payload) {
         this.payload = payload;
-        this.type = exports.SELECT_ORDER_DETAILS_END;
+        this.type = exports.SELECT_ORDER_DETAILS_END_FOR_DISPLAY;
     }
-    return SelectOrderDetailsEnd;
+    return SelectOrderDetailsEndForDisplay;
 }());
-exports.SelectOrderDetailsEnd = SelectOrderDetailsEnd;
+exports.SelectOrderDetailsEndForDisplay = SelectOrderDetailsEndForDisplay;
+var SelectOrderDetailsEndForEdit = /** @class */ (function () {
+    function SelectOrderDetailsEndForEdit(payload) {
+        this.payload = payload;
+        this.type = exports.SELECT_ORDER_DETAILS_END_FOR_EDIT;
+    }
+    return SelectOrderDetailsEndForEdit;
+}());
+exports.SelectOrderDetailsEndForEdit = SelectOrderDetailsEndForEdit;
 var ShowinfoOrderDetailsBegin = /** @class */ (function () {
     function ShowinfoOrderDetailsBegin() {
         this.type = exports.SHOWINFO_ORDER_DETAILS_BEGIN;
@@ -57,20 +68,13 @@ var ShowinfoOrderDetailsEnd = /** @class */ (function () {
 }());
 exports.ShowinfoOrderDetailsEnd = ShowinfoOrderDetailsEnd;
 var EditOrderDetailsBegin = /** @class */ (function () {
-    function EditOrderDetailsBegin() {
+    function EditOrderDetailsBegin(payload) {
+        this.payload = payload;
         this.type = exports.EDIT_ORDER_DETAILS_BEGIN;
     }
     return EditOrderDetailsBegin;
 }());
 exports.EditOrderDetailsBegin = EditOrderDetailsBegin;
-var EditOrderDetailsEnd = /** @class */ (function () {
-    function EditOrderDetailsEnd(payload) {
-        this.payload = payload;
-        this.type = exports.EDIT_ORDER_DETAILS_END;
-    }
-    return EditOrderDetailsEnd;
-}());
-exports.EditOrderDetailsEnd = EditOrderDetailsEnd;
 var DeleteOrderDetailsBegin = /** @class */ (function () {
     function DeleteOrderDetailsBegin() {
         this.type = exports.DELETE_ORDER_DETAILS_BEGIN;

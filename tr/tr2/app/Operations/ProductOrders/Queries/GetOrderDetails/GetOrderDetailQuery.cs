@@ -11,23 +11,23 @@ using static app.Operations.Config.Commands.GetDropDownListsQuery;
 
 namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 {
-    public class GetOrderDetailQuery : 
-        IRequest<IGetOrderDetailResponse>
+    public class GetOrderDetailQuery : IRequest<IGetOrderDetailResponse>
     {
-        public int OrderID { get; set; }
-        public int ProductID { get; set; }
-        public bool ForEdit { get; set; }
+        public int? OrderId { get; set; }
+        public int? ProductId { get; set; }
+        public bool? ForEdit { get; set; }
 
         private static readonly HashSet<DropDownListIdentifier> _requiredDropDownLists = new HashSet<DropDownListIdentifier>() 
         {
             DropDownListIdentifier.Customers,
             DropDownListIdentifier.Employees,
+            DropDownListIdentifier.Countries,
         };
 
-        public GetOrderDetailQuery(int orderID, int productID, bool forEdit)
+        public GetOrderDetailQuery(int productId, int orderId, bool forEdit)
         {
-            OrderID = orderID;
-            ProductID = productID;
+            ProductId = productId;
+            OrderId = orderId;
             ForEdit = forEdit;
         }
 
@@ -43,7 +43,7 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
 
             public async Task<IGetOrderDetailResponse> Handle(GetOrderDetailQuery request, CancellationToken cancellationToken)
             {
-                if (request.ForEdit)
+                if (request.ForEdit == true)
                     return await HandleEditMode(request, cancellationToken);
                 else
                     return await HandleDisplayMode(request, cancellationToken);
@@ -55,9 +55,10 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
                                 join o in _context.Orders on od.OrderId equals o.OrderId
                                 join c in _context.Customers on o.CustomerId equals c.CustomerId
                                 join e in _context.Employees on o.EmployeeId equals e.EmployeeId
-                                where od.OrderId == request.OrderID && od.ProductId == request.ProductID
+                                where od.OrderId == request.OrderId && od.ProductId == request.ProductId
                                 select new GetOrderDetailsForEditResponse()
                                 {
+                                    OrderId = o.OrderId,
                                     CustomerId = o.CustomerId,
                                     EmployeeId = o.EmployeeId,
                                     OrderDate = o.OrderDate,
@@ -85,15 +86,16 @@ namespace app.Operations.ProductOrders.Queries.GetOrderDetails
                 }
             }
 
-            private async Task<GetOrderDetailForDisplayResponse> HandleDisplayMode(GetOrderDetailQuery request, CancellationToken cancellationToken)
+            private async Task<GetOrderDetailsForDisplayResponse> HandleDisplayMode(GetOrderDetailQuery request, CancellationToken cancellationToken)
             {
                 var toDisplay = await (from od in _context.OrderDetails
                                        join o in _context.Orders on od.OrderId equals o.OrderId
                                        join c in _context.Customers on o.CustomerId equals c.CustomerId
                                        join e in _context.Employees on o.EmployeeId equals e.EmployeeId
-                                       where od.OrderId == request.OrderID && od.ProductId == request.ProductID
-                                       select new GetOrderDetailForDisplayResponse()
+                                       where od.OrderId == request.OrderId && od.ProductId == request.ProductId
+                                       select new GetOrderDetailsForDisplayResponse()
                                        {
+                                           OrderId = o.OrderId,
                                            CompanyName = c.CompanyName,
                                            EmployeeFirstName = e.FirstName,
                                            EmployeeLastName = e.LastName,

@@ -30,12 +30,12 @@ namespace app.Operations.ProductOrders.Commands.EditOrderDetail
 
             RuleFor(x => x.CustomerId).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
-                .Length(8, 100).WithMessage(ValidationErrorMessages.LengthError)
+                .Length(3, 100).WithMessage(ValidationErrorMessages.LengthError)
                 ;
 
             RuleFor(x => x.ShipAddress).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ValidationErrorMessages.RequiredMessage)
-                .Length(50, 300).WithMessage(ValidationErrorMessages.LengthError)
+                .Length(10, 300).WithMessage(ValidationErrorMessages.LengthError)
                 ;
 
             RuleFor(x => x.OrderDate).Cascade(CascadeMode.StopOnFirstFailure)
