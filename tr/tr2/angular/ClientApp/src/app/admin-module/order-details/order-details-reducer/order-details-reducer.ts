@@ -1,5 +1,5 @@
 import { SearchOrderDetailsResponse, GetOrderDetailsForDisplayResponse, GetOrderDetailsForEditResponse } from "../../../models/order-details-models";
-import { OrderDetailsAction, SEARCH_ORDER_DETAILS_END, SearchOrderDetailsEnd, SELECT_ORDER_DETAILS_BEGIN, SelectOrderDetailsBegin, SelectOrderDetailsEndForDisplay, SelectOrderDetailsEndForEdit, SELECT_ORDER_DETAILS_END_FOR_DISPLAY, SELECT_ORDER_DETAILS_END_FOR_EDIT } from "./order-details-actions";
+import { OrderDetailsAction, SEARCH_ORDER_DETAILS_END, SearchOrderDetailsEnd, SELECT_ORDER_DETAILS_BEGIN, SelectOrderDetailsEndForDisplay, SelectOrderDetailsEndForEdit, SELECT_ORDER_DETAILS_END_FOR_DISPLAY, SELECT_ORDER_DETAILS_END_FOR_EDIT } from "./order-details-actions";
 import { PagedList } from "../../../models/PagedList";
 
 export interface OrderDetailsState

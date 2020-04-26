@@ -1,17 +1,16 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { SearchProductQueryResponse } from '../../../models/IProductSearchResponse';
-import { SuppliersService } from '../../../services/suppliers.service';
 import { ProductsService } from '../../../services/products.service';
 import { SearchProductQuery } from '../../../models/SearchProductQuery';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { ICategory } from '../../../models/ICategory';
 import { APP_SETTINGS } from '../../../shared-module/models/APP_SETTINGS';
 import { IAppState } from '../../../shared-module/reducers/shared-reducer-selector';
 import { RemoteCallAction, ALERT } from '../../../shared-module/reducers/spiner-reducer/spiner-actions';
 import { PagedList } from '../../../models/PagedList';
+import { DdlKeyValue, DropDownListIdentifier } from '../../../models/config-models';
 
 @Component({
   selector: 'app-product-search',
@@ -22,8 +21,8 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
 
   searchResult: PagedList<SearchProductQueryResponse>;
   routeSubscription: Subscription;
-  categories: ICategory[];
-  suppliers: any;
+  categories: DdlKeyValue[];
+  suppliers: DdlKeyValue[];
   searchProductQuery: SearchProductQuery;
   @ViewChild('f', { static: false }) searchForm: NgForm;
   searchPanelCollapsed: boolean;
@@ -37,7 +36,6 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
 
   constructor(
     private productsService: ProductsService,
-    private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private store: Store<IAppState>
@@ -63,7 +61,9 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.categories = APP_SETTINGS.categories;
-    this.suppliers = this.suppliersService.getSuppliers();
+    this.productsService.getFormData().subscribe(formdata => {
+      this.suppliers = formdata[DropDownListIdentifier.Suppliers];
+    });
 
     try {
       const childRoute = this.activatedRoute.firstChild;

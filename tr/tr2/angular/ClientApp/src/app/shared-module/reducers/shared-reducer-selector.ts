@@ -1,4 +1,4 @@
-import { IAppInitState, appInitReducer } from "./app-init-reducer/app-init-reducer";
+import { AppInitState, appInitReducer } from "./app-init-reducer/app-init-reducer";
 import { ActionReducerMap, Store } from "@ngrx/store";
 import { InitAppBegin, InitCategoriesBegin, InitAppEnd, InitAntiForgeryBegin } from "./app-init-reducer/app-init-actions";
 import { filter, take, tap } from "rxjs/operators";
@@ -8,7 +8,7 @@ import { OrderDetailsState, OrderDetailsReducer } from "../../admin-module/order
 
 export interface IAppState {
   remoteCallStatus: IRemoteCallStatus;
-  appInitState: IAppInitState;
+  appInitState: AppInitState;
   orderDetailsState: OrderDetailsState;
 }
 

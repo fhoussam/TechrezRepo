@@ -1,17 +1,15 @@
-import { Component, OnInit, Output, Renderer2, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
-import { SuppliersService } from '../../../services/suppliers.service';
-import { Observable, timer, BehaviorSubject } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { ISupplier } from '../../../models/ISupplier';
-import { ICategory } from '../../../models/ICategory';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { firstValueMustBeGreaterThanSecondValueValidator } from '../../../custom-validators/firstValueMustBeGreaterThanSecondValueValidator';
 import { shouldBeLessThanValidator } from '../../../custom-validators/shouldBeLessThanValidator';
 import { CanCompoDeactivate } from '../../../guards/can-deactivate';
-import { CategoriesService } from '../../../shared-module/services/categories.service';
 import { EditProductQuery } from '../../../models/IEditProductQuery';
+import { DdlKeyValue, DropDownListIdentifier, DropDownListDictionary } from '../../../models/config-models';
+import { APP_SETTINGS } from '../../../shared-module/models/APP_SETTINGS';
 
 @Component({
   selector: 'app-product-edit',
@@ -22,8 +20,8 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterVi
 
   editProductQuery: EditProductQuery;
   editProductQueryPreviousState: any;
-  suppliers: Observable<ISupplier[]>;
-  categories: Observable<ICategory[]>;
+  suppliers: DdlKeyValue[];
+  categories: DdlKeyValue[];
   editForm: FormGroup;
   saved: boolean;
   isAddMode: boolean;
@@ -35,16 +33,18 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterVi
 
   constructor(
     private productsService: ProductsService,
-    private categoriesService: CategoriesService,
-    private suppliersService: SuppliersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
   ) { }
 
   ngOnInit() {
-    this.suppliers = this.suppliersService.getSuppliers();
-    this.categories = this.categoriesService.getCategories();
+
+    this.productsService.getFormData().subscribe(formdata => {
+      this.suppliers = formdata[DropDownListIdentifier.Suppliers];
+    });
+
+    this.categories = APP_SETTINGS.categories;
     this.saved = false;
 
     this.activatedRoute.paramMap.subscribe(x => {
@@ -76,7 +76,7 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterVi
 
   private getNewFormGroupValue(editProductQuery: EditProductQuery) {
 
-    let editForm = new FormGroup({
+    return new FormGroup({
       'productId': new FormControl(editProductQuery.productId),
       'productName': new FormControl
         (
@@ -100,8 +100,6 @@ export class ProductEditComponent implements OnInit, CanCompoDeactivate, AfterVi
     }
       , { validators: firstValueMustBeGreaterThanSecondValueValidator('unitsInStock', 'unitsOnOrder') }
     );
-
-    return editForm;
   }
 
   isDividableByTenAndGreaterThanZero(c: FormControl) {

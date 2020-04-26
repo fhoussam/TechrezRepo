@@ -46,11 +46,4 @@ var EditOrderDetailCommand = /** @class */ (function () {
     return EditOrderDetailCommand;
 }());
 exports.EditOrderDetailCommand = EditOrderDetailCommand;
-var DropDownListIdentifier;
-(function (DropDownListIdentifier) {
-    DropDownListIdentifier[DropDownListIdentifier["Employees"] = 0] = "Employees";
-    DropDownListIdentifier[DropDownListIdentifier["Suppliers"] = 1] = "Suppliers";
-    DropDownListIdentifier[DropDownListIdentifier["Categories"] = 2] = "Categories";
-    DropDownListIdentifier[DropDownListIdentifier["Customers"] = 3] = "Customers";
-})(DropDownListIdentifier = exports.DropDownListIdentifier || (exports.DropDownListIdentifier = {}));
 //# sourceMappingURL=order-details-models.js.map

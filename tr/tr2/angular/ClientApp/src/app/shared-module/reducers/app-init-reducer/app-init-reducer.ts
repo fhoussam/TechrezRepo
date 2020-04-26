@@ -1,17 +1,17 @@
 import { InitAppAction, INIT_CATEGORIES_END, InitCategoriesEnd, INIT_ANTIFORGERY_END } from "./app-init-actions";
-import { ICategory } from "../../../models/ICategory";
+import { DdlKeyValue } from "../../../models/config-models";
 
-export interface IAppInitState {
-  categories: ICategory[],
-  antiforgery: boolean,
+export interface AppInitState {
+  categories: DdlKeyValue[];
+  antiforgery: boolean;
 }
 
-const appInitInitalState: IAppInitState = {
+const appInitInitalState: AppInitState = {
   categories: [],
   antiforgery: false,
 }
 
-export function appInitReducer(state: IAppInitState = appInitInitalState, action: InitAppAction): IAppInitState {
+export function appInitReducer(state: AppInitState = appInitInitalState, action: InitAppAction): AppInitState {
   switch (action.type) {
 
     case INIT_ANTIFORGERY_END:

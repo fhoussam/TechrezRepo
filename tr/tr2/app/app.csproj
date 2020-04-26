@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Operations\ProductOrders\Queries\IsQuantityValidQuery\**" />
+    <EmbeddedResource Remove="Operations\ProductOrders\Queries\IsQuantityValidQuery\**" />
+    <None Remove="Operations\ProductOrders\Queries\IsQuantityValidQuery\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="FluentValidation" Version="8.6.2" />
@@ -16,10 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\domain\domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Operations\ProductOrders\Queries\IsQuantityValidQuery\" />
   </ItemGroup>
 
 </Project>

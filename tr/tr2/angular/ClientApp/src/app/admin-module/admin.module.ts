@@ -10,7 +10,6 @@ import { ProductSearchComponent } from './products/product-search/product-search
 import { ProductsService } from '../services/products.service';
 import { ProductListComponent } from './products/product-list/product-list.component';
 
-import { SuppliersService } from '../services/suppliers.service';
 import { CanDeactivateGuard } from '../guards/can-deactivate';
 import { SharedModule } from '../shared-module/shared.module';
 import { OrderDetailsService } from '../services/order-details.service';
@@ -44,7 +43,6 @@ import { OrderDetailsEffects } from './order-details/order-details-reducer/order
     EffectsModule.forFeature([OrderDetailsEffects]),
   ],
   providers: [
-    SuppliersService,
     ProductsService,
     OrderDetailsService,
     CanDeactivateGuard,

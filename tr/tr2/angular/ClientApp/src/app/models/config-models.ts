@@ -6,12 +6,16 @@ export enum DropDownListIdentifier {
   Countries = "Countries",
 }
 
-export interface KeyValue {
+export interface DdlKeyValue {
   key: string | number;
   value: string;
 }
 
 export interface DropDownListData {
   identifier: DropDownListIdentifier;
-  data: KeyValue[];
+  data: DdlKeyValue[];
+}
+
+export type DropDownListDictionary = {
+  [key in DropDownListIdentifier]: DdlKeyValue[]
 }

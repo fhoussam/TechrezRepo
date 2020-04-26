@@ -17,23 +17,38 @@ namespace XUnitTestProject
     {
         public T Command { get; }
         public IValidator<T> Validator { get; }
-        public IDictionary<Expression<Func<T, object>>, ValidationErrorTypes> ExpectedValidationErrorTypes { get; }
+        public IDictionary<Expression<Func<T, object>>, ValidationErrorMessage> ExpectedValidationErrorTypes { get; }
 
-        public GenericValidationTester(T command, IValidator<T> validator, IDictionary<Expression<Func<T, object>>, ValidationErrorTypes> expressions = null)
+        public GenericValidationTester(T command, IValidator<T> validator, IDictionary<Expression<Func<T, object>>, ValidationErrorMessage> expressions = null)
         {
             Command = command;
             Validator = validator;
             ExpectedValidationErrorTypes = expressions;
         }
 
+        private string GetUntransformedErrorMessage(string errorMessage, Dictionary<string, object> placeholders) 
+        {
+            placeholders.ToList().ForEach(x => {
+                if(x.Value is string && x.Value != null && !string.IsNullOrEmpty(x.Value.ToString()) && x.Key != null)
+                    errorMessage = errorMessage.Replace(x.Value.ToString(), $"{{{x.Key}}}");
+            });
+
+            return errorMessage;
+        }
+
         public ValidationResult ValidationResultOk()
         {
-            Dictionary<string, ValidationErrorTypes> expected = null;
-            Dictionary<string, ValidationErrorTypes> actual = null;
+            Dictionary<string, ValidationErrorMessage> expected = null;
+            Dictionary<string, ValidationErrorMessage> actual = null;
 
-            if(Validator.Validate(Command).Errors.Count > 0)
-                actual = Validator.Validate(Command).Errors
-                    .ToDictionary(x => x.PropertyName, x => (ValidationErrorTypes)Enum.Parse(typeof(ValidationErrorTypes), x.ErrorCode));
+            var validationResult = Validator.Validate(Command);
+
+            if (validationResult.Errors.Count > 0)
+                actual = validationResult.Errors
+                    .ToDictionary(x => x.PropertyName, x => new ValidationErrorMessage(
+                        GetUntransformedErrorMessage(x.ErrorMessage, x.FormattedMessagePlaceholderValues),
+                        (ValidationErrorTypes)Enum.Parse(typeof(ValidationErrorTypes), x.ErrorCode))
+                    );
 
             if (ExpectedValidationErrorTypes != null) 
             {
@@ -46,7 +61,7 @@ namespace XUnitTestProject
                     }
                 }
 
-                Func<KeyValuePair<Expression<Func<T, object>>, ValidationErrorTypes>, string> GetMemberNameFromExpression = x =>
+                Func<KeyValuePair<Expression<Func<T, object>>, ValidationErrorMessage>, string> GetMemberNameFromExpression = x =>
                 {
                     MemberExpression body = x.Key.Body as MemberExpression;
                     if (body == null)
@@ -66,14 +81,14 @@ namespace XUnitTestProject
 
     public class ValidationResult
     {
-        public ValidationResult(Dictionary<string, ValidationErrorTypes> expected, Dictionary<string, ValidationErrorTypes> actual)
+        public ValidationResult(Dictionary<string, ValidationErrorMessage> expected, Dictionary<string, ValidationErrorMessage> actual)
         {
             Expected = expected;
             Actual = actual;
         }
 
-        public Dictionary<string, ValidationErrorTypes> Actual { get; set; }
-        public Dictionary<string, ValidationErrorTypes> Expected { get; set; }
+        public Dictionary<string, ValidationErrorMessage> Actual { get; set; }
+        public Dictionary<string, ValidationErrorMessage> Expected { get; set; }
 
     }
 
@@ -85,5 +100,17 @@ namespace XUnitTestProject
         , PredicateValidator
         , RegularExpressionValidator
         , GreaterThanValidator
+    }
+
+    public class ValidationErrorMessage 
+    {
+        public ValidationErrorMessage(string errorMessage, ValidationErrorTypes errorType)
+        {
+            ErrorMessage = errorMessage;
+            ErrorType = errorType;
+        }
+
+        public readonly string ErrorMessage;
+        public readonly ValidationErrorTypes ErrorType;
     }
 }

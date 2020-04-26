@@ -14,7 +14,6 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { SpinerComponent } from './components/spiner/spiner.component';
 import { CategoryPipe } from './pipes/category.pipe';
-import { CategoriesService } from './services/categories.service';
 import { SecurityService } from './services/security.service';
 import { CookieService } from 'ngx-cookie-service';
 import { SpinerInterceptorService } from './interceptors/spiner-interceptor.service';
@@ -74,7 +73,6 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        CategoriesService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: ErrorInterceptorService,

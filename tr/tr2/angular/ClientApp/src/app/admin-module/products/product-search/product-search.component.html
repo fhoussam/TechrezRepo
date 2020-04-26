@@ -21,14 +21,14 @@
           <label for="supplierId">Supplier</label>
           <select class="form-control" name="supplierId" [(ngModel)]="searchProductQuery.supplierId">
             <option [ngValue]="null">Select All</option>
-            <option *ngFor="let supplier of suppliers | async" value="{{supplier.supplierId}}">{{supplier.companyName}}</option>
+            <option *ngFor="let supplier of suppliers" value="{{supplier.key}}">{{supplier.value}}</option>
           </select>
         </div>
         <div class="form-group col-md-6">
           <label for="categoryId">Category</label>
           <select class="form-control" name="categoryId" [(ngModel)]="searchProductQuery.categoryId">
             <option [ngValue]="null">Select All</option>
-            <option *ngFor="let category of categories" value="{{category.categoryId}}">{{category.categoryName}}</option>
+            <option *ngFor="let category of categories" value="{{category.key}}">{{category.value}}</option>
           </select>
         </div>
       </div>

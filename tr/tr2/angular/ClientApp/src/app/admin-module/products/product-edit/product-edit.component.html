@@ -22,13 +22,13 @@
       <div class="form-group">
         <label for="supplierId">Supplier</label>
         <select class="form-control" name="supplierId" id="supplierId" formControlName="supplierId">
-          <option *ngFor="let supplier of suppliers | async" [ngValue]="supplier.supplierId">{{supplier.companyName}}</option>
+          <option *ngFor="let supplier of suppliers" [ngValue]="supplier.key">{{supplier.value}}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="categoryId">Category</label>
         <select class="form-control" name="categoryId" id="categoryId" formControlName="categoryId">
-          <option *ngFor="let category of categories | async" [ngValue]="category.categoryId">{{category.categoryName}}</option>
+          <option *ngFor="let category of categories" [ngValue]="category.key">{{category.value}}</option>
         </select>
       </div>
       <div class="form-group">

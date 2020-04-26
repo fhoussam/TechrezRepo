@@ -1,4 +1,5 @@
 import { Pager } from "./Pager";
+import { DropDownListDictionary } from "./config-models";
 
 export class SearchOrderDetailsQuery extends Pager
 {
@@ -36,7 +37,7 @@ export class GetOrderDetailsForEditResponse {
   shipRegion: string;
   shipPostalCode: string;
   shipCountry: string;
-  dropDownListData: any;
+  dropDownListData: DropDownListDictionary[];
 }
 
 export class SearchOrderDetailsResponse {
@@ -62,11 +63,4 @@ export class EditOrderDetailCommand
   shippedDate: Date;
   shipAddress: string;
   shipPostalCode: string;
-}
-
-export enum DropDownListIdentifier {
-  Employees = 0,
-  Suppliers = 1,
-  Categories = 2,
-  Customers = 3,
 }

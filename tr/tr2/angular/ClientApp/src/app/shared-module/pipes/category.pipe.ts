@@ -5,9 +5,7 @@ import { APP_SETTINGS } from '../models/APP_SETTINGS';
   name: 'category'
 })
 export class CategoryPipe implements PipeTransform {
-
   transform(value: any, ...args: any[]): any {
-    return APP_SETTINGS.categories.filter(x => x.categoryId == value)[0].categoryName;
+    return APP_SETTINGS.categories.filter(x => x.key === value)[0].value;
   }
-
 }

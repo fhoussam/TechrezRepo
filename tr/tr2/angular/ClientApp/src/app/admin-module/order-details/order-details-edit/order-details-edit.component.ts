@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IAppState } from '../../../shared-module/reducers/shared-reducer-selector';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormControl } from '@angular/forms';
-import { DropDownListData, KeyValue, DropDownListIdentifier } from '../../../models/config-models';
+import { DdlKeyValue, DropDownListIdentifier } from '../../../models/config-models';
 import { EditOrderDetailCommand } from '../../../models/order-details-models';
 import { EditOrderDetailsBegin } from '../order-details-reducer/order-details-actions';
 import { ActivatedRoute } from '@angular/router';
@@ -15,9 +15,9 @@ import { ActivatedRoute } from '@angular/router';
 export class OrderDetailsEditComponent implements OnInit {
 
   form: FormGroup;
-  customers: KeyValue[];
-  employees: KeyValue[];
-  countries: KeyValue[];
+  customers: DdlKeyValue[];
+  employees: DdlKeyValue[];
+  countries: DdlKeyValue[];
 
   constructor(
     private store: Store<IAppState>,

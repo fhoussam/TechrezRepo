@@ -36,8 +36,7 @@ namespace XUnitTestProject
 
         public static void DeepEquals(object expected, object actual)
         {
-            var result = JToken.DeepEquals(JToken.FromObject(actual), JToken.FromObject(expected));
-            Assert.True(result);
+            Assert.True(expected == null && actual == null ? true : JToken.DeepEquals(JToken.FromObject(actual), JToken.FromObject(expected)));
         }
     }
 }

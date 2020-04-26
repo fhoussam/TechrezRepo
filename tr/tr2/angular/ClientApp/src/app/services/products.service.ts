@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { SearchProductQueryResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/SearchProductQuery';
@@ -8,6 +8,7 @@ import { EditProductQuery } from '../models/IEditProductQuery';
 import { PagedList } from '../models/PagedList';
 import { HttpHelperService } from '../shared-module/services/http-helper';
 import { APP_SETTINGS } from '../shared-module/models/APP_SETTINGS';
+import { DropDownListDictionary } from '../models/config-models';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class ProductsService {
   public getProducts(searchProductQuery: SearchProductQuery): Observable<PagedList<SearchProductQueryResponse>> {
     return this.http.get<PagedList<SearchProductQueryResponse>>
       (this.baseUrl, { params: this.httpHelper.toHttpParams(searchProductQuery) });
+  }
+
+  public getFormData(): Observable<DropDownListDictionary[]> {
+    return this.http.get<DropDownListDictionary[]>(this.baseUrl + '/formdata');
   }
 
   public getProduct(productId: number): Observable<IProductDetails> {

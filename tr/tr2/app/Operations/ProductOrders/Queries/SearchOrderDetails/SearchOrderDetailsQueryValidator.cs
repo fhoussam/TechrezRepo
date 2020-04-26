@@ -1,9 +1,5 @@
-﻿using app.Common;
-using app.Common.Constants;
+﻿using app.Common.Constants;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace app.Operations.ProductOrders.Queries.SearchOrderDetails
 {

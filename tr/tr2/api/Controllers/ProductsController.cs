@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using app.Common.Enums;
+using app.Operations.Config.Commands;
 using app.Operations.Product.Commands.DeleteProduct;
 using app.Operations.Product.Commands.EditProduct;
 using app.Operations.Product.Queries.GetProductDetails;
@@ -44,6 +46,13 @@ namespace api.Controllers
         public async Task<IActionResult> IsExistingProductName([FromQuery] string productName, [FromQuery] int productId)
         {
             return Ok(await Mediator.Send(new IsProductNameUniqueQuery() { ProductName = productName, ProductId = productId }));
+        }
+
+        [HttpGet]
+        [Route("formdata")]
+        public async Task<IActionResult> GetFormData()
+        {
+            return Ok(await Mediator.Send(new GetDropDownListsQuery(new DropDownListIdentifier[] { DropDownListIdentifier.Suppliers })));
         }
     }
 }

@@ -45,10 +45,8 @@
     <None Remove="ClientApp\src\app\models\GetOrderDetailsForDisplayResponse.ts" />
     <None Remove="ClientApp\src\app\models\GetOrderDetailsQuery.ts" />
     <None Remove="ClientApp\src\app\models\GridField.ts" />
-    <None Remove="ClientApp\src\app\models\ICategory.ts" />
     <None Remove="ClientApp\src\app\models\IProductDetails.ts" />
     <None Remove="ClientApp\src\app\models\IProductSearchResponse.ts" />
-    <None Remove="ClientApp\src\app\models\ISupplier.ts" />
     <None Remove="ClientApp\src\app\models\PagedList.ts" />
     <None Remove="ClientApp\src\app\models\Pager.ts" />
     <None Remove="ClientApp\src\app\models\SearchOrderDetails.ts" />
@@ -78,7 +76,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\config-models.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GetOrderDetailsForDisplayResponse.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GetOrderDetailsQuery.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\ICategory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\GridField.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductDetails.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IProductSearchResponse.ts" />
@@ -86,7 +83,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\order-details-models.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\SearchProductQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\Pager.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\ISupplier.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\IEditProductQuery.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\services\http-helper.ts" />
 	<TypeScriptCompile Include="ClientApp\src\app\shared-module\interceptors\error-interceptor.service.ts" />
