@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { SearchProductQueryResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/SearchProductQuery';
@@ -27,6 +27,14 @@ export class ProductsService {
 
   public getFormData(): Observable<DropDownListDictionary[]> {
     return this.http.get<DropDownListDictionary[]>(this.baseUrl + '/formdata');
+  }
+
+  public delete(ids: number[]) {
+    let params = new HttpParams();
+    ids.forEach(id => {
+      params = params.append('ids', id.toString());
+    });
+    return this.http.delete(this.baseUrl, { params: params });
   }
 
   public getProduct(productId: number): Observable<IProductDetails> {

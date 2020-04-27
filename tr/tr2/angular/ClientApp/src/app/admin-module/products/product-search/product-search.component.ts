@@ -28,7 +28,9 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   searchPanelCollapsed: boolean;
   autoCollapse: boolean;
   selectedItemId: number;
+  selectedIds: number;
   isAddMode: boolean;
+  idsForDeletion: number[] = [];
 
   collapse() {
     this.searchPanelCollapsed = !this.searchPanelCollapsed;
@@ -43,6 +45,14 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.searchPanelCollapsed = false;
     this.searchProductQuery = this.getNewSearchQuery();
     this.searchProductQuery.discontinued = false;
+  }
+
+  onSelectionChange($event: number[]) {
+    this.idsForDeletion = $event;
+  }
+
+  delete() {
+    this.productsService.delete(this.idsForDeletion).subscribe(() => console.log('item deleted'));
   }
 
   showAddForm(event) {
@@ -88,6 +98,8 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
         }
       }
     });
+
+    this.search(true);
   }
 
   onSelectedIndexChange(event) {

@@ -1,6 +1,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th scope="col"><input type="checkbox" (change)="toggleSelectPageItems($event)" [checked]="isAllSelected()" /></th>
       <th *ngFor="let gridField of gridFields"
           scope="col"
           [hidden]="gridField.hidden"
@@ -13,10 +14,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let product of products"
-        (click)="selectItem(product)"
         [ngClass]="{'selected-grid-item': product.productId == selectedItemId}"
-        style="cursor:pointer">
-      <td hidden>{{product.productId}}</td>
+        >
+      <td><input type="checkbox" (click)="toggleAppendId(product.productId)" [checked]="idsForDeletion.indexOf(product.productId) !== -1" /></td>
       <td>{{product.productName}}</td>
       <td>{{product.supplierId}}</td>
       <td>{{product.categoryId | category}}</td>

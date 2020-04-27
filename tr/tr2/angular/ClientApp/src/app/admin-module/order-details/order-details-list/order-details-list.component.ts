@@ -29,10 +29,10 @@ export class OrderDetailsListComponent implements OnInit {
 
     this.gridFields = [
       new GridField("orderId", "Order Id", 0, true),
-      new GridField("companyName", "Company Name", 1, false),
-      new GridField("employeeFullName", "Employee", 2, false),
-      new GridField("orderDate", "Order Date", 4, false),
-      new GridField("ShipCountry", "Ship Country", 5, false),
+      new GridField("companyName", "Company Name", 1),
+      new GridField("employeeFullName", "Employee", 2),
+      new GridField("orderDate", "Order Date", 4),
+      new GridField("ShipCountry", "Ship Country", 5),
     ];
 
     this.store.select('orderDetailsState').subscribe((x: OrderDetailsState) => {

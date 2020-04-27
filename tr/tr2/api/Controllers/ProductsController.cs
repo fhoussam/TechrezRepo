@@ -15,9 +15,9 @@ namespace api.Controllers
     public class ProductsController : AppBaseController
     {
         [HttpDelete]
-        public async Task<IActionResult> Delete(DeleteProductCommand deleteProductCommand)
+        public async Task<IActionResult> Delete([FromQuery] int[] ids)
         {
-            return Ok(await Mediator.Send(deleteProductCommand));
+            return Ok(await Mediator.Send(new DeleteProductCommand(ids)));
         }
 
         [HttpPost]
@@ -30,7 +30,6 @@ namespace api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] SearchProductQuery searchProductQuery) 
         {
-            System.Threading.Thread.Sleep(500);
             return Ok(await Mediator.Send(searchProductQuery));
         }
 

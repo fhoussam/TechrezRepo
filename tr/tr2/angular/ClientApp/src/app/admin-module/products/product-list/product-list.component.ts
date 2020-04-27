@@ -5,6 +5,7 @@ import { EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
 import { EditProductQuery } from '../../../models/IEditProductQuery';
+import { List } from 'linqts';
 
 @Component({
   selector: 'app-product-list',
@@ -17,7 +18,9 @@ export class ProductListComponent implements OnInit {
   selectedItemId: number;
   @Output() sortFieldChange = new EventEmitter();
   @Output() selectedIndexChange = new EventEmitter();
+  @Output() selectionChange = new EventEmitter();
   sortFieldIndex: number;
+  idsForDeletion: number[] = [];
 
   _products: SearchProductQueryResponse[];
   @Input()
@@ -41,14 +44,43 @@ export class ProductListComponent implements OnInit {
     private productsService: ProductsService,
   ) { }
 
+  //multiselection area
+  toggleAppendId(productId: number) {
+    const exists = this.idsForDeletion.indexOf(productId) !== -1;
+    if (!exists)
+      this.idsForDeletion.push(productId);
+    else
+      this.idsForDeletion = this.idsForDeletion.filter(x => x !== productId);
+    this.selectionChange.emit(this.idsForDeletion);
+  }
+
+  isAllSelected(): boolean {
+    const selectedIds = new List<number>(this.idsForDeletion);
+    const unselectedItems = new List<SearchProductQueryResponse>(this.products).Select(x => x.productId).Where(x => !selectedIds.Contains(x));
+    return unselectedItems.Count() === 0;
+  }
+
+  toggleSelectPageItems(event) {
+    const selectedIds = new List<number>(this.idsForDeletion);
+    const unselectedItems = new List<SearchProductQueryResponse>(this.products).Select(x => x.productId).Where(x => !selectedIds.Contains(x));
+    if (!event.target.checked) {
+      this.idsForDeletion = this.idsForDeletion.filter(x => !selectedIds.Contains(x));
+    }
+    else {
+      unselectedItems.ForEach(x => { this.idsForDeletion.push(x); });
+    }
+    this.selectionChange.emit(this.idsForDeletion);
+  }
+  //****
+
   ngOnInit() {
     this.gridFields = [
       new GridField("ProductId", "Product Id", 0, true),
-      new GridField("ProductName", "Product Name", 1, false),
-      new GridField("SupplierId", "Supplier", 2, false),
-      new GridField("CategoryId", "Category", 3, false),
-      new GridField("QuantityPerUnit", "Quantity Per Unit", 4, false),
-      new GridField("UnitPrice", "Unit Price", 5, false),
+      new GridField("ProductName", "Product Name", 1),
+      new GridField("SupplierId", "Supplier", 2),
+      new GridField("CategoryId", "Category", 3),
+      new GridField("QuantityPerUnit", "Quantity Per Unit", 4),
+      new GridField("UnitPrice", "Unit Price", 5),
     ];
 
     this.sortFieldIndex = 1;

@@ -4,7 +4,7 @@ export class GridField {
   hidden: boolean;
   sortfieldIndex: number;
 
-  constructor(fieldName, fieldDescription, sortfieldIndex, hidden) {
+  constructor(fieldName, fieldDescription, sortfieldIndex, hidden = false) {
     this.fieldName = fieldName;
     this.fieldDescription = fieldDescription;
     this.sortfieldIndex = sortfieldIndex;
