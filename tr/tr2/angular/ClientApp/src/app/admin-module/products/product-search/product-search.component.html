@@ -1,5 +1,7 @@
 <div *ngIf="!isProcessing">
 
+  <app-confirmation-message *ngIf="isConfirmation" [message]="deleteConfirmationMessage" (close)="onConfirmationMessageClosed($event)"></app-confirmation-message>
+
   <div class="trz-header" style="cursor:pointer" (click)="collapse()" [ngClass]="{'active':!searchPanelCollapsed}">
     <div class="trz-title">
       <span>Search product</span>
@@ -73,7 +75,8 @@
 
       <div class="form-row">
         <div class="btn-toolbar col-md-9" role="toolbar">
-          <input type="button" value="Delete" (click)="delete()" class="btn btn-danger" style="margin-right: 2px;" />
+          <input type="button" value="Delete" (click)="delete()" class="btn btn-danger" [disabled]="idsForDeletion.length === 0" style="margin-right: 2px;" />
+          <input type="button" value="Empty Selection" (click)="emptyDeleteSelection()" class="btn btn-secondary" [disabled]="idsForDeletion.length === 0" style="margin-right: 2px;" />
           <div class="btn-group mr-2" role="group">
             <button type="button"
                     class="btn btn-secondary"

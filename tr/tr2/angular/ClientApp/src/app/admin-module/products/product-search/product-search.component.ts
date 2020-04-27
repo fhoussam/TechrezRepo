@@ -28,9 +28,10 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   searchPanelCollapsed: boolean;
   autoCollapse: boolean;
   selectedItemId: number;
-  selectedIds: number;
   isAddMode: boolean;
   idsForDeletion: number[] = [];
+  deleteConfirmationMessage: string;
+  isConfirmation = false;
 
   collapse() {
     this.searchPanelCollapsed = !this.searchPanelCollapsed;
@@ -47,12 +48,24 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.searchProductQuery.discontinued = false;
   }
 
-  onSelectionChange($event: number[]) {
-    this.idsForDeletion = $event;
+  emptyDeleteSelection() {
+
+  }
+
+  onConfirmationMessageClosed($event:boolean) {
+    this.isConfirmation = false;
+    if ($event) {
+      this.productsService.delete(this.idsForDeletion).subscribe(() => console.log('item deleted'));
+    }
   }
 
   delete() {
-    this.productsService.delete(this.idsForDeletion).subscribe(() => console.log('item deleted'));
+    this.isConfirmation = true;
+    this.deleteConfirmationMessage = "Sure you wanna delete these " + this.idsForDeletion.length + " item(s) ?";
+  }
+
+  onSelectionChange($event: number[]) {
+    this.idsForDeletion = $event;
   }
 
   showAddForm(event) {

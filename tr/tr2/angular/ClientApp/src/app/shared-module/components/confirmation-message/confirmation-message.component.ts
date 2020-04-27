@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-confirmation-message',
   templateUrl: './confirmation-message.component.html',
   styleUrls: ['./confirmation-message.component.css']
 })
-export class ConfirmationMessageComponent implements OnInit {
+export class ConfirmationMessageComponent {
 
-  constructor() { }
+  @Input() message: string;
+  @Output() close = new EventEmitter();
 
-  ngOnInit(): void {
+  onClose(decision) {
+    this.close.emit(decision);
   }
-
 }

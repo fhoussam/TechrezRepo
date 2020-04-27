@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SUCCESS, RemoteCallAction } from '../../reducers/spiner-reducer/spiner-actions';
 import { IAppState } from '../../reducers/shared-reducer-selector';
