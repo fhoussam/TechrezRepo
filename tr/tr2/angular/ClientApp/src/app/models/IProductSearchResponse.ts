@@ -1,4 +1,5 @@
 export interface SearchProductQueryResponse {
+  selected: boolean;
   productId: number;
   productName: string;
   supplierId: number;

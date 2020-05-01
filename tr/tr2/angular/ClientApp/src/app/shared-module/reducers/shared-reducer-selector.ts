@@ -3,11 +3,11 @@ import { ActionReducerMap, Store } from "@ngrx/store";
 import { InitAppBegin, InitCategoriesBegin, InitAppEnd, InitAntiForgeryBegin } from "./app-init-reducer/app-init-actions";
 import { filter, take, tap } from "rxjs/operators";
 import { APP_SETTINGS } from "../models/APP_SETTINGS";
-import { IRemoteCallStatus, remoteCallStatusReducer } from "./spiner-reducer/spiner-reducer";
+import { remoteCallStatusReducer, RemoteCallStatus } from "./spiner-reducer/spiner-reducer";
 import { OrderDetailsState, OrderDetailsReducer } from "../../admin-module/order-details/order-details-reducer/order-details-reducer";
 
 export interface IAppState {
-  remoteCallStatus: IRemoteCallStatus;
+  remoteCallStatus: RemoteCallStatus;
   appInitState: AppInitState;
   orderDetailsState: OrderDetailsState;
 }

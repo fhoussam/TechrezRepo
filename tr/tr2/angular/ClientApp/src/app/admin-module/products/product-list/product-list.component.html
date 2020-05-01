@@ -1,7 +1,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col"><input type="checkbox" (change)="toggleSelectPageItems($event)" [checked]="isAllSelected()" /></th>
+      <th scope="col"><input type="checkbox" [checked]="isAllSelected()" (change)="toggleSelectAll($event)"/></th>
       <th *ngFor="let gridField of gridFields"
           scope="col"
           [hidden]="gridField.hidden"
@@ -15,8 +15,11 @@
   <tbody>
     <tr *ngFor="let product of products"
         [ngClass]="{'selected-grid-item': product.productId == selectedItemId}"
+        [ngStyle]="{'background-color': getTrBackGroundColor(product)}"
+        (dblclick)="openItem(product)"
         >
-      <td><input type="checkbox" (click)="toggleAppendId(product.productId)" [checked]="idsForDeletion.indexOf(product.productId) !== -1" /></td>
+      <td><input type="checkbox" [disabled]="product.productId == selectedItemId" (change)="product.selected = !product.selected;" [checked]="product.selected" /></td>
+      <td>{{product.productId}}</td>
       <td>{{product.productName}}</td>
       <td>{{product.supplierId}}</td>
       <td>{{product.categoryId | category}}</td>

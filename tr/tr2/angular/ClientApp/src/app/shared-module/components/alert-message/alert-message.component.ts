@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SUCCESS, RemoteCallAction } from '../../reducers/spiner-reducer/spiner-actions';
+import { SuccessAction } from '../../reducers/spiner-reducer/spiner-actions';
 import { IAppState } from '../../reducers/shared-reducer-selector';
 
 @Component({
@@ -12,10 +12,10 @@ export class AlertMessageComponent {
 
   @Input() message: string;
 
-  constructor(private store:Store<IAppState>) { }
+  constructor(private store: Store<IAppState>) { }
 
   onClose() {
-    this.store.dispatch(new RemoteCallAction({ messageType: SUCCESS, messageValue: null }));
+    this.store.dispatch(new SuccessAction());
   }
 
 }

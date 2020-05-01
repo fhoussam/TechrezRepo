@@ -39,8 +39,7 @@ namespace app.Operations.Product.Commands.DeleteProduct
                     else
                     {
                         _context.Products.RemoveRange(toRemove);
-                        //return await _context.SaveChangeAsyc();
-                        return 0;
+                        return await _context.SaveChangeAsyc();
                     }
                 }
             }

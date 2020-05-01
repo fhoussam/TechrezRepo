@@ -1,10 +1,10 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError, of } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 import { IAppState } from "../reducers/shared-reducer-selector";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { RemoteCallAction, ERROR } from "../reducers/spiner-reducer/spiner-actions";
+import { ErrorAction } from "../reducers/spiner-reducer/spiner-actions";
 
 export class ErrorInterceptorService implements HttpInterceptor {
   constructor(private store: Store<IAppState>, private router: Router) { }
@@ -25,10 +25,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
                 this.router.navigateByUrl('/not-found');
               }
               else {
-                this.store.dispatch(new RemoteCallAction({
-                  messageType: ERROR,
-                  messageValue: "An error has occured while processing your request, please try again or contact the administrator",
-                }));
+                this.store.dispatch(new ErrorAction("An error has occured while processing your request, please try again or contact the administrator"));
               }
             }
           }

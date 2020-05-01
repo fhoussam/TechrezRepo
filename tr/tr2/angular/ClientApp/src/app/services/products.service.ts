@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject, of, Subject } from 'rxjs';
 import { SearchProductQueryResponse } from '../models/IProductSearchResponse';
 import { SearchProductQuery } from '../models/SearchProductQuery';
 import { IProductDetails } from '../models/IProductDetails';
@@ -16,7 +16,7 @@ import { DropDownListDictionary } from '../models/config-models';
 export class ProductsService {
 
   readonly baseUrl = APP_SETTINGS.baseUrl + "products";
-  editedProductbehaviorSubject = new BehaviorSubject(new EditProductQuery());
+  editedProductbehaviorSubject = new Subject<EditProductQuery>();
 
   constructor(private http: HttpClient, private httpHelper: HttpHelperService) { }
 
@@ -29,12 +29,12 @@ export class ProductsService {
     return this.http.get<DropDownListDictionary[]>(this.baseUrl + '/formdata');
   }
 
-  public delete(ids: number[]) {
+  public delete(ids: number[]): Observable<void> {
     let params = new HttpParams();
     ids.forEach(id => {
       params = params.append('ids', id.toString());
     });
-    return this.http.delete(this.baseUrl, { params: params });
+    return this.http.delete<void>(this.baseUrl, { params: params });
   }
 
   public getProduct(productId: number): Observable<IProductDetails> {

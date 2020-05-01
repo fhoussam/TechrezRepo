@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEventType, HttpHeaders } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEventType } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
-import { RemoteCallAction, PENDING, SUCCESS } from '../reducers/spiner-reducer/spiner-actions';
+import { PendingAction, SuccessAction } from '../reducers/spiner-reducer/spiner-actions';
 import { IAppState } from '../reducers/shared-reducer-selector';
 
 class UrlForSpinner {
@@ -35,18 +35,12 @@ export class SpinerInterceptorService implements HttpInterceptor {
     let loadingMessage = this.loadingMessages.find(x => x.method === req.method && x.value === req.url);
 
     if (loadingMessage) {
-      this.store.dispatch(new RemoteCallAction({
-        messageType: PENDING,
-        messageValue: (req.method === "GET" ? "Loading" : "Saving") + ", please wait ...",
-      }));
+      this.store.dispatch(new PendingAction((req.method === "GET" ? "Loading" : "Saving") + ", please wait ..."));
     }
 
     return next.handle(req).pipe(tap(event => {
       if (event.type === HttpEventType.Response && loadingMessage) {
-        this.store.dispatch(new RemoteCallAction({
-          messageType: SUCCESS,
-          messageValue: null,
-        }));
+        this.store.dispatch(new SuccessAction());
       }
     }));
   }

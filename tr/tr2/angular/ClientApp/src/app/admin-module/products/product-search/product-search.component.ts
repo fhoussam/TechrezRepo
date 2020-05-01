@@ -8,9 +8,11 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { APP_SETTINGS } from '../../../shared-module/models/APP_SETTINGS';
 import { IAppState } from '../../../shared-module/reducers/shared-reducer-selector';
-import { RemoteCallAction, ALERT } from '../../../shared-module/reducers/spiner-reducer/spiner-actions';
+import { AlertAction, ConfirmAction } from '../../../shared-module/reducers/spiner-reducer/spiner-actions';
 import { PagedList } from '../../../models/PagedList';
 import { DdlKeyValue, DropDownListIdentifier } from '../../../models/config-models';
+import { tap } from 'rxjs/operators';
+import { List } from 'linqts';
 
 @Component({
   selector: 'app-product-search',
@@ -29,9 +31,6 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   autoCollapse: boolean;
   selectedItemId: number;
   isAddMode: boolean;
-  idsForDeletion: number[] = [];
-  deleteConfirmationMessage: string;
-  isConfirmation = false;
 
   collapse() {
     this.searchPanelCollapsed = !this.searchPanelCollapsed;
@@ -49,23 +48,22 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   }
 
   emptyDeleteSelection() {
-
+    this.searchResult.source.forEach((x)=> x.selected = false);
   }
 
-  onConfirmationMessageClosed($event:boolean) {
-    this.isConfirmation = false;
-    if ($event) {
-      this.productsService.delete(this.idsForDeletion).subscribe(() => console.log('item deleted'));
-    }
+  isExistingSelectedElements(): boolean {
+    return !new List<SearchProductQueryResponse>(this.searchResult.source).Any(x => x.selected);
   }
 
   delete() {
-    this.isConfirmation = true;
-    this.deleteConfirmationMessage = "Sure you wanna delete these " + this.idsForDeletion.length + " item(s) ?";
-  }
-
-  onSelectionChange($event: number[]) {
-    this.idsForDeletion = $event;
+    const ids = new List<SearchProductQueryResponse>(this.searchResult.source).Where(x=>x.selected).Select(x=>x.productId).ToArray();
+    this.store.dispatch(new ConfirmAction({
+      messageValue: "Sure you wanna delete these " + ids.length + " item(s) ?",
+      yesAsyncCallback:
+        this.productsService.delete(ids).pipe(
+          tap(() => { this.search(false); })
+        )
+    }));
   }
 
   showAddForm(event) {
@@ -100,7 +98,9 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     
     this.routeSubscription = this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        let urlParts = event.urlAfterRedirects.split('/');
+        const urlParts = event.urlAfterRedirects.split('/');
+        console.log(urlParts);
+        console.log(urlParts.length);
         //if we click on the Products in nav bar after a product has been opened
         if (urlParts.length === 3) {
           this.searchPanelCollapsed = false;
@@ -143,20 +143,19 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     this.searchProductQuery = this.getNewSearchQuery();
   }
 
-  search(isFromUi: boolean) {
-    let isEmpty = this.searchProductQuery.isEmptyQuery();
+  search(withInitPageIndex: boolean) {
+    const isEmpty = this.searchProductQuery.isEmptyQuery();
     if (isEmpty) {
-      this.store.dispatch(new RemoteCallAction({
-        messageType: ALERT,
-        messageValue: "Please provide at least one search criteria."
-      }));
+      this.store.dispatch(new AlertAction("Please provide at least one search criteria."));
     }
     else {
-      if (isFromUi)
+      if (withInitPageIndex)
         this.searchProductQuery.pageIndex = 0;
 
       this.productsService.getProducts(this.searchProductQuery).subscribe(x => {
         this.searchResult = x;
+        if(this.searchResult.source.length > 0)
+          this.searchResult.source.forEach((x)=>x.selected = false);
       });
     }
   }

@@ -1,7 +1,9 @@
 import { Component, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from './shared-module/reducers/shared-reducer-selector';
-import { PENDING, ALERT, ERROR } from './shared-module/reducers/spiner-reducer/spiner-actions';
+import { PENDING, ALERT, ERROR, CONFIRM, ConfirmAction } from './shared-module/reducers/spiner-reducer/spiner-actions';
+import { RemoteCallStatus } from './shared-module/reducers/spiner-reducer/spiner-reducer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,9 @@ export class AppComponent implements AfterViewChecked {
   isPending: boolean;
   isAlert: boolean;
   isError: boolean;
+  isConfirm: boolean;
   message: string;
+  yesAsyncCallback: Observable<void>;
 
   constructor(
     private store: Store<IAppState>,
@@ -33,12 +37,17 @@ export class AppComponent implements AfterViewChecked {
 
   ngOnInit() {
     //remoteCallStatus represents one of the props in IAppState structure
-    this.store.select('remoteCallStatus').subscribe(x => {
+    this.store.select('remoteCallStatus').subscribe((x: RemoteCallStatus) => {
       if (x) {
-        this.isAlert = x.messageType == ALERT;
-        this.isPending = x.messageType == PENDING;
-        this.isError = x.messageType == ERROR;
+        this.isAlert = x.messageType === ALERT;
+        this.isPending = x.messageType === PENDING;
+        this.isError = x.messageType === ERROR;
+        this.isConfirm = x.messageType === CONFIRM;
         this.message = x.messageValue;
+
+        if (this.isConfirm) {
+          this.yesAsyncCallback = x.yesAsyncCallback;
+        }
       }
     });
   }

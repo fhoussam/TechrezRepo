@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { SearchProductQueryResponse } from '../../../models/IProductSearchResponse';
 import { GridField } from '../../../models/GridField';
 import { EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
-import { EditProductQuery } from '../../../models/IEditProductQuery';
 import { List } from 'linqts';
+import { EditProductQuery } from '../../../models/IEditProductQuery';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +20,6 @@ export class ProductListComponent implements OnInit {
   @Output() selectedIndexChange = new EventEmitter();
   @Output() selectionChange = new EventEmitter();
   sortFieldIndex: number;
-  idsForDeletion: number[] = [];
 
   _products: SearchProductQueryResponse[];
   @Input()
@@ -38,44 +37,44 @@ export class ProductListComponent implements OnInit {
     return this._products;
   }
 
+  getTrBackGroundColor(item: SearchProductQueryResponse): string {
+
+    //selected for open
+    if (item.productId === this.selectedItemId) {
+      return '#b5dcf1';
+    }
+
+    //selected for delete
+    else if (item.selected) {
+      return '#ffbaba';
+    }
+
+    else
+      return 'inherit';
+  }
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private productsService: ProductsService,
   ) { }
 
-  //multiselection area
-  toggleAppendId(productId: number) {
-    const exists = this.idsForDeletion.indexOf(productId) !== -1;
-    if (!exists)
-      this.idsForDeletion.push(productId);
-    else
-      this.idsForDeletion = this.idsForDeletion.filter(x => x !== productId);
-    this.selectionChange.emit(this.idsForDeletion);
+  toggleSelectAll($event) {
+    this.products.forEach((x) => x.selected = $event.target.value);
   }
 
-  isAllSelected(): boolean {
-    const selectedIds = new List<number>(this.idsForDeletion);
-    const unselectedItems = new List<SearchProductQueryResponse>(this.products).Select(x => x.productId).Where(x => !selectedIds.Contains(x));
-    return unselectedItems.Count() === 0;
+  isAllSelected() {
+    new List<SearchProductQueryResponse>(this.products).All(x => x.selected);
   }
 
-  toggleSelectPageItems(event) {
-    const selectedIds = new List<number>(this.idsForDeletion);
-    const unselectedItems = new List<SearchProductQueryResponse>(this.products).Select(x => x.productId).Where(x => !selectedIds.Contains(x));
-    if (!event.target.checked) {
-      this.idsForDeletion = this.idsForDeletion.filter(x => !selectedIds.Contains(x));
-    }
-    else {
-      unselectedItems.ForEach(x => { this.idsForDeletion.push(x); });
-    }
-    this.selectionChange.emit(this.idsForDeletion);
-  }
-  //****
+  //toggleSelect(product: SearchProductQueryResponse, $event: any) {
+  //  console.log($event);
+  //  product.selected = $event.target.value;
+  //}
 
   ngOnInit() {
     this.gridFields = [
-      new GridField("ProductId", "Product Id", 0, true),
+      new GridField("ProductId", "Product Id", 0),
       new GridField("ProductName", "Product Name", 1),
       new GridField("SupplierId", "Supplier", 2),
       new GridField("CategoryId", "Category", 3),
@@ -91,7 +90,7 @@ export class ProductListComponent implements OnInit {
         const editedProductInGrid = this.products.find(x => x.productId === editedProduct.productId);
         if (editedProductInGrid !== null) {
           const index = this.products.indexOf(editedProductInGrid);
-          this.products[index] = editedProduct as SearchProductQueryResponse;
+          this.products[index] = { ...editedProduct, selected: this.products[index].selected };
         }
       }
       else
@@ -109,7 +108,10 @@ export class ProductListComponent implements OnInit {
     this.sortFieldChange.emit(this.sortFieldIndex);
   }
 
-  selectItem(item: SearchProductQueryResponse) {
+  openItem(item: SearchProductQueryResponse) {
+
+    //not allowing an item to be deleted when its opened
+    item.selected = false;
 
     this.selectedItemId = item.productId;
 
