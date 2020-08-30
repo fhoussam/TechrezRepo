@@ -14,7 +14,5 @@ namespace csharp_interviews.exos
 
             return string.IsNullOrEmpty(input);
         }
-
-
     }
 }
