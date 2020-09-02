@@ -2,9 +2,7 @@
 using csharp_interviews.exos;
 using FluentAssertions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace ut.exos
@@ -33,6 +31,11 @@ namespace ut.exos
             new Student(Guid.NewGuid(),"student 18", 23, 15.50, Gender.Male, City.Chicago),
             new Student(Guid.NewGuid(),"student 19", 22, 15.00, Gender.Female, City.LosAngelos),
         };
+
+        public static object GetStudentById(Guid id)
+        {
+            return Students.Single(x=>x.Id == id);
+        }
     }
 
     public class WhenGetMajor

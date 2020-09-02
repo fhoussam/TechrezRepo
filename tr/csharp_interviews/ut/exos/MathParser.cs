@@ -16,7 +16,7 @@ namespace ut
         [SetUp]
         public void Setup() 
         {
-            MathParser = new MathParser();
+            MathParser = new csharp_interviews.exos.MathParser();
         }
 
         [TestCase("2 * 3", 6)]
