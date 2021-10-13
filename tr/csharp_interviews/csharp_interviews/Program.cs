@@ -5,6 +5,7 @@ using System.Xml.Linq;
 using System.Linq;
 using csharp_interviews.exos;
 using System.IO;
+using csharp_interviews.exos.output;
 
 namespace csharp_interviews
 {
@@ -78,7 +79,7 @@ namespace csharp_interviews
             //Console.WriteLine($"Value : {classLevel3?.PropLevel2?.PropLevel1}");
 
             //Console.WriteLine(2 >> 1); //outputs 1, we should know why...
-            //Console.WriteLine(1 << 2); //outputs 4, we should know why...
+            //Console.WriteLine( 1 << 2); //outputs 4, we should know why...
 
 
             //Console.WriteLine(11 & ~01);//outputs 10, we should know why...
@@ -166,7 +167,14 @@ namespace csharp_interviews
             //Console.WriteLine(game.PlayersCount); // 4
             //Console.WriteLine(game.Players[0].CardsCount); // 13
 
-            Change.MainMethod();
+            //Change.MainMethod();
+
+            //Program1._Main();
+            //Program2._Main();
+            //Program3._Main();
+            //Program4._Main();
+            Program5._Main();
+
 
             Console.WriteLine("\n\nEOP");
             Console.ReadLine();
