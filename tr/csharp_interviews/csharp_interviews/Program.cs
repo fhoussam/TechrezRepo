@@ -167,15 +167,14 @@ namespace csharp_interviews
             //Console.WriteLine(game.PlayersCount); // 4
             //Console.WriteLine(game.Players[0].CardsCount); // 13
 
-            //Change.MainMethod();
+            Change.MainMethod();
 
             //Program1._Main();
             //Program2._Main();
             //Program3._Main();
             //Program4._Main();
             //Program5._Main();
-
-            Recursion._Main();
+            //Recursion._Main();
 
             Console.WriteLine("\n\nEOP");
             Console.ReadLine();
