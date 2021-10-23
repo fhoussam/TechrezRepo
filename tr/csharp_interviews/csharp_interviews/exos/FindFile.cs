@@ -1,34 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 namespace csharp_interviews.exos
 {
     public class FindFile
     {
-        public static void CoreFunction()
+        public static string CoreFunction()
         {
-            var targetDirectory = @"C:\Users\ferta\OneDrive\Desktop\aaaa";
-            string fileNameToSearch = "aaa.txt";
-            string result = string.Empty;
-            ProcessDirectory(targetDirectory, fileNameToSearch, ref result);
-            Console.WriteLine(result);
+            var targetDirectory = @"C:\Users\ferta\OneDrive\Desktop";
+            string fileNameToSearch = "eopp.com.crt";
+            var result = ProcessDirectory(targetDirectory, fileNameToSearch);
+            return !string.IsNullOrEmpty(result) ? result : "not found";
         }
 
-        public static void ProcessDirectory(string targetDirectory, string fileNameToSearch, ref string result)
+        public static string ProcessDirectory(string targetDirectory, string fileNameToSearch)
         {
-            if (!string.IsNullOrEmpty(result))
-                return;
-
             string[] fileEntries = Directory.GetFiles(targetDirectory);
             foreach (string fileName in fileEntries)
-                if (fileName.EndsWith(fileNameToSearch)) 
-                    result = targetDirectory;
+                if (fileName.EndsWith(fileNameToSearch))
+                    return targetDirectory;
 
             string[] subdirectoryEntries = Directory.GetDirectories(targetDirectory);
             foreach (string subdirectory in subdirectoryEntries)
-                ProcessDirectory(subdirectory, fileNameToSearch, ref result);
+            {
+                string result = ProcessDirectory(subdirectory, fileNameToSearch);
+                if(!string.IsNullOrEmpty(result))
+                    return result;
+            }
+
+            return null;
         }
     }
 }

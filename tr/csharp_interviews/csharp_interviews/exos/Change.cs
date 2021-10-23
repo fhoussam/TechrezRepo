@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
-namespace csharp_interviews.exos
+﻿namespace csharp_interviews.exos
 {
     using System;
 
     class Change
     {
-        public long coin2 = 0;
-        public long bill5 = 0;
-        public long bill10 = 0;
+        public long coin2 { get; set; } = 0;
+        public long bill5 { get; set; } = 0;
+        public long bill10 { get; set; } = 0;
 
         public static Change OptimalChange(long s)
         {
@@ -41,22 +36,19 @@ namespace csharp_interviews.exos
                 s -= result.coin2 * 2;
             }
 
-            if (s != 0)
+            if (s == 1)
             {
-                if (s == 1)
+                if (result.bill5 >= 1)
                 {
-                    if (result.bill5 >= 1)
-                    {
-                        result.bill5--;
-                        result.coin2 += 3;
-                    }
+                    result.bill5--;
+                    result.coin2 += 3;
+                }
 
-                    else if (result.bill10 >= 1)
-                    {
-                        result.bill10--;
-                        result.bill5++;
-                        result.coin2 += 3;
-                    }
+                else if (result.bill10 >= 1)
+                {
+                    result.bill10--;
+                    result.bill5++;
+                    result.coin2 += 3;
                 }
             }
 
@@ -65,16 +57,16 @@ namespace csharp_interviews.exos
 
         public static void MainMethod()
         {
-            long s = 31; // Change this value to perform other tests
-            Change m = Change.OptimalChange(s);
+            long s = 31; 
+            Change m = OptimalChange(s);
 
             if (m == null)
                 Console.WriteLine("Impossible");
             else
             {
-                Console.WriteLine("Coin(s)  2€: " + m.coin2);
-                Console.WriteLine("Bill(s)  5€: " + m.bill5);
-                Console.WriteLine("Bill(s) 10€: " + m.bill10);
+                Console.WriteLine("02 - Coin(s): " + m.coin2);
+                Console.WriteLine("05 - Bill(s): " + m.bill5);
+                Console.WriteLine("10 - Bill(s): " + m.bill10);
 
                 long result = m.coin2 * 2 + m.bill5 * 5 + m.bill10 * 10;
                 Console.WriteLine("\nChange given = " + result);
