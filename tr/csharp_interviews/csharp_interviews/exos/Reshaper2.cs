@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace csharp_interviews.exos
 {
@@ -7,16 +8,17 @@ namespace csharp_interviews.exos
         public static void Reshape2(string input, int fragCount)
         {
             string a = string.Empty, b = string.Empty;
-            for (int i = 0; i < input.Length; i++)
+            string inputNoSpace = input.Replace(" ", "");
+            for (int i = 0; i < inputNoSpace.Length; i++)
             {
-                a += "";
-                if (i % fragCount == 0) 
+                a += inputNoSpace[i].ToString();
+                if ((i + 1) % fragCount == 0) 
                 {
                     b += a + "\n";
                     a = string.Empty;
                 }
             }
-            System.Console.WriteLine(a.TrimEnd('\n'));
+            Console.WriteLine(b.TrimEnd('\n'));
         }
     }
 }

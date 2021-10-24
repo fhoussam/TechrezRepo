@@ -148,8 +148,8 @@ namespace csharp_interviews
 
             //Check.CoreFunction();
 
-            string fileName = FindFile.CoreFunction();
-            Console.WriteLine(fileName);
+            //string fileName = FindFile.CoreFunction();
+            //Console.WriteLine(fileName);
 
             //string[] fruits = { "apple", "orange", "apricot", "kiwi" };
             //var list = new List<string>(fruits);
@@ -158,7 +158,7 @@ namespace csharp_interviews
             //Console.WriteLine(query.Count());
             ////outputs 1 !!
 
-            //Reshaper2.Reshape2("aaa bbbb rr xxxxx", 2);
+            Reshaper2.Reshape2("aaa bbbb rr xxxxx", 3);
 
             //MemoryLeakExo.MainMethod();
 
