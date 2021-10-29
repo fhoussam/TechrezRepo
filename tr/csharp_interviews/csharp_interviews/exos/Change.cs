@@ -36,20 +36,25 @@
                 s -= result.coin2 * 2;
             }
 
-            if (s == 1)
+            if (s != 0)
             {
-                if (result.bill5 >= 1)
+                if (s == 1)
                 {
-                    result.bill5--;
-                    result.coin2 += 3;
-                }
+                    if (result.bill5 >= 1)
+                    {
+                        result.bill5--;
+                        result.coin2 += 3;
+                    }
 
-                else if (result.bill10 >= 1)
-                {
-                    result.bill10--;
-                    result.bill5++;
-                    result.coin2 += 3;
+                    else if (result.bill10 >= 1)
+                    {
+                        result.bill10--;
+                        result.bill5++;
+                        result.coin2 += 3;
+                    }
                 }
+                else
+                    return null;
             }
 
             return result;

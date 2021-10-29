@@ -6,6 +6,7 @@ using System.Linq;
 using csharp_interviews.exos;
 using System.IO;
 using csharp_interviews.exos.output;
+using csharp_interviews.Lists;
 
 namespace csharp_interviews
 {
@@ -158,7 +159,7 @@ namespace csharp_interviews
             //Console.WriteLine(query.Count());
             ////outputs 1 !!
 
-            Reshaper2.Reshape2("aaa bbbb rr xxxxx", 3);
+            //Reshaper2.Reshape2("aaa bbbb rr xxxxx", 3);
 
             //MemoryLeakExo.MainMethod();
 
@@ -176,6 +177,9 @@ namespace csharp_interviews
             //Program4._Main();
             //Program5._Main();
             //Recursion._Main();
+
+            //StackExo._Main(); //MASSUOH
+            //QueueExo._Main(); //HOUSSAM
 
             Console.WriteLine("\n\nEOP");
             Console.ReadLine();
