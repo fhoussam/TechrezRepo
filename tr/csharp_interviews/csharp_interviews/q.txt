@@ -1,4 +1,5 @@
-﻿sometimes, alternative to switch case and if, is polymorphisme
+﻿cusrsor can be needed for example when you want to use a previous line as input to analyse or write data into the current line
+sometimes, alternative to switch case and if, is polymorphisme
 value types are the ones that dont accept null value
 when using EF, we can disable tracking if the data is only meant to be read
 dividing by variable of type double and a value of 0 would not throw a devided by zero exception, an "if equals zero then throw" statement should be done explicitly
