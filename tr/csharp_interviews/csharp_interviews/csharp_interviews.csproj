@@ -15,4 +15,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Solid\0_SingleResponsibility\" />
+    <Folder Include="Solid\2_LiskovSubstitution\" />
+    <Folder Include="Solid\3_InterfaceSegregation\" />
+    <Folder Include="Solid\4_DependencyInversion\" />
+  </ItemGroup>
+
 </Project>

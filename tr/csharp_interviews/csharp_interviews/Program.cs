@@ -7,6 +7,7 @@ using csharp_interviews.exos;
 using System.IO;
 using csharp_interviews.exos.output;
 using csharp_interviews.Lists;
+using csharp_interviews.Solid._1_OpenClosed;
 
 namespace csharp_interviews
 {
@@ -180,6 +181,9 @@ namespace csharp_interviews
 
             //StackExo._Main(); //MASSUOH
             //QueueExo._Main(); //HOUSSAM
+
+            //OpenClosedBadWay.MainMethod();
+            OpenClosedRightWay.MainMethod();
 
             Console.WriteLine("\n\nEOP");
             Console.ReadLine();
