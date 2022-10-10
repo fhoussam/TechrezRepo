@@ -8,6 +8,7 @@ using System.IO;
 using csharp_interviews.exos.output;
 using csharp_interviews.Lists;
 using csharp_interviews.Solid._1_OpenClosed;
+using csharp_interviews.Solid._2_LiskovSubstitution;
 
 namespace csharp_interviews
 {
@@ -183,7 +184,9 @@ namespace csharp_interviews
             //QueueExo._Main(); //HOUSSAM
 
             //OpenClosedBadWay.MainMethod();
-            OpenClosedRightWay.MainMethod();
+            //OpenClosedRightWay.MainMethod();
+            //LiskovSubstitutionBadWay.MainMethod();
+            LiskovSubstitutionRightWay.MainMethod();
 
             Console.WriteLine("\n\nEOP");
             Console.ReadLine();
