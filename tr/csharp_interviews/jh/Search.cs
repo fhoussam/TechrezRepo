@@ -68,10 +68,6 @@ namespace jh
         private void Save()
         {
             var searchJob = new SearchJob() { SearchDate = DateTime.Now };
-            var requiredComplexeKeywords = _jhDbContext.Keywords.ToList().Where(x => x.IsComplexe || x.IsRequired).ToList();
-
-            Result = Result.Where(x => x.Value.GetRequiredMatches(requiredComplexeKeywords).Count > 0).ToDictionary(x => x.Key, x => x.Value);
-
             CurrentCachedUrls.ForEach(x => x.SearchJob = searchJob);
             _jhDbContext.SearchJobs.Add(searchJob);
             _jhDbContext.ResultEntities.AddRange(Result.Select(x => new ResultEntity()
@@ -97,7 +93,9 @@ namespace jh
             UrlsToIgnore.AddRange(previousResult);
             UrlsToIgnore.AddRange(cachedUrls);
 
-            var keywords = _jhDbContext.Keywords.ToList().Where(x => !x.IsComplexe //add param for providers who support complexe keywords!
+            var allKeywords = _jhDbContext.Keywords.ToList();
+            var keywordsToAvoidInTitle = _jhDbContext.Keywords.Where(x => x.KeywordType == KeywordTypes.AvoidInTitle).Select(x => x.Value.ToLower()).ToList();
+            var keywords = allKeywords.Where(x => (x.KeywordType == KeywordTypes.Title || x.KeywordType == KeywordTypes.Description) && !x.IsComplexe //add param for providers who support complexe keywords!
                 //&& x.Value == "c#"
                 ).ToList();
             var providers = _jhDbContext.Providers
@@ -114,19 +112,15 @@ namespace jh
 
             foreach (var provider in providers)
             {
-                var getParams = keywords.Select(x =>
+                foreach (var keyword in keywords)
                 {
-                    string getParam = x.Value;
+                    string getParam = keyword.Value;
                     //provider.UrlSpecialCharacter
                     provider.UrlSpecialCharacter.Where(x => x.ProviderId == provider.ProviderId).ToList().ForEach((y) =>
-                      {
-                          getParam = getParam.Replace(y.Value.ToString(), y.Replacer);
-                      });
-                    return getParam;
-                });
+                    {
+                        getParam = getParam.Replace(y.Value.ToString(), y.Replacer);
+                    });
 
-                foreach (var getParam in getParams)
-                {
                     for (int i = 1; i <= AppSettings.MaxPagesToScan; i++)
                     {
                         string url = provider.ListUrl
@@ -136,29 +130,34 @@ namespace jh
                         try
                         {
                             var htmlDocument = _helper.DownloadHtml(url);
-                            var iterationResult = ExtractResultEntities(htmlDocument, provider);
-                            iterationResult.ForEach(x =>
+                            var iterationResult = ExtractResultEntities(htmlDocument, provider, keyword);
+                            foreach (var resultItem in iterationResult)
                             {
                                 //if (!provider.IsJobIdInQueryParam)
                                 //    x.Path = x.Path.Split('?')[0];
 
                                 if (
-                                    !UrlsToIgnore.Any(y => y == x.Path)
-                                    && !Result.ContainsKey(x.Path)
+                                    !UrlsToIgnore.Any(y => y == resultItem.Path)
+                                    && !Result.ContainsKey(resultItem.Path)
                                 )
                                 {
-                                    x.RefUrl = url;
-                                    Result.Add(x.Path, new SearchResultEntity() 
+                                    resultItem.RefUrl = url;
+                                    var resultEntity = new SearchResultEntity()
                                     {
-                                        Description = x.Description,
-                                        Provider = x.Provider,
-                                        PublishDate = x.PublishDate,
-                                        Publisher = x.Publisher,
-                                        RefUrl = x.RefUrl,
-                                        Title = x.Title,
-                                    });
+                                        Description = resultItem.Description,
+                                        Provider = resultItem.Provider,
+                                        PublishDate = resultItem.PublishDate,
+                                        Publisher = resultItem.Publisher,
+                                        RefUrl = resultItem.RefUrl,
+                                        Title = resultItem.Title,
+                                    };
+
+                                    if (keywordsToAvoidInTitle.Any(x => resultEntity.Title.ToLower().Contains(x)))
+                                        continue;
+
+                                    Result.Add(resultItem.Path, resultEntity);
                                 }
-                            });
+                            }
                         }
                         catch (EmptyPageException)
                         {
@@ -169,6 +168,7 @@ namespace jh
                             throw new ListUrlPingException();
                         }
                     }
+
                 }
             }
         }
@@ -196,6 +196,7 @@ namespace jh
             try
             {
                 HtmlNode descriptionNode = descriptionHtmlDoc.DocumentNode.SelectSingleNode(resultEntity.Value.Provider.DescriptionPath);
+                System.Threading.Thread.Sleep(800);
                 resultEntity.Value.Description = WebUtility.HtmlDecode(descriptionNode.InnerText);
                 return new CachedUrl()
                 {
@@ -209,7 +210,7 @@ namespace jh
             }
         }
 
-        private List<ResultEntity> ExtractResultEntities(HtmlDocument xmlDocument, Provider provider)
+        private List<ResultEntity> ExtractResultEntities(HtmlDocument xmlDocument, Provider provider, Keyword keyword)
         {
             var result = new List<ResultEntity>();
             List<string> titles, urls, rawDates, publishers;
@@ -286,6 +287,11 @@ namespace jh
 
             for (int i = 0; i < titles.Count(); i++)
             {
+                if (keyword.KeywordType == KeywordTypes.Title && !titles[i].Contains(keyword.Value)) 
+                {
+                    continue;
+                }
+
                 DateTime? jobDate = null;
 
                 try

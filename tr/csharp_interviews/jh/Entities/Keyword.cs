@@ -4,27 +4,34 @@
     {
         public int KeywordId { get; set; }
         public string Value { get; set; }
-        public bool IsRequired { get; set; }
+        public KeywordTypes KeywordType { get; set; }
         public Keyword()
         {
 
         }
 
-        public Keyword(int keywordId, string value, bool isRequired = true)
+        public Keyword(int keywordId, string value, KeywordTypes keywordType)
         {
             KeywordId = keywordId;
-
             Value = value;
+            KeywordType = keywordType;
+            //if (IsComplexe && isRequired)
+            //    throw new KeywordCannotBeRequiredException();
 
-            if (IsComplexe && isRequired)
-                throw new KeywordCannotBeRequiredException();
-
-            IsRequired = isRequired == true;
         }
 
         public bool IsComplexe
         {
             get { return Value.Contains(" "); }
         }
+    }
+
+    public enum KeywordTypes
+    {
+        Title,
+        Description,
+        NiceToHave,
+        AvoidInTitle,
+        AvoidInDescription
     }
 }

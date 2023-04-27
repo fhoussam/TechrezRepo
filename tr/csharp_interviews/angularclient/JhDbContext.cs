@@ -81,7 +81,20 @@ namespace angularclient
 
             modelBuilder.Entity<Keyword>().HasData(
                     //new Keyword(01, "wcf"),
-                    new Keyword(02, "asp"),
+                    new Keyword(02, "insertion", KeywordTypes.Description),
+                    new Keyword(01, "diversit", KeywordTypes.Title),
+                    new Keyword(02, "inclusion", KeywordTypes.Title),
+                    new Keyword(03, "handicap", KeywordTypes.Title),
+                    new Keyword(04, "discrimination", KeywordTypes.Title),
+                    new Keyword(05, "égalité", KeywordTypes.Title),
+                    new Keyword(06, "cdd", KeywordTypes.NiceToHave),
+                    new Keyword(07, "cdi", KeywordTypes.NiceToHave),
+                    new Keyword(08, "intérim", KeywordTypes.NiceToHave),
+                    new Keyword(09, "provisoir", KeywordTypes.NiceToHave),
+                    new Keyword(10, "anglais", KeywordTypes.NiceToHave),
+                    new Keyword(11, "english", KeywordTypes.NiceToHave),
+                    new Keyword(12, "junior", KeywordTypes.NiceToHave),
+                    new Keyword(13, "débutant", KeywordTypes.NiceToHave)
                     //new Keyword(03, "c#"),
                     //new Keyword(04, "csharp"),
                     //new Keyword(05, "dotnet"),
@@ -89,7 +102,7 @@ namespace angularclient
                     //new Keyword(07, "jquery", false),
                     //new Keyword(08, "core", false),
                     //new Keyword(09, "angular", false),
-                    new Keyword(10, "anglais", false)
+                    //new Keyword(10, "anglais", false)
                     //,new Keyword(11, "english", false),
                     //new Keyword(12, "senior", false),
                     //new Keyword(13, "openid", false),

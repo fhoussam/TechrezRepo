@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using jh;
 using jh.Entities;
 using jh.Interfaces;
@@ -40,7 +41,8 @@ namespace angularclient.Controllers
                     RefUrl = x.Value.RefUrl,
                     Title = x.Value.Title,
                 }))
-                .ToList().OrderByDescending(x => x.OtherMatches.Count);
+                .Where(x => x.Matches.Count != 0)
+                .ToList().OrderByDescending(x => x.NiceToHaves.Count + x.Matches.Count);
         }
 
         [HttpGet]
@@ -62,10 +64,10 @@ namespace angularclient.Controllers
                 .Select(x => new ResultEntityDto(keywords, x)).ToList();
 
             if (sf == "tmc")
-                result = result.OrderByDescending(x => x.OtherMatches.Count + x.SpecialMatches.Count).ToList();
+                result = result.OrderByDescending(x => x.NiceToHaves.Count + x.Matches.Count).ToList();
 
             else if (sf == "smc")
-                result = result.OrderByDescending(x => x.SpecialMatches.Count).ToList();
+                result = result.OrderByDescending(x => x.Matches.Count).ToList();
 
             else
                 result = result.OrderByDescending(x => x.PublishDate).ToList();
@@ -81,8 +83,8 @@ namespace angularclient.Controllers
         public string Title { get; set; }
         public string Publisher { get; set; }
         public string Provider { get; set; }
-        public List<string> OtherMatches { get; set; }
-        public List<string> SpecialMatches { get; set; }
+        public List<string> NiceToHaves { get; set; }
+        public List<string> Matches { get; set; }
         public ResultEntityDto(List<Keyword> keywords, ResultEntity resultEntity)
         {
             Uri providerListUrl = new Uri(resultEntity.Provider.ListUrl);
@@ -91,8 +93,22 @@ namespace angularclient.Controllers
             Title = resultEntity.Title;
             Publisher = resultEntity.Publisher;
             Provider = providerListUrl.Host;
-            SpecialMatches = keywords.Where(x => !x.IsComplexe && !x.IsRequired && resultEntity.Description.ToLower().Contains(x.Value.ToLower())).Select(x => x.Value).ToList();
-            OtherMatches = keywords.Where(x => !SpecialMatches.Any(y => y == x.Value) && resultEntity.Description.ToLower().Contains(x.Value.ToLower())).Select(x => x.Value).ToList();
+            Matches = keywords.Where(x => Match(keywords, resultEntity.Description, resultEntity.Title, true)).Select(x => x.Value).ToList();
+            NiceToHaves = keywords.Where(x => Match(keywords, resultEntity.Description, resultEntity.Title, false)).Select(x => x.Value).ToList();
+        }
+
+        public bool Match(List<Keyword> keywords, string description, string title, bool requiredMode)
+        {
+            description = description.ToLower();
+            title = title.ToLower();
+
+            keywords = (requiredMode ? keywords.Where(x => x.KeywordType == KeywordTypes.Description || x.KeywordType == KeywordTypes.Title)
+                : keywords.Where(x => x.KeywordType == KeywordTypes.NiceToHave)).ToList();
+
+            var matchableKeyWords = keywords.Select(x => x.Value.ToLower());
+
+            var result = matchableKeyWords.Any(x => description.Contains(x)) || matchableKeyWords.Any(x => title.Contains(x));
+            return result;
         }
     }
 }

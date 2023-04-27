@@ -74,8 +74,8 @@ namespace angularclient.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsRequired")
-                        .HasColumnType("bit");
+                    b.Property<int>("KeywordType")
+                        .HasColumnType("int");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -87,15 +87,81 @@ namespace angularclient.Migrations
                     b.HasData(
                         new
                         {
+                            KeywordId = 1,
+                            KeywordType = 0,
+                            Value = "diversit"
+                        },
+                        new
+                        {
                             KeywordId = 2,
-                            IsRequired = true,
-                            Value = "asp"
+                            KeywordType = 0,
+                            Value = "inclusion"
+                        },
+                        new
+                        {
+                            KeywordId = 3,
+                            KeywordType = 0,
+                            Value = "handicap"
+                        },
+                        new
+                        {
+                            KeywordId = 4,
+                            KeywordType = 0,
+                            Value = "discrimination"
+                        },
+                        new
+                        {
+                            KeywordId = 5,
+                            KeywordType = 0,
+                            Value = "égalité"
+                        },
+                        new
+                        {
+                            KeywordId = 6,
+                            KeywordType = 2,
+                            Value = "cdd"
+                        },
+                        new
+                        {
+                            KeywordId = 7,
+                            KeywordType = 2,
+                            Value = "cdi"
+                        },
+                        new
+                        {
+                            KeywordId = 8,
+                            KeywordType = 2,
+                            Value = "intérim"
+                        },
+                        new
+                        {
+                            KeywordId = 9,
+                            KeywordType = 2,
+                            Value = "provisoir"
                         },
                         new
                         {
                             KeywordId = 10,
-                            IsRequired = false,
+                            KeywordType = 2,
                             Value = "anglais"
+                        },
+                        new
+                        {
+                            KeywordId = 11,
+                            KeywordType = 2,
+                            Value = "english"
+                        },
+                        new
+                        {
+                            KeywordId = 12,
+                            KeywordType = 2,
+                            Value = "junior"
+                        },
+                        new
+                        {
+                            KeywordId = 13,
+                            KeywordType = 2,
+                            Value = "débutant"
                         });
                 });
 

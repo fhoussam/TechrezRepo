@@ -14,7 +14,7 @@ namespace angularclient.Migrations
                     KeywordId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Value = table.Column<string>(nullable: true),
-                    IsRequired = table.Column<bool>(nullable: false)
+                    KeywordType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -160,13 +160,23 @@ namespace angularclient.Migrations
 
             migrationBuilder.InsertData(
                 table: "Keywords",
-                columns: new[] { "KeywordId", "IsRequired", "Value" },
-                values: new object[] { 2, true, "asp" });
-
-            migrationBuilder.InsertData(
-                table: "Keywords",
-                columns: new[] { "KeywordId", "IsRequired", "Value" },
-                values: new object[] { 10, false, "anglais" });
+                columns: new[] { "KeywordId", "KeywordType", "Value" },
+                values: new object[,]
+                {
+                    { 1, 0, "diversit" },
+                    { 2, 0, "inclusion" },
+                    { 3, 0, "handicap" },
+                    { 4, 0, "discrimination" },
+                    { 5, 0, "égalité" },
+                    { 6, 2, "cdd" },
+                    { 7, 2, "cdi" },
+                    { 8, 2, "intérim" },
+                    { 9, 2, "provisoir" },
+                    { 10, 2, "anglais" },
+                    { 11, 2, "english" },
+                    { 12, 2, "junior" },
+                    { 13, 2, "débutant" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Providers",
