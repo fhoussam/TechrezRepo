@@ -161,57 +161,22 @@ namespace angularclient.Migrations
             migrationBuilder.InsertData(
                 table: "Keywords",
                 columns: new[] { "KeywordId", "IsRequired", "Value" },
-                values: new object[,]
-                {
-                    { 1, true, "wcf" },
-                    { 24, true, "asmx" },
-                    { 23, true, "winform" },
-                    { 22, true, "webform" },
-                    { 21, false, "docker" },
-                    { 20, false, "aws" },
-                    { 19, false, "windows communication foundation" },
-                    { 18, false, "sql server" },
-                    { 17, false, "visual studio" },
-                    { 16, false, "identity" },
-                    { 15, false, "mssql" },
-                    { 14, false, "oauth" },
-                    { 13, false, "openid" },
-                    { 12, false, "senior" },
-                    { 11, false, "english" },
-                    { 10, false, "anglais" },
-                    { 9, false, "angular" },
-                    { 8, false, "core" },
-                    { 7, false, "jquery" },
-                    { 6, true, "asp.net" },
-                    { 5, true, "dotnet" },
-                    { 4, true, "csharp" },
-                    { 3, true, "c#" },
-                    { 2, true, "asp" }
-                });
+                values: new object[] { 2, true, "asp" });
+
+            migrationBuilder.InsertData(
+                table: "Keywords",
+                columns: new[] { "KeywordId", "IsRequired", "Value" },
+                values: new object[] { 10, false, "anglais" });
 
             migrationBuilder.InsertData(
                 table: "Providers",
                 columns: new[] { "ProviderId", "DateExtractor", "DatePath", "DescriptionPath", "EmptyPageIndicatorPath", "IsJobIdInQueryParam", "ListUrl", "PublisherPath", "TitlePath", "UrlPath", "UrlTransformer" },
-                values: new object[,]
-                {
-                    { 1, null, "//div[contains(@class, 'roffre')]/div/div[2]/span[2]", "//div[@id = 'divcontmain-pad']/div[2]/div[3]", "//div[contains(@class, 'roffre')]", false, "https://www.freelance-info.fr/missions.php?f=ile_de_france&mots={keyword}&tri=date&p={pageindex}", "//div[contains(@class, 'roffre')]/div/div[1]/div/img", "//div[contains(@class, 'roffre')]/div/div[2]/div[1]", "//div[contains(@class, 'roffre')]/div/div[2]/div[1]/a", null },
-                    { 2, null, "//div[contains(@class, 'result-link-bar')]/div/span[contains(@class, 'date')]", "//div[contains(@class, 'jobsearch-JobComponent-description')]", "//div[contains(@class, 'jobsearch-SerpJobCard')]", true, "https://www.indeed.fr/emplois?as_and={keyword}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=subcontract&st=&as_src=&salary=&radius=25&l=%C3%8Ele-de-France&fromage=any&limit=50&sort=date&psf=advsrch&from=advancedsearch", "//div[contains(@class, 'sjcl')]/div/span[contains(@class, 'company')]", "//div[contains(@class, 'title')]", "//div[contains(@class, 'title')]/a", null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "DescriptionUrlTransformers",
-                columns: new[] { "DescriptionUrlTransformerId", "ProviderId", "Replacer", "Value" },
-                values: new object[] { 2, 2, "voir-emploi", "rc/clk" });
+                values: new object[] { 1, null, "//div[contains(@class, 'cardOutline')]/div/div[1]/div/div/table[2]/tbody/tr[2]/td/div/span[1]/text()", "//div[contains(@id, 'jobDescriptionText')]", "//div[contains(@class, 'jobsearch-NoResult-messageHeader')]", false, "https://fr.indeed.com/jobs?q={keyword}&l=%C3%8Ele-de-France&sort=date", "//div[contains(@class, 'companyInfo')]/span[1]", "//div[contains(@class, 'cardOutline')]/div/div[1]/div/div/table/tbody/tr/td/div/h2/a", "//div[contains(@class, 'cardOutline')]/div/div[1]/div/div/table/tbody/tr/td/div/h2/a/@href", null });
 
             migrationBuilder.InsertData(
                 table: "UrlSpecialCharacters",
                 columns: new[] { "UrlSpecialCharacterId", "ProviderId", "Replacer", "Value" },
                 values: new object[] { 1, 1, "%23", "#" });
-
-            migrationBuilder.InsertData(
-                table: "UrlSpecialCharacters",
-                columns: new[] { "UrlSpecialCharacterId", "ProviderId", "Replacer", "Value" },
-                values: new object[] { 2, 2, "%23", "#" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CachedUrls_ProviderId",

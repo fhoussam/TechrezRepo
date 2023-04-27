@@ -8,7 +8,7 @@ namespace jh
         static void Main(string[] args)
         {
             //IHelper helper = new Helper();
-            //Search search = new Search(store, helper);
+            //Search search = new Search(helper);
             //search.Start();
         }
     }

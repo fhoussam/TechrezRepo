@@ -14,7 +14,14 @@ namespace jh
     public class ListUrlPathException : PathException { }
     public class DatePathException : PathException { }
     public class TitlePathException : PathException { }
-    public class ParseDateException : Exception { }
+    public class BulkParseDateException : Exception { }
+    public class SingleParseDateException : Exception
+    {
+        public SingleParseDateException(string message) : base(message)
+        {
+
+        } 
+    }
     public class DescriptionPathException : PathException { }
     public class EmptyPageException : Exception { }
     public class DuplicatedEntityResultException : Exception { }

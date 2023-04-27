@@ -103,8 +103,6 @@ namespace jh
             var providers = _jhDbContext.Providers
                 .ToList();
 
-            var forbiddenUrlWords = new List<string>() { "pagead" };
-
             //should be repaced with Include later
             var descriptionUrlTransformers = _jhDbContext.DescriptionUrlTransformers.ToList();
             var urlSpecialCharacters = _jhDbContext.UrlSpecialCharacters.ToList();
@@ -137,17 +135,16 @@ namespace jh
 
                         try
                         {
-                            var htmlDocument = _helper.Download(url);
-                            var iterationResult = ExtractResultEntitie(htmlDocument, provider);
+                            var htmlDocument = _helper.DownloadHtml(url);
+                            var iterationResult = ExtractResultEntities(htmlDocument, provider);
                             iterationResult.ForEach(x =>
                             {
-                                if (!provider.IsJobIdInQueryParam)
-                                    x.Path = x.Path.Split('?')[0];
+                                //if (!provider.IsJobIdInQueryParam)
+                                //    x.Path = x.Path.Split('?')[0];
 
                                 if (
                                     !UrlsToIgnore.Any(y => y == x.Path)
                                     && !Result.ContainsKey(x.Path)
-                                    && !forbiddenUrlWords.Any(y => x.Path.ToLower().Contains(y.ToLower()))
                                 )
                                 {
                                     x.RefUrl = url;
@@ -179,13 +176,14 @@ namespace jh
         private CachedUrl InitDescription(KeyValuePair<string, SearchResultEntity> resultEntity)
         {
             Uri providerListUrl = new Uri(resultEntity.Value.Provider.ListUrl);
-            string url = $"http{(providerListUrl.Port == 443 ? "s" : string.Empty)}://{providerListUrl.Host}/{resultEntity.Key}";
+
+            string url = $"http{(providerListUrl.Port == 443 ? "s" : string.Empty)}://{providerListUrl.Host}{resultEntity.Key}";
 
             HtmlDocument descriptionHtmlDoc;
 
             try
             {
-                descriptionHtmlDoc = _helper.Download(url);
+                descriptionHtmlDoc = _helper.DownloadHtml(url);
             }
             catch (Exception e)
             {
@@ -211,21 +209,21 @@ namespace jh
             }
         }
 
-        private List<ResultEntity> ExtractResultEntitie(HtmlDocument xmlDocument, Provider provider)
+        private List<ResultEntity> ExtractResultEntities(HtmlDocument xmlDocument, Provider provider)
         {
             var result = new List<ResultEntity>();
             List<string> titles, urls, rawDates, publishers;
             List<DateTime> dates = new List<DateTime>();
 
-            try
-            {
-                xmlDocument.DocumentNode.SelectNodes(provider.EmptyPageIndicatorPath).ToList();
-            }
-            catch (Exception)
-            {
-                //should be logged
-                throw new EmptyPageException();
-            }
+            //try
+            //{
+            //    xmlDocument.DocumentNode.SelectNodes(provider.EmptyPageIndicatorPath).ToList();
+            //}
+            //catch (Exception)
+            //{
+            //    //should be logged
+            //    throw new EmptyPageException();
+            //}
 
             try
             {
@@ -251,7 +249,7 @@ namespace jh
             {
                 rawDates = xmlDocument.DocumentNode.SelectNodes(provider.DatePath).Select(x => WebUtility.HtmlDecode(x.InnerText.Trim())).ToList();
             }
-            catch (Exception) { throw new ParseDateException(); }
+            catch (Exception) { throw new BulkParseDateException(); }
 
             try
             {
@@ -286,27 +284,28 @@ namespace jh
 
             var dateParser = DateParserFactory.CreateDateParser(provider.DateExtractor);
 
-            try
-            {
-                dates = rawDates.Select(x => dateParser.ParseDate(x)).ToList();
-            }
-            catch (Exception)
-            {
-                throw new ParseDateException();
-            }
-
             for (int i = 0; i < titles.Count(); i++)
             {
-                result.Add(
-                    new ResultEntity()
-                    {
-                        Path = urls[i],
-                        Provider = provider,
-                        PublishDate = dates[i],
-                        Publisher = publishers[i],
-                        Title = titles[i]
-                    }
-                );
+                DateTime? jobDate = null;
+
+                try
+                {
+                    jobDate = dateParser.ParseDate(rawDates[i]);
+                    result.Add(
+                        new ResultEntity()
+                        {
+                            Path = urls[i],
+                            Provider = provider,
+                            PublishDate = jobDate.Value,
+                            Publisher = publishers[i],
+                            Title = titles[i]
+                        }
+                    );
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
             }
 
             return result;

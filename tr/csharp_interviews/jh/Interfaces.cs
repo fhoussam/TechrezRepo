@@ -3,6 +3,7 @@ using jh.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace jh.Interfaces
@@ -16,7 +17,7 @@ namespace jh.Interfaces
 
     public interface IHelper
     {
-        HtmlDocument Download(string url);
+        HtmlDocument DownloadHtml(string url);
         XmlDocument ToXml(string html);
     }
 

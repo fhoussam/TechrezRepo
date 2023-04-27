@@ -4,35 +4,62 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace jh
 {
     public class Helper : IHelper
     {
-        public HtmlDocument Download(string url)
+        public HtmlDocument DownloadHtml(string url)
         {
             string s = string.Empty;
-            WebClient client = new WebClient();
-            Stream data = client.OpenRead(url);
-            StreamReader reader = new StreamReader(data);
 
             try
             {
-                client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
-                s = reader.ReadToEnd();
+                WebClient client = new WebClient();
+                client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36");
+                client.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                byte[] resultBytes = client.DownloadData(url);
+
+                if (client.ResponseHeaders["Content-Encoding"] == "gzip")
+                {
+                    using (MemoryStream stream = new MemoryStream(resultBytes))
+                    {
+                        using (GZipStream gzip = new GZipStream(stream, CompressionMode.Decompress))
+                        {
+                            using (StreamReader reader = new StreamReader(gzip, System.Text.Encoding.Default))
+                            {
+                                s = reader.ReadToEnd();
+                            }
+                        }
+                    }
+                }
+                else if (client.ResponseHeaders["Content-Encoding"] == "br")
+                {
+                    using (MemoryStream stream = new MemoryStream(resultBytes))
+                    {
+                        using (BrotliStream brotli = new BrotliStream(stream, CompressionMode.Decompress))
+                        {
+                            using (StreamReader reader = new StreamReader(brotli, System.Text.Encoding.Default))
+                            {
+                                s = reader.ReadToEnd();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    s = System.Text.Encoding.Default.GetString(resultBytes);
+                }
             }
-            catch (Exception)
+            catch (Exception exp)
             {
-                s = new HttpClient().GetStringAsync(url).Result;
-            }
-            finally 
-            { 
-                data.Close();
-                reader.Close();            
+                //s = new HttpClient().GetStringAsync(url).Result;
             }
 
             HtmlDocument doc = new HtmlDocument();
@@ -56,27 +83,34 @@ namespace jh
     {
         public DateTime ParseDate(string input)
         {
-            input = input.ToLower();
-
-            if (input.Contains("aujourd'hui") || input.Contains("instant"))
-                return DateTime.Today;
-
-            else if (input.Contains("il y a "))
+            try
             {
-                try
+                input = input.ToLower();
+
+                if (input.Contains("aujourd'hui") || input.Contains("instant"))
+                    return DateTime.Today;
+
+                else if (input.Contains("il y a "))
                 {
-                    var index = int.Parse(Regex.Match(input, @"\d+").Value);
-                    return DateTime.Today.AddDays(-index);
+                    try
+                    {
+                        var index = int.Parse(Regex.Match(input, @"\d+").Value);
+                        return DateTime.Today.AddDays(-index);
+                    }
+                    catch (Exception)
+                    {
+                        throw new SingleParseDateException($"could not parse date {input}");
+                    }
                 }
-                catch (Exception)
+
+                else
                 {
-                    throw new Exception();
+                    return DateTime.ParseExact(input, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
             }
-
-            else
+            catch (Exception)
             {
-                return DateTime.ParseExact(input, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                throw new SingleParseDateException($"could not parse date {input}");
             }
         }
     }

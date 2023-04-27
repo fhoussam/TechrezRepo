@@ -65,15 +65,6 @@ namespace angularclient.Migrations
                     b.HasIndex("ProviderId");
 
                     b.ToTable("DescriptionUrlTransformers");
-
-                    b.HasData(
-                        new
-                        {
-                            DescriptionUrlTransformerId = 2,
-                            ProviderId = 2,
-                            Replacer = "voir-emploi",
-                            Value = "rc/clk"
-                        });
                 });
 
             modelBuilder.Entity("jh.Entities.Keyword", b =>
@@ -96,147 +87,15 @@ namespace angularclient.Migrations
                     b.HasData(
                         new
                         {
-                            KeywordId = 1,
-                            IsRequired = true,
-                            Value = "wcf"
-                        },
-                        new
-                        {
                             KeywordId = 2,
                             IsRequired = true,
                             Value = "asp"
                         },
                         new
                         {
-                            KeywordId = 3,
-                            IsRequired = true,
-                            Value = "c#"
-                        },
-                        new
-                        {
-                            KeywordId = 4,
-                            IsRequired = true,
-                            Value = "csharp"
-                        },
-                        new
-                        {
-                            KeywordId = 5,
-                            IsRequired = true,
-                            Value = "dotnet"
-                        },
-                        new
-                        {
-                            KeywordId = 6,
-                            IsRequired = true,
-                            Value = "asp.net"
-                        },
-                        new
-                        {
-                            KeywordId = 7,
-                            IsRequired = false,
-                            Value = "jquery"
-                        },
-                        new
-                        {
-                            KeywordId = 8,
-                            IsRequired = false,
-                            Value = "core"
-                        },
-                        new
-                        {
-                            KeywordId = 9,
-                            IsRequired = false,
-                            Value = "angular"
-                        },
-                        new
-                        {
                             KeywordId = 10,
                             IsRequired = false,
                             Value = "anglais"
-                        },
-                        new
-                        {
-                            KeywordId = 11,
-                            IsRequired = false,
-                            Value = "english"
-                        },
-                        new
-                        {
-                            KeywordId = 12,
-                            IsRequired = false,
-                            Value = "senior"
-                        },
-                        new
-                        {
-                            KeywordId = 13,
-                            IsRequired = false,
-                            Value = "openid"
-                        },
-                        new
-                        {
-                            KeywordId = 14,
-                            IsRequired = false,
-                            Value = "oauth"
-                        },
-                        new
-                        {
-                            KeywordId = 15,
-                            IsRequired = false,
-                            Value = "mssql"
-                        },
-                        new
-                        {
-                            KeywordId = 16,
-                            IsRequired = false,
-                            Value = "identity"
-                        },
-                        new
-                        {
-                            KeywordId = 17,
-                            IsRequired = false,
-                            Value = "visual studio"
-                        },
-                        new
-                        {
-                            KeywordId = 18,
-                            IsRequired = false,
-                            Value = "sql server"
-                        },
-                        new
-                        {
-                            KeywordId = 19,
-                            IsRequired = false,
-                            Value = "windows communication foundation"
-                        },
-                        new
-                        {
-                            KeywordId = 20,
-                            IsRequired = false,
-                            Value = "aws"
-                        },
-                        new
-                        {
-                            KeywordId = 21,
-                            IsRequired = false,
-                            Value = "docker"
-                        },
-                        new
-                        {
-                            KeywordId = 22,
-                            IsRequired = true,
-                            Value = "webform"
-                        },
-                        new
-                        {
-                            KeywordId = 23,
-                            IsRequired = true,
-                            Value = "winform"
-                        },
-                        new
-                        {
-                            KeywordId = 24,
-                            IsRequired = true,
-                            Value = "asmx"
                         });
                 });
 
@@ -285,26 +144,14 @@ namespace angularclient.Migrations
                         new
                         {
                             ProviderId = 1,
-                            DatePath = "//div[contains(@class, 'roffre')]/div/div[2]/span[2]",
-                            DescriptionPath = "//div[@id = 'divcontmain-pad']/div[2]/div[3]",
-                            EmptyPageIndicatorPath = "//div[contains(@class, 'roffre')]",
+                            DatePath = "//div[contains(@class, 'cardOutline')]/div/div[1]/div/div/table[2]/tbody/tr[2]/td/div/span[1]/text()",
+                            DescriptionPath = "//div[contains(@id, 'jobDescriptionText')]",
+                            EmptyPageIndicatorPath = "//div[contains(@class, 'jobsearch-NoResult-messageHeader')]",
                             IsJobIdInQueryParam = false,
-                            ListUrl = "https://www.freelance-info.fr/missions.php?f=ile_de_france&mots={keyword}&tri=date&p={pageindex}",
-                            PublisherPath = "//div[contains(@class, 'roffre')]/div/div[1]/div/img",
-                            TitlePath = "//div[contains(@class, 'roffre')]/div/div[2]/div[1]",
-                            UrlPath = "//div[contains(@class, 'roffre')]/div/div[2]/div[1]/a"
-                        },
-                        new
-                        {
-                            ProviderId = 2,
-                            DatePath = "//div[contains(@class, 'result-link-bar')]/div/span[contains(@class, 'date')]",
-                            DescriptionPath = "//div[contains(@class, 'jobsearch-JobComponent-description')]",
-                            EmptyPageIndicatorPath = "//div[contains(@class, 'jobsearch-SerpJobCard')]",
-                            IsJobIdInQueryParam = true,
-                            ListUrl = "https://www.indeed.fr/emplois?as_and={keyword}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=subcontract&st=&as_src=&salary=&radius=25&l=%C3%8Ele-de-France&fromage=any&limit=50&sort=date&psf=advsrch&from=advancedsearch",
-                            PublisherPath = "//div[contains(@class, 'sjcl')]/div/span[contains(@class, 'company')]",
-                            TitlePath = "//div[contains(@class, 'title')]",
-                            UrlPath = "//div[contains(@class, 'title')]/a"
+                            ListUrl = "https://fr.indeed.com/jobs?q={keyword}&l=%C3%8Ele-de-France&sort=date",
+                            PublisherPath = "//div[contains(@class, 'companyInfo')]/span[1]",
+                            TitlePath = "//div[contains(@class, 'cardOutline')]/div/div[1]/div/div/table/tbody/tr/td/div/h2/a",
+                            UrlPath = "//div[contains(@class, 'cardOutline')]/div/div[1]/div/div/table/tbody/tr/td/div/h2/a/@href"
                         });
                 });
 
@@ -394,13 +241,6 @@ namespace angularclient.Migrations
                         {
                             UrlSpecialCharacterId = 1,
                             ProviderId = 1,
-                            Replacer = "%23",
-                            Value = "#"
-                        },
-                        new
-                        {
-                            UrlSpecialCharacterId = 2,
-                            ProviderId = 2,
                             Replacer = "%23",
                             Value = "#"
                         });
