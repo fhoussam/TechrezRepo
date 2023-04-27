@@ -25,8 +25,24 @@ namespace angularclient.Controllers
 
         [HttpGet]
         [Route("process")]
-        public IEnumerable<ResultEntityDto> Process()
+        public IEnumerable<ResultEntityDto> Process([FromQuery] bool? init)
         {
+            if (init == true)
+            {
+                _jhDbContext.CachedUrls.RemoveRange(_jhDbContext.CachedUrls);
+                _jhDbContext.SearchJobs.RemoveRange(_jhDbContext.SearchJobs);
+                _jhDbContext.ResultEntities.RemoveRange(_jhDbContext.ResultEntities);
+                _jhDbContext.Keywords.RemoveRange(_jhDbContext.Keywords);
+                _jhDbContext.Providers.RemoveRange(_jhDbContext.Providers);
+                _jhDbContext.UrlSpecialCharacters.RemoveRange(_jhDbContext.UrlSpecialCharacters);
+                _jhDbContext.DescriptionUrlTransformers.RemoveRange(_jhDbContext.DescriptionUrlTransformers);
+                _jhDbContext.SaveChanges();
+                _jhDbContext.Providers.AddRange(InitData.Providers);
+                _jhDbContext.UrlSpecialCharacters.AddRange(InitData.UrlSpecialCharacters);
+                _jhDbContext.Keywords.AddRange(InitData.Keywords);
+                _jhDbContext.SaveChanges();
+            }
+
             IHelper helper = new Helper();
             Search search = new Search(_helper, _jhDbContext);
             search.Start();

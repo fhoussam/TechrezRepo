@@ -26,6 +26,10 @@ namespace angularclient
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Provider>().Property(e => e.ProviderId).ValueGeneratedNever();
+            modelBuilder.Entity<UrlSpecialCharacter>().Property(e => e.UrlSpecialCharacterId).ValueGeneratedNever();
+            modelBuilder.Entity<Keyword>().Property(e => e.KeywordId).ValueGeneratedNever();
+
             modelBuilder.Entity<Provider>().HasData(InitData.Providers);
             modelBuilder.Entity<UrlSpecialCharacter>().HasData(InitData.UrlSpecialCharacters);
             modelBuilder.Entity<Keyword>().HasData(InitData.Keywords);

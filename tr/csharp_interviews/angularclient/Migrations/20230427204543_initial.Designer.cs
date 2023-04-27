@@ -10,7 +10,7 @@ using angularclient;
 namespace angularclient.Migrations
 {
     [DbContext(typeof(JhDbContext))]
-    [Migration("20230427195027_initial")]
+    [Migration("20230427204543_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,9 +72,7 @@ namespace angularclient.Migrations
             modelBuilder.Entity("jh.Entities.Keyword", b =>
                 {
                     b.Property<int>("KeywordId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("KeywordType")
                         .HasColumnType("int");
@@ -164,15 +162,19 @@ namespace angularclient.Migrations
                             KeywordId = 13,
                             KeywordType = 2,
                             Value = "débutant"
+                        },
+                        new
+                        {
+                            KeywordId = 14,
+                            KeywordType = 1,
+                            Value = "insertion"
                         });
                 });
 
             modelBuilder.Entity("jh.Entities.Provider", b =>
                 {
                     b.Property<int>("ProviderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int?>("DateExtractor")
                         .HasColumnType("int");
@@ -284,9 +286,7 @@ namespace angularclient.Migrations
             modelBuilder.Entity("jh.Entities.UrlSpecialCharacter", b =>
                 {
                     b.Property<int>("UrlSpecialCharacterId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ProviderId")
                         .HasColumnType("int");

@@ -11,8 +11,7 @@ namespace angularclient.Migrations
                 name: "Keywords",
                 columns: table => new
                 {
-                    KeywordId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    KeywordId = table.Column<int>(nullable: false),
                     Value = table.Column<string>(nullable: true),
                     KeywordType = table.Column<int>(nullable: false)
                 },
@@ -25,8 +24,7 @@ namespace angularclient.Migrations
                 name: "Providers",
                 columns: table => new
                 {
-                    ProviderId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProviderId = table.Column<int>(nullable: false),
                     ListUrl = table.Column<string>(nullable: true),
                     UrlPath = table.Column<string>(nullable: true),
                     DatePath = table.Column<string>(nullable: true),
@@ -82,8 +80,7 @@ namespace angularclient.Migrations
                 name: "UrlSpecialCharacters",
                 columns: table => new
                 {
-                    UrlSpecialCharacterId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UrlSpecialCharacterId = table.Column<int>(nullable: false),
                     Value = table.Column<string>(nullable: false),
                     Replacer = table.Column<string>(nullable: true),
                     ProviderId = table.Column<int>(nullable: false)
@@ -175,7 +172,8 @@ namespace angularclient.Migrations
                     { 10, 2, "anglais" },
                     { 11, 2, "english" },
                     { 12, 2, "junior" },
-                    { 13, 2, "débutant" }
+                    { 13, 2, "débutant" },
+                    { 14, 1, "insertion" }
                 });
 
             migrationBuilder.InsertData(

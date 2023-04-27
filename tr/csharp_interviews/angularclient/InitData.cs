@@ -51,7 +51,7 @@ namespace angularclient
             //}
         };
 
-        public static List<Keyword> Keywords = new List<Keyword>() 
+        public static List<Keyword> Keywords = new List<Keyword>()
         { 
             //new Keyword(01, "wcf"),
             //new Keyword(03, "c#"),
@@ -76,7 +76,6 @@ namespace angularclient
             //new Keyword(22, "webform"),
             //new Keyword(23, "winform"),
             //new Keyword(24, "asmx")
-            new Keyword(02, "insertion", KeywordTypes.Description),
             new Keyword(01, "diversit", KeywordTypes.Title),
             new Keyword(02, "inclusion", KeywordTypes.Title),
             new Keyword(03, "handicap", KeywordTypes.Title),
@@ -89,7 +88,8 @@ namespace angularclient
             new Keyword(10, "anglais", KeywordTypes.NiceToHave),
             new Keyword(11, "english", KeywordTypes.NiceToHave),
             new Keyword(12, "junior", KeywordTypes.NiceToHave),
-            new Keyword(13, "débutant", KeywordTypes.NiceToHave)
+            new Keyword(13, "débutant", KeywordTypes.NiceToHave),
+            new Keyword(14, "insertion", KeywordTypes.Description),
         };
     }
 }
